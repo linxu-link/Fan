@@ -1,0 +1,243 @@
+ext.deps = [:]
+def versions = [:]
+versions.android_gradle_plugin = '3.4.0'
+versions.support = "28.0.3"
+
+versions.arch_core = "1.1.1"
+versions.room = "1.0.0"
+versions.lifecycle = "1.1.1"
+versions.dagger = "2.15"
+versions.junit = "4.12"
+versions.espresso = "3.0.1"
+versions.retrofit = "2.3.0"
+versions.mockwebserver = "3.8.1"
+versions.apache_commons = "2.5"
+versions.mockito = "2.7.19"
+versions.mockito_all = "1.10.19"
+versions.dexmaker = "2.2.0"
+versions.constraint_layout = "1.0.2"
+versions.glide = "4.7.1"
+versions.timber = "4.5.1"
+
+versions.rxjava2 = "2.1.13"
+versions.rxandroid = "2.0.1"
+versions.rxlifecycle = "2.2.2"
+versions.rxbinding = "3.0.0-alpha1"
+
+versions.atsl_runner = "1.0.1"
+versions.atsl_rules = "1.0.1"
+versions.hamcrest = "1.3"
+versions.kotlin = "1.3.21"
+versions.paging = "1.0.0-beta1"
+versions.guava = "25.0-android"
+versions.butterknife = "8.8.1"
+versions.constraint_layout = "1.1.0"
+versions.materialish_progress = "1.7"
+versions.getui = "2.12.1.0"
+versions.okgo = "3.0.4"
+versions.okserver = "2.0.5"
+versions.umeng = "6.1.2"
+versions.tinker = "1.9.5"
+versions.okhttp_ws = "3.9.0"
+//versions.okhttp = "3.9.0"
+versions.eventbus = "3.0.0-beta1"
+versions.multidex = '1.0.3'
+versions.bingoogolapple = '1.2.1'
+versions.logger = '1.15'
+versions.gson = '2.7'
+versions.picasso = '2.5.2'
+versions.zxing = '3.2.1'
+versions.MPAndroidChart = 'v3.0.2'
+versions.Photo_View = '2.1.3'
+def deps = [:]
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.core_utils = "com.android.support:support-core-utils:$versions.support"
+deps.support = support
+
+def room = [:]
+room.runtime = "android.arch.persistence.room:runtime:$versions.room"
+room.compiler = "android.arch.persistence.room:compiler:$versions.room"
+room.rxjava2 = "android.arch.persistence.room:rxjava2:$versions.room"
+room.testing = "android.arch.persistence.room:testing:$versions.room"
+deps.room = room
+
+def lifecycle = [:]
+lifecycle.runtime = "android.arch.lifecycle:runtime:$versions.lifecycle"
+lifecycle.extensions = "android.arch.lifecycle:extensions:$versions.lifecycle"
+lifecycle.java8 = "android.arch.lifecycle:common-java8:$versions.lifecycle"
+lifecycle.compiler = "android.arch.lifecycle:compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
+
+def arch_core = [:]
+arch_core.testing = "android.arch.core:core-testing:$versions.arch_core"
+deps.arch_core = arch_core
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+deps.retrofit = retrofit
+
+def rxjava = [:]
+rxjava.rxlifecycle = "com.trello.rxlifecycle2:rxlifecycle-components:$versions.rxlifecycle"
+rxjava.rxjava2 = "io.reactivex.rxjava2:rxjava:$versions.rxjava2"
+rxjava.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
+
+rxjava.rxbinding = "com.jakewharton.rxbinding3:rxbinding-core:$versions.rxbinding"
+rxjava.rxbinding_appcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$versions.rxbinding"
+rxjava.rxbinding_recyclerview = "com.jakewharton.rxbinding3:rxbinding-recyclerview:$versions.rxbinding"
+deps.rxjava = rxjava
+
+def okhttp = [:]
+okhttp.logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp_ws"
+okhttp.runtime = "com.squareup.okhttp3:okhttp:$versions.okhttp_ws"
+deps.okhttp = okhttp
+
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+def espresso = [:]
+espresso.core = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+espresso.contrib = "com.android.support.test.espresso:espresso-contrib:$versions.espresso"
+espresso.intents = "com.android.support.test.espresso:espresso-intents:$versions.espresso"
+espresso.concurrent = "com.android.support.test.espresso.idling:idling-concurrent:$versions.espresso"
+espresso.resource = "com.android.support.test.espresso:espresso-idling-resource:$versions.espresso"
+deps.espresso = espresso
+
+def atsl = [:]
+atsl.runner = "com.android.support.test:runner:$versions.atsl_runner"
+atsl.rules = "com.android.support.test:rules:$versions.atsl_runner"
+deps.atsl = atsl
+
+def mockito = [:]
+mockito.core = "org.mockito:mockito-core:$versions.mockito"
+mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
+deps.mockito = mockito
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.reflect = "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+kotlin.anko = "org.jetbrains.anko:anko-support-v4-commons:0.10.4"
+deps.kotlin = kotlin
+
+
+deps.paging = "android.arch.paging:runtime:$versions.paging"
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def tinker = [:]
+tinker.anno = "com.tencent.tinker:tinker-android-anno:1.9.9"
+tinker.lib = "com.tencent.tinker:tinker-android-lib:1.9.9"
+tinker.gradle_plugin = "com.tencent.tinker:tinker-patch-gradle-plugin:1.9.9"
+deps.tinker = tinker
+
+def alibaba = [:]
+alibaba.router = "com.alibaba:arouter-api:1.4.1"
+alibaba.router_compiler = "com.alibaba:arouter-compiler:1.2.2"
+alibaba.oss = "com.aliyun.dpa:oss-android-sdk:2.9.2"
+alibaba.push = "com.aliyun.ams:alicloud-android-push:3.1.4"
+alibaba.push_third = "com.aliyun.ams:alicloud-android-third-push:3.0.5@aar"
+alibaba.mqtt_client = "org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0"
+alibaba.mqtt_service = "org.eclipse.paho:org.eclipse.paho.android.service:1.1.1"
+deps.alibaba = alibaba
+
+def socket = [:]
+socket.runtime = "io.socket:socket.io-client:1.0.0"
+socket.engine = "io.socket:engine.io-client:1.0.0"
+deps.socket = socket
+
+def qihoo = [:]
+qihoo.host = "com.qihoo360.replugin:replugin-host-lib:2.2.4"
+qihoo.gradle_host = "com.qihoo360.replugin:replugin-host-gradle:2.2.4"
+qihoo.gradle_plugin = "com.qihoo360.replugin:replugin-plugin-gradle:2.2.4"
+deps.qihoo = qihoo
+
+
+def bugly = [:]
+bugly.crashreport = 'com.tencent.bugly:crashreport:2.6.6.1'
+bugly.nativecrashreport = 'com.tencent.bugly:nativecrashreport:3.3.1'
+deps.bugly = bugly
+
+deps.dexmaker = "com.linkedin.dexmaker:dexmaker-mockito:$versions.dexmaker"
+deps.constraint_layout = "com.android.support.constraint:constraint-layout:$versions.constraint_layout"
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+deps.junit = "junit:junit:$versions.junit"
+deps.mock_web_server = "com.squareup.okhttp3:mockwebserver:$versions.mockwebserver"
+deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.guava = "com.google.guava:guava:$versions.guava"
+deps.butterknife_gradle_plugin = "com.jakewharton:butterknife-gradle-plugin:9.0.0"
+deps.butterknife = "com.jakewharton:butterknife:$versions.butterknife"
+deps.butterknife_compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
+deps.materialish_progress = "com.pnikosis:materialish-progress:$versions.materialish_progress"
+deps.getui = "com.getui:sdk:$versions.getui"
+deps.okgo = "com.lzy.net:okgo:$versions.okgo"
+deps.okserver = "com.lzy.net:okserver:$versions.okserver"
+deps.umeng_analytics = "com.umeng.umsdk:analytics:8.0.0"
+deps.umeng_common = "com.umeng.umsdk:common:2.0.0"
+deps.logger = "com.orhanobut:logger:$versions.logger"
+deps.gson = "com.google.code.gson:gson:$versions.gson"
+deps.picasso = "com.squareup.picasso:picasso:$versions.picasso"
+deps.PhotoView = "com.github.chrisbanes:PhotoView:$versions.Photo_View"
+deps.bingoogolapple = "cn.bingoogolapple:bga-qrcode-zxing:$versions.bingoogolapple"
+deps.zxing = "com.google.zxing:core:$versions.zxing"
+deps.eventbus = "de.greenrobot:eventbus:$versions.eventbus"
+deps.mp_android_chart = "com.github.PhilJay:MPAndroidChart:$versions.MPAndroidChart"
+deps.multidex = "com.android.support:multidex:$versions.multidex"
+deps.bga_banner = "cn.bingoogolapple:bga-banner:2.2.4@aar"
+deps.GSYVideoPlayer = "com.shuyu:GSYVideoPlayer:6.0.2"
+deps.bottom_navigation_bar = "com.ashokvarma.android:bottom-navigation-bar:2.0.5"
+deps.fragmentation = 'me.yokeyword:fragmentation:1.3.6'
+deps.super_textview = 'com.github.chenBingX:SuperTextView:3.1.5'
+deps.basepopup = "com.github.razerdp:BasePopup:2.1.9"
+ext.deps = deps
+
+//自定义类库
+def ykt = [:]
+ykt.usercenter = "com.ykt:usercenter:0.0.2"
+ykt.icve = "com.ykt:app_icve:0.0.1"
+ykt.zjy = "com.ykt:app_zjy:0.0.1"
+ykt.mooc = "com.ykt:app_mooc:0.0.1"
+ykt.baselib = "com.ykt:baselib:0.0.2"
+ykt.widgetlib = "com.link:widgetlib:0.0.1"
+deps.ykt = ykt
+
+
+def build_versions = [:]
+build_versions.min_sdk = 16
+build_versions.target_sdk = 26
+build_versions.versionCode = 20190423
+build_versions.versionName = "1.0.0"
+ext.build_versions = build_versions
+
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    handler.maven { url 'https://jitpack.io' }
+//    handler.maven { url "http://192.168.23.64:8081/repository/ykt_group/"}
+}
+
+ext.addRepos = this.&addRepos
