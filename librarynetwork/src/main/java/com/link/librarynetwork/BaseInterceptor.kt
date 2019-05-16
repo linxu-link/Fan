@@ -13,6 +13,7 @@ class BaseInterceptor(private val headers: Map<String, String>) : Interceptor {
                 builder.addHeader(headerKey, headers[headerKey]).build()
             }
         }
+
         //请求信息
         return chain.proceed(builder.build())
     }
