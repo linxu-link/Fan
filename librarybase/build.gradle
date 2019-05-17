@@ -1,18 +1,11 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion build_versions.compile_sdk
 
-
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
+    defaultConfig libDefaultConfig
 
     buildTypes {
         release {
@@ -30,7 +23,8 @@ dependencies {
     api 'androidx.legacy:legacy-support-v4:1.0.0'
     api 'androidx.recyclerview:recyclerview:1.0.0'
     api 'com.google.android.material:material:1.0.0'
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //kotlin
+    api deps.kotlin.stdlib
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

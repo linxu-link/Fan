@@ -4,13 +4,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion build_versions.target_sdk
+    compileSdkVersion build_versions.compile_sdk
 
-    defaultConfig {
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
-        multiDexEnabled true
-    }
+    defaultConfig libDefaultConfig
 
     dataBinding {
         enabled true
@@ -31,7 +27,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api deps.kotlin.stdlib
     //网络框架
     api(deps.retrofit.runtime)
     api(deps.retrofit.gson)

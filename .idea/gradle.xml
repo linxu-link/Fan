@@ -9,7 +9,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/component_login" />
+            <option value="$PROJECT_DIR$/component_splash" />
             <option value="$PROJECT_DIR$/librarybase" />
+            <option value="$PROJECT_DIR$/librarycomponent" />
+            <option value="$PROJECT_DIR$/librarymodule" />
             <option value="$PROJECT_DIR$/librarynetwork" />
           </set>
         </option>

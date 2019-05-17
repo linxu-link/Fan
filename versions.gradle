@@ -27,7 +27,6 @@ versions.rxbinding = "3.0.0-alpha1"
 versions.atsl_runner = "1.0.1"
 versions.atsl_rules = "1.0.1"
 versions.hamcrest = "1.3"
-versions.kotlin = "1.3.21"
 versions.paging = "1.0.0-beta1"
 versions.guava = "25.0-android"
 versions.butterknife = "8.8.1"
@@ -129,11 +128,11 @@ mockito.all = "org.mockito:mockito-all:$versions.mockito_all"
 deps.mockito = mockito
 
 def kotlin = [:]
-kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
-kotlin.reflect = "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
-kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
-kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31"
+kotlin.reflect = "org.jetbrains.kotlin:kotlin-reflect:1.3.31"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:1.3.31"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.31"
+kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:1.3.31"
 kotlin.anko = "org.jetbrains.anko:anko-support-v4-commons:0.10.4"
 deps.kotlin = kotlin
 
@@ -224,9 +223,10 @@ deps.ykt = ykt
 
 
 def build_versions = [:]
-build_versions.min_sdk = 16
-build_versions.target_sdk = 26
-build_versions.versionCode = 20190423
+build_versions.min_sdk = 19
+build_versions.target_sdk = 28
+build_versions.compile_sdk = 28
+build_versions.versionCode = 1
 build_versions.versionName = "1.0.0"
 ext.build_versions = build_versions
 
@@ -236,6 +236,8 @@ def addRepos(RepositoryHandler handler) {
     handler.jcenter()
     handler.mavenCentral()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    //Bmob的maven仓库地址--必填
+    handler.maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
     handler.maven { url 'https://jitpack.io' }
 //    handler.maven { url "http://192.168.23.64:8081/repository/ykt_group/"}
 }
