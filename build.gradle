@@ -49,3 +49,7 @@ ext{
     login_isSingleCompile =true
     splash_isSingleCompile =false
 }
+
+repositories {
+    google()
+}
