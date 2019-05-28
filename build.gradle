@@ -7,6 +7,9 @@ buildscript {
         classpath deps.tinker.gradle_plugin
         classpath deps.kotlin.plugin
     }
+    repositories {
+        google()
+    }
 
     ext.libDefaultConfig = {
         minSdkVersion build_versions.min_sdk
@@ -43,6 +46,6 @@ afterEvaluate {
 
 // 项目的 build.gradle 中配置模块是否独立运行
 ext{
-    login_isSingleCompile =false
-    splash_isSingleCompile =true
+    login_isSingleCompile =true
+    splash_isSingleCompile =false
 }

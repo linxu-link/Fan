@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/librarybase" />
             <option value="$PROJECT_DIR$/librarycomponent" />
             <option value="$PROJECT_DIR$/librarymodule" />
-            <option value="$PROJECT_DIR$/librarynetwork" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

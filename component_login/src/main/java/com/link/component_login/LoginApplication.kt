@@ -1,7 +1,9 @@
 package com.link.component_login
 
 import android.app.Application
+import cn.bmob.v3.Bmob
 import com.link.librarymodule.BaseApplication
+import com.link.librarymodule.constant.Constant
 
 class LoginApplication : BaseApplication() {
 
@@ -15,6 +17,7 @@ class LoginApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        Bmob.initialize(this,Constant.BMOB_ID)
     }
 
 }

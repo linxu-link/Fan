@@ -20,8 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"
-                  tools:node="remove"/>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

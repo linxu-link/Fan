@@ -1,2 +1,2 @@
-include ':app', ':librarynetwork', ':librarymodule', ':librarycomponent', ':component_login', ':component_splash'
+include ':app', ':librarymodule', ':librarycomponent', ':component_login', ':component_splash'
 include ':librarybase'
