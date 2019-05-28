@@ -5,11 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.Nullable
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
+import com.afollestad.materialdialogs.MaterialDialog
 import com.link.librarymodule.base.ContainerActivity
+import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.trello.rxlifecycle2.components.support.RxFragment
 import java.lang.reflect.ParameterizedType
+import com.link.librarymodule.bus.Messenger
+import com.link.librarymodule.utils.MaterialDialogUtils
 
-abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : RxFragment(), IBaseView {
+abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel<*>> : RxFragment(), IBaseView {
     protected var binding: V? = null
     protected var viewModel: VM? = null
     private var viewModelId: Int = 0
@@ -52,7 +63,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : RxFragmen
         }
     }
 
-    override fun onViewCreated(view: View?, @Nullable savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //私有的初始化Databinding和ViewModel方法
         initViewDataBinding()
@@ -96,45 +107,31 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : RxFragmen
     //注册ViewModel与View的契约UI回调事件
     protected fun registorUIChangeLiveDataCallBack() {
         //加载对话框显示
-        viewModel!!.getUC().getShowDialogEvent().observe(this, object : Observer<String>() {
-            fun onChanged(@Nullable title: String) {
-                showDialog(title)
-            }
-        })
+        viewModel!!.getUC().getShowDialogEvent().observe(this,
+            Observer<String> { title -> showDialog(title) })
         //加载对话框消失
-        viewModel!!.getUC().getDismissDialogEvent().observe(this, object : Observer<Void>() {
-            fun onChanged(@Nullable v: Void) {
-                dismissDialog()
-            }
-        })
+        viewModel!!.getUC().getDismissDialogEvent().observe(this,
+            Observer<Void> { dismissDialog() })
         //跳入新页面
-        viewModel!!.getUC().getStartActivityEvent().observe(this, object : Observer<Map<String, Any>>() {
-            fun onChanged(@Nullable params: Map<String, Any>) {
-                val clz = params[ParameterField.CLASS] as Class<*>
-                val bundle = params[ParameterField.BUNDLE] as Bundle
+        viewModel!!.getUC().getStartActivityEvent().observe(this,
+            Observer<Map<String, Any>> { params ->
+                val clz = params[BaseViewModel.ParameterField.CLASS] as Class<*>
+                val bundle = params[BaseViewModel.ParameterField.BUNDLE] as Bundle
                 startActivity(clz, bundle)
-            }
-        })
+            })
         //跳入ContainerActivity
-        viewModel!!.getUC().getStartContainerActivityEvent().observe(this, object : Observer<Map<String, Any>>() {
-            fun onChanged(@Nullable params: Map<String, Any>) {
-                val canonicalName = params[ParameterField.CANONICAL_NAME] as String
-                val bundle = params[ParameterField.BUNDLE] as Bundle
+        viewModel!!.getUC().getStartContainerActivityEvent().observe(this,
+            Observer<Map<String, Any>> { params ->
+                val canonicalName = params[BaseViewModel.ParameterField.CANONICAL_NAME] as String
+                val bundle = params[BaseViewModel.ParameterField.BUNDLE] as Bundle
                 startContainerActivity(canonicalName, bundle)
-            }
-        })
+            })
         //关闭界面
-        viewModel!!.getUC().getFinishEvent().observe(this, object : Observer<Void>() {
-            fun onChanged(@Nullable v: Void) {
-                activity!!.finish()
-            }
-        })
+        viewModel!!.getUC().getFinishEvent().observe(this,
+            Observer<Void> { activity!!.finish() })
         //关闭上一层
-        viewModel!!.getUC().getOnBackPressedEvent().observe(this, object : Observer<Void>() {
-            fun onChanged(@Nullable v: Void) {
-                activity!!.onBackPressed()
-            }
-        })
+        viewModel!!.getUC().getOnBackPressedEvent().observe(this,
+            Observer<Void> { activity!!.onBackPressed() })
     }
 
     fun showDialog(title: String) {
@@ -202,7 +199,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : RxFragmen
         }
     }
 
-    fun initParam() {
+    override fun initParam() {
 
     }
 
@@ -229,11 +226,11 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : RxFragmen
         return null
     }
 
-    fun initData() {
+    override fun initData() {
 
     }
 
-    fun initViewObservable() {
+    override fun initViewObservable() {
 
     }
 
@@ -248,8 +245,3 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel> : RxFragmen
         return ViewModelProviders.of(fragment).get(cls)
     }
 }
-/**
- * 跳转容器页面
- *
- * @param canonicalName 规范名 : Fragment.class.getCanonicalName()
- */

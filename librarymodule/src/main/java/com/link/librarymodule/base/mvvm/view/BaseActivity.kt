@@ -7,7 +7,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.afollestad.materialdialogs.MaterialDialog
 import com.link.librarymodule.base.ContainerActivity
@@ -52,9 +51,11 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
     }
 
 
+    /**
+     * 注入绑定
+     */
     fun initViewDataBinding(savedInstanceState: Bundle?) {
-
-        mBinding = DataBindingUtil.setContentView(this, initContentView(savedInstanceState))
+        mBinding = DataBindingUtil.setContentView(this, setLayout(savedInstanceState))
         mViewModelId = initVariableId()
         mViewModel = initViewModel()
         if (mViewModel == null) {
@@ -114,7 +115,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
     }
 
 
-    abstract fun initContentView(savedInstanceState: Bundle?): Int
+    abstract fun setLayout(savedInstanceState: Bundle?): Int
 
     /**
      * 初始化viewModel的ID
@@ -196,6 +197,9 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
         }
     }
 
+    /**
+     * 刷新布局
+     */
     fun refreshLayout() {
         if (mViewModel != null) {
             mBinding!!.setVariable(mViewModelId, mViewModel)
