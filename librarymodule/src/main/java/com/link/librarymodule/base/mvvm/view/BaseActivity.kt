@@ -15,7 +15,12 @@ import com.link.librarymodule.bus.Messenger
 import com.link.librarymodule.utils.MaterialDialogUtils
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import java.lang.reflect.ParameterizedType
-
+/**
+ * @author WJ
+ * @date 2019-05-29
+ *
+ * 描述：一个拥有DataBinding框架的基Activity
+ */
 abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppCompatActivity(), IBaseView {
 
     protected var mBinding: V? = null
@@ -59,14 +64,14 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
         mViewModelId = initVariableId()
         mViewModel = initViewModel()
         if (mViewModel == null) {
-            val modelClass: Class<*>
+            val modelClass: Class<VM>
             val type = javaClass.genericSuperclass
             if (type is ParameterizedType) {
-                modelClass = type.actualTypeArguments[1] as Class<*>
+                modelClass = type.actualTypeArguments[1] as Class<VM>
             } else {
-                modelClass = BaseViewModel::class.java
+                modelClass = BaseViewModel::class.java as Class<VM>
             }
-            mViewModel = createViewModel(this, modelClass) as VM
+            mViewModel = createViewModel(this, modelClass)
         }
         //关联viewModel
         mBinding!!.setVariable(mViewModelId, mViewModel)

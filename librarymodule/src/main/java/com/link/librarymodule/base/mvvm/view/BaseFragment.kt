@@ -84,15 +84,15 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel<*>> : RxFrag
         viewModelId = initVariableId()
         viewModel = initViewModel()
         if (viewModel == null) {
-            val modelClass: Class<*>
+            val modelClass: Class<VM>
             val type = javaClass.genericSuperclass
             if (type is ParameterizedType) {
-                modelClass = type.actualTypeArguments[1] as Class<*>
+                modelClass = type.actualTypeArguments[1] as Class<VM>
             } else {
                 //如果没有指定泛型参数，则默认使用BaseViewModel
-                modelClass = BaseViewModel::class.java
+                modelClass = BaseViewModel::class.java as Class<VM>
             }
-            viewModel = createViewModel(this, modelClass) as VM
+            viewModel = createViewModel(this, modelClass)
         }
         binding!!.setVariable(viewModelId, viewModel)
         //让ViewModel拥有View的生命周期感应
