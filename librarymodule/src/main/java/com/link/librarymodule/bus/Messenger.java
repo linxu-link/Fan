@@ -1,6 +1,5 @@
 package com.link.librarymodule.bus;
 
-
 import com.link.librarymodule.base.mvvm.binding.command.BindingAction;
 import com.link.librarymodule.base.mvvm.binding.command.BindingConsumer;
 

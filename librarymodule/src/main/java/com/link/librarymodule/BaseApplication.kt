@@ -2,17 +2,20 @@ package com.link.librarymodule
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import androidx.annotation.NonNull
 import com.link.librarymodule.utils.AppManager
+import com.link.librarymodule.utils.Utils
 
 abstract class BaseApplication : Application() {
 
-    private lateinit var instance: Application
+    lateinit var instance: Application
 
     override fun onCreate() {
         super.onCreate()
         setApplication(this)
+        Utils.init(this)
     }
 
     /**

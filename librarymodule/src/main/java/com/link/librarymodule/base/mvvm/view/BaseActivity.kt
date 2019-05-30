@@ -108,6 +108,9 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
         mViewModel!!.uc.onBackPressedEvent.observe(this, Observer { onBackPressed() })
     }
 
+    /**
+     * 数据初始化
+     */
     override fun initData() {
 
     }
@@ -141,6 +144,15 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
     fun <T : ViewModel> createViewModel(activity: FragmentActivity, clazz: Class<T>): T {
         return ViewModelProviders.of(activity).get(clazz)
     }
+
+    fun getViewModel(): VM? {
+        return mViewModel
+    }
+
+    fun getBinging(): V? {
+        return mBinding
+    }
+
 
     /*======================================================================================*/
     /**

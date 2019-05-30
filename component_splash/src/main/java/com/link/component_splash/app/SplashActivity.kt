@@ -1,8 +1,10 @@
 package com.link.component_splash.app
 
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProviders
 import com.link.component_splash.BR
 import com.link.component_splash.R
+import com.link.component_splash.SplashViewModelFactory
 import com.link.component_splash.databinding.ActivitySplashBinding
 import com.link.librarymodule.base.mvvm.view.BaseActivity
 
@@ -28,12 +30,15 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
     }
 
     override fun initViewModel(): SplashViewModel? {
-        return super.initViewModel()
+        val factory = SplashViewModelFactory.getInstance(application)
+        return ViewModelProviders.of(this,factory).get(SplashViewModel::class.java)
 
     }
 
 
     override fun initViewObservable() {
         super.initViewObservable()
+
+
     }
 }
