@@ -15,6 +15,7 @@ import com.link.librarymodule.bus.Messenger
 import com.link.librarymodule.utils.MaterialDialogUtils
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import java.lang.reflect.ParameterizedType
+
 /**
  * @author WJ
  * @date 2019-05-29
@@ -130,7 +131,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
     /**
      * 初始化ViewModel
      */
-    fun initViewModel(): VM? {
+    open fun initViewModel(): VM? {
         return null
     }
 

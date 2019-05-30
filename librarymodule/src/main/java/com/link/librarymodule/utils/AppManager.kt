@@ -4,7 +4,7 @@ import android.app.Activity
 import androidx.fragment.app.Fragment
 import java.util.*
 
-class AppManager {
+class AppManager private constructor(){
 
     companion object {
         val instance = Inner.appManager
