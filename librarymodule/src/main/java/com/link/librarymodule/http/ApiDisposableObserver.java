@@ -1,11 +1,10 @@
 package com.link.librarymodule.http;
 
 
+import com.link.librarymodule.utils.AppManager;
+import com.link.librarymodule.utils.ToastUtils;
+import com.link.librarymodule.utils.Utils;
 import io.reactivex.observers.DisposableObserver;
-import me.goldze.mvvmhabit.base.AppManager;
-import me.goldze.mvvmhabit.utils.KLog;
-import me.goldze.mvvmhabit.utils.ToastUtils;
-import me.goldze.mvvmhabit.utils.Utils;
 
 /**
  * Created by goldze on 2017/5/10.
@@ -38,7 +37,7 @@ public abstract class ApiDisposableObserver<T> extends DisposableObserver<T> {
         ToastUtils.showShort("http is start");
         // if  NetworkAvailable no !   must to call onCompleted
         if (!NetworkUtil.isNetworkAvailable(Utils.getContext())) {
-            KLog.d("无网络，读取缓存数据");
+//            KLog.d("无网络，读取缓存数据");
             onComplete();
         }
     }
@@ -57,7 +56,7 @@ public abstract class ApiDisposableObserver<T> extends DisposableObserver<T> {
                 break;
             case CodeRule.CODE_300:
                 //请求失败，不打印Message
-                KLog.e("请求失败");
+//                KLog.e("请求失败");
                 ToastUtils.showShort("错误代码:", baseResponse.getCode());
                 break;
             case CodeRule.CODE_330:
@@ -70,17 +69,17 @@ public abstract class ApiDisposableObserver<T> extends DisposableObserver<T> {
                 break;
             case CodeRule.CODE_503:
                 //参数为空
-                KLog.e("参数为空");
+//                KLog.e("参数为空");
                 break;
             case CodeRule.CODE_502:
                 //没有数据
-                KLog.e("没有数据");
+//                KLog.e("没有数据");
                 break;
             case CodeRule.CODE_510:
                 //无效的Token，提示跳入登录页
                 ToastUtils.showShort("token已过期，请重新登录");
                 //关闭所有页面
-                AppManager.getAppManager().finishAllActivity();
+                AppManager.getInstance().finishAllActivity();
                 //跳入登录界面
                 //*****该类仅供参考，实际业务Code, 根据需求来定义，******//
                 break;

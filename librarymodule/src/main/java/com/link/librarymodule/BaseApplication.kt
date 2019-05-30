@@ -15,7 +15,6 @@ abstract class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         setApplication(this)
-        Utils.init(this)
     }
 
     /**
@@ -26,6 +25,7 @@ abstract class BaseApplication : Application() {
     @Synchronized
     fun setApplication(@NonNull application: Application) {
         instance = application
+        Utils.init(application)
         application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
 

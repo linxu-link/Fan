@@ -1,12 +1,12 @@
 package com.link.librarymodule.http;
 
+import com.link.librarymodule.http.download.DownLoadSubscriber;
+import com.link.librarymodule.http.download.ProgressCallBack;
+import com.link.librarymodule.http.interceptor.ProgressInterceptor;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import me.goldze.mvvmhabit.http.download.DownLoadSubscriber;
-import me.goldze.mvvmhabit.http.download.ProgressCallBack;
-import me.goldze.mvvmhabit.http.interceptor.ProgressInterceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;

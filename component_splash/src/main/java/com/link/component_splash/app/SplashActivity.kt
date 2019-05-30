@@ -2,10 +2,10 @@ package com.link.component_splash.app
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
-import com.link.component_splash.BR
 import com.link.component_splash.R
 import com.link.component_splash.SplashViewModelFactory
 import com.link.component_splash.databinding.ActivitySplashBinding
+import com.link.librarymodule.BR
 import com.link.librarymodule.base.mvvm.view.BaseActivity
 
 /**
@@ -15,11 +15,6 @@ import com.link.librarymodule.base.mvvm.view.BaseActivity
  * 描述：闪屏页
  */
 class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-    }
 
     override fun setLayout(savedInstanceState: Bundle?): Int {
         return R.layout.activity_splash
@@ -38,7 +33,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
 
     override fun initViewObservable() {
         super.initViewObservable()
-
 
     }
 }

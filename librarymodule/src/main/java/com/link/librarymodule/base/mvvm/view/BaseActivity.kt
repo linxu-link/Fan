@@ -31,6 +31,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //页面接受的参数方法
         initParam()
         //初始化DataBinging和ViewModel
         initViewDataBinding(savedInstanceState)
@@ -115,10 +116,16 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
 
     }
 
+    /**
+     * 页面接受的参数方法
+     */
     override fun initParam() {
 
     }
 
+    /**
+     *  页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
+     */
     override fun initViewObservable() {
 
     }

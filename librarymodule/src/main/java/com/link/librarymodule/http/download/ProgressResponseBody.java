@@ -1,6 +1,6 @@
 package com.link.librarymodule.http.download;
 
-import me.goldze.mvvmhabit.bus.RxBus;
+import com.link.librarymodule.bus.RxBus;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import okio.*;

@@ -1,6 +1,6 @@
 package com.link.librarymodule.http.interceptor;
 
-import me.goldze.mvvmhabit.http.download.ProgressResponseBody;
+import com.link.librarymodule.http.download.ProgressResponseBody;
 import okhttp3.Interceptor;
 import okhttp3.Response;
 

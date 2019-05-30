@@ -7,6 +7,7 @@ import java.util.*
 class AppManager private constructor(){
 
     companion object {
+        @JvmStatic
         val instance = Inner.appManager
     }
 
