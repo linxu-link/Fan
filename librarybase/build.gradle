@@ -7,6 +7,10 @@ android {
 
     defaultConfig libDefaultConfig
 
+    dataBinding {
+        enabled true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,9 +32,12 @@ dependencies {
     api 'com.afollestad.material-dialogs:core:0.9.4.5'
     api 'com.afollestad.material-dialogs:commons:0.9.4.5'
     //常用布局
-    api 'com.android.support.constraint:constraint-layout:1.1.3'
+    api deps.constraint_layout
     //kotlin
     api deps.kotlin.stdlib
+    //组件化
+    api deps.alibaba.router
+
     //网络框架
     api(deps.retrofit.runtime)
     api(deps.retrofit.gson)

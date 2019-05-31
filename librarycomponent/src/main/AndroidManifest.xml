@@ -1,2 +1,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.link.librarycomponent"/>
+          package="com.link.librarycomponent">
+
+
+    <application>
+
+        <activity android:name=".router.SchemaFilterActivity">
+            <!-- Schame -->
+            <intent-filter>
+                <data
+                        android:host="m.link.com"
+                        android:scheme="arouter"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>

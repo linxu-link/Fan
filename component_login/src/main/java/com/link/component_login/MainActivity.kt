@@ -1,12 +1,20 @@
 package com.link.component_login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.link.component_login.app.login.LoginFragment
+import com.link.component_login.app.register.RegisterFragment
+import com.link.librarycomponent.router.RouterConstant
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+@Route(path = RouterConstant.LOGIN)
+class MainActivity : RxAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_container)
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.content, RegisterFragment.newInstance())
+        fragmentTransaction.commit()
     }
 }
