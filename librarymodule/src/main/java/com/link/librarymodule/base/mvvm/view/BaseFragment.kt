@@ -222,7 +222,7 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel<*>> : RxFrag
      *
      * @return 继承BaseViewModel的ViewModel
      */
-    fun initViewModel(): VM? {
+    open fun initViewModel(): VM? {
         return null
     }
 

@@ -12,7 +12,7 @@
     <TextView
             android:text="创建账号"
             android:textColor="@color/font_color"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView6" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
@@ -20,66 +20,131 @@
             android:layout_marginTop="64dp" app:layout_constraintTop_toBottomOf="@+id/include2"/>
 
     <LinearLayout
+            android:gravity="center_vertical"
+            android:padding="5dp"
             android:orientation="horizontal"
             android:layout_width="0dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/shape_stroke_corner_25dp_grey"
             android:layout_height="50dp" android:layout_marginTop="52dp"
             app:layout_constraintTop_toBottomOf="@+id/textView6" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
             android:id="@+id/linearLayout">
+
+        <ImageView
+                android:layout_marginStart="15dp"
+                android:src="@drawable/ic_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <EditText
+                android:hint="请输入手机号码"
+                android:layout_marginStart="5dp"
+                android:background="@null"
+                android:id="@+id/username"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
     </LinearLayout>
 
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:background="@color/colorPrimary"
-            android:layout_height="50dp" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:id="@+id/linearLayout4">
-    </LinearLayout>
 
     <LinearLayout
+            android:gravity="center_vertical"
+            android:padding="5dp"
             android:orientation="horizontal"
             android:layout_width="0dp"
-            android:background="@color/colorPrimary"
-            android:layout_height="50dp" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
+            android:background="@drawable/shape_stroke_corner_25dp_grey"
+            android:layout_height="50dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:id="@+id/linearLayout4"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout">
+
+        <ImageView
+                android:layout_marginStart="15dp"
+                android:src="@drawable/ic_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <EditText
+                android:hint="请输入密码"
+                android:layout_marginStart="5dp"
+                android:background="@null"
+                android:id="@+id/password"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:background="@drawable/shape_stroke_corner_25dp_grey"
+            android:layout_height="50dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
             android:id="@+id/linearLayout5" android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/button3">
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout4">
+
+        <ImageView
+                android:layout_marginStart="15dp"
+                android:src="@drawable/ic_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <EditText
+                android:hint="请输入验证码"
+                android:layout_marginStart="5dp"
+                android:background="@null"
+                android:id="@+id/code"
+                android:layout_marginEnd="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
     </LinearLayout>
-    <Button
+
+    <TextView
+            android:gravity="center"
+            android:background="@drawable/shape_stroke_corner_25dp_blue_full"
+            android:textColor="@android:color/white"
             android:text="创建账号"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button2" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="100dp"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout5" app:layout_constraintHorizontal_bias="0.498"
-            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
+            android:layout_height="50dp"
+            android:id="@+id/button2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout" app:layout_constraintBottom_toTopOf="@+id/textView8"
+            android:layout_marginBottom="24dp"/>
     <TextView
-            android:text="已有账号？立即登录"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView7" android:layout_marginBottom="16dp"
+            android:text="已有账号？立即登录！"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:id="@+id/textView7"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
     <View
             android:background="@color/font_color"
             android:layout_width="wrap_content"
             android:layout_height="1px"
             android:id="@+id/textView8"
-            app:layout_constraintBottom_toTopOf="@+id/textView7" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-    <Button
+
+    <TextView
+            android:gravity="center"
+            android:textColor="@android:color/white"
             android:text="发送验证码"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:background="@drawable/shape_stroke_corner_25dp_green_full"
+            android:layout_height="0dp"
             android:id="@+id/button3"
             app:layout_constraintTop_toTopOf="@+id/linearLayout5"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout4"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,7 +37,8 @@ dependencies {
     api deps.kotlin.stdlib
     //组件化
     api deps.alibaba.router
-
+    //云数据库bmob
+    api 'cn.bmob.android:bmob-sdk:3.7.3-rc1'
     //网络框架
     api(deps.retrofit.runtime)
     api(deps.retrofit.gson)

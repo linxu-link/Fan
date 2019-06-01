@@ -81,6 +81,10 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
         uc.dismissDialogEvent.call();
     }
 
+    public M getModel(){
+        return model;
+    }
+
     /**
      * 跳转页面
      *

@@ -10,7 +10,8 @@ import com.link.librarymodule.base.mvvm.binding.command.BindingAction
 import com.link.librarymodule.base.mvvm.binding.command.BindingCommand
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 
-class SplashViewModel constructor(app:Application,model: SplashRepository) : BaseViewModel<SplashRepository>(app,model) {
+class SplashViewModel constructor(app: Application, model: SplashRepository) :
+    BaseViewModel<SplashRepository>(app, model) {
 
 
     //登录按钮的点击事件

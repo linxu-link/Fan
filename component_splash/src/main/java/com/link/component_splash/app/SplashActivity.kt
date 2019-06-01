@@ -1,7 +1,6 @@
 package com.link.component_splash.app
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.component_splash.R

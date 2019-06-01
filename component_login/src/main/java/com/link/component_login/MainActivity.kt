@@ -14,7 +14,7 @@ class MainActivity : RxAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_container)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.content, RegisterFragment.newInstance())
+        fragmentTransaction.replace(R.id.content, LoginFragment.newInstance())
         fragmentTransaction.commit()
     }
 }

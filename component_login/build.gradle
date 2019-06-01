@@ -52,7 +52,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":librarycomponent")
-    implementation 'cn.bmob.android:bmob-sdk:3.7.3-rc1'
     kapt deps.alibaba.router_compiler
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

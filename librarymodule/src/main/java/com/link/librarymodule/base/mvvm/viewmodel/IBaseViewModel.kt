@@ -45,4 +45,5 @@ interface IBaseViewModel : LifecycleObserver {
      */
     fun removeRxBus()
 
+
 }

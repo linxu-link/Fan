@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
     <data>
-
-
-
+        <variable name="viewModel" type="com.link.component_login.app.login.LoginViewModel"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,52 +19,113 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/font_color"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:id="@+id/textView"
-                android:layout_marginTop="70dp"
-                app:layout_constraintTop_toBottomOf="@+id/include"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"/>
-        <LinearLayout
-                android:orientation="horizontal"
+                android:layout_marginEnd="8dp" android:layout_marginTop="70dp"
+                app:layout_constraintTop_toBottomOf="@+id/include"/>
+
+        <FrameLayout
+                android:padding="5dp"
                 android:layout_width="0dp"
-                android:background="@color/colorPrimary"
-                android:layout_height="50dp"
+                android:background="@drawable/shape_stroke_corner_25dp_grey"
+                android:layout_height="52dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 app:layout_constraintHorizontal_bias="0.0"
                 android:layout_marginTop="52dp"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 android:id="@+id/linearLayout2">
-        </LinearLayout>
 
-        <LinearLayout
-                android:background="@color/colorPrimary"
+            <ImageView
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_people"
+                    android:padding="4dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            <EditText
+                    android:hint="请输入手机号码"
+                    android:textSize="15sp"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="50dp"
+                    android:background="@null"
+                    android:id="@+id/username"
+                    android:layout_marginEnd="50dp"
+                    android:text="@{viewModel.phone}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            <ImageView
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_cross"
+                    android:padding="5dp"
+                    android:visibility="@{viewModel.clearBtnVisibility}"
+                    onClickCommand="@{viewModel.clearPhoneOnClickCommand}"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+                android:padding="5dp"
+                android:background="@drawable/shape_stroke_corner_25dp_grey"
                 android:orientation="horizontal"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="16dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-                android:id="@+id/linearLayout3">
-        </LinearLayout>
+                android:id="@+id/linearLayout3"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout2">
+
+            <ImageView
+                    android:layout_gravity="center_vertical|start"
+                    android:padding="4dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_lock"/>
+
+            <EditText
+                    android:hint="请输入密码"
+                    android:background="@null"
+                    android:textSize="15sp"
+                    android:text="@{viewModel.password}"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:id="@+id/password"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            <ImageView
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginEnd="10dp"
+                    onClickCommand="@{viewModel.passwordShowSwitchOnClickCommand}"
+                    android:src="@drawable/ic_eye_close"
+                    android:padding="5dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+        </FrameLayout>
+
         <CheckBox
                 android:padding="4dp"
                 android:text="记住密码"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"/>
+                app:layout_constraintStart_toStartOf="@+id/linearLayout3"/>
         <TextView
                 android:text="忘记密码"
                 android:textColor="@color/colorPrimary"
@@ -75,19 +135,21 @@
                 android:id="@+id/textView2"
                 app:layout_constraintBottom_toBottomOf="@+id/checkBox"
                 app:layout_constraintTop_toTopOf="@+id/checkBox"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"/>
-        <Button
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout3"/>
+        <TextView
                 android:text="登录"
+                android:textSize="17sp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:background="@mipmap/btn_login"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:id="@+id/button"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="52dp"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox"/>
+                onClickCommand="@{viewModel.loginOnClickCommand}"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox" app:layout_constraintStart_toStartOf="@+id/checkBox"
+                app:layout_constraintEnd_toEndOf="@+id/textView2"
+        />
         <TextView
                 android:text="社交网络登录"
                 android:layout_width="wrap_content"
@@ -98,39 +160,37 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"/>
+                app:layout_constraintBottom_toTopOf="@+id/we_chart"/>
         <TextView
-                android:text="没有账号?创建一个"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:text="没有账号？创建一个！"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_height="50dp"
                 android:id="@+id/textView4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"/>
+        />
 
         <View android:background="@color/font_color"
               android:layout_width="0dp"
               android:layout_height="1px"
               android:id="@+id/textView5"
-              android:layout_marginBottom="16dp"
               app:layout_constraintBottom_toTopOf="@+id/textView4"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:id="@+id/imageView"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/ic_we_chart"
+                android:id="@+id/we_chart"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 app:layout_constraintHorizontal_bias="0.498"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView5"/>
 
 

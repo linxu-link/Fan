@@ -31,7 +31,7 @@ class SplashViewModelFactory private constructor(
             return SplashViewModel(application, repository) as T
         }
 
-        throw IllegalArgumentException("unknown viewModel class:" + modelClass.name)
+        throw RuntimeException("unknown viewModel class:" + modelClass.name)
     }
 
 
