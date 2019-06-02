@@ -15,9 +15,5 @@ class LoginApplication : BaseApplication() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onCreate() {
-        super.onCreate()
-        Bmob.initialize(this,Constant.BMOB_ID)
-    }
 
 }

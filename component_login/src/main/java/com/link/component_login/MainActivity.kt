@@ -3,7 +3,6 @@ package com.link.component_login
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.component_login.app.login.LoginFragment
-import com.link.component_login.app.register.RegisterFragment
 import com.link.librarycomponent.router.RouterConstant
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 

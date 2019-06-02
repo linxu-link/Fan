@@ -54,6 +54,8 @@ dependencies {
     api(deps.rxjava.rxlifecycle) {
         exclude group: 'com.android.support'
     }
+    //Banner
+    api 'com.youth.banner:banner:1.4.10'
     //热修复
     api(deps.tinker.lib) { changing = true }
     //内存泄漏检测

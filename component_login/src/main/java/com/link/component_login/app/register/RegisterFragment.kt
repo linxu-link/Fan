@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.link.component_login.R
 import com.trello.rxlifecycle2.components.support.RxFragment
 
 
-class RegisterFragment: RxFragment() {
+class RegisterFragment: Fragment() {
 
     companion object {
             @JvmStatic

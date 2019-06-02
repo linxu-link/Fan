@@ -20,7 +20,7 @@ import java.lang.reflect.ParameterizedType
 import com.link.librarymodule.bus.Messenger
 import com.link.librarymodule.utils.MaterialDialogUtils
 
-abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel<*>> : RxFragment(), IBaseView {
+abstract class BaseMvvmFragment<V : ViewDataBinding, VM : BaseViewModel<*>> : RxFragment(), IBaseView {
     protected var binding: V? = null
     protected var viewModel: VM? = null
     private var viewModelId: Int = 0
@@ -107,13 +107,13 @@ abstract class BaseFragment<V : ViewDataBinding, VM : BaseViewModel<*>> : RxFrag
     //注册ViewModel与View的契约UI回调事件
     protected fun registorUIChangeLiveDataCallBack() {
         //加载对话框显示
-        viewModel!!.getUC().getShowDialogEvent().observe(this,
+        viewModel!!.uc.getShowDialogEvent().observe(this,
             Observer<String> { title -> showDialog(title) })
         //加载对话框消失
-        viewModel!!.getUC().getDismissDialogEvent().observe(this,
+        viewModel!!.uc.getDismissDialogEvent().observe(this,
             Observer<Void> { dismissDialog() })
         //跳入新页面
-        viewModel!!.getUC().getStartActivityEvent().observe(this,
+        viewModel!!.uc.getStartActivityEvent().observe(this,
             Observer<Map<String, Any>> { params ->
                 val clz = params[BaseViewModel.ParameterField.CLASS] as Class<*>
                 val bundle = params[BaseViewModel.ParameterField.BUNDLE] as Bundle

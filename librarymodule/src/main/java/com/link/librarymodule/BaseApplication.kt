@@ -5,7 +5,9 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import androidx.annotation.NonNull
+import cn.bmob.v3.Bmob
 import com.alibaba.android.arouter.launcher.ARouter
+import com.link.librarymodule.constant.Constant
 import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.Utils
 
@@ -28,6 +30,7 @@ abstract class BaseApplication : Application() {
         instance = application
         Utils.init(application)
         initARouter(application)
+        initBmobSdk(application.applicationContext)
         application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
 
@@ -79,6 +82,10 @@ abstract class BaseApplication : Application() {
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(application); // 尽可能早，推荐在Application中初始化
+    }
+
+    private fun initBmobSdk(context: Context){
+        Bmob.initialize(context,Constant.BMOB_ID)
     }
 
 }

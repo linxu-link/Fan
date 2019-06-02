@@ -6,7 +6,7 @@ import android.text.TextUtils
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import com.link.librarymodule.R
-import com.link.librarymodule.base.mvvm.view.BaseFragment
+import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import java.lang.IllegalArgumentException
 import java.lang.RuntimeException
@@ -16,8 +16,11 @@ import java.lang.ref.WeakReference
 open class ContainerActivity : RxAppCompatActivity() {
 
     companion object {
+        @JvmStatic
         val FRAGMENT = "FRAGMENT"
+        @JvmStatic
         val BUNDLE = "BUNDLE"
+        @JvmStatic
         val FRAGMENT_TAG = "content_fragment_tag"
     }
 
@@ -46,7 +49,7 @@ open class ContainerActivity : RxAppCompatActivity() {
         supportFragmentManager.putFragment(outState!!, FRAGMENT_TAG, mFragment!!.get()!!)
     }
 
-    fun initFragmentFormIntent(intent: Intent): Fragment {
+    open fun initFragmentFormIntent(intent: Intent): Fragment {
         try {
             val fragmentName = intent.getStringExtra(FRAGMENT)
             if (TextUtils.isEmpty(fragmentName)) {
@@ -69,7 +72,7 @@ open class ContainerActivity : RxAppCompatActivity() {
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.content)
-        if (fragment is BaseFragment<*, *>) {
+        if (fragment is BaseMvvmFragment<*, *>) {
             super.onBackPressed()
         } else {
             super.onBackPressed()

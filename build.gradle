@@ -1,12 +1,11 @@
-buildscript { 
-
+buildscript {
     apply from: 'versions.gradle'
     addRepos(repositories)
     dependencies {
         classpath deps.android_gradle_plugin
         classpath deps.tinker.gradle_plugin
         classpath deps.kotlin.plugin
-    }
+     }
     repositories {
         google()
     }
@@ -47,7 +46,7 @@ afterEvaluate {
 // 项目的 build.gradle 中配置模块是否独立运行
 ext{
     login_isSingleCompile =true
-    splash_isSingleCompile =false
+    splash_isSingleCompile = false
 }
 
 repositories {

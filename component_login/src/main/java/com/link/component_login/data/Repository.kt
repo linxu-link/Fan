@@ -11,6 +11,7 @@ class Repository private constructor(
 ) :
     BaseModel() ,IHttpDataSource,ILocalDataSource{
 
+
     companion object {
 
         @Volatile
@@ -30,7 +31,10 @@ class Repository private constructor(
     }
 
     override fun getUserInfo():UserEntity {
-       return UserEntity()
+        val userEntity=UserEntity()
+        userEntity.pwd="123456"
+        userEntity.mobilePhoneNumber="18911560821"
+       return userEntity
     }
 
 }

@@ -1,4 +1,4 @@
-include ':librarybase'
+include ':librarybase', ':component_main'
 include ':librarymodule', ':librarycomponent'
 include ':component_splash'
 include ':component_login'
