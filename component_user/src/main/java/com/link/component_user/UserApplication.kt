@@ -1,6 +1,7 @@
 package com.link.component_user
 
 import android.app.Application
+import com.link.librarycomponent.ServiceFactory
 import com.link.librarymodule.BaseApplication
 /**
  * @author WJ
@@ -10,8 +11,14 @@ import com.link.librarymodule.BaseApplication
  */
 class UserApplication : BaseApplication() {
 
-    override fun initModuleApp(application: Application) {
+    override fun onCreate() {
+        super.onCreate()
+        initModuleApp(this)
+        initModuleData(this)
+    }
 
+    override fun initModuleApp(application: Application) {
+        ServiceFactory.getInstance().userService=UserService()
     }
 
     override fun initModuleData(application: Application) {
