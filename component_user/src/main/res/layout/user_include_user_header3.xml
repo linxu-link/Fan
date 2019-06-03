@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@drawable/shape_stroke_corner_10dp_white_full"
+    android:elevation="1dp"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/user_imageview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/user_ic_wallet"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview8"
+        app:layout_constraintStart_toStartOf="@+id/user_textview8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_textview8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="待付款"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintEnd_toStartOf="@+id/user_textview9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_imageview2" />
+
+    <TextView
+        android:id="@+id/user_textview9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="待发货"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview8"
+        app:layout_constraintEnd_toStartOf="@+id/user_textview10"
+        app:layout_constraintStart_toEndOf="@+id/user_textview8"
+        app:layout_constraintTop_toTopOf="@+id/user_textview8" />
+
+    <ImageView
+        android:id="@+id/user_imageview5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/user_ic_goods"
+        app:layout_constraintBottom_toBottomOf="@+id/user_imageview2"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview9"
+        app:layout_constraintStart_toStartOf="@+id/user_textview9"
+        app:layout_constraintTop_toTopOf="@+id/user_imageview2" />
+
+    <TextView
+        android:id="@+id/user_textview10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="待收货"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview9"
+        app:layout_constraintEnd_toStartOf="@+id/user_textview11"
+        app:layout_constraintStart_toEndOf="@+id/user_textview9"
+        app:layout_constraintTop_toTopOf="@+id/user_textview9" />
+
+    <ImageView
+        android:id="@+id/user_imageview6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/user_ic_car"
+        app:layout_constraintBottom_toBottomOf="@+id/user_imageview5"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview10"
+        app:layout_constraintStart_toStartOf="@+id/user_textview10"
+        app:layout_constraintTop_toTopOf="@+id/user_imageview5" />
+
+    <TextView
+        android:id="@+id/user_textview11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="全部订单"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/user_textview10"
+        app:layout_constraintTop_toTopOf="@+id/user_textview10" />
+
+    <ImageView
+        android:id="@+id/user_imageview7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/user_ic_order"
+        app:layout_constraintBottom_toBottomOf="@+id/user_imageview6"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview11"
+        app:layout_constraintStart_toStartOf="@+id/user_textview11"
+        app:layout_constraintTop_toTopOf="@+id/user_imageview6" />
+
+    <View
+        android:id="@+id/user_textview12"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/grey_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_textview9" />
+
+    <ImageView
+        android:id="@+id/user_imageview8"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview13"
+        app:layout_constraintStart_toStartOf="@+id/user_textview13"
+        app:layout_constraintTop_toBottomOf="@+id/user_textview12"
+        android:src="@drawable/user_ic_collection" />
+
+    <TextView
+        android:id="@+id/user_textview13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="我的收藏"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_imageview8" />
+
+    <ImageView
+        android:id="@+id/user_imageview9"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/user_imageview8"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview14"
+        app:layout_constraintStart_toStartOf="@+id/user_textview14"
+        app:layout_constraintTop_toTopOf="@+id/user_imageview8"
+        android:src="@drawable/user_ic_telphone" />
+
+    <TextView
+        android:id="@+id/user_textview14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="客服电话"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/user_textview13"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/user_imageview10"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/user_imageview9"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview15"
+        app:layout_constraintStart_toStartOf="@+id/user_textview15"
+        app:layout_constraintTop_toTopOf="@+id/user_imageview9"
+        android:src="@drawable/user_ic_help" />
+
+    <TextView
+        android:id="@+id/user_textview15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="问题与反馈"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/user_textview14" />
+
+    <View
+        android:id="@+id/user_textview16"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/grey_light"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview13"
+        app:layout_constraintEnd_toStartOf="@+id/user_imageview9"
+        app:layout_constraintStart_toEndOf="@+id/user_imageview8"
+        app:layout_constraintTop_toTopOf="@+id/user_imageview9" />
+
+    <TextView
+        android:id="@+id/user_textview17"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/grey_light"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview15"
+        app:layout_constraintEnd_toStartOf="@+id/user_imageview10"
+        app:layout_constraintStart_toEndOf="@+id/user_imageview9"
+        app:layout_constraintTop_toTopOf="@+id/user_imageview10" />
+</androidx.constraintlayout.widget.ConstraintLayout>

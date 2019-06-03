@@ -6,6 +6,7 @@
 
 
     <color name="grey">#D3D3D3</color>
+    <color name="grey_light">#E7E7E7</color>
     <color name="green">#51CB7B</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="common_bg">#f5f5f5</color>
@@ -15,4 +16,5 @@
     <color name="font_color">#464646</color>
     <color name="text_dark">#999999</color>
     <color name="text_light_dark">#333333</color>
+    <color name="text_orange">#F76602</color>
 </resources>

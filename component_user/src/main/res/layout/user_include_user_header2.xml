@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:elevation="1dp"
+    android:background="@drawable/shape_stroke_corner_10dp_white_full"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/user_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:text="1"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toTopOf="@+id/user_textview2"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview2"
+        app:layout_constraintStart_toStartOf="@+id/user_textview2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:text="优惠券"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_middle_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/user_textview3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/user_textview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="我的收藏"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_middle_size"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview2"
+        app:layout_constraintEnd_toStartOf="@+id/user_textview6"
+        app:layout_constraintStart_toEndOf="@+id/user_textview2"
+        app:layout_constraintTop_toTopOf="@+id/user_textview2" />
+
+    <TextView
+        android:id="@+id/user_textview4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview3"
+        app:layout_constraintStart_toStartOf="@+id/user_textview3"
+        app:layout_constraintTop_toTopOf="@+id/user_textview" />
+
+    <TextView
+        android:id="@+id/user_textview5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¥180.5"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview"
+        app:layout_constraintEnd_toEndOf="@+id/user_textview6"
+        app:layout_constraintStart_toStartOf="@+id/user_textview6"
+        app:layout_constraintTop_toTopOf="@+id/user_textview" />
+
+    <TextView
+        android:id="@+id/user_textview6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="账户余额"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_middle_size"
+        app:layout_constraintBottom_toBottomOf="@+id/user_textview2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/user_textview3"
+        app:layout_constraintTop_toTopOf="@+id/user_textview2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
