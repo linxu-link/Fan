@@ -38,22 +38,13 @@ android {
     }
 
 
-//    if (login_isSingleCompile) {
-//        sourceSets {
-//            main {
-//                manifest.srcFile MANIFEST_FILE
-//                res.srcDirs = RESOURCES
-//                java.srcDirs = JAVA_SOURCES
-//            }
-//        }
-//    }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":librarycomponent")
     kapt deps.alibaba.router_compiler
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'

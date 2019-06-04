@@ -37,25 +37,25 @@ dependencies {
     implementation project(':librarycomponent')
 
     if (!splash_isSingleCompile) {
-        runtimeOnly project(':component_splash')
+        implementation project(':component_splash')
     }
     if (!login_isSingleCompile) {
-        runtimeOnly project(':component_login')
+        implementation project(':component_login')
     }
     if (!user_isSingleCompile) {
-        runtimeOnly project(':component_user')
+        implementation project(':component_user')
     }
     if (!main_isSingleCompile) {
-        runtimeOnly project(':component_main')
+        implementation project(':component_main')
     }
     if (!shop_isSingleCompile) {
-        runtimeOnly project(':component_shopping_cart')
+        implementation project(':component_shopping_cart')
     }
     if (!find_isSingleCompile) {
-        runtimeOnly project(':component_find')
+        implementation project(':component_find')
     }
     if (!catalog_isSingleCompile) {
-        runtimeOnly project(':component_catalog')
+        implementation project(':component_catalog')
     }
 
     kapt deps.alibaba.router_compiler

@@ -17,7 +17,7 @@ class SplashViewModel constructor(app: Application, model: SplashRepository) :
     //登录按钮的点击事件
     var onClickCommand = BindingCommand<Void>(object : BindingAction {
         override fun call() {
-            ARouter.getInstance().build(RouterConstant.LOGIN).navigation()
+            ARouter.getInstance().build(RouterConstant.APP).navigation()
         }
     })
 
