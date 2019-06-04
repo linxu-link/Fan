@@ -5,6 +5,6 @@ import androidx.fragment.app.Fragment
 
 interface IUserService {
 
-        fun newUserFragment(bundle: Bundle):Fragment?
+        fun newUserFragment(bundle: Bundle?):Fragment?
 
 }

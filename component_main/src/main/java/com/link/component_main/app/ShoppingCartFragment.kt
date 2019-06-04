@@ -1,32 +1,27 @@
-package com.link.component_user.app
+package com.link.component_main.app
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.link.component_user.R
-/**
- * @author WJ
- * @date 2019-06-03
- * 
- * 描述：
- */
-class UserFragment : Fragment() {
+import com.link.component_main.R
+
+class ShoppingCartFragment:Fragment() {
 
     companion object {
-        @JvmStatic
-        fun newInstance() =
-                UserFragment().apply {
+            @JvmStatic
+            fun newInstance() =
+                ShoppingCartFragment().apply {
                     arguments = Bundle().apply {
 
                     }
                 }
-    }
+        }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.user_fragment_user, container, false)
+        return inflater.inflate(R.layout.main_fragment_shopping_cart,container,false)
     }
 
 }

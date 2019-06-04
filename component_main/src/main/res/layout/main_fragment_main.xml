@@ -29,7 +29,7 @@
 
     <include
         android:id="@+id/include3"
-        layout="@layout/include_main_layout"
+        layout="@layout/main_include_main_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -78,7 +78,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
-        tools:listitem="@layout/item_main_layout"
+        tools:listitem="@layout/main_item_main_layout"
         tools:itemCount="2"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

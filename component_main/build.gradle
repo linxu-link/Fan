@@ -3,12 +3,13 @@ if (login_isSingleCompile) {
 } else {
     apply plugin: 'com.android.library'
 }
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion build_versions.compile_sdk
     useLibrary 'org.apache.http.legacy'
+    resourcePrefix "main_"
     defaultConfig {
         if (login_isSingleCompile) {
             applicationId "com.link.component_main"

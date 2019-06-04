@@ -14,7 +14,7 @@
 
     <!--字体颜色-->
     <color name="font_color">#464646</color>
-    <color name="text_dark">#999999</color>
+    <color name="text_dark">#919191</color>
     <color name="text_light_dark">#333333</color>
     <color name="text_orange">#F76602</color>
 </resources>

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 class EmptyUserService :IUserService{
 
 
-    override fun newUserFragment(bundle: Bundle): Fragment? {
+    override fun newUserFragment(bundle: Bundle?): Fragment? {
         return null
     }
 

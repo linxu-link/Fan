@@ -7,7 +7,7 @@ import com.link.librarycomponent.service.user.IUserService
 
 class UserService : IUserService {
 
-    override fun newUserFragment(bundle: Bundle): Fragment? {
+    override fun newUserFragment(bundle: Bundle?): Fragment? {
         return UserFragment.newInstance()
     }
 
