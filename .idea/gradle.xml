@@ -8,8 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/component_catalog" />
+            <option value="$PROJECT_DIR$/component_find" />
             <option value="$PROJECT_DIR$/component_login" />
             <option value="$PROJECT_DIR$/component_main" />
+            <option value="$PROJECT_DIR$/component_shopping_cart" />
             <option value="$PROJECT_DIR$/component_splash" />
             <option value="$PROJECT_DIR$/component_user" />
             <option value="$PROJECT_DIR$/librarybase" />

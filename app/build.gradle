@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -35,8 +35,29 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':librarycomponent')
-    runtimeOnly project(':component_login')
-    runtimeOnly project(':component_splash')
+
+    if (!splash_isSingleCompile) {
+        runtimeOnly project(':component_splash')
+    }
+    if (!login_isSingleCompile) {
+        runtimeOnly project(':component_login')
+    }
+    if (!user_isSingleCompile) {
+        runtimeOnly project(':component_user')
+    }
+    if (!main_isSingleCompile) {
+        runtimeOnly project(':component_main')
+    }
+    if (!shop_isSingleCompile) {
+        runtimeOnly project(':component_shopping_cart')
+    }
+    if (!find_isSingleCompile) {
+        runtimeOnly project(':component_find')
+    }
+    if (!catalog_isSingleCompile) {
+        runtimeOnly project(':component_catalog')
+    }
+
     kapt deps.alibaba.router_compiler
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

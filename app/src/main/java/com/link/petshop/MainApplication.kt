@@ -10,6 +10,8 @@ class MainApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        initModuleApp(this)
+        initModuleData(this)
     }
 
     override fun initModuleApp(application: Application) {

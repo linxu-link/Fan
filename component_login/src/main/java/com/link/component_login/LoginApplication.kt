@@ -8,11 +8,11 @@ import com.link.librarymodule.constant.Constant
 class LoginApplication : BaseApplication() {
 
     override fun initModuleApp(application: Application) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun initModuleData(application: Application) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 

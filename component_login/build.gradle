@@ -4,8 +4,8 @@ if (login_isSingleCompile) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion build_versions.compile_sdk
     useLibrary 'org.apache.http.legacy'
@@ -36,16 +36,6 @@ android {
         }
     }
 
-
-//    if (login_isSingleCompile) {
-//        sourceSets {
-//            main {
-//                manifest.srcFile MANIFEST_FILE
-//                res.srcDirs = RESOURCES
-//                java.srcDirs = JAVA_SOURCES
-//            }
-//        }
-//    }
 
 }
 

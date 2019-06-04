@@ -1,17 +1,17 @@
-if (login_isSingleCompile) {
+if (main_isSingleCompile) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion build_versions.compile_sdk
     useLibrary 'org.apache.http.legacy'
     resourcePrefix "main_"
     defaultConfig {
-        if (login_isSingleCompile) {
+        if (main_isSingleCompile) {
             applicationId "com.link.component_main"
         }
         minSdkVersion build_versions.min_sdk

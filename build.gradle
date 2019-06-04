@@ -44,8 +44,13 @@ afterEvaluate {
 
 // 项目的 build.gradle 中配置模块是否独立运行
 ext{
-    login_isSingleCompile =true
+    login_isSingleCompile =false
     splash_isSingleCompile = false
+    user_isSingleCompile = false
+    main_isSingleCompile = false
+    shop_isSingleCompile = false
+    find_isSingleCompile = false
+    catalog_isSingleCompile = false
 }
 
 repositories {
