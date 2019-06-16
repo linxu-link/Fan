@@ -47,44 +47,25 @@
                 android:layout_marginBottom="8dp" />
         </RelativeLayout>
 
-        <com.google.android.material.tabs.TabLayout
+        <com.link.librarymodule.widgets.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            app:tabMode="fixed">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="推荐" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="促销" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="零食" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="洗浴" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="其他" />
-        </com.google.android.material.tabs.TabLayout>
+            app:tabMode="fixed"
+            app:tabIndicatorHeight="3dp"
+            app:indicatorStartColor="#d6694e"
+            app:indicatorEndColor="#e73820"
+            app:indicatorMarginStart="20dp"
+            app:indicatorMarginEnd="20dp"
+            app:indicatorMarginBottom="3dp">
+        </com.link.librarymodule.widgets.tabs.TabLayout>
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"

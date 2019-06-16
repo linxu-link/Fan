@@ -9,6 +9,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.google.android.material.tabs.TabLayout
 import com.link.librarymodule.R
 import com.link.librarymodule.utils.ToastUtils
 
@@ -36,6 +37,7 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
     }
 
     private fun setColor(view:TextView){
+        val tabLayout:TabLayout
         view.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary))
     }
 

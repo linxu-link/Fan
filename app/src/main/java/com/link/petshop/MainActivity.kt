@@ -4,11 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.widgets.BottomNavigationBar
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
 @Route(path = RouterConstant.APP)
 class MainActivity : AppCompatActivity(), BottomNavigationBar.OnClickListener {

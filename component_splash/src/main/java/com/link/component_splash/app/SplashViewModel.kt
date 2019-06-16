@@ -18,6 +18,7 @@ class SplashViewModel constructor(app: Application, model: SplashRepository) :
     var onClickCommand = BindingCommand<Void>(object : BindingAction {
         override fun call() {
             ARouter.getInstance().build(RouterConstant.APP).navigation()
+            finish()
         }
     })
 
