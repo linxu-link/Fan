@@ -56,6 +56,7 @@ dependencies {
     api(deps.rxjava.rxlifecycle) {
         exclude group: 'com.android.support'
     }
+    api 'com.eftimoff:android-pathview:1.0.8@aar'
     //Banner
     api 'com.youth.banner:banner:1.4.10'
     //热修复

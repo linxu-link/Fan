@@ -2,9 +2,10 @@
 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/radio_group"
     android:layout_width="match_parent"
-    android:padding="5dp"
     android:layout_height="?android:attr/actionBarSize"
     android:orientation="horizontal"
+    android:background="@android:color/white"
+    android:padding="5dp"
     android:weightSum="5">
 
     <RadioButton
@@ -12,14 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@null"
         android:button="@null"
         android:checked="true"
-        android:drawableTop="@drawable/selector_home_bg"
-        android:drawablePadding="2dp"
-        android:gravity="center"
         android:text="首页"
-        android:textColor="@color/text_dark"
-        android:textSize="@dimen/text_middle_size" />
+        android:drawableTop="@drawable/selector_home_bg"
+        android:gravity="center" />
 
     <RadioButton
         android:id="@+id/classification"
@@ -27,12 +26,9 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:button="@null"
-        android:drawableTop="@drawable/selector_classification_bg"
-        android:drawablePadding="2dp"
-        android:gravity="center"
         android:text="分类"
-        android:textColor="@color/text_dark"
-        android:textSize="@dimen/text_middle_size" />
+        android:drawableTop="@drawable/selector_classification_bg"
+        android:gravity="center" />
 
     <RadioButton
         android:id="@+id/find"
@@ -40,12 +36,9 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:button="@null"
-        android:drawableTop="@drawable/selector_find_bg"
-        android:drawablePadding="2dp"
-        android:gravity="center"
         android:text="发现"
-        android:textColor="@color/text_dark"
-        android:textSize="@dimen/text_middle_size" />
+        android:drawableTop="@drawable/selector_find_bg"
+        android:gravity="center" />
 
     <RadioButton
         android:id="@+id/shopping_cart"
@@ -53,12 +46,9 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:button="@null"
-        android:drawableTop="@drawable/selector_shopping_cart_bg"
-        android:drawablePadding="2dp"
-        android:gravity="center"
         android:text="购物车"
-        android:textColor="@color/text_dark"
-        android:textSize="@dimen/text_middle_size" />
+        android:drawableTop="@drawable/selector_shopping_cart_bg"
+        android:gravity="center" />
 
     <RadioButton
         android:id="@+id/mine"
@@ -66,10 +56,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:button="@null"
-        android:drawableTop="@drawable/selector_mine_bg"
-        android:drawablePadding="2dp"
-        android:gravity="center"
         android:text="我的"
-        android:textColor="@color/text_dark"
-        android:textSize="@dimen/text_middle_size" />
+        android:drawableTop="@drawable/selector_mine_bg"
+        android:gravity="center" />
 </RadioGroup>

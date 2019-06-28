@@ -12,7 +12,7 @@
         android:layout_height="match_parent"/>
 
 
-    <com.link.librarymodule.widgets.BottomNavigationBar
+    <com.link.librarymodule.widgets.navgation.BottomNavigationBar
         android:id="@+id/bottom_navigation_bar"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"

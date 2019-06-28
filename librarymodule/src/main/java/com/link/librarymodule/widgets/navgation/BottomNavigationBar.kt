@@ -1,17 +1,14 @@
-package com.link.librarymodule.widgets
+package com.link.librarymodule.widgets.navgation
 
 import android.content.Context
+import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.FrameLayout
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayout
 import com.link.librarymodule.R
-import com.link.librarymodule.utils.ToastUtils
 
 
 class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
@@ -19,10 +16,11 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
 
     private val array= arrayOf(R.id.home,R.id.classification,R.id.find,R.id.shopping_cart,R.id.mine)
 
+
     init {
         val rootView = LayoutInflater.from(context).inflate(R.layout.layout_bottom_navigation_bar, null)
-        val gadio_group: RadioGroup = rootView.findViewById(R.id.radio_group)
-        gadio_group.setOnCheckedChangeListener(this)
+        val radioGroup: RadioGroup = rootView.findViewById(R.id.radio_group)
+        radioGroup.setOnCheckedChangeListener(this)
         addView(rootView)
     }
 
@@ -36,10 +34,13 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
        setColor(rootView.findViewById(checkedId))
     }
 
+
+
     private fun setColor(view:TextView){
-        val tabLayout:TabLayout
+//        val tabLayout:TabLayout
         view.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary))
     }
+
 
 
     private var listener: OnClickListener? = null

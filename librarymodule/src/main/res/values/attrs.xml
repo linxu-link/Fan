@@ -8,4 +8,9 @@
         <attr name="indicatorMarginBottom" format="dimension|reference" />
     </declare-styleable>
 
+    <declare-styleable name="CircleView">
+        <attr name="circle_background_color" format="color|reference" />
+        <attr name="circle_src" format="reference" />
+    </declare-styleable>
+
 </resources>

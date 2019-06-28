@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
-import com.link.librarymodule.widgets.BottomNavigationBar
+import com.link.librarymodule.widgets.navgation.BottomNavigationBar
 
 @Route(path = RouterConstant.APP)
 class MainActivity : AppCompatActivity(), BottomNavigationBar.OnClickListener {
