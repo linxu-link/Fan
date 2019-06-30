@@ -48,15 +48,6 @@ dependencies {
     if (!main_isSingleCompile) {
         implementation project(':component_main')
     }
-    if (!shop_isSingleCompile) {
-        implementation project(':component_shopping_cart')
-    }
-    if (!find_isSingleCompile) {
-        implementation project(':component_find')
-    }
-    if (!catalog_isSingleCompile) {
-        implementation project(':component_catalog')
-    }
 
     kapt deps.alibaba.router_compiler
     testImplementation 'junit:junit:4.12'

@@ -116,7 +116,7 @@ public class MaterialDialogUtils {
                 .negativeText("取消")
 //                .btnStackedGravity(GravityEnum.END)         //按钮排列位置
 //                .stackingBehavior(StackingBehavior.ALWAYS)  //按钮排列方式
-//                .iconRes(R.mipmap.ic_launcher)
+//                .iconRes(R.mipmap.logo)
 //                .limitIconToDefaultSize() // limits the displayed icon size to 48dp
 //                .onAny(new MaterialDialog.SingleButtonCallback() {
 //                    @Override

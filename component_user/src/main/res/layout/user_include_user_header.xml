@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toStartOf="@+id/user_imageview3"
         app:layout_constraintStart_toEndOf="@+id/user_imageview"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/logo" />
 
     <TextView
         android:id="@+id/user_textview7"

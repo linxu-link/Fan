@@ -4,6 +4,18 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 
 class EmptyMainService : IMainService {
+    override fun newShoppingFragment(bundle: Bundle?): Fragment? {
+        return null
+    }
+
+    override fun newCatalogFragment(bundle: Bundle?): Fragment? {
+        return null
+    }
+
+    override fun newFindFragment(bundle: Bundle?): Fragment? {
+        return null
+    }
+
     override fun newMainFragment(bundle: Bundle?): Fragment? {
         return null
     }

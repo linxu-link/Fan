@@ -14,7 +14,8 @@
     <!--允许读取手机状态 用于创建BmobInstallation-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <application>
+    <application
+        android:icon="@mipmap/萌宠君logo">
 
         <activity android:name=".base.ContainerActivity"/>
 

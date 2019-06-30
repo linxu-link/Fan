@@ -40,17 +40,17 @@ class MainActivity : AppCompatActivity(), BottomNavigationBar.OnClickListener {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }
-            mCurrent = ServiceFactory.getInstance().catalogService!!.newCatalogFragment(bundle = null)
+            mCurrent = ServiceFactory.getInstance().mainService!!.newCatalogFragment(bundle = null)
         } else if (checkedId == R.id.find) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }
-            mCurrent = ServiceFactory.getInstance().findService!!.newFindFragment(bundle = null)
+            mCurrent = ServiceFactory.getInstance().mainService!!.newFindFragment(bundle = null)
         } else if (checkedId == R.id.shopping_cart) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }
-            mCurrent = ServiceFactory.getInstance().shopService!!.newShoppingCartFragment(bundle = null)
+            mCurrent = ServiceFactory.getInstance().mainService!!.newShoppingFragment(bundle = null)
         } else if (checkedId == R.id.mine) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
