@@ -14,15 +14,10 @@
     <!--允许读取手机状态 用于创建BmobInstallation-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <application
-        android:icon="@mipmap/萌宠君logo">
+    <application>
 
-        <activity android:name=".base.ContainerActivity"/>
+        <activity android:name=".base.ContainerActivity" />
 
-        <provider
-            android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.link.component_login.BmobContentProvider">
-        </provider>
 
     </application>
 

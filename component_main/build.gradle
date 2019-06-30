@@ -6,6 +6,7 @@ if (main_isSingleCompile) {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply from: '../maven_push.gradle'
 android {
     compileSdkVersion build_versions.compile_sdk
     useLibrary 'org.apache.http.legacy'
@@ -34,6 +35,16 @@ android {
     kapt {
         arguments {
             arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+
+    sourceSets {
+        main {
+            if (main_isSingleCompile.toBoolean()) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            }
         }
     }
 

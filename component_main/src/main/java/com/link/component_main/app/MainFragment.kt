@@ -8,15 +8,8 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
 import com.link.component_main.R
-import com.link.librarymodule.widgets.tabs.TabLayout
 import kotlinx.android.synthetic.main.main_fragment_main.*
 
 class MainFragment : Fragment() {
@@ -54,9 +47,7 @@ class MainFragment : Fragment() {
 //        }
 //        rv_list.addItemDecoration(DividerItemDecoration(context,RecyclerView.VERTICAL))
 
-        val viewPager = view.findViewById<ViewPager>(R.id.viewPager)
         viewPager.setAdapter(ContentPagerAdapter())
-        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout)
         tabLayout.setupWithViewPager(viewPager)
     }
 
