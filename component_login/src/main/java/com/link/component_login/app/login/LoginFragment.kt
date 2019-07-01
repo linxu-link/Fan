@@ -11,7 +11,7 @@ import com.link.component_login.ViewModelFactory
 import com.link.component_login.databinding.FragmentLoginBinding
 import com.link.librarymodule.BR
 import com.link.librarymodule.base.mvvm.view.BaseFragment
-import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
+
 /**
  * @author WJ
  * @date 2019-06-02
