@@ -6,6 +6,7 @@ if (main_isSingleCompile) {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply from: '../maven_push.gradle'
 android {
     compileSdkVersion build_versions.compile_sdk

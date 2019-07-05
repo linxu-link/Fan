@@ -10,7 +10,7 @@
         android:id="@+id/catalog_include"
         layout="@layout/include_toolbar_search" />
 
-    <!--<com.link.librarymodule.widgets.navgation.CircleView2-->
+    <!--<com.link.librarymodule.widgets.navigation.CircleView2-->
         <!--android:id="@+id/bottom"-->
         <!--android:layout_width="0dp"-->
         <!--android:layout_height="150dp"-->

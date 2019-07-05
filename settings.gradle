@@ -1,4 +1,4 @@
-include ':librarybase', ':aac'
+include ':librarybase'
 include ':librarymodule', ':librarycomponent'
 
 include ':component_splash'
@@ -6,3 +6,4 @@ include ':component_login'
 include ':component_main'
 include ':component_user'
 include ':app'
+include ':aac'

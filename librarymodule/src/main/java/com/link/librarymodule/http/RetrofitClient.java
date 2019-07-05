@@ -2,6 +2,7 @@ package com.link.librarymodule.http;
 
 import android.content.Context;
 import android.text.TextUtils;
+
 import com.link.librarymodule.BaseApplication;
 import com.link.librarymodule.BuildConfig;
 import com.link.librarymodule.http.cookie.CookieJarImpl;
@@ -12,6 +13,7 @@ import com.link.librarymodule.http.interceptor.logging.Level;
 import com.link.librarymodule.http.interceptor.logging.LoggingInterceptor;
 import com.link.librarymodule.utils.HttpsUtils;
 import com.link.librarymodule.utils.Utils;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -80,7 +82,7 @@ public class RetrofitClient {
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory();
         okHttpClient = new OkHttpClient.Builder()
                 .cookieJar(new CookieJarImpl(new PersistentCookieStore(mContext)))
-//                .cache(cache)
+                .cache(cache)
                 .addInterceptor(new BaseInterceptor(headers))
                 .addInterceptor(new CacheInterceptor(mContext))
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
@@ -136,6 +138,7 @@ public class RetrofitClient {
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
+
 
         return null;
     }
