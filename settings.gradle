@@ -1,5 +1,5 @@
 include ':librarybase'
-include ':librarymodule', ':librarycomponent'
+include ':libraryarchitecture', ':librarycomponent'
 
 include ':component_splash'
 include ':component_login'

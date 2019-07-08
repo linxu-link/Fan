@@ -13,7 +13,6 @@ import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 class SplashViewModel constructor(app: Application, model: SplashRepository) :
     BaseViewModel<SplashRepository>(app, model) {
 
-
     //登录按钮的点击事件
     var onClickCommand = BindingCommand<Void>(object : BindingAction {
         override fun call() {

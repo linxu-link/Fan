@@ -1,22 +1,23 @@
 package com.link.librarymodule.base.mvvm.viewmodel;
 
-import android.app.Application;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
+
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+
 import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent;
 import com.link.librarymodule.base.mvvm.model.BaseModel;
 import com.trello.rxlifecycle2.LifecycleProvider;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * @author WJ
@@ -24,7 +25,7 @@ import java.util.Map;
  *
  * 描述：
  */
-public class BaseViewModel<M extends BaseModel> extends AndroidViewModel implements IBaseViewModel, Consumer<Disposable> {
+public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBaseViewModel, Consumer<Disposable> {
     protected M model;
     private UIChangeLiveData uc;
     //弱引用持有
@@ -32,14 +33,9 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
     //管理RxJava，主要针对RxJava异步操作造成的内存泄漏
     private CompositeDisposable mCompositeDisposable;
 
-    public BaseViewModel(@NonNull Application application) {
-        this(application, null);
-    }
-
-    public BaseViewModel(@NonNull Application application, M model) {
-        super(application);
+    public BaseViewModel(M model, CompositeDisposable compositeDisposable) {
         this.model = model;
-        mCompositeDisposable = new CompositeDisposable();
+        mCompositeDisposable = compositeDisposable;
     }
 
     protected void addSubscribe(Disposable disposable) {
