@@ -19,7 +19,6 @@ class SchemaFilterActivity : RxAppCompatActivity() {
             .build(uri)
             .navigation()
         finish()
-
     }
 
 

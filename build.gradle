@@ -20,7 +20,6 @@ buildscript {
                 includeCompileClasspath = true
             }
         }
-        multiDexEnabled true
     }
 
 }
@@ -52,7 +51,7 @@ afterEvaluate {
     }
 }
 
-// 项目的 build.gradle 中配置模块是否独立运行
+// 项目的 build.gradle 中配置组件是否独立运行
 ext {
     login_isSingleCompile = false
     splash_isSingleCompile = false
