@@ -2,7 +2,12 @@ package com.link.librarymodule.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.Editable;
+import android.widget.EditText;
+
 import androidx.annotation.NonNull;
+
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by goldze on 2017/5/14.

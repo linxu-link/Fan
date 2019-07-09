@@ -30,7 +30,7 @@ class ViewModelFactory private constructor(
             return LoginViewModel(application, repository) as T
         }
 
-        throw RuntimeException("unknown viewModel class:" + modelClass.name)
+        throw RuntimeException("unknown mViewModel class:" + modelClass.name)
     }
 
 

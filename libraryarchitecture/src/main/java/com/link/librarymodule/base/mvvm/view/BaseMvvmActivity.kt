@@ -2,18 +2,14 @@ package com.link.librarymodule.base.mvvm.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
+import android.os.Messenger
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.afollestad.materialdialogs.MaterialDialog
 import com.link.librarymodule.base.ContainerActivity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarymodule.bus.Messenger
-import com.link.librarymodule.utils.MaterialDialogUtils
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -22,19 +18,18 @@ import java.lang.reflect.ParameterizedType
  *
  * 描述：一个拥有DataBinding框架的基Activity
  */
-abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppCompatActivity(), IBaseView {
+abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : AppCompatActivity(), IBaseView {
 
-    protected var mBinding: V? = null
     protected var mViewModel: VM? = null
-    protected var mViewModelId: Int = 0
-    protected var dialog: MaterialDialog? = null
+    abstract var mLayoutId:Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //页面接受的参数方法
         initParam()
+        setContentView(mLayoutId)
         //初始化DataBinging和ViewModel
-        initViewDataBinding(savedInstanceState)
+        initView()
         //ViewModel与View的契约事件回掉逻辑
         registorUIChangeLiveDataCallBack()
         //页面数据初始化
@@ -47,13 +42,10 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
 
     override fun onDestroy() {
         super.onDestroy()
-        Messenger.getDefault().unregister(mViewModel)
+//        Messenger.getDefault().unregister(mViewModel)
         lifecycle.removeObserver(mViewModel!!)
         if (mViewModel != null) {
             mViewModel!!.registerRxBus()
-        }
-        if (mBinding != null) {
-            mBinding!!.unbind()
         }
     }
 
@@ -61,9 +53,7 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
     /**
      * 注入绑定
      */
-    fun initViewDataBinding(savedInstanceState: Bundle?) {
-        mBinding = DataBindingUtil.setContentView(this, setLayout(savedInstanceState))
-        mViewModelId = initVariableId()
+     fun initView() {
         mViewModel = initViewModel()
         if (mViewModel == null) {
             val modelClass: Class<VM>
@@ -75,22 +65,16 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
             }
             mViewModel = createViewModel(this, modelClass)
         }
-        //关联viewModel
-        mBinding!!.setVariable(mViewModelId, mViewModel)
         //让ViewModel拥有View的生命周期感应
         lifecycle.addObserver(mViewModel!!)
         //注入RxLifecycle生命周期
-        mViewModel!!.injectLifecycleProvider(this)
+//        mViewModel!!.injectLifecycleProvider(this)
     }
 
     /**
      * 注册ViewModel与View的契约UI回调事件
      */
     fun registorUIChangeLiveDataCallBack() {
-        //加载载入框
-        mViewModel!!.uc.showDialogEvent.observe(this, Observer { title -> showDialog(title) })
-        //取消载入框
-        mViewModel!!.uc.dismissDialogEvent.observe(this, Observer { dismissDialog() })
         //跳入新页面
         mViewModel!!.uc.startActivityEvent.observe(this, Observer { params ->
             val clazz = params!![BaseViewModel.ParameterField.CLASS] as Class<*>
@@ -130,14 +114,6 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
 
     }
 
-
-    abstract fun setLayout(savedInstanceState: Bundle?): Int
-
-    /**
-     * 初始化viewModel的ID
-     */
-    abstract fun initVariableId(): Int
-
     /**
      * 初始化ViewModel
      */
@@ -155,11 +131,6 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
     fun getViewModel(): VM? {
         return mViewModel
     }
-
-    fun getBinging(): V? {
-        return mBinding
-    }
-
 
     /*======================================================================================*/
     /**
@@ -199,36 +170,6 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel<*>> : RxAppC
             intent.putExtra(ContainerActivity.BUNDLE, bundle)
         }
         startActivity(intent)
-    }
-
-    /**
-     * 显示载入框
-     */
-    fun showDialog(title: String?) {
-        if (dialog != null) {
-            dialog!!.show()
-        } else {
-            val builder = MaterialDialogUtils.showIndeterminateProgressDialog(this, title, true)
-            dialog = builder.show()
-        }
-    }
-
-    /**
-     * 取消载入框
-     */
-    fun dismissDialog() {
-        if (dialog != null && dialog!!.isShowing) {
-            dialog!!.dismiss()
-        }
-    }
-
-    /**
-     * 刷新布局
-     */
-    fun refreshLayout() {
-        if (mViewModel != null) {
-            mBinding!!.setVariable(mViewModelId, mViewModel)
-        }
     }
 
 }

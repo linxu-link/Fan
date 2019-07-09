@@ -4,16 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.link.librarymodule.R
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import java.lang.IllegalArgumentException
 import java.lang.RuntimeException
 import java.lang.ref.WeakReference
 
 
-open class ContainerActivity : RxAppCompatActivity() {
+open class ContainerActivity : AppCompatActivity() {
 
     companion object {
         @JvmStatic
@@ -72,7 +72,7 @@ open class ContainerActivity : RxAppCompatActivity() {
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(R.id.content)
-        if (fragment is BaseMvvmFragment<*, *>) {
+        if (fragment is BaseMvvmFragment<*>) {
             super.onBackPressed()
         } else {
             super.onBackPressed()

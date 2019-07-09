@@ -28,10 +28,10 @@ class SplashViewModelFactory private constructor(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SplashViewModel::class.java)) {
-            return SplashViewModel(application, repository) as T
+            return SplashViewModel(repository) as T
         }
 
-        throw RuntimeException("unknown viewModel class:" + modelClass.name)
+        throw RuntimeException("unknown mViewModel class:" + modelClass.name)
     }
 
 

@@ -7,9 +7,6 @@ android {
 
     defaultConfig libDefaultConfig
 
-    dataBinding {
-        enabled true
-    }
 
     buildTypes {
         release {

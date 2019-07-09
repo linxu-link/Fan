@@ -1,8 +1,8 @@
 package com.link.librarycomponent.router
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.launcher.ARouter
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 
 /**
  * @author WJ
@@ -10,7 +10,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
  *
  * 描述：监听Schame事件的activity
  */
-class SchemaFilterActivity : RxAppCompatActivity() {
+class SchemaFilterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

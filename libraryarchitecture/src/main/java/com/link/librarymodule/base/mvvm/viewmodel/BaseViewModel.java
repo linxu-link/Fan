@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent;
 import com.link.librarymodule.base.mvvm.model.BaseModel;
-import com.trello.rxlifecycle2.LifecycleProvider;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -28,14 +27,12 @@ import io.reactivex.functions.Consumer;
 public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBaseViewModel, Consumer<Disposable> {
     protected M model;
     private UIChangeLiveData uc;
-    //弱引用持有
-    private WeakReference<LifecycleProvider> lifecycle;
     //管理RxJava，主要针对RxJava异步操作造成的内存泄漏
     private CompositeDisposable mCompositeDisposable;
 
-    public BaseViewModel(M model, CompositeDisposable compositeDisposable) {
+    public BaseViewModel(M model) {
         this.model = model;
-        mCompositeDisposable = compositeDisposable;
+        mCompositeDisposable = new CompositeDisposable();
     }
 
     protected void addSubscribe(Disposable disposable) {
@@ -45,18 +42,6 @@ public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBa
         mCompositeDisposable.add(disposable);
     }
 
-    /**
-     * 注入RxLifecycle生命周期
-     *
-     * @param lifecycle
-     */
-    public void injectLifecycleProvider(LifecycleProvider lifecycle) {
-        this.lifecycle = new WeakReference<>(lifecycle);
-    }
-
-    public LifecycleProvider getLifecycleProvider() {
-        return lifecycle.get();
-    }
 
     public UIChangeLiveData getUC() {
         if (uc == null) {
@@ -65,17 +50,6 @@ public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBa
         return uc;
     }
 
-    public void showDialog() {
-        showDialog("请稍后...");
-    }
-
-    public void showDialog(String title) {
-        uc.showDialogEvent.postValue(title);
-    }
-
-    public void dismissDialog() {
-        uc.dismissDialogEvent.call();
-    }
 
     public M getModel(){
         return model;
@@ -197,20 +171,11 @@ public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBa
     }
 
     public final class UIChangeLiveData extends SingleLiveEvent {
-        private SingleLiveEvent<String> showDialogEvent;
-        private SingleLiveEvent<Void> dismissDialogEvent;
         private SingleLiveEvent<Map<String, Object>> startActivityEvent;
         private SingleLiveEvent<Map<String, Object>> startContainerActivityEvent;
         private SingleLiveEvent<Void> finishEvent;
         private SingleLiveEvent<Void> onBackPressedEvent;
 
-        public SingleLiveEvent<String> getShowDialogEvent() {
-            return showDialogEvent = createLiveData(showDialogEvent);
-        }
-
-        public SingleLiveEvent<Void> getDismissDialogEvent() {
-            return dismissDialogEvent = createLiveData(dismissDialogEvent);
-        }
 
         public SingleLiveEvent<Map<String, Object>> getStartActivityEvent() {
             return startActivityEvent = createLiveData(startActivityEvent);

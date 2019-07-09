@@ -16,9 +16,6 @@ android {
         multiDexEnabled true
     }
 
-    dataBinding {
-        enabled true
-    }
 
     buildTypes {
         release {
