@@ -8,7 +8,6 @@ import com.link.component_login.data.Injection
 import com.link.component_login.data.Repository
 
 class ViewModelFactory private constructor(
-    private val application: Application,
     private val repository: Repository
 ) :
     ViewModelProvider.NewInstanceFactory() {
@@ -17,9 +16,9 @@ class ViewModelFactory private constructor(
         @Volatile
         private var instance: ViewModelFactory? = null
 
-        fun getInstance(application: Application) =
+        fun getInstance() =
             instance ?: synchronized(this) {
-                instance ?: ViewModelFactory(application, Injection.provideRepository()).also {
+                instance ?: ViewModelFactory(Injection.provideRepository()).also {
                     instance = it
                 }
             }
@@ -27,7 +26,7 @@ class ViewModelFactory private constructor(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(application, repository) as T
+            return LoginViewModel(repository) as T
         }
 
         throw RuntimeException("unknown mViewModel class:" + modelClass.name)

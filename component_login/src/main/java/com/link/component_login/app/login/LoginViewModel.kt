@@ -1,6 +1,5 @@
 package com.link.component_login.app.login
 
-import android.app.Application
 import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import cn.bmob.v3.BmobUser
@@ -13,15 +12,12 @@ import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.ToastUtils
 
-class LoginViewModel constructor(application: Application, model: Repository) :
-    BaseViewModel<Repository>(model) {
+class LoginViewModel constructor(model: Repository) : BaseViewModel<Repository>(model) {
 
     //用户名的绑定
     val phone = MutableLiveData<String>()
     //密码的绑定
     val password = MutableLiveData<String>()
-    //用户名清除按钮的显示隐藏绑定
-    val clearBtnVisibility = MutableLiveData<Boolean>()
 
     //封装一个界面发生改变的观察者
     var uc = UIChangeObservable()
@@ -34,11 +30,12 @@ class LoginViewModel constructor(application: Application, model: Repository) :
     init {
         phone.value=getModel().getUserInfo().mobilePhoneNumber
         password.value=getModel().getUserInfo().pwd
+        uc.pSwitchEvent.value=false
     }
 
     //清除用户名的点击事件, 逻辑从View层转换到ViewModel层
-    open fun clearPhone(){
-        phone.value=""
+    fun clearPhone(){
+        phone.value=null
     }
 
 

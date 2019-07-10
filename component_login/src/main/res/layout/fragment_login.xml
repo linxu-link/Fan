@@ -104,13 +104,16 @@
             android:inputType="textPassword"
             android:textSize="15sp" />
 
-        <ImageView
-            android:id="@+id/iv_swich_passwrod"
+        <CheckBox
+            android:id="@+id/swich_pwd"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:button="@null"
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="10dp"
             android:padding="5dp"
+            android:checked="false"
+            android:background="@drawable/login_checkbox_eye"
             android:src="@drawable/ic_eye_close" />
 
     </FrameLayout>
