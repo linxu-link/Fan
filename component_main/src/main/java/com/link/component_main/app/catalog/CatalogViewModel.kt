@@ -29,7 +29,6 @@ class CatalogViewModel constructor(repository: MainRepository) :
                 .subscribe(Consumer<String>{
                     val data=Gson().fromJson<ArrayList<CategoryResult>>(it,object :TypeToken<ArrayList<CategoryResult>>(){}.type)
                     cataLog.value=data
-//                    ToastUtils.showLong(it)
                 })
         )
 

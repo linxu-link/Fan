@@ -2,7 +2,7 @@ package com.link.component_main
 
 import android.content.Intent
 import androidx.fragment.app.Fragment
-import com.link.component_main.app.MainFragment
+import com.link.component_main.app.main.MainFragment
 import com.link.librarymodule.base.ContainerActivity
 
 class MainActivity : ContainerActivity() {

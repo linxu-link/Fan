@@ -1,4 +1,4 @@
-package com.link.component_main.app
+package com.link.component_main.app.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -43,47 +43,14 @@ class MainFragment : Fragment() {
             list.add("ele:$index")
         }
 
-//        rv_list.adapter = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.main_item_main_layout, list) {
+//        rvList.adapter = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.main_item_main_layout, list) {
 //            override fun convert(helper: BaseViewHolder?, item: String?) {
 //                helper!!.setText(R.id.title, item!!)
 //            }
 //
 //        }
-//        rv_list.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
-
-        viewPager.setAdapter(ContentPagerAdapter())
-        tabLayout.setupWithViewPager(viewPager)
-    }
-
-    class ContentPagerAdapter : PagerAdapter() {
-        private val PAGE_COUNT = 3
-
-        override fun getCount(): Int {
-            return PAGE_COUNT
-        }
-
-        @NonNull
-        override fun instantiateItem(@NonNull container: ViewGroup, position: Int): Any {
-            val textView = TextView(container.context)
-            textView.text = getPageTitle(position)
-            container.addView(textView)
-            return textView
-        }
-
-        override fun destroyItem(@NonNull container: ViewGroup, position: Int, @NonNull `object`: Any) {
-            if ((`object` as View).parent === container) {
-                container.removeView(`object` as View)
-            }
-        }
-
-        override fun isViewFromObject(@NonNull view: View, @NonNull o: Any): Boolean {
-            return view === o
-        }
-
-        @Nullable
-        override fun getPageTitle(position: Int): CharSequence {
-            return "Tab-$position"
-        }
+//        rvList.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
 
     }
+
 }

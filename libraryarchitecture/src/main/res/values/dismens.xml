@@ -24,4 +24,8 @@
     <dimen name="news_height">45dp</dimen>
     <dimen name="msg_icon_height">45dip</dimen>
     <dimen name="msg_icon_width">45dip</dimen>
+
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_250">250dp</dimen>
 </resources>

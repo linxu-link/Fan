@@ -7,20 +7,28 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.widgets.navgation.BottomNavigationBar
+import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = RouterConstant.APP)
 class MainActivity : AppCompatActivity(), BottomNavigationBar.OnClickListener {
 
-    private var navigationBar: BottomNavigationBar? = null
+    private var mFragmentList = arrayListOf<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navigationBar = findViewById(R.id.bottom_navigation_bar)
-        navigationBar!!.setOnItemClickListener(this)
+        bottom_navigation_bar.setOnItemClickListener(this)
+
+
+        mFragmentList.add(ServiceFactory.getInstance().mainService!!.newMainFragment(bundle = null)!!)
+        mFragmentList.add(ServiceFactory.getInstance().mainService!!.newCatalogFragment(bundle = null)!!)
+        mFragmentList.add(ServiceFactory.getInstance().mainService!!.newFindFragment(bundle = null)!!)
+        mFragmentList.add(ServiceFactory.getInstance().userService!!.newUserFragment(bundle = null)!!)
+
 
         val transaction = supportFragmentManager.beginTransaction()
-        mCurrent = ServiceFactory.getInstance().mainService!!.newMainFragment(bundle = null)
+        mCurrent = mFragmentList[0]
+
         transaction.replace(R.id.content, mCurrent!!)
         transaction.commit()
     }
@@ -34,28 +42,23 @@ class MainActivity : AppCompatActivity(), BottomNavigationBar.OnClickListener {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }
-            mCurrent = ServiceFactory.getInstance().mainService!!.newMainFragment(bundle = null)
+            mCurrent = mFragmentList[0]
 
         } else if (checkedId == R.id.classification) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }
-            mCurrent = ServiceFactory.getInstance().mainService!!.newCatalogFragment(bundle = null)
+            mCurrent = mFragmentList[1]
         } else if (checkedId == R.id.find) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }
-            mCurrent = ServiceFactory.getInstance().mainService!!.newFindFragment(bundle = null)
-        } else if (checkedId == R.id.shopping_cart) {
-            if (mCurrent != null) {
-                transaction.hide(mCurrent!!)
-            }
-            mCurrent = ServiceFactory.getInstance().mainService!!.newShoppingFragment(bundle = null)
+            mCurrent = mFragmentList[2]
         } else if (checkedId == R.id.mine) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }
-            mCurrent = ServiceFactory.getInstance().userService!!.newUserFragment(bundle = null)
+            mCurrent = mFragmentList[3]
         }
         if (mCurrent!!.isAdded) {
             transaction.show(mCurrent!!)

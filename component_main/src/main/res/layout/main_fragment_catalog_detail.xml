@@ -6,25 +6,22 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <include
-        android:id="@+id/main_include"
-        layout="@layout/include_toolbar_search" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_catalog"
         android:layout_width="80dp"
         android:layout_height="0dp"
-        android:background="@color/common_black"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/main_item_catalog_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_include" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/main_item_catalog_left" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_catalog_right"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constraintBottom_toBottomOf="@+id/rv_catalog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/rv_catalog"

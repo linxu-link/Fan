@@ -2,16 +2,27 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="50dp"
     android:orientation="vertical"
-    tools:background="@color/common_black">
+    android:id="@+id/root_view"
+    tools:background="@android:color/white">
 
     <TextView
         android:id="@+id/tv_catalog_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        tools:text="蔬菜"
+        android:layout_margin="2dp"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/text_large_size" />
+        android:textStyle=""
+        android:textSize="@dimen/text_middle_size"
+        tools:text="蔬菜" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorPrimary"
+        android:visibility="invisible" />
 </FrameLayout>

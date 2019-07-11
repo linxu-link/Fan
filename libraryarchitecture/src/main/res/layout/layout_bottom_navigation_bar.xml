@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:background="@android:color/white"
     android:padding="5dp"
-    android:weightSum="5">
+    android:weightSum="4">
 
     <RadioButton
         android:id="@+id/home"
@@ -38,16 +38,6 @@
         android:button="@null"
         android:text="发现"
         android:drawableTop="@drawable/selector_find_bg"
-        android:gravity="center" />
-
-    <RadioButton
-        android:id="@+id/shopping_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:button="@null"
-        android:text="购物车"
-        android:drawableTop="@drawable/selector_shopping_cart_bg"
         android:gravity="center" />
 
     <RadioButton

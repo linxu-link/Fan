@@ -1,58 +1,43 @@
 package com.link.component_main.app.catalog
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
 import com.link.component_main.MainViewModelFactory
 import com.link.component_main.R
-import com.link.component_main.data.entity.CategoryResult
+import com.link.librarymodule.base.adapter.FixPagerAdapter
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import kotlinx.android.synthetic.main.main_fragment_catlog.*
+import kotlinx.android.synthetic.main.main_fragment_catalog.*
 
+class CatalogFragment(override var mLayoutId: Int = R.layout.main_fragment_catalog) : BaseMvvmFragment<EmptyViewModel>() {
 
-class CatalogFragment(override var mLayoutId: Int = R.layout.main_fragment_catlog) :
-        BaseMvvmFragment<CatalogViewModel>() {
-
-    override fun initViewModel(): CatalogViewModel {
-        return MainViewModelFactory.getInstance().create(CatalogViewModel::class.java)
-    }
 
     companion object {
-        @JvmStatic
-        fun newInstance() =
+            @JvmStatic
+            fun newInstance() =
                 CatalogFragment().apply {
                     arguments = Bundle().apply {
 
                     }
                 }
+        }
+
+    override fun initViewModel(): EmptyViewModel {
+        return MainViewModelFactory.getInstance().create(EmptyViewModel::class.java)
     }
 
-
-    private lateinit var mLeftAdapter: CatalogAdapter
 
     override fun initView() {
         super.initView()
-        mLeftAdapter=CatalogAdapter(R.layout.main_item_catalog_left,null)
+        val mFragmentList = arrayListOf<Fragment>()
+        val titles = arrayOf("分类", "食材")
+        mFragmentList.add(CatalogDetailFragment.newInstance())
+        mFragmentList.add(CatalogDetailFragment.newInstance())
+        val mPagerAdapter = FixPagerAdapter(childFragmentManager)
+        mPagerAdapter.setFragments(mFragmentList)
+        mPagerAdapter.setTitles(titles)
+        viewPager.adapter = mPagerAdapter
+        tabLayout.setupWithViewPager(viewPager)
+
     }
-
-    override fun initData() {
-        super.initData()
-        mViewModel.getCatalogData()
-    }
-
-    override fun initViewObservable() {
-        super.initViewObservable()
-
-        mViewModel.cataLog.observe(this, Observer {
-            mLeftAdapter.setNewData(it)
-        })
-    }
-
 
 }
