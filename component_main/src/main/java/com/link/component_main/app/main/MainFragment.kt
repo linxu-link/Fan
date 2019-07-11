@@ -14,7 +14,12 @@ import androidx.viewpager.widget.PagerAdapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.link.component_main.R
+import com.link.component_main.app.catalog.CatalogDetailFragment
+import com.link.librarymodule.base.adapter.FixPagerAdapter
+import kotlinx.android.synthetic.main.main_fragment_catalog.*
 import kotlinx.android.synthetic.main.main_fragment_main.*
+import kotlinx.android.synthetic.main.main_fragment_main.tabLayout
+import kotlinx.android.synthetic.main.main_fragment_main.viewPager
 
 class MainFragment : Fragment() {
 
@@ -38,19 +43,16 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val list = arrayListOf<String>()
-        for (index in 0 until 20) {
-            list.add("ele:$index")
-        }
 
-//        rvList.adapter = object : BaseQuickAdapter<String, BaseViewHolder>(R.layout.main_item_main_layout, list) {
-//            override fun convert(helper: BaseViewHolder?, item: String?) {
-//                helper!!.setText(R.id.title, item!!)
-//            }
-//
-//        }
-//        rvList.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
-
+        val mFragmentList = arrayListOf<Fragment>()
+        val titles = arrayOf("推荐", "早餐", "健身餐")
+        mFragmentList.add(RecommendFragment.newInstance())
+        mFragmentList.add(RecommendFragment.newInstance())
+        val mPagerAdapter = FixPagerAdapter(childFragmentManager)
+        mPagerAdapter.setFragments(mFragmentList)
+        mPagerAdapter.setTitles(titles)
+        viewPager.adapter = mPagerAdapter
+        tabLayout.setupWithViewPager(viewPager)
     }
 
 }

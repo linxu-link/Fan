@@ -15,7 +15,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_250"
+        android:layout_height="@dimen/dp_150"
         android:layout_marginTop="@dimen/dp_8">
 
         <LinearLayout

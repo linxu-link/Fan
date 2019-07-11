@@ -21,7 +21,6 @@
         android:id="@+id/main_textview2"
         android:layout_width="100dp"
         android:layout_height="10dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/font_color"
         app:layout_constraintEnd_toEndOf="parent"
