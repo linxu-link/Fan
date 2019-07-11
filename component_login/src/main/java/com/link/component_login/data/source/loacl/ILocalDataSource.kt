@@ -1,6 +1,6 @@
 package com.link.component_login.data.source.loacl
 
-import com.link.librarycomponent.app.user.UserEntity
+import com.link.librarycomponent.entity.user.UserEntity
 
 interface ILocalDataSource {
 

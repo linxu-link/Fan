@@ -8,7 +8,11 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.BaseViewHolder
 import com.link.component_main.R
 import kotlinx.android.synthetic.main.main_fragment_main.*
 
@@ -45,7 +49,7 @@ class MainFragment : Fragment() {
 //            }
 //
 //        }
-//        rv_list.addItemDecoration(DividerItemDecoration(context,RecyclerView.VERTICAL))
+//        rv_list.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
 
         viewPager.setAdapter(ContentPagerAdapter())
         tabLayout.setupWithViewPager(viewPager)

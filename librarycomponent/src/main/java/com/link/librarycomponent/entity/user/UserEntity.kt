@@ -1,4 +1,4 @@
-package com.link.librarycomponent.app.user
+package com.link.librarycomponent.entity.user
 
 import cn.bmob.v3.BmobUser
 

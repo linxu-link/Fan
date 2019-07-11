@@ -2,7 +2,7 @@ package com.link.component_login.data
 
 import com.link.component_login.data.source.http.IHttpDataSource
 import com.link.component_login.data.source.loacl.ILocalDataSource
-import com.link.librarycomponent.app.user.UserEntity
+import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.model.BaseModel
 
 class Repository private constructor(

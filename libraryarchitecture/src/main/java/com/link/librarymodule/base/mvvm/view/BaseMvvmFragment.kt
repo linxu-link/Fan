@@ -2,7 +2,6 @@ package com.link.librarymodule.base.mvvm.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Messenger
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +43,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : Fragment(), IBaseView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //私有的初始化Databinding和ViewModel方法
-        initViewDataBinding()
+        initView()
         //私有的ViewModel与View的契约事件回调逻辑
         registorUIChangeLiveDataCallBack()
         //页面数据初始化方法
@@ -58,7 +57,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : Fragment(), IBaseView {
     /**
      * 注入绑定
      */
-    private fun initViewDataBinding() {
+    open fun initView() {
         mViewModel = initViewModel()
         if (mViewModel == null) {
             val modelClass: Class<*>

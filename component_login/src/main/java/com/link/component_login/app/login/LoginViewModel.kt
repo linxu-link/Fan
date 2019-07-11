@@ -7,7 +7,7 @@ import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.LogInListener
 import com.link.component_login.app.register.RegisterFragment
 import com.link.component_login.data.Repository
-import com.link.librarycomponent.app.user.UserEntity
+import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.ToastUtils

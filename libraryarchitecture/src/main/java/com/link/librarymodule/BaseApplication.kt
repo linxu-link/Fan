@@ -13,7 +13,10 @@ import com.link.librarymodule.utils.Utils
 
 abstract class BaseApplication : Application() {
 
-    lateinit var instance: Application
+
+    companion object{
+        lateinit var instance: Application
+    }
 
     override fun onCreate() {
         super.onCreate()

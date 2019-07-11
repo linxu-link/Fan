@@ -2,7 +2,7 @@ package com.link.component_main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.link.component_main.app.CatalogFragment
+import com.link.component_main.app.catalog.CatalogFragment
 import com.link.component_main.app.FindFragment
 import com.link.component_main.app.MainFragment
 import com.link.component_main.app.ShoppingCartFragment

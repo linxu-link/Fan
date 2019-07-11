@@ -4,23 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey">
+    android:background="@android:color/white">
 
     <include
-        android:id="@+id/catalog_include"
+        android:id="@+id/main_include"
         layout="@layout/include_toolbar_search" />
 
-    <!--<com.link.librarymodule.widgets.navigation.CircleView2-->
-        <!--android:id="@+id/bottom"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="150dp"-->
-        <!--android:background="@android:color/white"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.498"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/catalog_include"-->
-        <!--app:layout_constraintVertical_bias="0.497" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_catalog"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:background="@color/common_black"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/main_item_catalog_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_include" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_catalog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rv_catalog"
+        app:layout_constraintTop_toTopOf="@+id/rv_catalog" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
