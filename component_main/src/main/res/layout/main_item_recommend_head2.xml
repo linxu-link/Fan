@@ -9,9 +9,10 @@
 
 
     <TextView
+        android:layout_marginTop="@dimen/dp_10"
         android:id="@+id/main_textview3"
         style="@style/WrapWrap_large"
-        tools:text="@string/app_name" />
+        android:text="今日推荐" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"

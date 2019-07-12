@@ -1,4 +1,4 @@
-package com.link.component_main.app
+package com.link.component_main.app.find
 
 import android.os.Bundle
 import android.view.LayoutInflater
