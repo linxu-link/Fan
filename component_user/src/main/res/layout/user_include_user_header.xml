@@ -3,56 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
-    android:background="@color/colorPrimary"
+    android:layout_height="@dimen/dp_100"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:elevation="1dp"
+    android:background="@drawable/shape_stroke_corner_10dp_white_full"
     android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/user_imageview"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:src="@drawable/ic_settings_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/user_imageview3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:padding="5dp"
-        android:src="@drawable/ic_message_white"
-        app:layout_constraintBottom_toBottomOf="@+id/user_imageview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/user_imageview" />
-
-    <ImageView
-        android:id="@+id/user_imageview4"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/user_imageview3"
-        app:layout_constraintStart_toEndOf="@+id/user_imageview"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/logo" />
-
-    <TextView
-        android:id="@+id/user_textview7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="用户名"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/text_middle_size"
-        app:layout_constraintEnd_toEndOf="@+id/user_imageview4"
-        app:layout_constraintStart_toStartOf="@+id/user_imageview4"
-        app:layout_constraintTop_toBottomOf="@+id/user_imageview4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

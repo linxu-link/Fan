@@ -8,7 +8,6 @@
     android:background="@android:color/white">
 
     <include
-        android:id="@+id/main_include"
         layout="@layout/include_search"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -23,11 +22,11 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/dp_100"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_include">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
     </com.google.android.material.tabs.TabLayout>
 

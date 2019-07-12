@@ -8,9 +8,6 @@ import com.link.component_main.app.catalog.CatalogFragment
 import com.link.librarycomponent.service.main.IMainService
 
 class MainService : IMainService {
-    override fun newShoppingFragment(bundle: Bundle?): Fragment? {
-        return ShoppingCartFragment.newInstance()
-    }
 
     override fun newCatalogFragment(bundle: Bundle?): Fragment? {
         return CatalogFragment.newInstance()

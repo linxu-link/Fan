@@ -1,5 +1,6 @@
 package com.link.component_splash.app
 
+import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -18,6 +19,11 @@ import kotlinx.android.synthetic.main.activity_splash.*
 @Route(path = RouterConstant.SPLASH)
 class SplashActivity(override var mLayoutId: Int = R.layout.activity_splash) : BaseMvvmActivity<SplashViewModel>() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        fullScreen(this)
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun initViewModel(): SplashViewModel? {
         val factory = SplashViewModelFactory.getInstance(application)

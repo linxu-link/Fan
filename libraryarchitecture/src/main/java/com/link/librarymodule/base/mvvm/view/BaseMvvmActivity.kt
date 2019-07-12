@@ -1,13 +1,19 @@
 package com.link.librarymodule.base.mvvm.view
 
+import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Messenger
+import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.base.ContainerActivity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import java.lang.reflect.ParameterizedType
@@ -18,10 +24,10 @@ import java.lang.reflect.ParameterizedType
  *
  * 描述：一个拥有DataBinding框架的基Activity
  */
-abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : AppCompatActivity(), IBaseView {
+abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseView {
 
     protected var mViewModel: VM? = null
-    abstract var mLayoutId:Int
+    abstract var mLayoutId: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +59,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : AppCompatActivity(), IB
     /**
      * 注入绑定
      */
-     fun initView() {
+    fun initView() {
         mViewModel = initViewModel()
         if (mViewModel == null) {
             val modelClass: Class<VM>

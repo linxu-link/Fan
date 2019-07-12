@@ -1,16 +1,16 @@
 package com.link.petshop
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
+import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.widgets.navgation.BottomNavigationBar
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = RouterConstant.APP)
-class MainActivity : AppCompatActivity(), BottomNavigationBar.OnClickListener {
+class MainActivity : BaseActivity(), BottomNavigationBar.OnClickListener {
 
     private var mFragmentList = arrayListOf<Fragment>()
 
@@ -67,4 +67,5 @@ class MainActivity : AppCompatActivity(), BottomNavigationBar.OnClickListener {
         }
         transaction.commit()
     }
+
 }

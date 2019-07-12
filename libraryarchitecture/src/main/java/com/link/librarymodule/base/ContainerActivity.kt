@@ -13,7 +13,7 @@ import java.lang.RuntimeException
 import java.lang.ref.WeakReference
 
 
-open class ContainerActivity : AppCompatActivity() {
+open class ContainerActivity : BaseActivity() {
 
     companion object {
         @JvmStatic
