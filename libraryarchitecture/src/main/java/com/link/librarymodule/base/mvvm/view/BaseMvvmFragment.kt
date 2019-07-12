@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.base.ContainerActivity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import java.lang.reflect.ParameterizedType
@@ -16,7 +17,7 @@ import java.lang.reflect.ParameterizedType
 /**
  * Created by goldze on 2017/6/15.
  */
-abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : Fragment(), IBaseView {
+abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseView {
     protected lateinit var mViewModel: VM
     protected var mRootView: View? = null
     protected abstract var mLayoutId: Int

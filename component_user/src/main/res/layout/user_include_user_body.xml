@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/shape_stroke_corner_10dp_white_full"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/user_textview"
+        style="@style/WrapWrap_large"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="更多服务"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_about"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_textview"
+        app:srcCompat="@drawable/user_ic_about" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        style="@style/WrapWrap"
+        android:layout_marginTop="8dp"
+        android:text="关于Fan"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintEnd_toEndOf="@+id/img_about"
+        app:layout_constraintStart_toStartOf="@+id/img_about"
+        app:layout_constraintTop_toBottomOf="@+id/img_about" />
+
+    <ImageView
+        android:id="@+id/img_score"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_update"
+        app:layout_constraintStart_toEndOf="@+id/img_about"
+        app:layout_constraintTop_toTopOf="@+id/img_about"
+        app:srcCompat="@drawable/user_ic_score" />
+
+    <TextView
+        android:id="@+id/tv_score"
+        style="@style/WrapWrap"
+        android:layout_marginTop="8dp"
+        android:text="去评分"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintEnd_toEndOf="@+id/img_score"
+        app:layout_constraintStart_toStartOf="@+id/img_score"
+        app:layout_constraintTop_toBottomOf="@+id/img_score" />
+
+    <ImageView
+        android:id="@+id/img_update"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/img_recommend"
+        app:layout_constraintStart_toEndOf="@+id/img_score"
+        app:layout_constraintTop_toTopOf="@+id/img_score"
+        app:srcCompat="@drawable/user_ic_update" />
+
+    <TextView
+        android:id="@+id/tv_update"
+        style="@style/WrapWrap"
+        android:layout_marginTop="8dp"
+        android:text="检查更新"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintEnd_toEndOf="@+id/img_update"
+        app:layout_constraintStart_toStartOf="@+id/img_update"
+        app:layout_constraintTop_toBottomOf="@+id/img_update" />
+
+    <ImageView
+        android:id="@+id/img_recommend"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_update"
+        app:layout_constraintTop_toTopOf="@+id/img_update"
+        app:srcCompat="@drawable/user_ic_recommend" />
+
+    <TextView
+        android:id="@+id/tv_recommend"
+        style="@style/WrapWrap"
+        android:layout_marginTop="8dp"
+        android:text="分享"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintEnd_toEndOf="@+id/img_recommend"
+        app:layout_constraintStart_toStartOf="@+id/img_recommend"
+        app:layout_constraintTop_toBottomOf="@+id/img_recommend" />
+
+    <ImageView
+        android:id="@+id/img_suggest"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/img_about"
+        app:layout_constraintStart_toStartOf="@+id/img_about"
+        app:layout_constraintTop_toBottomOf="@+id/tv_about"
+        app:srcCompat="@drawable/user_ic_suggest" />
+
+    <TextView
+        android:id="@+id/tv_suggest"
+        style="@style/WrapWrap"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="意见反馈"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_small_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/img_suggest"
+        app:layout_constraintStart_toStartOf="@+id/img_suggest"
+        app:layout_constraintTop_toBottomOf="@+id/img_suggest" />
+</androidx.constraintlayout.widget.ConstraintLayout>

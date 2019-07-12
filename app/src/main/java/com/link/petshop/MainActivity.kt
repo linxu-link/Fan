@@ -15,6 +15,7 @@ class MainActivity : BaseActivity(), BottomNavigationBar.OnClickListener {
     private var mFragmentList = arrayListOf<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        fullScreen(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottom_navigation_bar.setOnItemClickListener(this)

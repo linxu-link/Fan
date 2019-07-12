@@ -9,8 +9,9 @@
     <com.link.librarymodule.widgets.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
-        android:layout_height="?android:attr/actionBarSize"
+        android:layout_height="65dp"
         app:indicatorEndColor="#ff6464"
+        android:paddingTop="@dimen/dp_20"
         app:indicatorMarginBottom="3dp"
         app:indicatorMarginEnd="20dp"
         app:indicatorMarginStart="20dp"
