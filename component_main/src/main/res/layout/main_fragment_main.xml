@@ -11,32 +11,42 @@
         layout="@layout/include_search"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.google.android.material.tabs.TabLayout
+    <com.link.librarymodule.widgets.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_include">
+        app:indicatorEndColor="#ff6464"
+        app:indicatorMarginBottom="3dp"
+        app:indicatorMarginEnd="20dp"
+        app:indicatorMarginStart="20dp"
+        app:indicatorStartColor="#ff6464"
+        app:layout_constraintEnd_toEndOf="@+id/main_include"
+        app:layout_constraintStart_toStartOf="@+id/main_include"
+        app:layout_constraintTop_toBottomOf="@+id/main_include"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextAppearance="@style/Main_TabLayoutTextStyle"
+        app:tabTextColor="@color/font_color">
 
-    </com.google.android.material.tabs.TabLayout>
+    </com.link.librarymodule.widgets.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/main_include"
+        app:layout_constraintStart_toStartOf="@+id/main_include"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
 

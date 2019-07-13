@@ -10,9 +10,7 @@
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/dp_20"
         android:paddingTop="@dimen/dp_4"
-        android:paddingRight="@dimen/dp_20"
         android:paddingBottom="@dimen/dp_4"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

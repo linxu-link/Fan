@@ -4,20 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.PagerAdapter
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
 import com.link.component_main.R
-import com.link.component_main.app.catalog.CatalogDetailFragment
+import com.link.component_main.app.main.recommend.RecommendFragment
 import com.link.librarymodule.base.adapter.FixPagerAdapter
-import kotlinx.android.synthetic.main.main_fragment_catalog.*
-import kotlinx.android.synthetic.main.main_fragment_main.*
 import kotlinx.android.synthetic.main.main_fragment_main.tabLayout
 import kotlinx.android.synthetic.main.main_fragment_main.viewPager
 
@@ -45,7 +35,10 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mFragmentList = arrayListOf<Fragment>()
-        val titles = arrayOf("推荐", "早餐", "健身餐")
+        val titles = arrayOf("今日推荐", "早餐达人", "健身增肌","休闲下午茶","美味午餐")
+        mFragmentList.add(RecommendFragment.newInstance())
+        mFragmentList.add(RecommendFragment.newInstance())
+        mFragmentList.add(RecommendFragment.newInstance())
         mFragmentList.add(RecommendFragment.newInstance())
         mFragmentList.add(RecommendFragment.newInstance())
         val mPagerAdapter = FixPagerAdapter(childFragmentManager)

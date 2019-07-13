@@ -36,6 +36,7 @@ import android.os.Build;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -45,9 +46,11 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
@@ -81,7 +84,7 @@ import java.util.Iterator;
 import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 
 @ViewPager.DecorView
-public class TabLayout extends HorizontalScrollView {
+public class WarpTabLayout extends HorizontalScrollView {
 
     private static final int DEFAULT_HEIGHT_WITH_TEXT_ICON = 72; // dps
     static final int DEFAULT_GAP_TEXT_ICON = 8; // dps
@@ -125,7 +128,7 @@ public class TabLayout extends HorizontalScrollView {
     }
 
     /**
-     * Gravity used to fill the {@link TabLayout} as much as possible. This option only takes effect
+     * Gravity used to fill the {@link WarpTabLayout} as much as possible. This option only takes effect
      * when used with {@link #MODE_FIXED}.
      *
      * @see #setTabGravity(int)
@@ -134,7 +137,7 @@ public class TabLayout extends HorizontalScrollView {
     public static final int GRAVITY_FILL = 0;
 
     /**
-     * Gravity used to lay out the tabs in the center of the {@link TabLayout}.
+     * Gravity used to lay out the tabs in the center of the {@link WarpTabLayout}.
      *
      * @see #setTabGravity(int)
      * @see #getTabGravity()
@@ -221,15 +224,15 @@ public class TabLayout extends HorizontalScrollView {
     // Pool we use as a simple RecyclerBin
     private final Pools.Pool<TabView> mTabViewPool = new Pools.SimplePool<>(12);
 
-    public TabLayout(Context context) {
+    public WarpTabLayout(Context context) {
         this(context, null);
     }
 
-    public TabLayout(Context context, AttributeSet attrs) {
+    public WarpTabLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public TabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WarpTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         ThemeUtils.checkAppCompatTheme(context);
@@ -319,7 +322,7 @@ public class TabLayout extends HorizontalScrollView {
         // TODO add attr for these
         final Resources res = getResources();
         mTabTextMultiLineSize = res.getDimensionPixelSize(R.dimen.design_tab_text_size_2line);
-        mScrollableTabMinWidth = (int) (res.getDimensionPixelSize(R.dimen.design_tab_scrollable_min_width)*1.3);
+        mScrollableTabMinWidth = res.getDimensionPixelSize(R.dimen.design_tab_scrollable_min_width);
 
         // Now apply the tab mode and gravity
         applyModeAndGravity();
@@ -478,7 +481,7 @@ public class TabLayout extends HorizontalScrollView {
     }
 
     /**
-     * Add a {@link TabLayout.OnTabSelectedListener} that will be invoked when tab selection
+     * Add a {@link WarpTabLayout.OnTabSelectedListener} that will be invoked when tab selection
      * changes.
      *
      * <p>Components that add a listener should take care to remove it when finished via
@@ -493,7 +496,7 @@ public class TabLayout extends HorizontalScrollView {
     }
 
     /**
-     * Remove the given {@link TabLayout.OnTabSelectedListener} that was previously added via
+     * Remove the given {@link WarpTabLayout.OnTabSelectedListener} that was previously added via
      * {@link #addOnTabSelectedListener(OnTabSelectedListener)}.
      *
      * @param listener listener to remove
@@ -503,7 +506,7 @@ public class TabLayout extends HorizontalScrollView {
     }
 
     /**
-     * Remove all previously added {@link TabLayout.OnTabSelectedListener}s.
+     * Remove all previously added {@link WarpTabLayout.OnTabSelectedListener}s.
      */
     public void clearOnTabSelectedListeners() {
         mSelectedListeners.clear();
@@ -634,7 +637,7 @@ public class TabLayout extends HorizontalScrollView {
     }
 
     /**
-     * Returns the current mode used by this {@link TabLayout}.
+     * Returns the current mode used by this {@link WarpTabLayout}.
      *
      * @see #setTabMode(int)
      */
@@ -697,7 +700,7 @@ public class TabLayout extends HorizontalScrollView {
     }
 
     /**
-     * The one-stop shop for setting up this {@link TabLayout} with a {@link ViewPager}.
+     * The one-stop shop for setting up this {@link WarpTabLayout} with a {@link ViewPager}.
      *
      * <p>This is the same as calling {@link #setupWithViewPager(ViewPager, boolean)} with
      * auto-refresh enabled.</p>
@@ -709,7 +712,7 @@ public class TabLayout extends HorizontalScrollView {
     }
 
     /**
-     * The one-stop shop for setting up this {@link TabLayout} with a {@link ViewPager}.
+     * The one-stop shop for setting up this {@link WarpTabLayout} with a {@link ViewPager}.
      *
      * <p>This method will link the given ViewPager and this TabLayout together so that
      * changes in one are automatically reflected in the other. This includes scroll state changes
@@ -1204,7 +1207,7 @@ public class TabLayout extends HorizontalScrollView {
         private int mPosition = INVALID_POSITION;
         private View mCustomView;
 
-        TabLayout mParent;
+        WarpTabLayout mParent;
         TabView mView;
 
         Tab() {
@@ -1455,7 +1458,7 @@ public class TabLayout extends HorizontalScrollView {
         }
     }
 
-    class TabView extends LinearLayout {
+    class TabView extends FrameLayout {
         private Tab mTab;
         private TextView mTextView;
         private ImageView mIconView;
@@ -1474,8 +1477,6 @@ public class TabLayout extends HorizontalScrollView {
             }
             ViewCompat.setPaddingRelative(this, mTabPaddingStart, mTabPaddingTop,
                     mTabPaddingEnd, mTabPaddingBottom);
-            setGravity(Gravity.CENTER);
-            setOrientation(VERTICAL);
             setClickable(true);
             ViewCompat.setPointerIcon(this,
                     PointerIconCompat.getSystemIcon(getContext(), PointerIconCompat.TYPE_HAND));
@@ -1656,8 +1657,12 @@ public class TabLayout extends HorizontalScrollView {
                     mIconView = iconView;
                 }
                 if (mTextView == null) {
-                    TextView textView = (TextView) LayoutInflater.from(getContext())
-                            .inflate(R.layout.design_layout_tab_text, this, false);
+                    TextView textView = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.design_layout_tab_text, this, false);
+
+                    LayoutParams layoutParams=new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+                    layoutParams.gravity=Gravity.CENTER;
+                    textView.setLayoutParams(layoutParams);
+
                     addView(textView);
                     mTextView = textView;
                     mDefaultMaxLines = TextViewCompat.getMaxLines(mTextView);
@@ -2036,8 +2041,11 @@ public class TabLayout extends HorizontalScrollView {
             }
 
             // visible rect
-            mIndicatorRect.set(mIndicatorLeft, getHeight() - mSelectedIndicatorHeight - mIndicatorMarginBottom,
-                    mIndicatorRight, getHeight() - mIndicatorMarginBottom);
+            mIndicatorRect.set(mIndicatorLeft,
+                    getHeight() - mSelectedIndicatorHeight - mIndicatorMarginBottom, mIndicatorRight, getHeight()-mIndicatorMarginBottom);
+
+            Log.e("TAG", mIndicatorLeft + "-" + (getHeight() - mSelectedIndicatorHeight - mIndicatorMarginBottom) +
+                    "-" + mIndicatorRight + "-" + getHeight()*10);
 
             // show dst round rect only, but with src xxl
             int sc = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);
@@ -2105,7 +2113,7 @@ public class TabLayout extends HorizontalScrollView {
 
     /**
      * A {@link ViewPager.OnPageChangeListener} class which contains the
-     * necessary calls back to the provided {@link TabLayout} so that the tab position is
+     * necessary calls back to the provided {@link WarpTabLayout} so that the tab position is
      * kept in sync.
      *
      * <p>This class stores the provided TabLayout weakly, meaning that you can use
@@ -2114,11 +2122,11 @@ public class TabLayout extends HorizontalScrollView {
      * not cause a leak.
      */
     public static class TabLayoutOnPageChangeListener implements ViewPager.OnPageChangeListener {
-        private final WeakReference<TabLayout> mTabLayoutRef;
+        private final WeakReference<WarpTabLayout> mTabLayoutRef;
         private int mPreviousScrollState;
         private int mScrollState;
 
-        public TabLayoutOnPageChangeListener(TabLayout tabLayout) {
+        public TabLayoutOnPageChangeListener(WarpTabLayout tabLayout) {
             mTabLayoutRef = new WeakReference<>(tabLayout);
         }
 
@@ -2131,7 +2139,7 @@ public class TabLayout extends HorizontalScrollView {
         @Override
         public void onPageScrolled(final int position, final float positionOffset,
                                    final int positionOffsetPixels) {
-            final TabLayout tabLayout = mTabLayoutRef.get();
+            final WarpTabLayout tabLayout = mTabLayoutRef.get();
             if (tabLayout != null) {
                 // Only update the text selection if we're not settling, or we are settling after
                 // being dragged
@@ -2148,7 +2156,7 @@ public class TabLayout extends HorizontalScrollView {
 
         @Override
         public void onPageSelected(final int position) {
-            final TabLayout tabLayout = mTabLayoutRef.get();
+            final WarpTabLayout tabLayout = mTabLayoutRef.get();
             if (tabLayout != null && tabLayout.getSelectedTabPosition() != position
                     && position < tabLayout.getTabCount()) {
                 // Select the tab, only updating the indicator if we're not being dragged/settled
@@ -2166,10 +2174,10 @@ public class TabLayout extends HorizontalScrollView {
     }
 
     /**
-     * A {@link TabLayout.OnTabSelectedListener} class which contains the necessary calls back
+     * A {@link WarpTabLayout.OnTabSelectedListener} class which contains the necessary calls back
      * to the provided {@link ViewPager} so that the tab position is kept in sync.
      */
-    public static class ViewPagerOnTabSelectedListener implements TabLayout.OnTabSelectedListener {
+    public static class ViewPagerOnTabSelectedListener implements WarpTabLayout.OnTabSelectedListener {
         private final ViewPager mViewPager;
 
         public ViewPagerOnTabSelectedListener(ViewPager viewPager) {
@@ -2177,17 +2185,17 @@ public class TabLayout extends HorizontalScrollView {
         }
 
         @Override
-        public void onTabSelected(TabLayout.Tab tab) {
+        public void onTabSelected(WarpTabLayout.Tab tab) {
             mViewPager.setCurrentItem(tab.getPosition());
         }
 
         @Override
-        public void onTabUnselected(TabLayout.Tab tab) {
+        public void onTabUnselected(WarpTabLayout.Tab tab) {
             // No-op
         }
 
         @Override
-        public void onTabReselected(TabLayout.Tab tab) {
+        public void onTabReselected(WarpTabLayout.Tab tab) {
             // No-op
         }
     }

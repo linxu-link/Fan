@@ -2,16 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_300"
-    android:orientation="vertical">
+    android:layout_width="@dimen/dp_150"
+    android:layout_height="@dimen/dp_250">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/main_cardview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:cardElevation="2dp"
+        app:cardElevation="0dp"
         app:cardCornerRadius="@dimen/dp_10"
         android:background="@drawable/shape_stroke_corner_5dp_grey"
         app:layout_constraintBottom_toTopOf="@+id/name"
@@ -32,13 +31,14 @@
 
     <TextView
         android:id="@+id/name"
-        android:textSize="@dimen/text_large_size"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/app_name"
         android:textColor="@color/font_color"
-        android:textStyle="bold"
+        android:textSize="@dimen/text_middle_size"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -6,27 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/main_recyclerview"
+        android:id="@+id/rv_head"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/main_item_recommend_head_item" />
 
-    <View
-        android:id="@+id/main_textview2"
-        android:layout_width="100dp"
-        android:layout_height="10dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/font_color"
+    <com.link.librarymodule.widgets.HorizontalBar
+        android:id="@+id/line"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_recyclerview" />
+        app:layout_constraintTop_toBottomOf="@+id/rv_head" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
