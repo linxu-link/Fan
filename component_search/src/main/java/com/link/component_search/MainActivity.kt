@@ -1,13 +1,13 @@
 package com.link.component_search
 
-import android.content.Intent
-import androidx.fragment.app.Fragment
-import com.link.component_search.app.search.SearchFragment
-import com.link.librarymodule.base.ContainerActivity
+import android.os.Bundle
+import com.link.librarymodule.base.BaseActivity
 
-class MainActivity : ContainerActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun initFragmentFormIntent(intent: Intent): Fragment {
-        return SearchFragment.newInstance()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.search_navigation_container)
+
     }
 }

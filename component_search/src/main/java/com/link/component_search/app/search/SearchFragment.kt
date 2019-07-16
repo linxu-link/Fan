@@ -8,7 +8,12 @@ import com.link.component_search.SearchViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.recyclerview.DividerItemDecoration
 import kotlinx.android.synthetic.main.search_fragment_search.*
-
+/**
+ * @author WJ
+ * @date 2019-07-16
+ *
+ * 描述：
+ */
 class SearchFragment(override var layoutId: Int = R.layout.search_fragment_search) : BaseMvvmFragment<EmptyViewModel>() {
 
     override fun initViewModel(): EmptyViewModel {
