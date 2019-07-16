@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/main_guideline"
-        tools:text="65度C汤种小面包" />
+        android:text="65度C汤种小面包" />
 
     <TextView
         android:id="@+id/main_textview5"
@@ -47,13 +47,13 @@
         android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:maxLines="4"
-        android:textColor="@color/text_dark"
+        android:textColor="@color/text_light"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:text="这款面包很柔软，很好吃，我已经做过好多次，家人和朋友都说不错。这个配方是用妃娟老师的，老师经常做纯天然的食材来做，每一种都很好吃" />
+        android:text="这款面包很柔软，很好吃，我已经做过好多次，家人和朋友都说不错。这个配方是用妃娟老师的，老师经常做纯天然的食材来做，每一种都很好吃" />
 
     <TextView
         android:id="@+id/main_textview6"
@@ -84,12 +84,12 @@
         android:id="@+id/main_textview8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_dark"
+        android:textColor="@color/text_light"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintBottom_toBottomOf="@+id/main_textview7"
         app:layout_constraintEnd_toEndOf="@+id/main_textview5"
         app:layout_constraintStart_toEndOf="@+id/main_textview7"
         app:layout_constraintTop_toTopOf="@+id/main_textview7"
-        tools:text="烘焙;甜;烤箱;小面包" />
+        android:text="烘焙;甜;烤箱;小面包" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

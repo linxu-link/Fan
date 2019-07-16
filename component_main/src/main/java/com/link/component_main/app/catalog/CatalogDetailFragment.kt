@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.link.component_main.MainViewModelFactory
 import com.link.component_main.R
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import com.link.librarymodule.widgets.ItemDecoration
+import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.main_fragment_catalog_detail.*
 
 
-class CatalogDetailFragment(override var mLayoutId: Int = R.layout.main_fragment_catalog_detail) :
+class CatalogDetailFragment(override var layoutId: Int = R.layout.main_fragment_catalog_detail) :
         BaseMvvmFragment<CatalogViewModel>() {
 
     override fun initViewModel(): CatalogViewModel {

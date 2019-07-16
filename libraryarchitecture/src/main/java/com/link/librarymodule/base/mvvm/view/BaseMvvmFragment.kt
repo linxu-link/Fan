@@ -19,18 +19,13 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseView {
     protected lateinit var mViewModel: VM
-    protected var mRootView: View? = null
-    protected abstract var mLayoutId: Int
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initParam()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mRootView = inflater.inflate(mLayoutId, container, false)
-        return mRootView
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

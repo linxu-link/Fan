@@ -24,6 +24,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     kapt {
         arguments {
             arg("AROUTER_MODULE_NAME", project.getName())
@@ -36,16 +37,19 @@ dependencies {
     implementation project(':librarycomponent')
 
     if (!splash_isSingleCompile) {
-        implementation project(':component_splash')
+        runtimeOnly project(':component_splash')
     }
     if (!login_isSingleCompile) {
-        implementation project(':component_login')
+        runtimeOnly project(':component_login')
     }
     if (!user_isSingleCompile) {
-        implementation project(':component_user')
+        runtimeOnly project(':component_user')
     }
     if (!main_isSingleCompile) {
-        implementation project(':component_main')
+        runtimeOnly project(':component_main')
+    }
+    if (!search_isSingleCompile) {
+        runtimeOnly project(':component_search')
     }
 
     kapt deps.alibaba.router_compiler

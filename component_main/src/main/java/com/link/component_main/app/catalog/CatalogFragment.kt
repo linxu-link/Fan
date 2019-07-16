@@ -8,7 +8,7 @@ import com.link.librarymodule.base.adapter.FixPagerAdapter
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import kotlinx.android.synthetic.main.main_fragment_catalog.*
 
-class CatalogFragment(override var mLayoutId: Int = R.layout.main_fragment_catalog) : BaseMvvmFragment<EmptyViewModel>() {
+class CatalogFragment(override var layoutId: Int = R.layout.main_fragment_catalog) : BaseMvvmFragment<EmptyViewModel>() {
 
 
     companion object {

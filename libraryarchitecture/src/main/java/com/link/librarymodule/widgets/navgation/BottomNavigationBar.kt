@@ -1,13 +1,10 @@
 package com.link.librarymodule.widgets.navgation
 
 import android.content.Context
-import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import com.google.android.material.tabs.TabLayout
 import com.link.librarymodule.R
 
 
@@ -29,7 +26,7 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
             listener!!.onItemClickListener(checkedId)
         }
         for (index in array) {
-            rootView.findViewById<RadioButton>(index).setTextColor(ContextCompat.getColor(context,R.color.text_dark))
+            rootView.findViewById<RadioButton>(index).setTextColor(ContextCompat.getColor(context,R.color.text_light))
         }
        setColor(rootView.findViewById(checkedId))
     }

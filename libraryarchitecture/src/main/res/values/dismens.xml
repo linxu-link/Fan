@@ -26,6 +26,7 @@
     <dimen name="msg_icon_width">45dip</dimen>
 
     <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
     <dimen name="dp_20">20dp</dimen>
     <dimen name="dp_24">24dp</dimen>
     <dimen name="dp_50">50dp</dimen>

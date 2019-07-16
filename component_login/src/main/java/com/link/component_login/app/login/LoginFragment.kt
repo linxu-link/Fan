@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
  *
  * 描述：登录界面
  */
-class LoginFragment(override var mLayoutId: Int = R.layout.fragment_login) : BaseMvvmFragment<LoginViewModel>() {
+class LoginFragment(override var layoutId: Int = R.layout.fragment_login) : BaseMvvmFragment<LoginViewModel>() {
 
 
     companion object {

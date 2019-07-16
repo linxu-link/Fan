@@ -1,6 +1,5 @@
 package com.link.component_main
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.link.component_main.app.catalog.CatalogViewModel

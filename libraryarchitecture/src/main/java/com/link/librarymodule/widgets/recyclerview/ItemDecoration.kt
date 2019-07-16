@@ -1,4 +1,4 @@
-package com.link.librarymodule.widgets
+package com.link.librarymodule.widgets.recyclerview
 
 import android.content.res.Resources
 import android.graphics.Rect

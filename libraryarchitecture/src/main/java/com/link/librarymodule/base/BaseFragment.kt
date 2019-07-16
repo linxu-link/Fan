@@ -5,14 +5,27 @@ import android.app.Activity
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
 
 abstract class BaseFragment : Fragment() {
+
+    protected var mRootView: View? = null
+    protected abstract var layoutId: Int
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (layoutId==0){
+            throw RuntimeException("you should set the layoutId first")
+        }
+        mRootView = inflater.inflate(layoutId, container, false)
+        return mRootView
+    }
+
 
     //flyme 设定深色状态栏颜色
     private fun setFlymeLightStatusBar(activity: Activity?, dark: Boolean): Boolean {

@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         tools:text="蔬菜"
-        android:textColor="@color/text_dark"
+        android:textColor="@color/text_light"
         android:textSize="@dimen/text_middle_size" />
 </FrameLayout>

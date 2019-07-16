@@ -9,11 +9,11 @@ import com.link.component_main.MainViewModelFactory
 import com.link.component_main.app.catalog.EmptyViewModel
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.HorizontalBar
-import com.link.librarymodule.widgets.ItemDecoration
+import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.main_fragment_recommend.*
 
 
-class RecommendFragment(override var mLayoutId: Int = com.link.component_main.R.layout.main_fragment_recommend) : BaseMvvmFragment<EmptyViewModel>() {
+class RecommendFragment(override var layoutId: Int = com.link.component_main.R.layout.main_fragment_recommend) : BaseMvvmFragment<EmptyViewModel>() {
 
     companion object {
         @JvmStatic
