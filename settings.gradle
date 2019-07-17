@@ -1,4 +1,4 @@
-include ':libraryflipview', ':commponent_menu'
+include ':libraryflipview', ':component_menu'
 include ':librarybase'
 include ':libraryarchitecture', ':librarycomponent'
 

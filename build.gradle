@@ -62,4 +62,5 @@ ext {
     user_isSingleCompile = false
     main_isSingleCompile = false
     search_isSingleCompile = true
+    menu_isSingleCompile = true
 }

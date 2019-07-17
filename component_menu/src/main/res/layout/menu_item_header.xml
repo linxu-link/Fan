@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/menu_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center|start"
+        android:text="65度C汤种小面包"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_large_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/menu_linearlayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="@dimen/dp_50"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingBottom="@dimen/dp_4"
+        app:layout_constraintEnd_toEndOf="@+id/menu_textview"
+        app:layout_constraintStart_toStartOf="@+id/menu_textview"
+        app:layout_constraintTop_toBottomOf="@+id/menu_textview" />
+
+    <TextView
+        android:id="@+id/menu_textview2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="这款面包很柔软，很好吃，我已经做过好多次，家人和朋友都说不错。这个配方是用妃娟老师的，老师经常做纯天然的食材来做，每一种都很好吃"
+        android:textColor="@color/text_light"
+        android:textSize="@dimen/text_middle_size"
+        app:layout_constraintEnd_toEndOf="@+id/menu_linearlayout"
+        app:layout_constraintStart_toStartOf="@+id/menu_linearlayout"
+        app:layout_constraintTop_toBottomOf="@+id/menu_linearlayout" />
+
+    <TextView
+        android:id="@+id/menu_textview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="主料"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_big_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/menu_textview2"
+        app:layout_constraintTop_toBottomOf="@+id/menu_textview2" />
+
+    <LinearLayout
+        android:id="@+id/menu_linearlayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="@dimen/dp_100"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/menu_textview2"
+        app:layout_constraintStart_toStartOf="@+id/menu_textview3"
+        app:layout_constraintTop_toBottomOf="@+id/menu_textview3" />
+
+    <TextView
+        android:id="@+id/menu_textview4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="辅料"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_big_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/menu_linearlayout2"
+        app:layout_constraintTop_toBottomOf="@+id/menu_linearlayout2" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="@dimen/dp_100"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/menu_linearlayout2"
+        app:layout_constraintStart_toStartOf="@+id/menu_textview4"
+        app:layout_constraintTop_toBottomOf="@+id/menu_textview4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
