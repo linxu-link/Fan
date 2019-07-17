@@ -5,6 +5,15 @@
 
     <application>
         <activity android:name=".MainActivity" />
+
+        <service
+            android:name=".TinkerService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".CustomResultService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

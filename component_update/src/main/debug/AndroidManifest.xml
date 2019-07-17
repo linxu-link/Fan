@@ -20,6 +20,21 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".app.UpdateActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/update_dialog" />
+
+        <service
+            android:name=".app.UpdateService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.link.component_update.BmobContentProvider">
+        </provider>
+
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.link.librarycomponent
 
 import com.link.librarycomponent.service.main.EmptyMainService
 import com.link.librarycomponent.service.main.IMainService
+import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarycomponent.service.user.EmptyUserService
 import com.link.librarycomponent.service.user.IUserService
 
@@ -35,6 +36,8 @@ class ServiceFactory {
             }
             return field
         }
+
+    var updateService: IUpdateService? = null
 
 
 }

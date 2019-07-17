@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:minWidth="300dp"
+    android:layout_height="wrap_content"
+    android:minHeight="220dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:paddingBottom="10dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发现新版本"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_large_size" />
+
+    <TextView
+        android:id="@+id/version_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_middle_size"
+        tools:text="最新版本：3.6.3 " />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="更新内容"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_middle_size" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.5"
+        android:maxHeight="100dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/text_light"
+        android:textSize="@dimen/text_middle_size"
+        tools:text="更新日志更新日志更新日志更新日志更新日志更新日志更新日志更新日志更新日志更新日志" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginRight="130dp"
+            android:gravity="center"
+            android:text="取 消"
+            android:padding="8dp"
+            android:textColor="@color/text_light"
+            android:textSize="@dimen/text_middle_size" />
+
+        <TextView
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="立 即 更 新"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_middle_size" />
+
+    </FrameLayout>
 
 </LinearLayout>
+

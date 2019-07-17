@@ -9,6 +9,7 @@ apply plugin: 'kotlin-android-extensions'
 apply from: '../maven_push.gradle'
 android {
     compileSdkVersion build_versions.compile_sdk
+    useLibrary 'org.apache.http.legacy'
     resourcePrefix "update_"
     defaultConfig {
         if (update_isSingleCompile) {
@@ -16,6 +17,8 @@ android {
         }
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -5,8 +5,14 @@
 
     <application>
 
-        <activity android:name=".MainActivity" />
-
+        <activity
+            android:name=".app.UpdateActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/update_dialog" />
+        <service
+            android:name=".app.UpdateService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>
