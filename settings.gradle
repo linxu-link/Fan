@@ -1,4 +1,4 @@
-include ':libraryflipview', ':component_menu'
+include ':libraryflipview'
 include ':librarybase'
 include ':libraryarchitecture', ':librarycomponent'
 
@@ -7,5 +7,7 @@ include ':component_login'
 include ':component_main'
 include ':component_search'
 include ':component_user'
+include ':component_menu'
+include ':component_update'
 include ':app'
 include ':aac'

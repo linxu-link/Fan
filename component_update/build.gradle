@@ -1,4 +1,4 @@
-if (splash_isSingleCompile) {
+if (update_isSingleCompile) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
@@ -9,10 +9,10 @@ apply plugin: 'kotlin-android-extensions'
 apply from: '../maven_push.gradle'
 android {
     compileSdkVersion build_versions.compile_sdk
-    resourcePrefix "splash_"
+    resourcePrefix "update_"
     defaultConfig {
-        if (splash_isSingleCompile) {
-            applicationId "com.link.component_splash"
+        if (update_isSingleCompile) {
+            applicationId "com.link.component_update"
         }
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
@@ -36,7 +36,7 @@ android {
 
     sourceSets {
         main {
-            if (splash_isSingleCompile.toBoolean()) {
+            if (update_isSingleCompile.toBoolean()) {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
