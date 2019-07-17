@@ -51,6 +51,12 @@ dependencies {
     if (!search_isSingleCompile) {
         runtimeOnly project(':component_search')
     }
+    if (!menu_isSingleCompile) {
+        runtimeOnly project(':component_menu')
+    }
+    if (!update_isSingleCompile) {
+        runtimeOnly project(':component_update')
+    }
 
     kapt deps.alibaba.router_compiler
     testImplementation 'junit:junit:4.12'
