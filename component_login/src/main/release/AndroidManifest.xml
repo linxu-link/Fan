@@ -7,9 +7,6 @@
 
         <activity android:name=".MainActivity" />
 
-        <provider
-            android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.link.component_login.BmobContentProvider" />
 
     </application>
 

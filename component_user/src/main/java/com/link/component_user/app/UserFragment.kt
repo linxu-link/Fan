@@ -15,7 +15,7 @@ import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
  *
  * 描述：
  */
-class UserFragment : BaseFragment() {
+class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : BaseFragment() {
 
     companion object {
         @JvmStatic
@@ -27,14 +27,6 @@ class UserFragment : BaseFragment() {
                 }
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.user_fragment_user, container, false)
-    }
 
 
 }
