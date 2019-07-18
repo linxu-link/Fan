@@ -1,4 +1,4 @@
-package com.link.component_main.app.catalog
+package com.link.component_main
 
 import com.link.component_main.data.MainRepository
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel

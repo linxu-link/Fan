@@ -1,4 +1,4 @@
-package com.link.component_main.app.catalog
+package com.link.component_main.app.catalog.detail
 
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
@@ -10,11 +10,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
-class CatalogViewModel constructor(repository: MainRepository) :
+class CatalogDetailViewModel constructor(repository: MainRepository) :
         BaseViewModel<MainRepository>(repository) {
 
-
     var cataLog = MutableLiveData<List<CategoryResult>>()
+    var ingredients = MutableLiveData<List<CategoryResult>>()
 
     init {
 
@@ -31,9 +31,17 @@ class CatalogViewModel constructor(repository: MainRepository) :
                     cataLog.value=data
                 })
         )
+    }
 
-
-
+    fun getIngredients(){
+        addSubscribe(getModel().localDataSource.getIngredientsData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(Consumer<String>{
+                    val data=Gson().fromJson<ArrayList<CategoryResult>>(it,object :TypeToken<ArrayList<CategoryResult>>(){}.type)
+                    ingredients.value=data
+                })
+        )
     }
 
 }

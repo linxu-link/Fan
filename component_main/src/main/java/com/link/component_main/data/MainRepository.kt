@@ -14,6 +14,7 @@ class MainRepository private constructor(
         BaseModel(), ILocalDataSource {
 
 
+
     companion object {
 
         @Volatile
@@ -35,4 +36,7 @@ class MainRepository private constructor(
         return localDataSource.getCatalogData()
     }
 
+    override fun getIngredientsData(): Observable<String> {
+        return localDataSource.getIngredientsData()
+    }
 }

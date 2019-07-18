@@ -2,18 +2,25 @@ package com.link.component_main.app.main.recommend
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.link.component_main.MainViewModelFactory
-import com.link.component_main.app.catalog.EmptyViewModel
+import com.link.component_main.app.MainViewModelFactory
+import com.link.component_main.EmptyViewModel
+import com.link.component_main.R
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.HorizontalBar
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.main_fragment_recommend.*
 
-
-class RecommendFragment(override var layoutId: Int = com.link.component_main.R.layout.main_fragment_recommend) : BaseMvvmFragment<EmptyViewModel>() {
+/**
+ * @author WJ
+ * @date 2019-07-18
+ *
+ * 描述：首页的推荐页
+ */
+class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_recommend) : BaseMvvmFragment<RecommendViewModel>() {
 
     companion object {
         @JvmStatic
@@ -26,8 +33,8 @@ class RecommendFragment(override var layoutId: Int = com.link.component_main.R.l
     }
 
 
-    override fun initViewModel(): EmptyViewModel {
-        return MainViewModelFactory.getInstance().create(EmptyViewModel::class.java)
+    override fun initViewModel(): RecommendViewModel {
+        return MainViewModelFactory.getInstance().create(RecommendViewModel::class.java)
     }
 
     private lateinit var mAdapter: RecommendAdapter
@@ -56,19 +63,19 @@ class RecommendFragment(override var layoutId: Int = com.link.component_main.R.l
 
     private fun initHeaderView() {
 
-        val list = arrayListOf<String>()
-        for (index in 0 until 5) {
-            list.add("ele:$index")
-        }
 
-        mHeadAdapter = RecommendHeadAdapter(com.link.component_main.R.layout.main_item_recommend_head_item, list)
+        mHeadAdapter = RecommendHeadAdapter(R.layout.main_item_recommend_head_item, null)
 
+
+        mViewModel.liveData.observe(this, Observer {
+            mHeadAdapter.setNewData(it)
+        })
 
         val headView = LayoutInflater.from(context).inflate(com.link.component_main.R.layout.main_item_recommend_head, null)
         val rvHead = headView.findViewById<RecyclerView>(com.link.component_main.R.id.rv_head)
         val line = headView.findViewById<HorizontalBar>(com.link.component_main.R.id.line)
 
-        line.mMaxNum = list.size
+        line.mMaxNum = mViewModel.liveData.value!!.size
 
         rvHead.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         rvHead.adapter = mHeadAdapter
@@ -114,6 +121,11 @@ class RecommendFragment(override var layoutId: Int = com.link.component_main.R.l
             return layoutManager.getPosition(topView)
         }
         return 0
+    }
+
+    override fun initData() {
+        super.initData()
+        mViewModel.getData()
     }
 
 

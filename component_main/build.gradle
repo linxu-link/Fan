@@ -52,6 +52,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":librarycomponent")
+    if (!search_isSingleCompile) {
+        runtimeOnly project(':component_search')
+    }
     kapt deps.alibaba.router_compiler
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

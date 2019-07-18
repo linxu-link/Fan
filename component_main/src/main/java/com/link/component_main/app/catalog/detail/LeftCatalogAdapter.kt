@@ -1,4 +1,4 @@
-package com.link.component_main.app.catalog
+package com.link.component_main.app.catalog.detail
 
 import android.graphics.Typeface
 import android.widget.TextView

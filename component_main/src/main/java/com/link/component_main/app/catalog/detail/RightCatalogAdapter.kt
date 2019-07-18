@@ -1,4 +1,4 @@
-package com.link.component_main.app.catalog
+package com.link.component_main.app.catalog.detail
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder

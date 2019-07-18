@@ -9,6 +9,10 @@ class RouterConstant {
         const val SPLASH = "/component_splash/splash"
         //入口
         const val APP = "/app/enter"
+        //菜单
+        const val MENU = "/component_menu/menu"
+        //检索
+        const val SEARCH = "/component_search/search"
     }
 
 }

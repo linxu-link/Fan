@@ -6,4 +6,6 @@ interface ILocalDataSource {
 
     fun getCatalogData():Observable<String>
 
+    fun getIngredientsData():Observable<String>
+
 }
