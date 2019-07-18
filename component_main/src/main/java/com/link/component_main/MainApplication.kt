@@ -5,6 +5,7 @@ import com.link.librarycomponent.ServiceFactory
 import com.link.librarymodule.BaseApplication
 
 class MainApplication : BaseApplication() {
+
     override fun initModuleApp(application: Application) {
         ServiceFactory.getInstance().mainService = MainService()
     }

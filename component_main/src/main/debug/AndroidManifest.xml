@@ -8,18 +8,22 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/main_app_name"
+        android:networkSecurityConfig="@xml/main_network_security_config"
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.link.component_main.BmobContentProvider" />
 
     </application>
 

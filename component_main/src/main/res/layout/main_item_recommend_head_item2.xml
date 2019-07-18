@@ -10,9 +10,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:cardElevation="0dp"
-        app:cardCornerRadius="@dimen/dp_10"
         android:background="@drawable/shape_stroke_corner_5dp_grey"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -20,12 +20,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <View
+        <ImageView
             android:id="@+id/img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:background="@color/font_color" />
+            android:scaleType="fitXY" />
 
     </androidx.cardview.widget.CardView>
 
@@ -34,11 +33,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="@string/app_name"
         android:textColor="@color/font_color"
         android:textSize="@dimen/text_middle_size"
-        android:maxLines="1"
-        android:ellipsize="end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

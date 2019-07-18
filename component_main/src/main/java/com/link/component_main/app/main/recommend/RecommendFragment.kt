@@ -2,13 +2,13 @@ package com.link.component_main.app.main.recommend
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.link.component_main.app.MainViewModelFactory
-import com.link.component_main.EmptyViewModel
 import com.link.component_main.R
+import com.link.component_main.app.MainViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.HorizontalBar
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
@@ -37,45 +37,49 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         return MainViewModelFactory.getInstance().create(RecommendViewModel::class.java)
     }
 
-    private lateinit var mAdapter: RecommendAdapter
+    private lateinit var mAdapter: RecommendHeadAdapter
     private lateinit var mHeadAdapter: RecommendHeadAdapter
     private lateinit var mHead2Adapter: RecommendHeadAdapter
-    private val mCache = RecyclerView.RecycledViewPool()
+//    private val mCache = RecyclerView.RecycledViewPool()
 
 
     override fun initView() {
         super.initView()
-        val list = arrayListOf<String>()
-        for (index in 0 until 10) {
-            list.add("ele:$index")
+
+        refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
+        refresh.setOnRefreshListener {
+            initData()
         }
 
-        mAdapter = RecommendAdapter(com.link.component_main.R.layout.main_item_recommend, list)
+        mAdapter = RecommendHeadAdapter(R.layout.main_item_recommend, null)
+
+        mViewModel.mMore.observe(this, Observer {
+            mAdapter.setNewData(it)
+            refresh.isRefreshing=false
+        })
 
         initHeaderView()
         initHeaderView2()
 
         rv_list.adapter = mAdapter
         rv_list.addItemDecoration(ItemDecoration(0, 8, 0, 8))
-        rv_list.setRecycledViewPool(mCache)
+//        rv_list.setRecycledViewPool(mCache)
 
     }
 
     private fun initHeaderView() {
 
-
         mHeadAdapter = RecommendHeadAdapter(R.layout.main_item_recommend_head_item, null)
 
+        val headView = LayoutInflater.from(context).inflate(R.layout.main_item_recommend_head, null)
+        val rvHead = headView.findViewById<RecyclerView>(R.id.rv_head)
+        val line = headView.findViewById<HorizontalBar>(R.id.line)
 
-        mViewModel.liveData.observe(this, Observer {
+        mViewModel.mBanner.observe(this, Observer {
             mHeadAdapter.setNewData(it)
+            line.mMaxNum = mViewModel.mBanner.value!!.size
         })
-
-        val headView = LayoutInflater.from(context).inflate(com.link.component_main.R.layout.main_item_recommend_head, null)
-        val rvHead = headView.findViewById<RecyclerView>(com.link.component_main.R.id.rv_head)
-        val line = headView.findViewById<HorizontalBar>(com.link.component_main.R.id.line)
-
-        line.mMaxNum = mViewModel.liveData.value!!.size
+        line.mMaxNum = 1
 
         rvHead.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         rvHead.adapter = mHeadAdapter
@@ -96,14 +100,14 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
     private fun initHeaderView2() {
 
-        val list = arrayListOf<String>()
-        for (index in 0 until 10) {
-            list.add("ele:$index")
-        }
-        mHead2Adapter = RecommendHeadAdapter(com.link.component_main.R.layout.main_item_recommend_head_item2, list)
+        mHead2Adapter = RecommendHeadAdapter(R.layout.main_item_recommend_head_item2, null)
 
-        val headView2 = LayoutInflater.from(context).inflate(com.link.component_main.R.layout.main_item_recommend_head2, null)
-        val rvHead = headView2.findViewById<RecyclerView>(com.link.component_main.R.id.rv_head2)
+        mViewModel.mToday.observe(this, Observer {
+            mHead2Adapter.setNewData(it)
+        })
+
+        val headView2 = LayoutInflater.from(context).inflate(R.layout.main_item_recommend_head2, null)
+        val rvHead = headView2.findViewById<RecyclerView>(R.id.rv_head2)
         rvHead.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         rvHead.adapter = mHead2Adapter
         rvHead.addItemDecoration(ItemDecoration(6, 0, 6, 0))
@@ -125,6 +129,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
     override fun initData() {
         super.initData()
+        refresh.isRefreshing=true
         mViewModel.getData()
     }
 

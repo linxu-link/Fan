@@ -15,14 +15,14 @@
         app:cardElevation="1dp">
 
         <ImageView
-            android:id="@+id/cover"
+            android:id="@+id/img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             tools:src="@mipmap/logo" />
 
         <View
-            android:layout_width="407dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/transparent_grey" />
 

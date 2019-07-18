@@ -26,8 +26,7 @@
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.link.petshop.BmobContentProvider">
-        </provider>
+            android:authorities="com.link.petshop.BmobContentProvider" />
     </application>
 
 </manifest>

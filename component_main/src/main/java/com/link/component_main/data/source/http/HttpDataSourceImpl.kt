@@ -1,15 +1,5 @@
 package com.link.component_main.data.source.http
 
-import cn.bmob.v3.BmobQuery
-import cn.bmob.v3.exception.BmobException
-import cn.bmob.v3.listener.FindListener
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.link.component_main.data.entity.CategoryResult
-import com.link.component_main.data.entity.MenuDetail
-import com.link.component_main.data.entity.RecommendEntity
-import io.reactivex.Observable
-
 
 /**
  * @author WJ
