@@ -10,6 +10,22 @@ public class Recommend extends BmobObject {
 
     private String more;
 
+    private String breakfast;
+
+    private String lunch;
+
+    private String dinner;
+
+    private String motion;
+
+    public String getMotion() {
+        return motion;
+    }
+
+    public void setMotion(String motion) {
+        this.motion = motion;
+    }
+
     public String getBanner() {
         return banner;
     }
@@ -34,5 +50,27 @@ public class Recommend extends BmobObject {
         this.more = more;
     }
 
+    public String getBreakfast() {
+        return breakfast;
+    }
 
+    public void setBreakfast(String breakfast) {
+        this.breakfast = breakfast;
+    }
+
+    public String getLunch() {
+        return lunch;
+    }
+
+    public void setLunch(String lunch) {
+        this.lunch = lunch;
+    }
+
+    public String getDinner() {
+        return dinner;
+    }
+
+    public void setDinner(String dinner) {
+        this.dinner = dinner;
+    }
 }

@@ -26,12 +26,14 @@ class RecommendViewModel(repository: MainRepository) : BaseViewModel<MainReposit
     var mToday = MutableLiveData<List<MenuDetail>>()
     var mMore = MutableLiveData<List<MenuDetail>>()
 
+    var other = MutableLiveData<List<MenuDetail>>()
+
     init {
 
     }
 
 
-    fun getData() {
+    fun getRecommendData() {
 
         val query = BmobQuery<Recommend>()
         query.addQueryKeys("banner,today,more")
@@ -48,6 +50,52 @@ class RecommendViewModel(repository: MainRepository) : BaseViewModel<MainReposit
 
                         val more = Gson().fromJson<BaseEntity<MenuResult>>(list[0].more.toString(), object : TypeToken<BaseEntity<MenuResult>>() {}.type)
                         mMore.value = more.result.data
+
+                    }
+                } else {
+                    Log.e("error", e.toString())
+                    ToastUtils.showLong(e.toString())
+                }
+            }
+
+        })
+
+    }
+
+    fun getData(index: Int) {
+
+        val query = BmobQuery<Recommend>()
+
+        if (index == 1) {
+            query.addQueryKeys("breakfast")
+        } else if (index == 2) {
+            query.addQueryKeys("lunch")
+        } else if (index == 3) {
+            query.addQueryKeys("dinner")
+        }else if(index==4){
+            query.addQueryKeys("motion")
+        }
+        query.findObjects(object : FindListener<Recommend>() {
+
+            override fun done(list: List<Recommend>?, e: BmobException?) {
+                if (e == null) {
+                    if (list != null && list.isNotEmpty()) {
+
+                        var json = ""
+
+                        if (index == 1) {
+                            json = list[0].breakfast.toString()
+                        } else if (index == 2) {
+                            json = list[0].lunch.toString()
+                        } else if (index == 3) {
+                            json = list[0].dinner.toString()
+                        }else if (index==4){
+                            json=list[0].motion.toString()
+                        }
+
+                        val result = Gson().fromJson<BaseEntity<MenuResult>>(json, object : TypeToken<BaseEntity<MenuResult>>() {}.type)
+                        other.value = result.result.data
+
 
                     }
                 } else {

@@ -20,16 +20,28 @@ import kotlinx.android.synthetic.main.main_fragment_recommend.*
  *
  * 描述：首页的推荐页
  */
+
+const val INDEX = "index"
+
 class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_recommend) : BaseMvvmFragment<RecommendViewModel>() {
+
+    private var index: Int = 0
 
     companion object {
         @JvmStatic
-        fun newInstance() =
+        fun newInstance(index: Int) =
                 RecommendFragment().apply {
                     arguments = Bundle().apply {
-
+                        putInt(INDEX, index)
                     }
                 }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null) {
+            index = arguments!!.getInt(INDEX, 0)
+        }
     }
 
 
@@ -38,6 +50,8 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
     }
 
     private lateinit var mAdapter: RecommendHeadAdapter
+
+
     private lateinit var mHeadAdapter: RecommendHeadAdapter
     private lateinit var mHead2Adapter: RecommendHeadAdapter
 //    private val mCache = RecyclerView.RecycledViewPool()
@@ -53,13 +67,24 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
         mAdapter = RecommendHeadAdapter(R.layout.main_item_recommend, null)
 
-        mViewModel.mMore.observe(this, Observer {
-            mAdapter.setNewData(it)
-            refresh.isRefreshing=false
-        })
+        if (index == 0) {
 
-        initHeaderView()
-        initHeaderView2()
+            mViewModel.mMore.observe(this, Observer {
+                mAdapter.setNewData(it)
+                refresh.isRefreshing = false
+            })
+
+
+            initHeaderView()
+            initHeaderView2()
+        } else {
+
+            mViewModel.other.observe(this, Observer {
+                mAdapter.setNewData(it)
+                refresh.isRefreshing = false
+            })
+
+        }
 
         rv_list.adapter = mAdapter
         rv_list.addItemDecoration(ItemDecoration(0, 8, 0, 8))
@@ -129,8 +154,12 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
     override fun initData() {
         super.initData()
-        refresh.isRefreshing=true
-        mViewModel.getData()
+        refresh.isRefreshing = true
+        if (index == 0) {
+            mViewModel.getRecommendData()
+        } else {
+            mViewModel.getData(index)
+        }
     }
 
 
