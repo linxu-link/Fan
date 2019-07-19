@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/shape_stroke_corner_10dp_white_full"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_stroke_corner_10dp_white_full">
 
     <TextView
         android:id="@+id/user_textview"
         style="@style/WrapWrap_large"
-        android:textStyle="bold"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="更多服务"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +22,7 @@
         android:layout_height="@dimen/dp_40"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toStartOf="@+id/img_score"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_textview"
@@ -44,6 +45,7 @@
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toStartOf="@+id/img_update"
         app:layout_constraintStart_toEndOf="@+id/img_about"
         app:layout_constraintTop_toTopOf="@+id/img_about"
@@ -87,6 +89,7 @@
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="8dp"
+        android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_update"
         app:layout_constraintTop_toTopOf="@+id/img_update"
@@ -108,6 +111,7 @@
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"
         android:layout_marginTop="24dp"
+        android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toEndOf="@+id/img_about"
         app:layout_constraintStart_toStartOf="@+id/img_about"
         app:layout_constraintTop_toBottomOf="@+id/tv_about"
