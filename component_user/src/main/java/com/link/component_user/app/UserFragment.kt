@@ -27,6 +27,11 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
                 }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        fullScreen(activity!!)
+    }
+
 
 
 }

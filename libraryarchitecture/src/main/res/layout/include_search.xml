@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/toolbar"
+    android:id="@+id/search_bar"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp_40"
     android:gravity="start|center_vertical"
@@ -16,13 +16,12 @@
         android:layout_height="30dp"
         android:src="@drawable/ic_search" />
 
-    <EditText
+    <TextView
         android:layout_margin="3dp"
         android:background="@null"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
-        android:focusable="false"
         android:gravity="start|center_vertical"
         android:textColor="@color/grey"
         android:textSize="@dimen/text_middle_size"

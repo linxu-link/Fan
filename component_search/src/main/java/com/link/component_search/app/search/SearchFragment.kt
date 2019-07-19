@@ -20,7 +20,6 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
         return SearchViewModelFactory.getInstance().create(EmptyViewModel::class.java)
     }
 
-
     companion object {
         @JvmStatic
         fun newInstance() =

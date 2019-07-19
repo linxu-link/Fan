@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/shape_stroke_half_right_corner_15dp_white"
+        android:background="@drawable/shape_stroke_corner_10dp_white_full"
         android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

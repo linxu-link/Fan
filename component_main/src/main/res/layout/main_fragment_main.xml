@@ -7,7 +7,6 @@
     android:background="@android:color/white">
 
     <include
-        android:id="@+id/main_include"
         layout="@layout/include_search"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
@@ -29,9 +28,9 @@
         app:indicatorMarginEnd="20dp"
         app:indicatorMarginStart="20dp"
         app:indicatorStartColor="#ff6464"
-        app:layout_constraintEnd_toEndOf="@+id/main_include"
-        app:layout_constraintStart_toStartOf="@+id/main_include"
-        app:layout_constraintTop_toBottomOf="@+id/main_include"
+        app:layout_constraintEnd_toEndOf="@+id/search_bar"
+        app:layout_constraintStart_toStartOf="@+id/search_bar"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
         app:tabIndicatorHeight="3dp"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/colorPrimary"
@@ -45,8 +44,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/main_include"
-        app:layout_constraintStart_toStartOf="@+id/main_include"
+        app:layout_constraintEnd_toEndOf="@+id/search_bar"
+        app:layout_constraintStart_toStartOf="@+id/search_bar"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
 
