@@ -69,7 +69,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
         if (index == 0) {
 
-            mViewModel.mMore.observe(this, Observer {
+            mViewModel.moreData.observe(this, Observer {
                 mAdapter.setNewData(it)
                 refresh.isRefreshing = false
             })
@@ -79,7 +79,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
             initHeaderView2()
         } else {
 
-            mViewModel.other.observe(this, Observer {
+            mViewModel.otherData.observe(this, Observer {
                 mAdapter.setNewData(it)
                 refresh.isRefreshing = false
             })
@@ -100,9 +100,9 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         val rvHead = headView.findViewById<RecyclerView>(R.id.rv_head)
         val line = headView.findViewById<HorizontalBar>(R.id.line)
 
-        mViewModel.mBanner.observe(this, Observer {
+        mViewModel.bannerData.observe(this, Observer {
             mHeadAdapter.setNewData(it)
-            line.mMaxNum = mViewModel.mBanner.value!!.size
+            line.mMaxNum = mViewModel.bannerData.value!!.size
         })
         line.mMaxNum = 1
 
@@ -127,7 +127,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
         mHead2Adapter = RecommendHeadAdapter(R.layout.main_item_recommend_head_item2, null)
 
-        mViewModel.mToday.observe(this, Observer {
+        mViewModel.todayData.observe(this, Observer {
             mHead2Adapter.setNewData(it)
         })
 

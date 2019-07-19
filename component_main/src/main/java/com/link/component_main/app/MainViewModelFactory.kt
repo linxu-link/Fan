@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.link.component_main.EmptyViewModel
 import com.link.component_main.app.catalog.detail.CatalogDetailViewModel
+import com.link.component_main.app.find.FindViewModel
 import com.link.component_main.app.main.recommend.RecommendViewModel
 import com.link.component_main.data.Injection
 import com.link.component_main.data.MainRepository
@@ -22,8 +23,8 @@ class MainViewModelFactory private constructor(
                 instance ?: synchronized(this) {
                     instance
                             ?: MainViewModelFactory(Injection.provideRepository()).also {
-                        instance = it
-                    }
+                                instance = it
+                            }
                 }
     }
 
@@ -32,8 +33,10 @@ class MainViewModelFactory private constructor(
             return CatalogDetailViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(EmptyViewModel::class.java)) {
             return EmptyViewModel(repository) as T
-        }else if (modelClass.isAssignableFrom(RecommendViewModel::class.java)){
+        } else if (modelClass.isAssignableFrom(RecommendViewModel::class.java)) {
             return RecommendViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(FindViewModel::class.java)) {
+            return FindViewModel(repository) as T
         }
 
         throw RuntimeException("unknown mViewModel class:" + modelClass.name)

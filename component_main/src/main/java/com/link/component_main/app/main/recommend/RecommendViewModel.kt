@@ -13,20 +13,17 @@ import com.link.component_main.data.entity.MenuResult
 import com.link.component_main.data.entity.Recommend
 import com.link.librarycomponent.entity.base.BaseEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.link.librarymodule.utils.ToastUtils
-import java.lang.reflect.ParameterizedType
-import java.lang.reflect.Type
 
 
 class RecommendViewModel(repository: MainRepository) : BaseViewModel<MainRepository>(repository) {
 
 
-    var mBanner = MutableLiveData<List<MenuDetail>>()
-    var mToday = MutableLiveData<List<MenuDetail>>()
-    var mMore = MutableLiveData<List<MenuDetail>>()
+    var bannerData = MutableLiveData<List<MenuDetail>>()
+    var todayData = MutableLiveData<List<MenuDetail>>()
+    var moreData = MutableLiveData<List<MenuDetail>>()
 
-    var other = MutableLiveData<List<MenuDetail>>()
+    var otherData = MutableLiveData<List<MenuDetail>>()
 
     init {
 
@@ -43,13 +40,13 @@ class RecommendViewModel(repository: MainRepository) : BaseViewModel<MainReposit
                 if (e == null) {
                     if (list != null && list.isNotEmpty()) {
                         val banner = Gson().fromJson<BaseEntity<MenuResult>>(list[0].banner.toString(), object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                        mBanner.value = banner.result.data
+                        bannerData.value = banner.result.data
 
                         val today = Gson().fromJson<BaseEntity<MenuResult>>(list[0].today.toString(), object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                        mToday.value = today.result.data
+                        todayData.value = today.result.data
 
                         val more = Gson().fromJson<BaseEntity<MenuResult>>(list[0].more.toString(), object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                        mMore.value = more.result.data
+                        moreData.value = more.result.data
 
                     }
                 } else {
@@ -94,7 +91,7 @@ class RecommendViewModel(repository: MainRepository) : BaseViewModel<MainReposit
                         }
 
                         val result = Gson().fromJson<BaseEntity<MenuResult>>(json, object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                        other.value = result.result.data
+                        otherData.value = result.result.data
 
 
                     }

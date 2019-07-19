@@ -7,11 +7,10 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/cover"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/logo"
         app:layout_constraintBottom_toTopOf="@+id/main_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,10 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="381dp" />
+        app:layout_constraintGuide_begin="450dp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="start|bottom"
@@ -38,10 +37,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/main_guideline"
-        android:text="65度C汤种小面包" />
+        tools:text="65度C汤种小面包" />
 
     <TextView
-        android:id="@+id/main_textview5"
+        android:id="@+id/content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -49,11 +48,11 @@
         android:maxLines="4"
         android:textColor="@color/text_light"
         android:textSize="@dimen/text_middle_size"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        android:text="这款面包很柔软，很好吃，我已经做过好多次，家人和朋友都说不错。这个配方是用妃娟老师的，老师经常做纯天然的食材来做，每一种都很好吃" />
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        tools:text="这款面包很柔软，很好吃，我已经做过好多次，家人和朋友都说不错。这个配方是用妃娟老师的，老师经常做纯天然的食材来做，每一种都很好吃" />
 
     <TextView
         android:id="@+id/main_textview6"
@@ -65,8 +64,8 @@
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_big_size"
         app:layout_constraintBottom_toTopOf="@+id/main_textview7"
-        app:layout_constraintStart_toStartOf="@+id/main_textview5"
-        app:layout_constraintTop_toBottomOf="@+id/main_textview5"
+        app:layout_constraintStart_toStartOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@+id/content"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -74,22 +73,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="种类："
+        android:text="标签："
         android:textSize="@dimen/text_middle_size"
         android:textColor="@color/font_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/main_textview6" />
 
     <TextView
-        android:id="@+id/main_textview8"
+        android:id="@+id/tags"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/text_light"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintBottom_toBottomOf="@+id/main_textview7"
-        app:layout_constraintEnd_toEndOf="@+id/main_textview5"
+        app:layout_constraintEnd_toEndOf="@+id/content"
         app:layout_constraintStart_toEndOf="@+id/main_textview7"
         app:layout_constraintTop_toTopOf="@+id/main_textview7"
-        android:text="烘焙;甜;烤箱;小面包" />
+        tools:text="烘焙;甜;烤箱;小面包" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
