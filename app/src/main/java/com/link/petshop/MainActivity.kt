@@ -20,7 +20,6 @@ class MainActivity : BaseActivity(), BottomNavigationBar.OnClickListener {
         setContentView(R.layout.activity_main)
         bottom_navigation_bar.setOnItemClickListener(this)
 
-
         mFragmentList.add(ServiceFactory.getInstance().mainService!!.newMainFragment(bundle = null)!!)
         mFragmentList.add(ServiceFactory.getInstance().mainService!!.newCatalogFragment(bundle = null)!!)
         mFragmentList.add(ServiceFactory.getInstance().mainService!!.newFindFragment(bundle = null)!!)
