@@ -17,7 +17,7 @@
         android:background="@drawable/shape_stroke_corner_25dp_grey_full"
         android:gravity="start|center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
+        app:layout_constraintEnd_toStartOf="@+id/btn_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -40,12 +40,12 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/btn_cancel"
+        android:id="@+id/btn_search"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="取消"
+        android:text="搜索"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_big_size"
         android:textStyle="bold"

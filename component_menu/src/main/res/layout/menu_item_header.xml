@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/menu_textview"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -31,13 +31,13 @@
         android:orientation="horizontal"
         android:paddingTop="@dimen/dp_4"
         android:paddingBottom="@dimen/dp_4"
-        app:layout_constraintEnd_toEndOf="@+id/menu_textview"
+        app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/menu_textview"
+        app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/menu_textview5" />
 
     <TextView
-        android:id="@+id/menu_textview2"
+        android:id="@+id/content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -50,46 +50,55 @@
 
     <TextView
         android:id="@+id/menu_textview3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_stroke_corner_5dp_grey_full"
+        android:padding="@dimen/dp_4"
         android:text="主料"
         android:textColor="@color/font_color"
         android:textSize="@dimen/text_big_size"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/menu_textview2"
-        app:layout_constraintTop_toBottomOf="@+id/menu_textview2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/content"
+        app:layout_constraintTop_toBottomOf="@+id/content" />
 
-    <LinearLayout
-        android:id="@+id/menu_linearlayout2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ingredients"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:minHeight="@dimen/dp_100"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/menu_textview2"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="@+id/content"
         app:layout_constraintStart_toStartOf="@+id/menu_textview3"
         app:layout_constraintTop_toBottomOf="@+id/menu_textview3" />
 
     <TextView
         android:id="@+id/menu_textview4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_stroke_corner_5dp_grey_full"
+        android:padding="@dimen/dp_4"
         android:text="辅料"
         android:textColor="@color/font_color"
         android:textSize="@dimen/text_big_size"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/menu_linearlayout2"
-        app:layout_constraintTop_toBottomOf="@+id/menu_linearlayout2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ingredients"
+        app:layout_constraintTop_toBottomOf="@+id/ingredients" />
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/burden"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:minHeight="@dimen/dp_100"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/menu_linearlayout2"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="@+id/ingredients"
         app:layout_constraintStart_toStartOf="@+id/menu_textview4"
         app:layout_constraintTop_toBottomOf="@+id/menu_textview4" />
 
@@ -106,8 +115,8 @@
         android:text="收藏"
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_big_size"
-        app:layout_constraintEnd_toEndOf="@+id/menu_textview"
-        app:layout_constraintStart_toStartOf="@+id/menu_textview"
-        app:layout_constraintTop_toBottomOf="@+id/menu_textview" />
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

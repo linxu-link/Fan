@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.link.component_main.R
 import com.link.component_main.app.MainViewModelFactory
+import com.link.component_main.data.entity.MenuDetail
+import com.link.librarycomponent.router.RouterConstant
+import com.link.librarycomponent.router.StartRouter
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.HorizontalBar
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
@@ -88,7 +91,16 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
         rv_list.adapter = mAdapter
         rv_list.addItemDecoration(ItemDecoration(0, 8, 0, 8))
-//        rv_list.setRecycledViewPool(mCache)
+
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+
+            val bundle = Bundle()
+
+            bundle.putParcelable(MenuDetail::class.java.canonicalName, mAdapter.getItem(position))
+
+            StartRouter.navigation(RouterConstant.MENU, bundle)
+
+        }
 
     }
 

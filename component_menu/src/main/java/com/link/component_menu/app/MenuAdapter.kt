@@ -2,10 +2,11 @@ package com.link.component_menu.app
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.link.component_menu.data.entity.MenuDetail
 
-class MenuAdapter(layoutId: Int, data: List<String>?) : BaseQuickAdapter<String, BaseViewHolder>(layoutId, data) {
+class MenuAdapter(layoutId: Int, data: List<MenuDetail.StepsBean>?) : BaseQuickAdapter<MenuDetail.StepsBean, BaseViewHolder>(layoutId, data) {
 
-    override fun convert(helper: BaseViewHolder?, item: String?) {
+    override fun convert(helper: BaseViewHolder?, item: MenuDetail.StepsBean) {
 
     }
 

@@ -1,8 +1,8 @@
-package com.link.component_search
+package com.link.component_search.app
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.link.component_search.app.search.EmptyViewModel
+import com.link.component_search.app.search.SearchViewModel
 import com.link.component_search.data.Injection
 import com.link.component_search.data.SearchRepository
 
@@ -18,15 +18,16 @@ class SearchViewModelFactory private constructor(
         @JvmStatic
         fun getInstance() =
                 instance ?: synchronized(this) {
-                    instance ?: SearchViewModelFactory(Injection.provideRepository()).also {
+                    instance
+                            ?: SearchViewModelFactory(Injection.provideRepository()).also {
                         instance = it
                     }
                 }
     }
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(EmptyViewModel::class.java)) {
-            return EmptyViewModel(repository) as T
+        if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
+            return SearchViewModel(repository) as T
         }
 
         throw RuntimeException("unknown mViewModel class:" + modelClass.name)

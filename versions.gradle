@@ -21,7 +21,7 @@ versions.timber = "4.5.1"
 versions.rxjava2 = "2.1.13"
 versions.rxandroid = "2.0.1"
 versions.rxlifecycle = "2.2.2"
-versions.rxbinding = "3.0.0-alpha1"
+versions.rxbinding = "3.0.0-alpha2"
 
 versions.atsl_runner = "1.0.1"
 versions.atsl_rules = "1.0.1"

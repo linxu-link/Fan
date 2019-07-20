@@ -7,17 +7,16 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/name"
         app:cardCornerRadius="@dimen/dp_10">
 
         <ImageView
+            android:id="@+id/cover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:srcCompat="@mipmap/xxl" />
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 

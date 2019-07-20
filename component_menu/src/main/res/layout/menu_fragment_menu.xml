@@ -30,7 +30,7 @@
                 android:fitsSystemWindows="true">
 
                 <ImageView
-                    android:id="@+id/banner_guide_content"
+                    android:id="@+id/cover"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@mipmap/background"
@@ -53,14 +53,6 @@
                 app:title="@string/menu_app_name"
                 app:titleTextColor="@android:color/white">
 
-                <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="?android:attr/actionBarSize"-->
-                <!--android:gravity="center"-->
-                <!--android:text="资源库"-->
-                <!--android:textColor="@android:color/white"-->
-                <!--android:textSize="@dimen/text_middle_size" />-->
-
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -78,8 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/menu_item" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

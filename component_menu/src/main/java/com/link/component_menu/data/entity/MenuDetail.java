@@ -1,9 +1,8 @@
-package com.link.component_main.data.entity;
+package com.link.component_menu.data.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuDetail implements Parcelable {
@@ -138,7 +137,7 @@ public class MenuDetail implements Parcelable {
             this.step = in.readString();
         }
 
-        public static final Creator<StepsBean> CREATOR = new Creator<StepsBean>() {
+        public static final Parcelable.Creator<StepsBean> CREATOR = new Parcelable.Creator<StepsBean>() {
             @Override
             public StepsBean createFromParcel(Parcel source) {
                 return new StepsBean(source);
@@ -166,7 +165,7 @@ public class MenuDetail implements Parcelable {
         dest.writeString(this.ingredients);
         dest.writeString(this.burden);
         dest.writeStringList(this.albums);
-        dest.writeList(this.steps);
+        dest.writeTypedList(this.steps);
     }
 
     public MenuDetail() {
@@ -180,8 +179,7 @@ public class MenuDetail implements Parcelable {
         this.ingredients = in.readString();
         this.burden = in.readString();
         this.albums = in.createStringArrayList();
-        this.steps = new ArrayList<StepsBean>();
-        in.readList(this.steps, StepsBean.class.getClassLoader());
+        this.steps = in.createTypedArrayList(StepsBean.CREATOR);
     }
 
     public static final Parcelable.Creator<MenuDetail> CREATOR = new Parcelable.Creator<MenuDetail>() {

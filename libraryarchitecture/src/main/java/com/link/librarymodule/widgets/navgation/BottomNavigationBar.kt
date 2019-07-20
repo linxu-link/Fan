@@ -26,7 +26,7 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
             listener!!.onItemClickListener(checkedId)
         }
         for (index in array) {
-            rootView.findViewById<RadioButton>(index).setTextColor(ContextCompat.getColor(context,R.color.text_light))
+            rootView.findViewById<RadioButton>(index).setTextColor(ContextCompat.getColor(context,R.color.font_color))
         }
        setColor(rootView.findViewById(checkedId))
     }

@@ -1,23 +1,29 @@
 package com.link.component_search.app.search
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.link.component_search.R
-import com.link.component_search.SearchViewModelFactory
+import com.link.component_search.app.SearchViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
+import com.link.librarymodule.utils.SimpleTextWatcher
 import com.link.librarymodule.widgets.recyclerview.DividerItemDecoration
 import kotlinx.android.synthetic.main.search_fragment_search.*
+
 /**
  * @author WJ
  * @date 2019-07-16
  *
  * 描述：
  */
-class SearchFragment(override var layoutId: Int = R.layout.search_fragment_search) : BaseMvvmFragment<EmptyViewModel>() {
+class SearchFragment(override var layoutId: Int = R.layout.search_fragment_search) : BaseMvvmFragment<SearchViewModel>() {
 
-    override fun initViewModel(): EmptyViewModel {
-        return SearchViewModelFactory.getInstance().create(EmptyViewModel::class.java)
+    override fun initViewModel(): SearchViewModel {
+        return ViewModelProviders.of(activity!!,SearchViewModelFactory.getInstance()).get(SearchViewModel::class.java)
     }
 
     companion object {
@@ -35,26 +41,41 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
     override fun initView() {
         super.initView()
 
-        val list = arrayListOf<String>()
-        for (index in 0 until 5) {
-            list.add("ele:$index")
-        }
-
-
-        mAdapter = SearchAdapter(R.layout.search_item, list)
+        mAdapter = SearchAdapter(R.layout.search_item, null)
 
         rvList.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
         rvList.adapter = mAdapter
 
         initHeader()
 
+        btn_search.setOnClickListener {
+            val menu: String = et_search.text.toString()
+            if (menu.isNotEmpty()) {
+                mViewModel.searchWord.value = menu
+            }
+        }
+
+
+        mViewModel.searchWord.observe(this, Observer {
+            mViewModel.search(it, 0, 20)
+        })
+
+
+        mViewModel.searchData.observe(this, Observer {
+
+            findNavController().navigate(R.id.search_searchdetailfragment)
+
+        })
+
     }
 
-    fun initHeader(){
-
-        val header=LayoutInflater.from(context).inflate(R.layout.search_item_head,null)
-
+    private fun initHeader() {
+        val header = LayoutInflater.from(context).inflate(R.layout.search_item_head, null)
         mAdapter.addHeaderView(header)
+    }
+
+    override fun initData() {
+        super.initData()
 
     }
 
