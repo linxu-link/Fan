@@ -6,18 +6,17 @@
     android:layout_height="@dimen/dp_250"
     android:orientation="vertical">
 
-
     <ImageView
-        android:id="@+id/menu_imageview"
+        android:id="@+id/img"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_200"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/background" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/menu_imageview"
         android:layout_width="0dp"
         android:layout_height="@dimen/dp_200"
         android:background="@color/transparent_grey"
@@ -26,15 +25,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/menu_textview6"
+        android:id="@+id/content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="再滚圆，擦一层水，粘上白芝麻，再发酵至1.8倍大"
-        android:textColor="@color/text_light"
+        tools:text="再滚圆，擦一层水，粘上白芝麻，再发酵至1.8倍大"
+        android:textColor="@color/text_light_dark"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,17 +41,17 @@
         app:layout_constraintTop_toBottomOf="@+id/menu_imageview" />
 
     <TextView
-        android:id="@+id/menu_textview7"
+        android:id="@+id/position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/shape_stroke_half_right_corner_15dp_white"
-        android:paddingLeft="@dimen/dp_20"
+        android:paddingLeft="@dimen/dp_16"
         android:paddingTop="@dimen/dp_10"
-        android:paddingRight="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_16"
         android:paddingBottom="@dimen/dp_10"
-        android:text="步骤1"
-        android:textColor="@color/text_light"
+        tools:text="步骤1"
+        android:textColor="@color/font_color"
         android:textSize="@dimen/text_big_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

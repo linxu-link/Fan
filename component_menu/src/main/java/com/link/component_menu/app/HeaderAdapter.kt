@@ -1,13 +1,12 @@
 package com.link.component_menu.app
 
-import android.widget.LinearLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 
-class HeaderAdapter(layoutId:Int,list:List<String>): BaseQuickAdapter<String,BaseViewHolder>(layoutId,list) {
+class HeaderAdapter(layoutId:Int,list:List<String>?): BaseQuickAdapter<String,BaseViewHolder>(layoutId,list) {
 
-    override fun convert(helper: BaseViewHolder?, item: String?) {
-
+    override fun convert(helper: BaseViewHolder, item: String?) {
+        helper.setText(android.R.id.text1,item)
     }
 
 }

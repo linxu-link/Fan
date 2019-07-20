@@ -7,6 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.alibaba.android.arouter.launcher.ARouter
+import com.google.gson.Gson
 import com.link.component_main.R
 import com.link.component_main.app.MainViewModelFactory
 import com.link.component_main.data.entity.MenuDetail
@@ -94,11 +96,11 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
         mAdapter.setOnItemClickListener { adapter, view, position ->
 
-            val bundle = Bundle()
+            val data = Gson().toJson(mAdapter.getItem(position))
 
-            bundle.putParcelable(MenuDetail::class.java.canonicalName, mAdapter.getItem(position))
-
-            StartRouter.navigation(RouterConstant.MENU, bundle)
+            ARouter.getInstance().build(RouterConstant.MENU)
+                    .withString("MenuDetail",data)
+                    .navigation()
 
         }
 
