@@ -51,9 +51,8 @@ class CollectionFragment(override var layoutId: Int = R.layout.user_fragment_col
         back.setOnClickListener {
             findNavController().navigateUp()
         }
-        mAdapter=CollectionAdapter(R.layout.user_item_collection,null)
+        mAdapter = CollectionAdapter(R.layout.user_item_collection, null)
         rv_list.adapter
-        rv_list.layoutManager=LinearLayoutManager(context,RecyclerView.VERTICAL,false)
     }
 
     override fun initViewObservable() {

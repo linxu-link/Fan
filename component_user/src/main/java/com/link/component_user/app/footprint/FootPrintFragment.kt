@@ -4,6 +4,7 @@ package com.link.component_user.app.footprint
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
@@ -40,7 +41,10 @@ class FootPrintFragment(override var layoutId: Int = R.layout.user_fragment_foot
 
     override fun initView() {
         super.initView()
-
+        refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
+        refresh.setOnRefreshListener {
+            getData()
+        }
         val title = mRootView!!.findViewById<TextView>(R.id.title)
         val back = mRootView!!.findViewById<ImageView>(R.id.back)
         title.text = "我的足迹"
@@ -54,7 +58,6 @@ class FootPrintFragment(override var layoutId: Int = R.layout.user_fragment_foot
 
     override fun initViewObservable() {
         super.initViewObservable()
-
         mViewModel.mFootPrintData.observe(this, Observer {
             mAdapter.setNewData(it)
         })
@@ -63,6 +66,7 @@ class FootPrintFragment(override var layoutId: Int = R.layout.user_fragment_foot
 
     override fun getData() {
         super.getData()
+        refresh.isRefreshing = true
         mViewModel.getFootPrintData()
     }
 
