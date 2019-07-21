@@ -1,5 +1,7 @@
 package com.link.librarycomponent
 
+import com.link.librarycomponent.service.login.EmptyLoginService
+import com.link.librarycomponent.service.login.ILoginService
 import com.link.librarycomponent.service.main.EmptyMainService
 import com.link.librarycomponent.service.main.IMainService
 import com.link.librarycomponent.service.update.IUpdateService
@@ -20,6 +22,8 @@ class ServiceFactory {
                 }
     }
 
+    var updateService: IUpdateService? = null
+
     var userService: IUserService? = null
         get() {
             if (field == null) {
@@ -37,7 +41,13 @@ class ServiceFactory {
             return field
         }
 
-    var updateService: IUpdateService? = null
+    var loginService: ILoginService? = null
+        get() {
+            if (field == null) {
+                return EmptyLoginService()
+            }
+            return field
+        }
 
 
 }

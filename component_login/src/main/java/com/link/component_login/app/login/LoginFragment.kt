@@ -5,12 +5,15 @@ import android.text.Editable
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.link.component_login.R
 import com.link.component_login.ViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.utils.SimpleTextWatcher
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.login_fragment_login.*
 
 /**
  * @author WJ
@@ -18,8 +21,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
  *
  * 描述：登录界面
  */
-class LoginFragment(override var layoutId: Int = R.layout.fragment_login) : BaseMvvmFragment<LoginViewModel>() {
-
+class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) : BaseMvvmFragment<LoginViewModel>() {
 
     companion object {
         @JvmStatic
@@ -31,16 +33,20 @@ class LoginFragment(override var layoutId: Int = R.layout.fragment_login) : Base
                 }
     }
 
-    override fun initParam() {
-        super.initParam()
-    }
 
     override fun initViewModel(): LoginViewModel {
         return ViewModelFactory.getInstance().create(LoginViewModel::class.java)
     }
 
-    override fun initViewObservable() {
-        super.initViewObservable()
+    override fun initView() {
+        super.initView()
+        val title=mRootView!!.findViewById<TextView>(R.id.title)
+        val back=mRootView!!.findViewById<ImageView>(R.id.back)
+        title.text="登录账户"
+        back.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
 
         //登录按钮
         login_btn.setOnClickListener {
@@ -52,7 +58,6 @@ class LoginFragment(override var layoutId: Int = R.layout.fragment_login) : Base
         remember_pwd.setOnCheckedChangeListener { _, isChecked ->
 
         }
-
 
         //清除手机号码
         clear_phone.setOnClickListener {
@@ -73,24 +78,27 @@ class LoginFragment(override var layoutId: Int = R.layout.fragment_login) : Base
 
         })
 
+        swich_pwd.setOnCheckedChangeListener { _, checked ->
+            mViewModel.uc.pSwitchEvent.value = checked
+        }
+        register.setOnClickListener {
+
+            findNavController().navigate(R.id.registerFragment)
+
+        }
+
+    }
+
+    override fun initViewObservable() {
+        super.initViewObservable()
         mViewModel.phone.observe(this, Observer {
             et_phone.setText(it)
         })
-
-
-
 
         mViewModel.password.observe(this, Observer {
 
             et_password.setText(it)
         })
-
-
-        swich_pwd.setOnCheckedChangeListener { _, checked ->
-
-            mViewModel.uc.pSwitchEvent.value = checked
-
-        }
 
         mViewModel.uc.pSwitchEvent.observe(this, Observer {
             if (!it) {

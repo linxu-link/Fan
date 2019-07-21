@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="8dp"
         android:text="创建账号"
         android:textColor="@color/font_color"
@@ -37,7 +37,7 @@
         android:background="@drawable/shape_stroke_corner_25dp_grey"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
@@ -45,7 +45,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:padding="@dimen/dp_4"
             android:src="@drawable/ic_people" />
 
         <EditText
@@ -55,40 +56,57 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="15dp"
             android:background="@null"
-            android:hint="请输入手机号码" />
+            android:hint="请输入手机号码"
+            android:textSize="@dimen/text_middle_size" />
 
     </LinearLayout>
 
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/linearLayout4"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="52dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/shape_stroke_corner_25dp_grey"
-        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/ic_people" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="10dp"
+            android:padding="@dimen/dp_4"
+            android:src="@drawable/ic_lock" />
 
         <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="15dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
             android:background="@null"
-            android:hint="请输入密码" />
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:textSize="@dimen/text_middle_size" />
 
-    </LinearLayout>
+        <CheckBox
+            android:id="@+id/swich_pwd"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/login_checkbox_eye"
+            android:button="@null"
+            android:checked="false"
+            android:padding="5dp"
+            android:src="@drawable/ic_eye_close" />
+
+    </FrameLayout>
 
 
     <LinearLayout
@@ -100,6 +118,7 @@
         android:background="@drawable/shape_stroke_corner_25dp_grey"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
@@ -107,17 +126,19 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/ic_people" />
+            android:layout_marginStart="@dimen/dp_10"
+            android:padding="@dimen/dp_4"
+            android:src="@drawable/login_ic_code" />
 
         <EditText
-            android:id="@+id/code"
+            android:id="@+id/et_code"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="15dp"
             android:background="@null"
-            android:hint="请输入验证码" />
+            android:hint="请输入验证码"
+            android:textSize="@dimen/text_middle_size" />
 
     </LinearLayout>
 
@@ -135,7 +156,7 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/login"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:gravity="center"
@@ -149,7 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="1px"
         android:background="@color/grey"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

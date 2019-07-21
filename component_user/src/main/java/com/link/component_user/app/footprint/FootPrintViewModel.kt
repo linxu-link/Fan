@@ -17,13 +17,13 @@ class FootPrintViewModel(repository: UserRepository) : BaseViewModel<UserReposit
 
     val mFootPrintData = MutableLiveData<List<FootPrint>>()
 
-    private val userEntity: UserEntity = BmobUser.getCurrentUser(UserEntity::class.java)
+    private val userEntity: UserEntity? = BmobUser.getCurrentUser(UserEntity::class.java)
 
 
     fun getFootPrintData() {
 
         val query = BmobQuery<FootPrint>()
-        query.addWhereEqualTo("userId", userEntity.objectId)
+        query.addWhereEqualTo("userId", userEntity!!.objectId)
         query.findObjects(object : FindListener<FootPrint>() {
             override fun done(list: MutableList<FootPrint>?, e: BmobException?) {
                 if (e == null) {

@@ -9,7 +9,7 @@ class Injection {
 
     companion object {
 
-        fun provideRepository(): Repository {
+        fun provideRepository(): LoginRepository {
 
             val service: HttpService = RetrofitClient.getInstance().create(HttpService::class.java)
             //网络数据源
@@ -17,7 +17,7 @@ class Injection {
             //本地数据源
             val localService = LocalDataSourceImpl()
 
-            return Repository.getInstance(httpService, localService)
+            return LoginRepository.getInstance(httpService, localService)
         }
 
     }

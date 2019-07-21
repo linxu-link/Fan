@@ -1,19 +1,21 @@
 package com.link.component_login
 
 import android.os.Bundle
+import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.link.component_login.app.login.LoginFragment
 import com.link.librarycomponent.router.RouterConstant
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.link.librarymodule.base.BaseActivity
 
 @Route(path = RouterConstant.LOGIN)
-class MainActivity : RxAppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_container)
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.content, LoginFragment.newInstance())
-        fragmentTransaction.commit()
+        setContentView(R.layout.login_navigation_container)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.container).navigateUp()
+    }
+
 }

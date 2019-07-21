@@ -94,44 +94,6 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
     }
 
 
-    /**
-     * 跳转页面
-     *
-     * @param clz 所跳转的目的Activity类
-     */
-    fun startActivity(clz: Class<*>) {
-        startActivity(Intent(context, clz))
-    }
-
-    /**
-     * 跳转页面
-     *
-     * @param clz    所跳转的目的Activity类
-     * @param bundle 跳转所携带的信息
-     */
-    fun startActivity(clz: Class<*>, bundle: Bundle?) {
-        val intent = Intent(context, clz)
-        if (bundle != null) {
-            intent.putExtras(bundle)
-        }
-        startActivity(intent)
-    }
-
-    /**
-     * 跳转容器页面
-     *
-     * @param canonicalName 规范名 : Fragment.class.getCanonicalName()
-     * @param bundle        跳转所携带的信息
-     */
-    @JvmOverloads
-    fun startContainerActivity(canonicalName: String, bundle: Bundle? = null) {
-        val intent = Intent(context, ContainerActivity::class.java)
-        intent.putExtra(ContainerActivity.FRAGMENT, canonicalName)
-        if (bundle != null) {
-            intent.putExtra(ContainerActivity.BUNDLE, bundle)
-        }
-        startActivity(intent)
-    }
 
     /**
      * =====================================================================

@@ -6,13 +6,13 @@ import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.LogInListener
 import com.link.component_login.app.register.RegisterFragment
-import com.link.component_login.data.Repository
+import com.link.component_login.data.LoginRepository
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.ToastUtils
 
-class LoginViewModel constructor(model: Repository) : BaseViewModel<Repository>(model) {
+class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRepository>(model) {
 
     //用户名的绑定
     val phone = MutableLiveData<String>()
@@ -65,6 +65,7 @@ class LoginViewModel constructor(model: Repository) : BaseViewModel<Repository>(
 //                        model.saveUserInfo()
 //                    }
                     ToastUtils.showLong("登录成功")
+
                     startContainerActivity(RegisterFragment::class.java.getCanonicalName())
                 }
             }

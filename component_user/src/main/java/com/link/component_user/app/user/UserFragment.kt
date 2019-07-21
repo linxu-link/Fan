@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.link.component_user.R
+import com.link.component_user.app.about.AboutFragment
+import com.link.component_user.app.collection.CollectionFragment
+import com.link.component_user.app.footprint.FootPrintFragment
+import com.link.librarycomponent.ServiceFactory
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.utils.ToastUtils
 import kotlinx.android.synthetic.main.user_include_user_body.*
 import kotlinx.android.synthetic.main.user_include_user_header.*
-
 
 /**
  * @author WJ
@@ -35,11 +38,19 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         super.onViewCreated(view, savedInstanceState)
 
         img_collection.setOnClickListener {
-            findNavController().navigate(R.id.user_collectionfragment)
+            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
+                startContainerActivity(CollectionFragment::class.java.canonicalName!!, null)
+            } else {
+                ToastUtils.showLong("登录之后才能查看")
+            }
         }
 
         img_footprint.setOnClickListener {
-            findNavController().navigate(R.id.user_footprintfragment)
+            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
+                startContainerActivity(FootPrintFragment::class.java.canonicalName!!, null)
+            } else {
+                ToastUtils.showLong("登录之后才能查看")
+            }
         }
 
         img_attention.setOnClickListener {
@@ -50,9 +61,8 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
             ToastUtils.showLong("此功能开发中，敬请期待")
         }
 
-
         img_about.setOnClickListener {
-            findNavController().navigate(R.id.user_aboutfragment)
+            startContainerActivity(AboutFragment::class.java.canonicalName!!, null)
         }
 
         //应用商店打分

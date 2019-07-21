@@ -57,7 +57,7 @@ afterEvaluate {
 
 // 项目的 build.gradle 中配置组件是否独立运行
 ext {
-    login_isSingleCompile = false
+    login_isSingleCompile = true
     splash_isSingleCompile = false
     user_isSingleCompile = false
     main_isSingleCompile = false

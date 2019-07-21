@@ -5,7 +5,7 @@ import com.link.component_login.data.source.loacl.ILocalDataSource
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.model.BaseModel
 
-class Repository private constructor(
+class LoginRepository private constructor(
     val httpDataSource: IHttpDataSource,
     val localDataSource: ILocalDataSource?
 ) :
@@ -15,12 +15,12 @@ class Repository private constructor(
     companion object {
 
         @Volatile
-        private var instance: Repository? = null
+        private var instance: LoginRepository? = null
 
         fun getInstance(httpDataSource: IHttpDataSource, localDataSource: ILocalDataSource?) =
             instance ?: synchronized(this) {
                 instance
-                    ?: Repository(httpDataSource, localDataSource).also {
+                    ?: LoginRepository(httpDataSource, localDataSource).also {
                     instance = it
                 }
             }

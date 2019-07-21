@@ -17,13 +17,13 @@ class CollectionViewModel(repository: UserRepository) : BaseViewModel<UserReposi
 
     val mCollectionData = MutableLiveData<List<Collection>>()
 
-    private val userEntity: UserEntity = BmobUser.getCurrentUser(UserEntity::class.java)
+    private val userEntity: UserEntity? = BmobUser.getCurrentUser(UserEntity::class.java)
 
 
     fun getCollectionData() {
 
         val query = BmobQuery<Collection>()
-        query.addWhereEqualTo("userId", userEntity.objectId)
+        query.addWhereEqualTo("userId", userEntity!!.objectId)
         query.findObjects(object : FindListener<Collection>() {
             override fun done(list: MutableList<Collection>?, e: BmobException?) {
                 if (e == null) {
