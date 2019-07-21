@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:name,android:theme,android:label,android:icon">
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".app.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".EntranceActivity" />
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"

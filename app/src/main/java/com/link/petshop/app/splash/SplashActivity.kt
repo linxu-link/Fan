@@ -1,4 +1,4 @@
-package com.link.petshop
+package com.link.petshop.app.splash
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

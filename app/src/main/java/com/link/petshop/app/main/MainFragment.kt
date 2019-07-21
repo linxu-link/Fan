@@ -1,23 +1,22 @@
-package com.link.petshop
+package com.link.petshop.app.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
-import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.librarycomponent.ServiceFactory
-import com.link.librarycomponent.router.RouterConstant
-import com.link.librarymodule.base.BaseActivity
+import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.widgets.navgation.BottomNavigationBar
-import kotlinx.android.synthetic.main.activity_main.*
+import com.link.petshop.R
+import kotlinx.android.synthetic.main.fragment_main.*
 
-@Route(path = RouterConstant.APP)
-class MainActivity : BaseActivity(), BottomNavigationBar.OnClickListener {
+class MainFragment(override var layoutId: Int= R.layout.fragment_main)
+    : BaseFragment(), BottomNavigationBar.OnClickListener {
 
     private var mFragmentList = arrayListOf<Fragment>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        fullScreen(this)
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         bottom_navigation_bar.setOnItemClickListener(this)
 
         mFragmentList.add(ServiceFactory.getInstance().mainService!!.newMainFragment(bundle = null)!!)
@@ -26,18 +25,18 @@ class MainActivity : BaseActivity(), BottomNavigationBar.OnClickListener {
         mFragmentList.add(ServiceFactory.getInstance().userService!!.newUserFragment(bundle = null)!!)
 
 
-        val transaction = supportFragmentManager.beginTransaction()
+        val transaction = childFragmentManager.beginTransaction()
         mCurrent = mFragmentList[0]
 
         transaction.replace(R.id.content, mCurrent!!)
         transaction.commit()
-    }
 
+    }
 
     private var mCurrent: Fragment? = null
 
     override fun onItemClickListener(checkedId: Int) {
-        val transaction = supportFragmentManager.beginTransaction()
+        val transaction = childFragmentManager.beginTransaction()
         if (checkedId == R.id.home) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
@@ -67,5 +66,6 @@ class MainActivity : BaseActivity(), BottomNavigationBar.OnClickListener {
         }
         transaction.commit()
     }
+
 
 }
