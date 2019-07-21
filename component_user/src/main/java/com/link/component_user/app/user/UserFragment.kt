@@ -1,13 +1,10 @@
-package com.link.component_user.app
+package com.link.component_user.app.user
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.link.component_user.R
 import com.link.librarymodule.base.BaseFragment
-import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
+import kotlinx.android.synthetic.main.user_include_user_body.*
 
 /**
  * @author WJ
@@ -29,9 +26,34 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        fullScreen(activity!!)
+
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        img_about.setOnClickListener {
+
+        }
+
+        img_score.setOnClickListener {
+
+        }
+
+        img_update.setOnClickListener {
+
+        }
+
+        img_share.setOnClickListener {
+
+        }
+
+        img_suggest.setOnClickListener {
+
+        }
+
+    }
 
 
 }

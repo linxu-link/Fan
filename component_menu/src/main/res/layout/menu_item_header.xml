@@ -96,7 +96,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:minHeight="@dimen/dp_100"
+        android:minHeight="@dimen/dp_50"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="@+id/ingredients"
         app:layout_constraintStart_toStartOf="@+id/menu_textview4"

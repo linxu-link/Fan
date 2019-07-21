@@ -1,9 +1,8 @@
 package com.link.component_user
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.link.component_user.app.UserFragment
+import com.link.component_user.app.user.UserFragment
 import com.link.librarymodule.base.ContainerActivity
 
 class MainActivity : ContainerActivity() {

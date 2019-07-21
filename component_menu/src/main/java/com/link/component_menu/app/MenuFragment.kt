@@ -70,6 +70,7 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
 
         val ingredients=headerView.findViewById<RecyclerView>(R.id.ingredients)
         ingredients.adapter=mHeader1Adapter
+
         val burden=headerView.findViewById<RecyclerView>(R.id.burden)
         burden.adapter=mHeader2Adapter
 
@@ -82,13 +83,13 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
 
 
 
-        mViewModel.burden.observe(this, Observer {
+        mViewModel.ingredients.observe(this, Observer {
 
             mHeader1Adapter.setNewData(it)
 
         })
 
-        mViewModel.ingredients.observe(this, Observer {
+        mViewModel.burden.observe(this, Observer {
 
             mHeader2Adapter.setNewData(it)
         })

@@ -68,7 +68,7 @@
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/img_recommend"
+        app:layout_constraintEnd_toStartOf="@+id/img_share"
         app:layout_constraintStart_toEndOf="@+id/img_score"
         app:layout_constraintTop_toTopOf="@+id/img_score"
         app:srcCompat="@drawable/user_ic_update" />
@@ -85,26 +85,25 @@
         app:layout_constraintTop_toBottomOf="@+id/img_update" />
 
     <ImageView
-        android:id="@+id/img_recommend"
+        android:id="@+id/img_share"
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="8dp"
-        android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_update"
         app:layout_constraintTop_toTopOf="@+id/img_update"
         app:srcCompat="@drawable/user_ic_recommend" />
 
     <TextView
-        android:id="@+id/tv_recommend"
+        android:id="@+id/tv_share"
         style="@style/WrapWrap"
         android:layout_marginTop="8dp"
         android:text="分享"
         android:textColor="@color/font_color"
         android:textSize="@dimen/text_small_size"
-        app:layout_constraintEnd_toEndOf="@+id/img_recommend"
-        app:layout_constraintStart_toStartOf="@+id/img_recommend"
-        app:layout_constraintTop_toBottomOf="@+id/img_recommend" />
+        app:layout_constraintEnd_toEndOf="@+id/img_share"
+        app:layout_constraintStart_toStartOf="@+id/img_share"
+        app:layout_constraintTop_toBottomOf="@+id/img_share" />
 
     <ImageView
         android:id="@+id/img_suggest"
