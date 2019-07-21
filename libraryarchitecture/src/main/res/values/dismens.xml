@@ -36,4 +36,5 @@
     <dimen name="dp_200">200dp</dimen>
     <dimen name="dp_170">170dp</dimen>
     <dimen name="dp_150">150dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
 </resources>

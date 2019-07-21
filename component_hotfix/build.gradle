@@ -14,6 +14,8 @@ android {
         if (hotfix_isSingleCompile) {
             applicationId "com.link.component_hotfix"
         }
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         multiDexEnabled true

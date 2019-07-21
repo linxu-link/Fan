@@ -6,15 +6,35 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 
 import com.link.component_user.R
+import com.link.librarymodule.base.BaseFragment
 
-class FootPrintFragment : Fragment() {
+class FootPrintFragment(override var layoutId: Int = R.layout.user_fragment_foot_print) : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_foot_print, container, false)
+    companion object {
+        @JvmStatic
+        fun newInstance() =
+                FootPrintFragment().apply {
+                    arguments = Bundle().apply {
+
+                    }
+                }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val title = mRootView!!.findViewById<TextView>(R.id.title)
+        val back = mRootView!!.findViewById<ImageView>(R.id.back)
+        title.text = "我的足迹"
+        back.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+
     }
 
 

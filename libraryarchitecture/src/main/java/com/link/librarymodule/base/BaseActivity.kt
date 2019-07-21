@@ -14,8 +14,16 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setAndroidNativeLightStatusBar(this,true)
+
+        if (setLightBar()) {
+            setAndroidNativeLightStatusBar(this, true)
+        }
     }
+
+    open fun setLightBar(): Boolean {
+        return true
+    }
+
 
     //flyme 设定深色状态栏颜色
     private fun setFlymeLightStatusBar(activity: Activity?, dark: Boolean): Boolean {

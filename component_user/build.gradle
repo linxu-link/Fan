@@ -10,11 +10,13 @@ apply from: '../maven_push.gradle'
 android {
     compileSdkVersion build_versions.compile_sdk
     useLibrary 'org.apache.http.legacy'
-    resourcePrefix "user_"
+    resourcePrefix "user"
     defaultConfig {
         if (user_isSingleCompile) {
             applicationId "com.link.component_user"
         }
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         multiDexEnabled true

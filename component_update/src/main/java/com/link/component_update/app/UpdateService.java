@@ -8,7 +8,7 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 
 import com.link.component_update.data.entity.UpdateEntity;
-import com.link.librarymodule.utils.PackageUtils;
+import com.link.librarymodule.utils.CommonUtil;
 import com.link.librarymodule.utils.ToastUtils;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class UpdateService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         BmobQuery<UpdateEntity> query = new BmobQuery<>();
-        query.addWhereNotEqualTo("versionCode", PackageUtils.getVersionName(getApplicationContext()));
+        query.addWhereNotEqualTo("versionCode", CommonUtil.getPackageInfo().versionName);
         query.findObjects(new FindListener<UpdateEntity>() {
             @Override
             public void done(List<UpdateEntity> list, BmobException e) {

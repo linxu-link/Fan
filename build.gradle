@@ -59,7 +59,7 @@ afterEvaluate {
 ext {
     login_isSingleCompile = false
     splash_isSingleCompile = false
-    user_isSingleCompile = false
+    user_isSingleCompile = true
     main_isSingleCompile = false
     search_isSingleCompile = false
     menu_isSingleCompile = false

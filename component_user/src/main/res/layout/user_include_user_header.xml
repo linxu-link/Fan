@@ -42,7 +42,7 @@
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="8dp"
         android:padding="@dimen/dp_8"
-        app:layout_constraintEnd_toStartOf="@+id/img_"
+        app:layout_constraintEnd_toStartOf="@+id/img_attention"
         app:layout_constraintStart_toEndOf="@+id/img_collection"
         app:layout_constraintTop_toTopOf="@+id/img_collection"
         app:srcCompat="@drawable/user_ic_footprint" />
@@ -60,14 +60,14 @@
         app:layout_constraintTop_toBottomOf="@+id/img_footprint" />
 
     <ImageView
-        android:id="@+id/img_"
+        android:id="@+id/img_attention"
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:padding="@dimen/dp_8"
         app:layout_constraintBottom_toBottomOf="@+id/img_footprint"
-        app:layout_constraintEnd_toStartOf="@+id/user_imageview"
+        app:layout_constraintEnd_toStartOf="@+id/img_note"
         app:layout_constraintStart_toEndOf="@+id/img_footprint"
         app:layout_constraintTop_toTopOf="@+id/img_footprint"
         app:srcCompat="@drawable/user_ic_attention" />
@@ -80,21 +80,21 @@
         android:textColor="@color/font_color"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintBottom_toBottomOf="@+id/tv_footprint"
-        app:layout_constraintEnd_toEndOf="@+id/img_"
-        app:layout_constraintStart_toStartOf="@+id/img_"
-        app:layout_constraintTop_toBottomOf="@+id/img_" />
+        app:layout_constraintEnd_toEndOf="@+id/img_attention"
+        app:layout_constraintStart_toStartOf="@+id/img_attention"
+        app:layout_constraintTop_toBottomOf="@+id/img_attention" />
 
     <ImageView
-        android:id="@+id/user_imageview"
+        android:id="@+id/img_note"
         android:layout_width="@dimen/dp_40"
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:padding="@dimen/dp_8"
-        app:layout_constraintBottom_toBottomOf="@+id/img_"
+        app:layout_constraintBottom_toBottomOf="@+id/img_attention"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_"
-        app:layout_constraintTop_toTopOf="@+id/img_"
+        app:layout_constraintStart_toEndOf="@+id/img_attention"
+        app:layout_constraintTop_toTopOf="@+id/img_attention"
         app:srcCompat="@drawable/user_ic_note" />
 
     <TextView
@@ -105,7 +105,7 @@
         android:textColor="@color/font_color"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintBottom_toBottomOf="@+id/tv_"
-        app:layout_constraintEnd_toEndOf="@+id/user_imageview"
-        app:layout_constraintStart_toStartOf="@+id/user_imageview"
+        app:layout_constraintEnd_toEndOf="@+id/img_note"
+        app:layout_constraintStart_toStartOf="@+id/img_note"
         app:layout_constraintTop_toTopOf="@+id/tv_" />
 </androidx.constraintlayout.widget.ConstraintLayout>

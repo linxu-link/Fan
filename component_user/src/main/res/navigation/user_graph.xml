@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_"
+    app:startDestination="@id/user_userfragment">
+    <fragment
+        android:id="@+id/user_userfragment"
+        android:name="com.link.component_user.app.user.UserFragment"
+        android:label="UserFragment">
+        <action
+            android:id="@+id/user_action_user_userfragment_to_user_aboutfragment2"
+            app:destination="@id/user_aboutfragment" />
+        <action
+            android:id="@+id/userAction_user_userfragment_to_usercollectionfragment"
+            app:destination="@id/user_collectionfragment" />
+        <action
+            android:id="@+id/userAction_user_userfragment_to_userfootprintfragment"
+            app:destination="@id/user_footprintfragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/user_aboutfragment"
+        android:name="com.link.component_user.app.about.AboutFragment"
+        android:label="user_fragment_about"
+        tools:layout="@layout/user_fragment_about" />
+    <fragment
+        android:id="@+id/user_collectionfragment"
+        android:name="com.link.component_user.app.collection.CollectionFragment"
+        android:label="CollectionFragment" />
+    <fragment
+        android:id="@+id/user_footprintfragment"
+        android:name="com.link.component_user.app.footprint.FootPrintFragment"
+        android:label="user_fragment_foot_print"
+        tools:layout="@layout/user_fragment_foot_print" />
+</navigation>

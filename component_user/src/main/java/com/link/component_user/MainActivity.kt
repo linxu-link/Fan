@@ -1,13 +1,22 @@
 package com.link.component_user
 
-import android.content.Intent
-import androidx.fragment.app.Fragment
-import com.link.component_user.app.user.UserFragment
-import com.link.librarymodule.base.ContainerActivity
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import com.link.librarymodule.base.BaseActivity
 
-class MainActivity : ContainerActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun initFragmentFormIntent(intent: Intent): Fragment {
-        return UserFragment.newInstance()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.user_navigation_container)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.container).navigateUp()
+    }
+
+    override fun setLightBar(): Boolean {
+        return false
     }
 }

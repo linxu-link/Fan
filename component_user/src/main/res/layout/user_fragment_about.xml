@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_light"
+    tools:context=".app.about.AboutFragment">
+
+    <include
+        layout="@layout/include_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?android:attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/user_imageview2"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="60dp"
+        android:src="@mipmap/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+
+    <FrameLayout
+        android:id="@+id/user_textview10"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginTop="80dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|start"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_imageview2">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:text="@string/application_name"
+            android:textColor="@color/font_color"
+            android:textSize="@dimen/text_middle_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_middle_size"
+            tools:text="Ver:1.0.0" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/user_textview6"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|start"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_textview10">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:text="原作者"
+            android:textColor="@color/font_color"
+            android:textSize="@dimen/text_middle_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_gravity="center_vertical|end"
+            android:text="林克"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_middle_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/github"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginTop="1px"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|start"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_textview6">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:text="项目地址"
+            android:textColor="@color/font_color"
+            android:textSize="@dimen/text_middle_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:text="https://github.com/linux-link/PetMVVMApp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_middle_size" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/jianshu"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginTop="1px"
+        android:background="@android:color/white"
+        android:gravity="center_vertical|start"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/github">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:text="我的博客"
+            android:textColor="@color/font_color"
+            android:textSize="@dimen/text_middle_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:text="https://www.jianshu.com/u/70472b2a1af5"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_middle_size" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/user_textview9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/application_name"
+        android:textSize="@dimen/text_big_size"
+        android:textColor="@color/font_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_imageview2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
