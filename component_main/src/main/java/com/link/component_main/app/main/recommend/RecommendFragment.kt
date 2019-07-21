@@ -11,9 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.google.gson.Gson
 import com.link.component_main.R
 import com.link.component_main.app.MainViewModelFactory
-import com.link.component_main.data.entity.MenuDetail
 import com.link.librarycomponent.router.RouterConstant
-import com.link.librarycomponent.router.StartRouter
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.HorizontalBar
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
@@ -67,7 +65,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
         refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
         refresh.setOnRefreshListener {
-            initData()
+            getData()
         }
 
         mAdapter = RecommendHeadAdapter(R.layout.main_item_recommend, null)
@@ -166,8 +164,8 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         return 0
     }
 
-    override fun initData() {
-        super.initData()
+    override fun getData() {
+        super.getData()
         refresh.isRefreshing = true
         if (index == 0) {
             mViewModel.getRecommendData()

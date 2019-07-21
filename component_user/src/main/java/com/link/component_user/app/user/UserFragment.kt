@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.user_include_user_header.*
  * @author WJ
  * @date 2019-06-03
  *
- * 描述：
+ * 描述：我的界面
  */
 class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : BaseFragment() {
 

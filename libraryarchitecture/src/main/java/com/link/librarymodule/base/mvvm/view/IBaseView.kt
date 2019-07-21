@@ -4,7 +4,7 @@ interface IBaseView {
 
     fun initParam()
 
-    fun initData();
+    fun getData();
 
     fun initViewObservable()
 }

@@ -1,14 +1,7 @@
 package com.link.librarymodule.base.mvvm.view
 
-import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.os.Messenger
-import android.view.View
-import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -39,7 +32,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
         //ViewModel与View的契约事件回掉逻辑
         registorUIChangeLiveDataCallBack()
         //页面数据初始化
-        initData()
+        getData()
         //页面事件监听方法，一般用于ViewModel层转到View层的事件注册
         initViewObservable()
         //注册RxBus
@@ -102,7 +95,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
     /**
      * 数据初始化
      */
-    override fun initData() {
+    override fun getData() {
 
     }
 

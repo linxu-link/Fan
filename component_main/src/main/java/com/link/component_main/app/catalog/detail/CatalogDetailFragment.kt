@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.link.component_main.app.MainViewModelFactory
 import com.link.component_main.R
 import com.link.librarycomponent.router.RouterConstant
@@ -106,8 +105,8 @@ class CatalogDetailFragment(override var layoutId: Int = R.layout.main_fragment_
 
     }
 
-    override fun initData() {
-        super.initData()
+    override fun getData() {
+        super.getData()
         if (index == 0) {
             mViewModel.getCatalogData()
         } else {

@@ -12,7 +12,12 @@ import com.link.component_user.R
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.utils.CommonUtil
 import kotlinx.android.synthetic.main.user_fragment_about.*
-
+/**
+ * @author WJ
+ * @date 2019-07-21
+ *
+ * 描述：关于fan
+ */
 class AboutFragment(override var layoutId: Int=R.layout.user_fragment_about) : BaseFragment() {
 
 

@@ -1,7 +1,6 @@
 package com.link.component_search.app.search
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.link.component_search.R
 import com.link.component_search.app.SearchViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import com.link.librarymodule.utils.SimpleTextWatcher
 import com.link.librarymodule.widgets.recyclerview.DividerItemDecoration
 import kotlinx.android.synthetic.main.search_fragment_search.*
 
@@ -74,8 +72,8 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
         mAdapter.addHeaderView(header)
     }
 
-    override fun initData() {
-        super.initData()
+    override fun getData() {
+        super.getData()
 
     }
 

@@ -29,8 +29,8 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
                 }
     }
 
-    override fun initData() {
-        super.initData()
+    override fun getData() {
+        super.getData()
         if (arguments != null) {
             mViewModel.menuDetail.value = arguments!!.getParcelable(MenuDetail::class.java.canonicalName)
         }

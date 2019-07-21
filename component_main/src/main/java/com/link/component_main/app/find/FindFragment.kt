@@ -1,7 +1,6 @@
 package com.link.component_main.app.find
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,8 +42,8 @@ class FindFragment(override var layoutId: Int = 0) : BaseMvvmFragment<FindViewMo
 
     }
 
-    override fun initData() {
-        super.initData()
+    override fun getData() {
+        super.getData()
         mViewModel.getData()
     }
 
