@@ -31,7 +31,6 @@ class AboutFragment(override var layoutId: Int=R.layout.user_fragment_about) : B
                 }
         }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val title=mRootView!!.findViewById<TextView>(R.id.title)

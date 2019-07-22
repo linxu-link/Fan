@@ -20,7 +20,12 @@ import kotlinx.android.synthetic.main.login_fragment_register.et_password
 import kotlinx.android.synthetic.main.login_fragment_register.et_phone
 import kotlinx.android.synthetic.main.login_fragment_register.swich_pwd
 
-
+/**
+ * @author WJ
+ * @date 2019-07-22
+ *
+ * 描述：重置密码
+ */
 class ResetPwdFragment(override var layoutId: Int = R.layout.login_fragment_reset_pwd)
     : BaseMvvmFragment<ResetPwdViewModel>() {
 
@@ -40,9 +45,7 @@ class ResetPwdFragment(override var layoutId: Int = R.layout.login_fragment_rese
 
     override fun initView() {
         super.initView()
-        val title = mRootView!!.findViewById<TextView>(R.id.title)
         val back = mRootView!!.findViewById<ImageView>(R.id.back)
-        title.text = "创建账户"
         back.setOnClickListener {
             Navigation.findNavController(it).navigateUp()
         }

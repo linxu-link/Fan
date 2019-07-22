@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.login_fragment_login.*
  * @author WJ
  * @date 2019-06-02
  *
- * 描述：登录界面
+ * 描述：登录
  */
 class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) : BaseMvvmFragment<LoginViewModel>() {
 
@@ -41,11 +41,9 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
 
     override fun initView() {
         super.initView()
-        val title=mRootView!!.findViewById<TextView>(R.id.title)
         val back=mRootView!!.findViewById<ImageView>(R.id.back)
-        title.text="登录账户"
         back.setOnClickListener {
-            findNavController().navigateUp()
+            activity!!.onBackPressed()
         }
 
         //登录按钮

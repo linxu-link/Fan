@@ -16,7 +16,4 @@ class MainActivity : BaseActivity() {
         return findNavController(R.id.container).navigateUp()
     }
 
-    override fun setLightBar(): Boolean {
-        return false
-    }
 }
