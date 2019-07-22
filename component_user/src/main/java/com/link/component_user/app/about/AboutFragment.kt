@@ -37,7 +37,7 @@ class AboutFragment(override var layoutId: Int=R.layout.user_fragment_about) : B
         val back=mRootView!!.findViewById<ImageView>(R.id.back)
         title.text="我的收藏"
         back.setOnClickListener {
-            findNavController().navigateUp()
+            activity!!.onBackPressed()
         }
 
         version.text="Ver:${CommonUtil.getPackageInfo().versionName}"

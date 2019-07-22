@@ -53,11 +53,8 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
     }
 
     private lateinit var mAdapter: RecommendHeadAdapter
-
-
     private lateinit var mHeadAdapter: RecommendHeadAdapter
     private lateinit var mHead2Adapter: RecommendHeadAdapter
-//    private val mCache = RecyclerView.RecycledViewPool()
 
 
     override fun initView() {
@@ -108,7 +105,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
         mHeadAdapter = RecommendHeadAdapter(R.layout.main_item_recommend_head_item, null)
 
-        val headView = LayoutInflater.from(context).inflate(R.layout.main_item_recommend_head, null)
+        val headView = LayoutInflater.from(context).inflate(R.layout.main_recommend_head, null)
         val rvHead = headView.findViewById<RecyclerView>(R.id.rv_head)
         val line = headView.findViewById<HorizontalBar>(R.id.line)
 
@@ -143,11 +140,11 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
             mHead2Adapter.setNewData(it)
         })
 
-        val headView2 = LayoutInflater.from(context).inflate(R.layout.main_item_recommend_head2, null)
+        val headView2 = LayoutInflater.from(context).inflate(R.layout.main_recommend_head2, null)
         val rvHead = headView2.findViewById<RecyclerView>(R.id.rv_head2)
         rvHead.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         rvHead.adapter = mHead2Adapter
-        rvHead.addItemDecoration(ItemDecoration(6, 0, 6, 0))
+        rvHead.addItemDecoration(ItemDecoration(0, 0, 16, 0))
         mAdapter.addHeaderView(headView2)
 
     }

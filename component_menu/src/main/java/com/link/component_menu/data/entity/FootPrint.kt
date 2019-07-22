@@ -3,7 +3,7 @@ package com.link.component_menu.data.entity
 import cn.bmob.v3.BmobObject
 import java.io.Serializable
 
-class Collection : BmobObject() {
+class FootPrint : BmobObject() {
 
     var userId: String? = null
     var id: String? = null
@@ -14,4 +14,5 @@ class Collection : BmobObject() {
     var burden: String? = null
     var albums: List<String>? = null
     var steps: List<StepsBean>? = null
+
 }

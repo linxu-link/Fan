@@ -12,7 +12,7 @@ class CollectionAdapter(layoutId: Int, data: List<Collection>?)
 
     override fun convert(helper: BaseViewHolder, item: Collection?) {
         helper.setText(R.id.name, item!!.title)
-        Glide.with(mContext).load(item.album[0]).into(helper.getView(R.id.cover))
+        Glide.with(mContext).load(item.albums!![0]).into(helper.getView(R.id.cover))
     }
 
 

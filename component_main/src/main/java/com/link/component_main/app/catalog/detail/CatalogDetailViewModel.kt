@@ -26,20 +26,24 @@ class CatalogDetailViewModel constructor(repository: MainRepository) :
         addSubscribe(getModel().localDataSource.getCatalogData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(Consumer<String>{
-                    val data=Gson().fromJson<ArrayList<CategoryResult>>(it,object :TypeToken<ArrayList<CategoryResult>>(){}.type)
-                    cataLog.value=data
+                .subscribe(Consumer<String> {
+                    val data = Gson().fromJson<ArrayList<CategoryResult>>(it, object : TypeToken<ArrayList<CategoryResult>>() {}.type)
+                    cataLog.value = data
+                }, Consumer {
+
                 })
         )
     }
 
-    fun getIngredients(){
+    fun getIngredients() {
         addSubscribe(getModel().localDataSource.getIngredientsData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(Consumer<String>{
-                    val data=Gson().fromJson<ArrayList<CategoryResult>>(it,object :TypeToken<ArrayList<CategoryResult>>(){}.type)
-                    ingredients.value=data
+                .subscribe(Consumer<String> {
+                    val data = Gson().fromJson<ArrayList<CategoryResult>>(it, object : TypeToken<ArrayList<CategoryResult>>() {}.type)
+                    ingredients.value = data
+                }, Consumer {
+
                 })
         )
     }

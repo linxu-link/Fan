@@ -21,7 +21,7 @@
     <com.link.librarymodule.widgets.HorizontalBar
         android:id="@+id/line"
         android:layout_width="@dimen/dp_150"
-        android:layout_height="25dp"
+        android:layout_height="@dimen/dp_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

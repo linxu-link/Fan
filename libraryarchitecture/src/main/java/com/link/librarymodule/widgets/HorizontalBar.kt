@@ -37,7 +37,7 @@ class HorizontalBar @JvmOverloads constructor(context: Context, attrs: Attribute
     init {
         mPaint.style = Paint.Style.FILL_AND_STROKE
         mPaint.strokeCap = Paint.Cap.ROUND
-        mPaint.strokeWidth = 20f
+        mPaint.strokeWidth = 16f
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {

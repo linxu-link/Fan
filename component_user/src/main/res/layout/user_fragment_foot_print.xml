@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@color/grey_light"
     tools:context=".app.about.AboutFragment">
 
@@ -26,6 +27,7 @@
             android:id="@+id/rv_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:padding="@dimen/dp_16"
             android:background="@android:color/white"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/user_item_collection" />

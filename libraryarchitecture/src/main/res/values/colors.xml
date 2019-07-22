@@ -15,7 +15,7 @@
     <color name="common_black">#636363</color>
 
     <!--字体颜色-->
-    <color name="font_color">#464646</color>
+    <color name="font_color">#000000</color>
     <color name="text_light">#919191</color>
     <color name="text_light_dark">#333333</color>
     <color name="text_orange">#F76602</color>

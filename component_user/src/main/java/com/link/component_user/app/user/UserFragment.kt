@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.fragment.findNavController
 import com.link.component_user.R
 import com.link.component_user.app.about.AboutFragment
@@ -40,19 +41,19 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         super.onViewCreated(view, savedInstanceState)
 
         img_collection.setOnClickListener {
-            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
+//            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
                 startContainerActivity(CollectionFragment::class.java.canonicalName!!, null)
-            } else {
-                StartRouter.navigation(RouterConstant.LOGIN)
-            }
+//            } else {
+//                StartRouter.navigation(RouterConstant.LOGIN)
+//            }
         }
 
         img_footprint.setOnClickListener {
-            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
+//            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
                 startContainerActivity(FootPrintFragment::class.java.canonicalName!!, null)
-            } else {
-                StartRouter.navigation(RouterConstant.LOGIN)
-            }
+//            } else {
+//                StartRouter.navigation(RouterConstant.LOGIN)
+//            }
         }
 
         img_attention.setOnClickListener {
@@ -101,8 +102,6 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
 
     fun launchAppDetail(marketPkg: String) {
         try {
-
-
             val uri = Uri.parse("market://details?id=com.link.fan")
             val intent = Intent(Intent.ACTION_VIEW, uri)
 

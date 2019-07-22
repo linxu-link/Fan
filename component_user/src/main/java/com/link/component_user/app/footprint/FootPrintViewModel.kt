@@ -23,7 +23,7 @@ class FootPrintViewModel(repository: UserRepository) : BaseViewModel<UserReposit
     fun getFootPrintData() {
 
         val query = BmobQuery<FootPrint>()
-        query.addWhereEqualTo("userId", userEntity!!.objectId)
+        query.addWhereEqualTo("userId", "link12345")
         query.findObjects(object : FindListener<FootPrint>() {
             override fun done(list: MutableList<FootPrint>?, e: BmobException?) {
                 if (e == null) {

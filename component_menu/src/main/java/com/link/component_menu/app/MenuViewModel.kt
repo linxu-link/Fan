@@ -10,6 +10,7 @@ import cn.bmob.v3.listener.SaveListener
 import cn.bmob.v3.listener.UpdateListener
 import com.link.component_menu.data.MenuRepository
 import com.link.component_menu.data.entity.Collection
+import com.link.component_menu.data.entity.FootPrint
 import com.link.component_menu.data.entity.MenuDetail
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
@@ -55,6 +56,7 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
 
     }
 
+    //是否收藏
     fun isCollection(menuId: String) {
         val user = BmobUser.getCurrentUser(UserEntity::class.java)
 
@@ -76,9 +78,11 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
 
         })
 
+        saveFootPrint(menuId)
+
     }
 
-
+    //设定收藏
     fun setCollection() {
         val user = BmobUser.getCurrentUser(UserEntity::class.java)
         val menuEntity = menuDetail.value ?: return
@@ -119,6 +123,52 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
 
             })
         }
+
+    }
+
+    //保存足迹
+    private fun saveFootPrint(menuId: String) {
+        val user = BmobUser.getCurrentUser(UserEntity::class.java)
+        val menuEntity = menuDetail.value ?: return
+
+        val query = BmobQuery<FootPrint>()
+        query.addWhereEqualTo("userId", "link12345").addWhereEqualTo("id", menuId)
+
+        query.findObjects(object : FindListener<FootPrint>() {
+            override fun done(list: MutableList<FootPrint>?, e: BmobException?) {
+                if (e == null) {
+                    if (list.isNullOrEmpty()) {
+                        val footPrint = FootPrint()
+                        footPrint.userId = "link12345"
+                        footPrint.id = menuEntity.id
+                        footPrint.title = menuEntity.title
+                        footPrint.tags = menuEntity.tags
+                        footPrint.imtro = menuEntity.imtro
+                        footPrint.ingredients = menuEntity.ingredients
+                        footPrint.burden = menuEntity.burden
+                        footPrint.albums = menuEntity.albums
+                        footPrint.steps = menuEntity.steps
+                        footPrint.save(object : SaveListener<String>() {
+                            override fun done(objectId: String?, e: BmobException?) {
+                                if (e == null) {
+
+                                } else {
+                                    Log.e("error", e.toString())
+                                    ToastUtils.showLong(e.toString())
+                                }
+                            }
+
+                        })
+                    } else {
+                        Log.e("TAG", "${list!!.size}")
+                    }
+                } else {
+                    Log.e("error", e.toString())
+                    ToastUtils.showLong(e.toString())
+                }
+            }
+
+        })
 
     }
 

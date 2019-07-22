@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.link.component_user.R
 import com.link.component_user.app.UserViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
+import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.user_fragment_collection.*
 
 /**
@@ -49,16 +50,19 @@ class CollectionFragment(override var layoutId: Int = R.layout.user_fragment_col
         val back = mRootView!!.findViewById<ImageView>(R.id.back)
         title.text = "我的收藏"
         back.setOnClickListener {
-            findNavController().navigateUp()
+            activity!!.onBackPressed()
         }
+
         mAdapter = CollectionAdapter(R.layout.user_item_collection, null)
-        rv_list.adapter
+        rv_list.adapter = mAdapter
+        rv_list.addItemDecoration(ItemDecoration(0, 10, 0, 10))
     }
 
     override fun initViewObservable() {
         super.initViewObservable()
         mViewModel.mCollectionData.observe(this, Observer {
             mAdapter.setNewData(it)
+            refresh.isRefreshing = false
         })
     }
 
@@ -66,7 +70,6 @@ class CollectionFragment(override var layoutId: Int = R.layout.user_fragment_col
         super.getData()
         refresh.isRefreshing = true
         mViewModel.getCollectionData()
-
     }
 
 }
