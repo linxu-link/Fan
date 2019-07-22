@@ -1,20 +1,20 @@
-package com.link.component_login.app.register
+package com.link.component_login.app.resetpwd
 
 import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import cn.bmob.v3.BmobSMS
+import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.QueryListener
-import cn.bmob.v3.listener.SaveListener
+import cn.bmob.v3.listener.UpdateListener
 import com.link.component_login.data.LoginRepository
-import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.ToastUtils
 
 
-class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginRepository>(repository) {
+class ResetPwdViewModel(repository: LoginRepository) : BaseViewModel<LoginRepository>(repository) {
 
     //用户名的绑定
     val phone = MutableLiveData<String>()
@@ -37,32 +37,25 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
         phone.value = null
         password.value = null
         code.value = null
-        uc.pSwitchEvent.value=false
+        uc.pSwitchEvent.value = false
 
     }
 
 
-    fun signUp() {
+    fun resetPwd() {
         if (!check()) {
             return
         }
 
-        val userEntity = UserEntity()
-        userEntity.username = phone.value
-        userEntity.setPassword(password.value)
-        userEntity.mobilePhoneNumber = phone.value
-
-        userEntity.signOrLogin(code.value, object : SaveListener<UserEntity>() {
-            override fun done(user: UserEntity?, e: BmobException?) {
+        BmobUser.resetPasswordBySMSCode(code.value, password.value, object : UpdateListener() {
+            override fun done(e: BmobException?) {
                 if (e == null) {
-                    ToastUtils.showShort("注册成功")
+                    ToastUtils.showShort("重置成功")
                 } else {
                     ToastUtils.showLong(e.toString())
-                    Log.e("error", e.toString());
+                    Log.e("error", e.toString())
                 }
-
             }
-
         })
     }
 
@@ -79,7 +72,7 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
                     ToastUtils.showShort("发送成功")
                 } else {
                     ToastUtils.showLong(e.toString())
-                    Log.e("error", e.toString());
+                    Log.e("error", e.toString())
                 }
             }
         })

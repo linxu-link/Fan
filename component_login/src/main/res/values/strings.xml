@@ -1,4 +1,13 @@
 <resources>
     <string name="login_app_name">Login</string>
 
+    <string name="login_password_hint">请输入密码</string>
+    <string name="login_phone_hint">请输入手机号码</string>
+    <string name="login_code_hint">请输入验证码</string>
+
+    <string name="login_text">登录账号</string>
+    <string name="login_register_text">创建账号</string>
+    <string name="login_reset_text">重置密码</string>
+    <string name="login_send_sms">发送验证码</string>
+
 </resources>

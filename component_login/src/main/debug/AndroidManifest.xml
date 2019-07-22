@@ -8,6 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/login_app_name"
+        android:networkSecurityConfig="@xml/login_network_security_config"
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -20,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.link.component_login.BmobContentProvider" />
 
     </application>
 

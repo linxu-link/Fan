@@ -1,13 +1,16 @@
 package com.link.component_login.app.login
 
 import android.text.TextUtils
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import cn.bmob.v3.BmobUser
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.LogInListener
+import com.alibaba.android.arouter.launcher.ARouter
 import com.link.component_login.app.register.RegisterFragment
 import com.link.component_login.data.LoginRepository
 import com.link.librarycomponent.entity.user.UserEntity
+import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.ToastUtils
@@ -53,20 +56,17 @@ class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRe
             return
         }
 
+        val userEntity=UserEntity()
 
         BmobUser.loginByAccount(phone.value,password.value,object : LogInListener<UserEntity>(){
 
             override fun done(user: UserEntity?, e: BmobException?) {
-
                 if (e!=null){
                     ToastUtils.showShort(e.toString())
+                    Log.e("error", e.toString());
                 }else{
-//                    if (rememberPwd) {
-//                        model.saveUserInfo()
-//                    }
                     ToastUtils.showLong("登录成功")
-
-                    startContainerActivity(RegisterFragment::class.java.getCanonicalName())
+////                    ARouter.getInstance().build(RouterConstant.APP).navigation()
                 }
             }
 

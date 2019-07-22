@@ -7,7 +7,6 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/include2"
         layout="@layout/include_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,32 +19,32 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="8dp"
-        android:text="创建账号"
+        android:text="@string/login_register_text"
         android:textColor="@color/font_color"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="52dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/shape_stroke_corner_25dp_grey"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:padding="@dimen/dp_4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="10dp"
             android:padding="@dimen/dp_4"
             android:src="@drawable/ic_people" />
 
@@ -53,13 +52,26 @@
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="15dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
             android:background="@null"
-            android:hint="请输入手机号码"
+            android:hint="@string/login_phone_hint"
+            android:inputType="phone"
+            android:maxLength="11"
             android:textSize="@dimen/text_middle_size" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/clear_phone"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="10dp"
+            android:padding="@dimen/dp_4"
+            android:src="@drawable/ic_cross"
+            android:visibility="visible" />
+
+    </FrameLayout>
 
 
     <FrameLayout
@@ -90,7 +102,8 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:background="@null"
-            android:hint="请输入密码"
+            android:hint="@string/login_password_hint"
+            android:maxLength="16"
             android:inputType="textPassword"
             android:textSize="@dimen/text_middle_size" />
 
@@ -103,7 +116,7 @@
             android:background="@drawable/login_checkbox_eye"
             android:button="@null"
             android:checked="false"
-            android:padding="5dp"
+            android:padding="@dimen/dp_4"
             android:src="@drawable/ic_eye_close" />
 
     </FrameLayout>
@@ -119,7 +132,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="@dimen/dp_4"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sms"
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
@@ -137,19 +150,19 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="15dp"
             android:background="@null"
-            android:hint="请输入验证码"
+            android:hint="@string/login_code_hint"
             android:textSize="@dimen/text_middle_size" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/button2"
+        android:id="@+id/btn_confirm"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/shape_stroke_corner_25dp_main_full"
         android:gravity="center"
-        android:text="创建账号"
+        android:text="@string/login_register_text"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
@@ -175,12 +188,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/button3"
+        android:id="@+id/btn_sms"
         android:layout_width="140dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_stroke_corner_25dp_green_full"
         android:gravity="center"
-        android:text="发送验证码"
+        android:text="@string/login_send_sms"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout4"

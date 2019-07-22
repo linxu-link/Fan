@@ -11,14 +11,25 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
-            app:enterAnim="@anim/slide_left_in"
-            app:exitAnim="@anim/slide_left_out"
-            app:popEnterAnim="@anim/slide_right_in"
-            app:popExitAnim="@anim/slide_right_out" />
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_right_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_left_out" />
+        <action
+            android:id="@+id/login_action_loginfragment_to_login_resetpwdfragment"
+            app:destination="@id/resetpwdfragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_right_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_left_out" />
     </fragment>
 
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.link.component_login.app.register.RegisterFragment"
         android:label="RegisterFragment" />
+    <fragment
+        android:id="@+id/resetpwdfragment"
+        android:name="com.link.component_login.app.resetpwd.ResetPwdFragment"
+        android:label="ResetPwdFragment" />
 </navigation>
