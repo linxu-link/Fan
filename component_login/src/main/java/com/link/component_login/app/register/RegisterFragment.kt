@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.link.component_login.R
 import com.link.component_login.ViewModelFactory
@@ -43,12 +44,12 @@ class RegisterFragment(override var layoutId: Int = R.layout.login_fragment_regi
         val back = mRootView!!.findViewById<ImageView>(R.id.back)
         title.text = "创建账户"
         back.setOnClickListener {
-            findNavController().navigateUp()
+            Navigation.findNavController(it).navigateUp()
         }
 
 
         login.setOnClickListener {
-            findNavController().navigate(R.id.loginFragment)
+            Navigation.findNavController(it).navigateUp()
         }
 
         btn_sms.setOnClickListener {

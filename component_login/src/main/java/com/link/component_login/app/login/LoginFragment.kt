@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.link.component_login.R
 import com.link.component_login.ViewModelFactory
@@ -81,11 +82,11 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
         }
 
         register.setOnClickListener {
-            findNavController().navigate(R.id.registerFragment)
+            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
         forget_pwd.setOnClickListener {
-            findNavController().navigate(R.id.resetpwdfragment)
+            Navigation.findNavController(it).navigate(R.id.login_action_loginfragment_to_login_resetpwdfragment)
         }
 
     }
