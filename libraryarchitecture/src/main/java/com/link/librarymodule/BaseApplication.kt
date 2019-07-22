@@ -11,10 +11,11 @@ import com.link.librarymodule.constant.Constant
 import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.Utils
 
+
 abstract class BaseApplication : Application() {
 
 
-    companion object{
+    companion object {
         lateinit var instance: Application
     }
 
@@ -34,6 +35,7 @@ abstract class BaseApplication : Application() {
         Utils.init(application)
         initARouter(application)
         initBmobSdk(application.applicationContext)
+//        registerWX()
         application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity?) {
 
@@ -87,8 +89,28 @@ abstract class BaseApplication : Application() {
         ARouter.init(application); // 尽可能早，推荐在Application中初始化
     }
 
-    private fun initBmobSdk(context: Context){
-        Bmob.initialize(context,Constant.BMOB_ID)
+    private fun initBmobSdk(context: Context) {
+        Bmob.initialize(context, Constant.BMOB_ID)
     }
+
+
+    // IWXAPI 是第三方app和微信通信的openApi接口
+//    private var api: IWXAPI? = null
+//
+//    //注册
+//    private fun registerWX() {
+//        // 通过WXAPIFactory工厂，获取IWXAPI的实例
+//        api = WXAPIFactory.createWXAPI(this, Constant.WEIXING_ID, true)
+//        // 将应用的appId注册到微信
+//        api!!.registerApp(Constant.WEIXING_ID)
+//        //建议动态监听微信启动广播进行注册到微信
+//        registerReceiver(object : BroadcastReceiver() {
+//            override fun onReceive(context: Context, intent: Intent) {
+//                // 将该app注册到微信
+//                api!!.registerApp(Constant.WEIXING_ID)
+//            }
+//        }, IntentFilter(ConstantsAPI.ACTION_REFRESH_WXAPP))
+//
+//    }
 
 }

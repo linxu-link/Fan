@@ -1,5 +1,6 @@
 package com.link.component_menu.data.source.http
 
+import com.link.component_menu.data.entity.MenuResult
 import com.link.librarycomponent.entity.base.BaseEntity
 import com.link.librarymodule.constant.Constant
 import io.reactivex.Observable
@@ -24,6 +25,10 @@ class HttpDataSourceImpl constructor(private val service: HttpService) : IHttpDa
                 }
     }
 
+
+    override fun getRecommend(menu: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
+        return service.query(Constant.JUHE_KEY, menu, pn, rn)
+    }
 
 
 }

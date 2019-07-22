@@ -74,6 +74,8 @@ dependencies {
     debugApi 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'
 
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+    //微信授权
+//    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

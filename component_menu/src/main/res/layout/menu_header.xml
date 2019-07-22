@@ -31,22 +31,24 @@
         android:orientation="horizontal"
         android:paddingTop="@dimen/dp_4"
         android:paddingBottom="@dimen/dp_4"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toBottomOf="@+id/menu_textview5" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_collection" />
 
     <TextView
         android:id="@+id/content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="这款面包很柔软，很好吃，我已经做过好多次，家人和朋友都说不错。这个配方是用妃娟老师的，老师经常做纯天然的食材来做，每一种都很好吃"
-        android:textColor="@color/text_light"
-        android:textSize="@dimen/text_middle_size"
-        app:layout_constraintEnd_toEndOf="@+id/menu_linearlayout"
-        app:layout_constraintStart_toStartOf="@+id/menu_linearlayout"
-        app:layout_constraintTop_toBottomOf="@+id/menu_linearlayout" />
+        android:layout_marginTop="16dp"
+        android:lineSpacingMultiplier="1.5"
+        android:textColor="@color/text_light_dark"
+        android:textSize="@dimen/text_big_size"
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/menu_linearlayout"
+        tools:text="这款面包很柔软，很好吃，我已经做过好多次，家人和朋友都说不错。这个配方是用妃娟老师的，老师经常做纯天然的食材来做，每一种都很好吃" />
 
     <TextView
         android:id="@+id/menu_textview3"
@@ -103,7 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/menu_textview4" />
 
     <TextView
-        android:id="@+id/menu_textview5"
+        android:id="@+id/btn_collection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
