@@ -59,7 +59,7 @@ ext {
     splash_isSingleCompile = false
     user_isSingleCompile = false
     main_isSingleCompile = false
-    search_isSingleCompile = true
+    search_isSingleCompile = false
     menu_isSingleCompile = false
     update_isSingleCompile = false
     hotfix_isSingleCompile = false

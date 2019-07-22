@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/dp_170"
+    android:layout_margin="@dimen/dp_10"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/dp_250">
 
 
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/name"
-        app:cardCornerRadius="@dimen/dp_10">
+        app:cardCornerRadius="@dimen/dp_4">
 
         <ImageView
             android:id="@+id/cover"

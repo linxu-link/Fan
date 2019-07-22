@@ -31,15 +31,14 @@ dependencies {
     //navigation组件
     api "androidx.navigation:navigation-fragment-ktx:2.0.0"
     api "androidx.navigation:navigation-ui-ktx:2.0.0"
-    //constraintlayout
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
-    api 'androidx.gridlayout:gridlayout:1.0.0'
+
     api 'com.google.android.material:material:1.0.0'
     //material-dialogs
     api 'com.afollestad.material-dialogs:core:0.9.4.5'
     api 'com.afollestad.material-dialogs:commons:0.9.4.5'
     //常用布局
-    api deps.constraint_layout
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+//    api 'androidx.gridlayout:gridlayout:1.0.0'
     //kotlin
     api deps.kotlin.stdlib
     //组件化

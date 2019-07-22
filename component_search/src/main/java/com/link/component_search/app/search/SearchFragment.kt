@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.link.component_search.R
 import com.link.component_search.app.SearchViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
@@ -39,8 +40,10 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
     override fun initView() {
         super.initView()
 
-        mAdapter = SearchAdapter(R.layout.search_item, null)
-        rvList.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
+        val list= arrayListOf("Staggered","Staggered","StaggeredGridLayoutManager","StaggeredGridLayoutManager","StaggeredGridLayoutManager")
+
+        mAdapter = SearchAdapter(android.R.layout.simple_list_item_activated_1, list)
+        rvList.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         rvList.adapter = mAdapter
 
         initHeaderView()
@@ -53,11 +56,10 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
         }
 
 
-
     }
 
     private fun initHeaderView() {
-        val header = LayoutInflater.from(context).inflate(R.layout.search_item_head, null)
+        val header = LayoutInflater.from(context).inflate(R.layout.search_head_view, null)
         mAdapter.addHeaderView(header)
     }
 
@@ -71,7 +73,6 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
         mViewModel.searchWord.observe(this, Observer {
             mViewModel.search(it, 0, 20)
         })
-
 
         mViewModel.searchData.observe(this, Observer {
             findNavController().navigate(R.id.search_searchdetailfragment)
