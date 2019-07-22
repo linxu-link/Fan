@@ -26,11 +26,10 @@ import kotlinx.android.synthetic.main.search_fragment_search.*
 class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment_search) : BaseMvvmFragment<SearchViewModel>() {
 
     override fun initViewModel(): SearchViewModel {
-        return ViewModelProviders.of(activity!!,SearchViewModelFactory.getInstance()).get(SearchViewModel::class.java)
+        return ViewModelProviders.of(activity!!, SearchViewModelFactory.getInstance()).get(SearchViewModel::class.java)
     }
 
     private lateinit var mAdapter: SearchDetailAdapter
-
 
     companion object {
         @JvmStatic

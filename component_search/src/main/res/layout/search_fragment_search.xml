@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="36dp"
+        android:layout_height="@dimen/dp_40"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
@@ -22,8 +22,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="15dp"
             android:padding="6dp"
             app:srcCompat="@drawable/ic_search" />
 
@@ -31,10 +32,10 @@
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="start|center_vertical"
             android:background="@null"
-            android:padding="@dimen/dp_4"
+            android:gravity="start|center_vertical"
             android:hint="搜菜谱、食材"
+            android:padding="@dimen/dp_4"
             android:textColor="@color/text_light"
             android:textSize="@dimen/text_middle_size" />
     </LinearLayout>

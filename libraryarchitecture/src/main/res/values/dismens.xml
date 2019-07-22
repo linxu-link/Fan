@@ -19,6 +19,7 @@
     <dimen name="text_middle_size">14sp</dimen>
     <dimen name="text_big_size">16sp</dimen>
     <dimen name="text_large_size">18sp</dimen>
+    <dimen name="text_largex_size">20sp</dimen>
 
 
     <dimen name="news_height">45dp</dimen>
@@ -30,6 +31,7 @@
     <dimen name="dp_16">16dp</dimen>
     <dimen name="dp_20">20dp</dimen>
     <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_50">50dp</dimen>
     <dimen name="dp_100">100dp</dimen>
     <dimen name="dp_250">250dp</dimen>

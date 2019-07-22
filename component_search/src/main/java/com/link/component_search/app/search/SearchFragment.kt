@@ -16,12 +16,12 @@ import kotlinx.android.synthetic.main.search_fragment_search.*
  * @author WJ
  * @date 2019-07-16
  *
- * 描述：
+ * 描述：搜索界面
  */
 class SearchFragment(override var layoutId: Int = R.layout.search_fragment_search) : BaseMvvmFragment<SearchViewModel>() {
 
     override fun initViewModel(): SearchViewModel {
-        return ViewModelProviders.of(activity!!,SearchViewModelFactory.getInstance()).get(SearchViewModel::class.java)
+        return ViewModelProviders.of(activity!!, SearchViewModelFactory.getInstance()).get(SearchViewModel::class.java)
     }
 
     companion object {
@@ -40,11 +40,10 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
         super.initView()
 
         mAdapter = SearchAdapter(R.layout.search_item, null)
-
         rvList.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
         rvList.adapter = mAdapter
 
-        initHeader()
+        initHeaderView()
 
         btn_search.setOnClickListener {
             val menu: String = et_search.text.toString()
@@ -54,20 +53,10 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
         }
 
 
-        mViewModel.searchWord.observe(this, Observer {
-            mViewModel.search(it, 0, 20)
-        })
-
-
-        mViewModel.searchData.observe(this, Observer {
-
-            findNavController().navigate(R.id.search_searchdetailfragment)
-
-        })
 
     }
 
-    private fun initHeader() {
+    private fun initHeaderView() {
         val header = LayoutInflater.from(context).inflate(R.layout.search_item_head, null)
         mAdapter.addHeaderView(header)
     }
@@ -79,6 +68,14 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
 
     override fun initViewObservable() {
         super.initViewObservable()
+        mViewModel.searchWord.observe(this, Observer {
+            mViewModel.search(it, 0, 20)
+        })
+
+
+        mViewModel.searchData.observe(this, Observer {
+            findNavController().navigate(R.id.search_searchdetailfragment)
+        })
     }
 
 }
