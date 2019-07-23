@@ -1,4 +1,4 @@
-package com.link.petshop
+package com.link.fan
 
 import android.app.Application
 import android.content.Context

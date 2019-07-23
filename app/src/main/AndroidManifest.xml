@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.link.petshop">
+    package="com.link.fan">
 
 
     <application
@@ -27,7 +27,7 @@
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.link.petshop.BmobContentProvider" />
+            android:authorities="com.link.fan.BmobContentProvider" />
     </application>
 
 </manifest>

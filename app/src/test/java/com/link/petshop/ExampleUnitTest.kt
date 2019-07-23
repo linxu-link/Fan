@@ -1,4 +1,4 @@
-package com.link.petshop
+package com.link.fan
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.link.petshop
+package com.link.fan
 
 import android.os.Bundle
 import androidx.navigation.findNavController
@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.base.BaseActivity
-import com.link.petshop.R
+import com.link.fan.R
 
 /**
  * @author WJ

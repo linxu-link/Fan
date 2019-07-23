@@ -1,4 +1,4 @@
-package com.link.petshop.app.main
+package com.link.fan.app.main
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.widgets.navgation.BottomNavigationBar
-import com.link.petshop.R
+import com.link.fan.R
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment(override var layoutId: Int= R.layout.fragment_main)

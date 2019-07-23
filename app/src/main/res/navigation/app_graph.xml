@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.link.petshop.app.main.MainFragment"
+        android:name="com.link.fan.app.main.MainFragment"
         android:label="MainFragment" />
 </navigation>

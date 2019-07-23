@@ -1,4 +1,4 @@
-package com.link.petshop.app.splash
+package com.link.fan.app.splash
 
 import android.os.Bundle
 import android.util.Log

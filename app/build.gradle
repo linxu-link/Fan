@@ -7,7 +7,7 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 android {
     compileSdkVersion build_versions.compile_sdk
     defaultConfig {
-        applicationId "com.link.petshop"
+        applicationId "com.link.fan"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
         versionCode build_versions.versionCode
