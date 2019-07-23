@@ -8,6 +8,8 @@ import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.base.BaseActivity
 import com.link.fan.R
+import com.link.fan.tinker.TinkerService
+import com.link.librarymodule.utils.Utils
 
 /**
  * @author WJ
@@ -19,11 +21,16 @@ import com.link.fan.R
 class EntranceActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //开启全屏占用
         fullScreen(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_container)
+        //启动更新service
         val updateService = ARouter.getInstance().build(RouterConstant.UPDATE).navigation()!! as IUpdateService
         updateService.startUpdateService()
+        //启动热修复service
+        TinkerService.runTinkerService(Utils.getContext())
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

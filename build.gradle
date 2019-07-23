@@ -62,5 +62,5 @@ ext {
     search_isSingleCompile = false
     menu_isSingleCompile = false
     update_isSingleCompile = false
-    hotfix_isSingleCompile = false
+    hotfix_isSingleCompile = true
 }
