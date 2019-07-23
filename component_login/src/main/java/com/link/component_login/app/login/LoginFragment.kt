@@ -35,7 +35,7 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
     }
 
 
-    override fun initViewModel(): LoginViewModel {
+    override fun getViewModel(): LoginViewModel {
         return ViewModelFactory.getInstance().create(LoginViewModel::class.java)
     }
 

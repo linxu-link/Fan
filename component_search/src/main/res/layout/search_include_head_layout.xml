@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_large_size"
+            android:textSize="@dimen/text_big_size"
             android:text="# 红烧肉" />
 
     </FrameLayout>
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            app:srcCompat="@mipmap/lobster" />
+            app:srcCompat="@mipmap/kung_pao_chicken" />
 
         <View
             android:layout_width="match_parent"
@@ -64,8 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_large_size"
-            android:text="# 小龙虾" />
+            android:textSize="@dimen/text_big_size"
+            android:text="# 宫保鸡丁" />
 
     </FrameLayout>
 
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_large_size"
+            android:textSize="@dimen/text_big_size"
             android:text="# 糖醋排骨" />
 
     </FrameLayout>
@@ -118,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            app:srcCompat="@mipmap/chicken_chops" />
+            app:srcCompat="@mipmap/pork_ribs" />
 
         <View
             android:layout_width="match_parent"
@@ -130,8 +130,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_large_size"
-            android:text="# 鸡排" />
+            android:textSize="@dimen/text_big_size"
+            android:text="# 水煮肉片" />
 
     </FrameLayout>
 
@@ -151,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            app:srcCompat="@mipmap/grilled_meat" />
+            app:srcCompat="@mipmap/mapo_tofu" />
 
         <View
             android:layout_width="match_parent"
@@ -163,8 +163,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_large_size"
-            android:text="# 烤肉" />
+            android:textSize="@dimen/text_big_size"
+            android:text="# 麻婆豆腐" />
 
     </FrameLayout>
 
@@ -183,7 +183,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            app:srcCompat="@mipmap/juice" />
+            app:srcCompat="@mipmap/cola_chicken_wings" />
 
         <View
             android:layout_width="match_parent"
@@ -195,8 +195,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_large_size"
-            android:text="# 果汁" />
+            android:textSize="@dimen/text_big_size"
+            android:text="# 可乐鸡翅" />
 
     </FrameLayout>
 

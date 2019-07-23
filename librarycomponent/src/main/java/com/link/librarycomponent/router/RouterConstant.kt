@@ -13,6 +13,7 @@ class RouterConstant {
         const val MENU = "/component_menu/menu"
         //检索
         const val SEARCH = "/component_search/search"
+        const val SEARCH_DETAIL = "/component_search/search_detail"
     }
 
 }

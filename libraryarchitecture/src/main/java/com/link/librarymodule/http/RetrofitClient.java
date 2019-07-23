@@ -42,7 +42,7 @@ public class RetrofitClient {
     //服务端根路径
     public static String baseUrl = "https://apis.juhe.cn/";
 
-    private static Context mContext = Utils.getContext();
+    private static Context mContext = Utils.Companion.getContext();
 
     private static OkHttpClient okHttpClient;
     private static Retrofit retrofit;

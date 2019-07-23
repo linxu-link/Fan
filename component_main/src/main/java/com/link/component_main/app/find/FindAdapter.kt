@@ -33,6 +33,7 @@ class FindAdapter(var context: Context) : BaseAdapter() {
             holder.cover = layoutView.findViewById(R.id.cover)
             holder.name = layoutView.findViewById(R.id.name)
             holder.tags = layoutView.findViewById(R.id.tags)
+            holder.read = layoutView.findViewById(R.id.read)
             layoutView.tag = holder
         } else {
             holder = layoutView.tag as ViewHolder
@@ -43,6 +44,11 @@ class FindAdapter(var context: Context) : BaseAdapter() {
             holder.name!!.text = mData!![position].title
             holder.content!!.text = mData!![position].imtro
             holder.tags!!.text = mData!![position].tags
+            holder.read!!.setOnClickListener {
+                if (onItemClickListener != null) {
+                    onItemClickListener!!.onItemClick(position)
+                }
+            }
         }
 
         return layoutView
@@ -60,12 +66,10 @@ class FindAdapter(var context: Context) : BaseAdapter() {
     }
 
     override fun getCount(): Int {
-
         if (mData != null && !mData.isNullOrEmpty()) {
             return mData!!.size
         }
         return 10
-
     }
 
 
@@ -74,6 +78,13 @@ class FindAdapter(var context: Context) : BaseAdapter() {
         var name: TextView? = null
         var content: TextView? = null
         var tags: TextView? = null
+        var read: TextView? = null
+    }
+
+    var onItemClickListener: onBtnClickListener? = null
+
+    interface onBtnClickListener {
+        fun onItemClick(position: Int)
     }
 
 }

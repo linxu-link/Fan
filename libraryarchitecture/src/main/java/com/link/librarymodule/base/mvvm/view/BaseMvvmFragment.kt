@@ -1,6 +1,5 @@
 package com.link.librarymodule.base.mvvm.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -8,7 +7,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.link.librarymodule.base.BaseFragment
-import com.link.librarymodule.base.ContainerActivity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import java.lang.reflect.ParameterizedType
 
@@ -21,6 +19,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initViewModel()
         initParam()
     }
 
@@ -48,11 +47,8 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
         mViewModel.registerRxBus()
     }
 
-    /**
-     * 注入绑定
-     */
-    open fun initView() {
-        mViewModel = initViewModel()
+    open fun initViewModel(){
+        mViewModel = getViewModel()
         if (mViewModel == null) {
             val modelClass: Class<*>
             val type = javaClass.genericSuperclass
@@ -68,6 +64,13 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
         lifecycle.addObserver(mViewModel!!)
         //注入RxLifecycle生命周期
         //        mViewModel.injectLifecycleProvider(this);
+    }
+
+    /**
+     * 初始化UI
+     */
+    open fun initView() {
+
     }
 
     /**
@@ -108,7 +111,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
      *
      * @return 继承BaseViewModel的ViewModel
      */
-    abstract fun initViewModel(): VM
+    abstract fun getViewModel(): VM
 
 
     override fun getData() {

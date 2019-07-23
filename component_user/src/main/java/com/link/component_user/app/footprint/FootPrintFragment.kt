@@ -24,7 +24,7 @@ class FootPrintFragment(override var layoutId: Int = R.layout.user_fragment_foot
     : BaseMvvmFragment<FootPrintViewModel>() {
 
 
-    override fun initViewModel(): FootPrintViewModel {
+    override fun getViewModel(): FootPrintViewModel {
         return UserViewModelFactory.getInstance().create(FootPrintViewModel::class.java)
     }
 

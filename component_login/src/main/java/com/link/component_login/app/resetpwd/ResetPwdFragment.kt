@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.login_fragment_register.swich_pwd
 class ResetPwdFragment(override var layoutId: Int = R.layout.login_fragment_reset_pwd)
     : BaseMvvmFragment<ResetPwdViewModel>() {
 
-    override fun initViewModel(): ResetPwdViewModel {
+    override fun getViewModel(): ResetPwdViewModel {
         return ViewModelFactory.getInstance().create(ResetPwdViewModel::class.java)
     }
 

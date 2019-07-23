@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.login_fragment_register.swich_pwd
 class RegisterFragment(override var layoutId: Int = R.layout.login_fragment_register)
     : BaseMvvmFragment<RegisterViewModel>() {
 
-    override fun initViewModel(): RegisterViewModel {
+    override fun getViewModel(): RegisterViewModel {
         return ViewModelFactory.getInstance().create(RegisterViewModel::class.java)
     }
 

@@ -108,7 +108,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     //改变状态栏字体颜色
-    private fun setAndroidNativeLightStatusBar(activity: Activity, dark: Boolean) {
+    fun setAndroidNativeLightStatusBar(activity: Activity, dark: Boolean) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return
         }

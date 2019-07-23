@@ -38,4 +38,8 @@ class SearchRepository private constructor(
     override fun search(menu: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
         return httpDataSource.search(menu, pn, rn)
     }
+
+    override fun index(cid: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
+        return httpDataSource.index(cid, pn, rn)
+    }
 }

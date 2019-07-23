@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import com.alibaba.android.arouter.launcher.ARouter
+import com.google.gson.Gson
 import com.link.component_main.app.MainViewModelFactory
+import com.link.librarycomponent.router.RouterConstant
 import com.link.libraryflipview.flip.FlipViewController
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 
@@ -36,9 +39,15 @@ class FindFragment(override var layoutId: Int = 0) : BaseMvvmFragment<FindViewMo
 
     override fun initView() {
         super.initView()
-        mViewModel.data.observe(this, Observer {
-            mAdapter.setData(it)
-        })
+        mAdapter.onItemClickListener = object : FindAdapter.onBtnClickListener {
+            override fun onItemClick(position: Int) {
+                ARouter.getInstance()
+                        .build(RouterConstant.MENU)
+                        .withString("MenuDetail", Gson().toJson(mAdapter.getItem(position)))
+                        .navigation()
+            }
+
+        }
 
     }
 
@@ -47,7 +56,14 @@ class FindFragment(override var layoutId: Int = 0) : BaseMvvmFragment<FindViewMo
         mViewModel.getData()
     }
 
-    override fun initViewModel(): FindViewModel {
+    override fun initViewObservable() {
+        super.initViewObservable()
+        mViewModel.data.observe(this, Observer {
+            mAdapter.setData(it)
+        })
+    }
+
+    override fun getViewModel(): FindViewModel {
         return MainViewModelFactory.getInstance().create(FindViewModel::class.java)
     }
 

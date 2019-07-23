@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.user_fragment_collection.*
 class CollectionFragment(override var layoutId: Int = R.layout.user_fragment_collection)
     : BaseMvvmFragment<CollectionViewModel>() {
 
-    override fun initViewModel(): CollectionViewModel {
+    override fun getViewModel(): CollectionViewModel {
         return UserViewModelFactory.getInstance().create(CollectionViewModel::class.java)
     }
 

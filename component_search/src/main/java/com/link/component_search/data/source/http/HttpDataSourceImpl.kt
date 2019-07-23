@@ -30,5 +30,9 @@ class HttpDataSourceImpl constructor(private val service: HttpService) : IHttpDa
         return service.query(Constant.JUHE_KEY, menu, pn, rn)
     }
 
+    override fun index(cid: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
+        return service.index(Constant.JUHE_KEY, cid, pn, rn, 0)
+    }
+
 
 }

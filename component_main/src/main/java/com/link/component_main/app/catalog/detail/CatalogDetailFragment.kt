@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.alibaba.android.arouter.launcher.ARouter
 import com.link.component_main.app.MainViewModelFactory
 import com.link.component_main.R
 import com.link.librarycomponent.router.RouterConstant
@@ -18,7 +19,7 @@ const val INDEX = "index"
 class CatalogDetailFragment(override var layoutId: Int = R.layout.main_fragment_catalog_detail) :
         BaseMvvmFragment<CatalogDetailViewModel>() {
 
-    override fun initViewModel(): CatalogDetailViewModel {
+    override fun getViewModel(): CatalogDetailViewModel {
         return MainViewModelFactory.getInstance().create(CatalogDetailViewModel::class.java)
     }
 
@@ -58,7 +59,6 @@ class CatalogDetailFragment(override var layoutId: Int = R.layout.main_fragment_
         rv_catalog_right.addItemDecoration(ItemDecoration(3, 3, 3, 3))
 
 
-
         if (index == 0) {
 
             mLeftAdapter.setOnItemClickListener { _, _, position ->
@@ -70,11 +70,6 @@ class CatalogDetailFragment(override var layoutId: Int = R.layout.main_fragment_
                 mLeftAdapter.notifyDataSetChanged()
 
             }
-
-            mViewModel.cataLog.observe(this, Observer {
-                mLeftAdapter.setNewData(it)
-                mRightAdapter.setNewData(mViewModel.cataLog.value!![0].list)
-            })
         } else {
             mLeftAdapter.setOnItemClickListener { _, _, position ->
                 mRightAdapter.setNewData(mViewModel.ingredients.value!![position].list)
@@ -85,24 +80,36 @@ class CatalogDetailFragment(override var layoutId: Int = R.layout.main_fragment_
                 mLeftAdapter.notifyDataSetChanged()
 
             }
-
-            mViewModel.ingredients.observe(this, Observer {
-                mLeftAdapter.setNewData(it)
-                mRightAdapter.setNewData(mViewModel.ingredients.value!![0].list)
-            })
         }
 
         mRightAdapter.setOnItemClickListener { _, _, position ->
             if (mRightAdapter.getItem(position)!=null) {
                 val name = mRightAdapter.getItem(position)!!.name
                 val id = mRightAdapter.getItem(position)!!.id
-                val bundle = Bundle()
-                bundle.putString(Constant.ID,id)
-                bundle.putString(Constant.NAME,name)
-                StartRouter.navigation(RouterConstant.MENU, bundle)
+
+                ARouter.getInstance()
+                        .build(RouterConstant.SEARCH_DETAIL)
+                        .withString(Constant.ID,id)
+                        .withString(Constant.NAME,name)
+                        .navigation()
             }
         }
 
+    }
+
+    override fun initViewObservable() {
+        super.initViewObservable()
+        if (index==0){
+            mViewModel.cataLog.observe(this, Observer {
+                mLeftAdapter.setNewData(it)
+                mRightAdapter.setNewData(mViewModel.cataLog.value!![0].list)
+            })
+        }else{
+            mViewModel.ingredients.observe(this, Observer {
+                mLeftAdapter.setNewData(it)
+                mRightAdapter.setNewData(mViewModel.ingredients.value!![0].list)
+            })
+        }
     }
 
     override fun getData() {

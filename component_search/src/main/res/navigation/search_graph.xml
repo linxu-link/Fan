@@ -8,11 +8,23 @@
         android:name="com.link.component_search.app.search.SearchFragment"
         android:label="SearchFragment" >
         <action
-            android:id="@+id/search_action_search_searchfragment_to_search_searchdetailfragment"
-            app:destination="@id/search_searchdetailfragment" />
+            android:id="@+id/action_searchfragment_to_searchdetailfragment"
+            app:destination="@id/search_searchdetailfragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
     </fragment>
     <fragment
         android:id="@+id/search_searchdetailfragment"
         android:name="com.link.component_search.app.detail.SearchDetailFragment"
-        android:label="SearchDetailFragment" />
+        android:label="SearchDetailFragment" >
+        <action
+            android:id="@+id/action_searchdetailfragment_to_searchfragment"
+            app:destination="@id/search_searchfragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+    </fragment>
 </navigation>

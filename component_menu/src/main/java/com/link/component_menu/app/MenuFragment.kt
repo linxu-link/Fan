@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.menu_fragment_menu.*
  * 描述：
  */
 class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : BaseMvvmFragment<MenuViewModel>() {
-    override fun initViewModel(): MenuViewModel {
+    override fun getViewModel(): MenuViewModel {
         return MenuViewModelFactory.getInstance().create(MenuViewModel::class.java)
     }
 

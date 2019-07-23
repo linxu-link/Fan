@@ -2,15 +2,19 @@ package com.link.component_search.app.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.FrameLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.alibaba.android.arouter.launcher.ARouter
+import com.google.gson.Gson
 import com.link.component_search.R
 import com.link.component_search.app.SearchViewModelFactory
+import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import com.link.librarymodule.widgets.recyclerview.DividerItemDecoration
+import com.link.librarymodule.utils.ToastUtils
 import kotlinx.android.synthetic.main.search_fragment_search.*
 
 /**
@@ -21,7 +25,7 @@ import kotlinx.android.synthetic.main.search_fragment_search.*
  */
 class SearchFragment(override var layoutId: Int = R.layout.search_fragment_search) : BaseMvvmFragment<SearchViewModel>() {
 
-    override fun initViewModel(): SearchViewModel {
+    override fun getViewModel(): SearchViewModel {
         return ViewModelProviders.of(activity!!, SearchViewModelFactory.getInstance()).get(SearchViewModel::class.java)
     }
 
@@ -40,7 +44,7 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
     override fun initView() {
         super.initView()
 
-        val list= arrayListOf("Staggered","Staggered","StaggeredGridLayoutManager","StaggeredGridLayoutManager","StaggeredGridLayoutManager")
+        val list = arrayListOf("Staggered", "Staggered", "StaggeredGridLayoutManager", "StaggeredGridLayoutManager", "StaggeredGridLayoutManager")
 
         mAdapter = SearchAdapter(android.R.layout.simple_list_item_activated_1, list)
         rvList.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
@@ -52,6 +56,7 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
             val menu: String = et_search.text.toString()
             if (menu.isNotEmpty()) {
                 mViewModel.searchWord.value = menu
+                Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
             }
         }
 
@@ -60,6 +65,30 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
 
     private fun initHeaderView() {
         val header = LayoutInflater.from(context).inflate(R.layout.search_head_view, null)
+        header.findViewById<FrameLayout>(R.id.search_recommend_1).setOnClickListener {
+            mViewModel.searchWord.value = "宫保鸡丁"
+            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+        }
+        header.findViewById<FrameLayout>(R.id.search_recommend_2).setOnClickListener {
+            mViewModel.searchWord.value = "糖醋排骨"
+            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+        }
+        header.findViewById<FrameLayout>(R.id.search_recommend_3).setOnClickListener {
+            mViewModel.searchWord.value = "红烧肉"
+            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+        }
+        header.findViewById<FrameLayout>(R.id.search_recommend_4).setOnClickListener {
+            mViewModel.searchWord.value = "水煮肉片"
+            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+        }
+        header.findViewById<FrameLayout>(R.id.search_recommend_5).setOnClickListener {
+            mViewModel.searchWord.value = "麻婆豆腐"
+            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+        }
+        header.findViewById<FrameLayout>(R.id.search_recommend_6).setOnClickListener {
+            mViewModel.searchWord.value = "可乐鸡翅"
+            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+        }
         mAdapter.addHeaderView(header)
     }
 
@@ -70,13 +99,6 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
 
     override fun initViewObservable() {
         super.initViewObservable()
-        mViewModel.searchWord.observe(this, Observer {
-            mViewModel.search(it, 0, 20)
-        })
-
-        mViewModel.searchData.observe(this, Observer {
-            findNavController().navigate(R.id.search_searchdetailfragment)
-        })
     }
 
 }

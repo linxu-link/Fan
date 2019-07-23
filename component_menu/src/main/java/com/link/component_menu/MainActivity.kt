@@ -22,9 +22,12 @@ class MainActivity : ContainerActivity() {
         menuDetail = Gson().fromJson(intent.getStringExtra("MenuDetail"),MenuDetail::class.java)
         super.onCreate(savedInstanceState)
         fullScreen(this)
+        setAndroidNativeLightStatusBar(this,false)
     }
 
     override fun initFragmentFormIntent(intent: Intent): Fragment {
         return MenuFragment.newInstance(menuDetail)
     }
+
+
 }

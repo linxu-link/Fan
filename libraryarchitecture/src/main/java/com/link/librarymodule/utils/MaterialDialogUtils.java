@@ -66,7 +66,7 @@ public class MaterialDialogUtils {
 //        MDButton btn = materialDialog.getActionButton(DialogAction.NEGATIVE);
 //        btn.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onClick(View v) {
+//            public void onClickListener(View v) {
 //
 //            }
 //        });
@@ -120,7 +120,7 @@ public class MaterialDialogUtils {
 //                .limitIconToDefaultSize() // limits the displayed icon size to 48dp
 //                .onAny(new MaterialDialog.SingleButtonCallback() {
 //                    @Override
-//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction
+//                    public void onClickListener(@NonNull MaterialDialog dialog, @NonNull DialogAction
 //                            which) {
 //                    }
 //                })

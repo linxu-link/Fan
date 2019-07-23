@@ -48,7 +48,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
     }
 
 
-    override fun initViewModel(): RecommendViewModel {
+    override fun getViewModel(): RecommendViewModel {
         return MainViewModelFactory.getInstance().create(RecommendViewModel::class.java)
     }
 

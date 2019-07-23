@@ -36,7 +36,7 @@ public abstract class ApiDisposableObserver<T> extends DisposableObserver<T> {
         super.onStart();
         ToastUtils.showShort("http is start");
         // if  NetworkAvailable no !   must to call onCompleted
-        if (!NetworkUtil.isNetworkAvailable(Utils.getContext())) {
+        if (!NetworkUtil.isNetworkAvailable(Utils.Companion.getContext())) {
 //            KLog.d("无网络，读取缓存数据");
             onComplete();
         }
