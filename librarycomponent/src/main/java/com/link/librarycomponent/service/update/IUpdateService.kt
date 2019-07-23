@@ -1,8 +1,9 @@
 package com.link.librarycomponent.service.update
 
-import android.content.Context
+import com.alibaba.android.arouter.facade.template.IProvider
 
-interface IUpdateService {
+interface IUpdateService:IProvider {
 
-    fun startUpdate(context: Context)
+    fun startUpdateService()
+
 }

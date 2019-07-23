@@ -20,6 +20,7 @@ class Utils private constructor() {
          *
          * @param context 上下文
          */
+        @JvmStatic
         fun init(context: Context) {
             Utils.context = context.applicationContext
         }
@@ -29,6 +30,7 @@ class Utils private constructor() {
          *
          * @return ApplicationContext
          */
+        @JvmStatic
         fun getContext(): Context {
             if (context != null) {
                 return context!!

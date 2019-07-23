@@ -22,7 +22,6 @@ class ServiceFactory {
                 }
     }
 
-    var updateService: IUpdateService? = null
 
     var userService: IUserService? = null
         get() {

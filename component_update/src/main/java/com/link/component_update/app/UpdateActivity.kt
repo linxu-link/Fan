@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import com.link.component_update.R
-import com.link.component_update.data.entity.UpdateEntity
+import com.link.component_update.data.entity.Update
 import com.link.librarymodule.base.BaseActivity
 import kotlinx.android.synthetic.main.update_fragment.*
 
@@ -18,11 +18,11 @@ import kotlinx.android.synthetic.main.update_fragment.*
  */
 class UpdateActivity : BaseActivity() {
 
-    private lateinit var mUpdateEntity: UpdateEntity
+    private lateinit var mUpdateEntity: Update
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mUpdateEntity = intent.getSerializableExtra(UpdateEntity::class.java.canonicalName) as UpdateEntity
+        mUpdateEntity = intent.getSerializableExtra(Update::class.java.canonicalName) as Update
         setContentView(R.layout.update_fragment)
 
         version_name.text = mUpdateEntity.versionCode
@@ -50,7 +50,7 @@ class UpdateActivity : BaseActivity() {
      */
     private fun downloadApk() {
         try {
-            val uri = Uri.parse(mUpdateEntity.downloadUrl)
+            val uri = Uri.parse(mUpdateEntity.apk.fileUrl)
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
         } catch (e: Exception) {
