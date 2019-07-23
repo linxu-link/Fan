@@ -6,13 +6,14 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.link.component_login.R
-import com.link.component_login.ViewModelFactory
+import com.link.component_login.app.ViewModelFactory
+import com.link.librarycomponent.router.RouterConstant
+import com.link.librarycomponent.router.StartRouter
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
+import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.SimpleTextWatcher
 import kotlinx.android.synthetic.main.login_fragment_register.*
 import kotlinx.android.synthetic.main.login_fragment_register.clear_phone
@@ -50,7 +51,6 @@ class RegisterFragment(override var layoutId: Int = R.layout.login_fragment_regi
             Navigation.findNavController(it).navigateUp()
         }
 
-
         login.setOnClickListener {
             Navigation.findNavController(it).navigateUp()
         }
@@ -63,13 +63,11 @@ class RegisterFragment(override var layoutId: Int = R.layout.login_fragment_regi
             mViewModel.phone.value = et_phone.text.toString()
             mViewModel.password.value = et_password.text.toString()
             mViewModel.code.value = et_code.text.toString()
-
             mViewModel.signUp()
         }
 
         //控制 清除按钮
         et_phone.addTextChangedListener(object : SimpleTextWatcher() {
-
             override fun afterTextChanged(s: Editable?) {
                 super.afterTextChanged(s)
                 if (s.toString().isNotEmpty()) {
@@ -78,7 +76,6 @@ class RegisterFragment(override var layoutId: Int = R.layout.login_fragment_regi
                     clear_phone.visibility = View.INVISIBLE
                 }
             }
-
         })
 
         //清除手机号码
@@ -99,6 +96,13 @@ class RegisterFragment(override var layoutId: Int = R.layout.login_fragment_regi
                 et_password.transformationMethod = PasswordTransformationMethod.getInstance()
             } else {
                 et_password.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            }
+        })
+
+        mViewModel.uc.pRegisterEvent.observe(this, Observer {
+            if (it) {
+                StartRouter.navigation(RouterConstant.APP)
+                AppManager.instance.finishAllActivity()
             }
         })
 

@@ -6,10 +6,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 
 import com.link.component_user.R
-import com.link.component_user.app.UserViewModelFactory
+import com.link.component_user.app.ViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.user_fragment_foot_print.*
@@ -25,7 +24,7 @@ class FootPrintFragment(override var layoutId: Int = R.layout.user_fragment_foot
 
 
     override fun getViewModel(): FootPrintViewModel {
-        return UserViewModelFactory.getInstance().create(FootPrintViewModel::class.java)
+        return ViewModelFactory.getInstance().create(FootPrintViewModel::class.java)
     }
 
     companion object {

@@ -28,7 +28,10 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
 
     inner class UIChangeObservable {
         //密码开关观察者
-        var pSwitchEvent: SingleLiveEvent<Boolean> = SingleLiveEvent()
+        var pSwitchEvent = SingleLiveEvent<Boolean>()
+
+        //注册成功的监听
+        var pRegisterEvent = SingleLiveEvent<Boolean>()
     }
 
 
@@ -37,7 +40,7 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
         phone.value = null
         password.value = null
         code.value = null
-        uc.pSwitchEvent.value=false
+        uc.pSwitchEvent.value = false
 
     }
 
@@ -48,6 +51,7 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
         }
 
         val userEntity = UserEntity()
+        userEntity.displayName = "请设定昵称"
         userEntity.username = phone.value
         userEntity.setPassword(password.value)
         userEntity.mobilePhoneNumber = phone.value
@@ -56,6 +60,7 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
             override fun done(user: UserEntity?, e: BmobException?) {
                 if (e == null) {
                     ToastUtils.showShort("注册成功")
+                    uc.pRegisterEvent.value = true
                 } else {
                     ToastUtils.showLong(e.toString())
                     Log.e("error", e.toString());

@@ -27,11 +27,24 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:textColor="@color/font_color"
+        android:textSize="@dimen/text_big_size"
         app:layout_constraintBottom_toBottomOf="@+id/back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/back"
         tools:text="@string/app_name" />
+
+    <ImageView
+        android:id="@+id/right_icon"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:padding="@dimen/dp_6"
+        android:visibility="invisible"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_login_out"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

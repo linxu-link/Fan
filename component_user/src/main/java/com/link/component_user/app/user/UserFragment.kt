@@ -3,18 +3,21 @@ package com.link.component_user.app.user
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
-import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.fragment.findNavController
+import android.util.Log
+import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.link.component_user.R
+import com.link.component_user.app.ViewModelFactory
 import com.link.component_user.app.about.AboutFragment
 import com.link.component_user.app.collection.CollectionFragment
 import com.link.component_user.app.footprint.FootPrintFragment
+import com.link.component_user.app.personal.PersonalInfoFragment
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.router.StartRouter
-import com.link.librarymodule.base.BaseFragment
+import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.utils.ToastUtils
+import kotlinx.android.synthetic.main.user_fragment_user.*
 import kotlinx.android.synthetic.main.user_include_user_body.*
 import kotlinx.android.synthetic.main.user_include_user_header.*
 
@@ -24,7 +27,11 @@ import kotlinx.android.synthetic.main.user_include_user_header.*
  *
  * 描述：我的界面
  */
-class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : BaseFragment() {
+class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : BaseMvvmFragment<UserViewModel>() {
+
+    override fun getViewModel(): UserViewModel {
+        return ViewModelFactory.getInstance().create(UserViewModel::class.java)
+    }
 
     companion object {
         @JvmStatic
@@ -37,23 +44,23 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initView() {
+        super.initView()
 
         img_collection.setOnClickListener {
-//            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
+            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
                 startContainerActivity(CollectionFragment::class.java.canonicalName!!, null)
-//            } else {
-//                StartRouter.navigation(RouterConstant.LOGIN)
-//            }
+            } else {
+                StartRouter.navigation(RouterConstant.LOGIN)
+            }
         }
 
         img_footprint.setOnClickListener {
-//            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
+            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
                 startContainerActivity(FootPrintFragment::class.java.canonicalName!!, null)
-//            } else {
-//                StartRouter.navigation(RouterConstant.LOGIN)
-//            }
+            } else {
+                StartRouter.navigation(RouterConstant.LOGIN)
+            }
         }
 
         img_attention.setOnClickListener {
@@ -81,7 +88,6 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         }
 
         img_share.setOnClickListener {
-
             val intent = Intent()
             intent.type = "text/plain"
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
@@ -97,10 +103,17 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
             ToastUtils.showLong("此功能开发中，敬请期待")
         }
 
+        user_view.setOnClickListener {
+            if (ServiceFactory.getInstance().loginService!!.isLogin()) {
+                startContainerActivity(PersonalInfoFragment::class.java.canonicalName!!, null)
+            } else {
+                StartRouter.navigation(RouterConstant.LOGIN)
+            }
+        }
+
     }
 
-
-    fun launchAppDetail(marketPkg: String) {
+    private fun launchAppDetail(marketPkg: String) {
         try {
             val uri = Uri.parse("market://details?id=com.link.fan")
             val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -115,5 +128,19 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         }
 
     }
+
+    override fun initViewObservable() {
+        super.initViewObservable()
+        mViewModel.userEntity.observe(this, Observer {
+            if (it != null) {
+                username.text = it.username
+                user_phone.text = it.mobilePhoneNumber
+                Glide.with(context!!).load(it.avatar!!.url).into(user_avatar)
+                Log.e("error", it.avatar!!.url + "," + it.avatar!!.fileUrl)
+            }
+        })
+
+    }
+
 
 }

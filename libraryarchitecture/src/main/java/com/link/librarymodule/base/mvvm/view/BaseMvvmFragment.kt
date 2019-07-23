@@ -47,7 +47,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
         mViewModel.registerRxBus()
     }
 
-    open fun initViewModel(){
+    fun initViewModel() {
         mViewModel = getViewModel()
         if (mViewModel == null) {
             val modelClass: Class<*>
@@ -95,7 +95,6 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
         //关闭上一层
         mViewModel.uc.onBackPressedEvent.observe(this, Observer { activity!!.onBackPressed() })
     }
-
 
 
     /**

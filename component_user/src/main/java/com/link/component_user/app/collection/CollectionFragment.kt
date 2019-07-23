@@ -6,11 +6,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.link.component_user.R
-import com.link.component_user.app.UserViewModelFactory
+import com.link.component_user.app.ViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.user_fragment_collection.*
@@ -25,7 +22,7 @@ class CollectionFragment(override var layoutId: Int = R.layout.user_fragment_col
     : BaseMvvmFragment<CollectionViewModel>() {
 
     override fun getViewModel(): CollectionViewModel {
-        return UserViewModelFactory.getInstance().create(CollectionViewModel::class.java)
+        return ViewModelFactory.getInstance().create(CollectionViewModel::class.java)
     }
 
     companion object {

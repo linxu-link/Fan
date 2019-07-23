@@ -1,5 +1,6 @@
 package com.link.librarymodule.base.mvvm.viewmodel;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.lifecycle.Lifecycle;
@@ -21,7 +22,7 @@ import io.reactivex.functions.Consumer;
 /**
  * @author WJ
  * @date 2019-05-28
- *
+ * <p>
  * 描述：
  */
 public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBaseViewModel, Consumer<Disposable> {
@@ -51,7 +52,7 @@ public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBa
     }
 
 
-    public M getModel(){
+    public M getModel() {
         return model;
     }
 

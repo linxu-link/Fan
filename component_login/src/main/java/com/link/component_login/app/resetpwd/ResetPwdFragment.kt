@@ -6,12 +6,10 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.link.component_login.R
-import com.link.component_login.ViewModelFactory
+import com.link.component_login.app.ViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.utils.SimpleTextWatcher
 import kotlinx.android.synthetic.main.login_fragment_register.*

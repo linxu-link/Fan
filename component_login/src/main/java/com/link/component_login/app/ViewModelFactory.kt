@@ -1,4 +1,4 @@
-package com.link.component_login
+package com.link.component_login.app
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +19,8 @@ class ViewModelFactory private constructor(
 
         fun getInstance() =
                 instance ?: synchronized(this) {
-                    instance ?: ViewModelFactory(Injection.provideRepository()).also {
+                    instance
+                            ?: ViewModelFactory(Injection.provideRepository()).also {
                         instance = it
                     }
                 }

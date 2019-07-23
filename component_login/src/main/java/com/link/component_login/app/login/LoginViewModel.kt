@@ -13,6 +13,7 @@ import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
+import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.ToastUtils
 
 class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRepository>(model) {
@@ -66,7 +67,8 @@ class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRe
                     Log.e("error", e.toString());
                 }else{
                     ToastUtils.showLong("登录成功")
-////                    ARouter.getInstance().build(RouterConstant.APP).navigation()
+                    AppManager.instance.finishAllActivity()
+                    ARouter.getInstance().build(RouterConstant.APP).navigation()
                 }
             }
 

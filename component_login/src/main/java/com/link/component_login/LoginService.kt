@@ -8,6 +8,7 @@ class LoginService : ILoginService {
     init {
     }
 
+    //判断用户是否已经登录，将这段代码写在login组件中
     override fun isLogin(): Boolean {
         return BmobUser.isLogin()
     }
