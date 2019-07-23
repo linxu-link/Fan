@@ -46,7 +46,6 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
 
     override fun initView() {
         super.initView()
-
         img_collection.setOnClickListener {
             if (ServiceFactory.getInstance().loginService!!.isLogin()) {
                 startContainerActivity(CollectionFragment::class.java.canonicalName!!, null)
@@ -133,13 +132,22 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         super.initViewObservable()
         mViewModel.userEntity.observe(this, Observer {
             if (it != null) {
-                username.text = it.username
+                username.text = it.displayName
                 user_phone.text = it.mobilePhoneNumber
-                Glide.with(context!!).load(it.avatar!!.url).into(user_avatar)
-                Log.e("error", it.avatar!!.url + "," + it.avatar!!.fileUrl)
+                if (it.avatar != null) {
+                    Glide.with(context!!).load(it.avatar!!.url).into(user_avatar)
+                    Log.e("error", it.avatar!!.url + "," + it.avatar!!.fileUrl)
+                }
             }
         })
 
+    }
+
+    override fun getData() {
+        super.getData()
+        if (mViewModel.userEntity.value != null) {
+            mViewModel.getUserData()
+        }
     }
 
 

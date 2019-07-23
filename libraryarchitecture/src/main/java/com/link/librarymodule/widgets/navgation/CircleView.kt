@@ -31,7 +31,7 @@ class CircleView @JvmOverloads constructor(context: Context, attributeSet: Attri
 
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.CircleView, defStyleAttr, 0)
         mCircleBackgroundColor = typedArray.getColor(R.styleable.CircleView_circle_background_color, DEFAULT_CIRCLE_BACKGROUND_COLOR)
-        mBitmap = getBitmapFromDrawable(typedArray.getResourceId(R.styleable.CircleView_circle_src,R.mipmap.background))
+        mBitmap = getBitmapFromDrawable(typedArray.getResourceId(R.styleable.CircleView_circle_src,R.mipmap.logo))
         typedArray.recycle()
 
         setLayerType(LAYER_TYPE_SOFTWARE,null)

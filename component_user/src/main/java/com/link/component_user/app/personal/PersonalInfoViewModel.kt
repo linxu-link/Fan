@@ -2,13 +2,16 @@ package com.link.component_user.app.personal
 
 import androidx.lifecycle.MutableLiveData
 import cn.bmob.v3.BmobUser
+import cn.bmob.v3.datatype.BmobFile
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.UpdateListener
+import cn.bmob.v3.listener.UploadFileListener
 import com.link.component_user.data.UserRepository
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.ToastUtils
+import java.io.File
 
 class PersonalInfoViewModel(repository: UserRepository) : BaseViewModel<UserRepository>(repository) {
 
@@ -44,6 +47,26 @@ class PersonalInfoViewModel(repository: UserRepository) : BaseViewModel<UserRepo
             }
 
         })
+    }
+
+    fun updateAvatar(path: String) {
+        if (path.isEmpty()) {
+            return
+        }
+
+        val bmobFile = BmobFile(File(path))
+
+        bmobFile.uploadblock(object : UploadFileListener() {
+            override fun done(e: BmobException?) {
+                if (e == null) {
+                    ToastUtils.showLong("上传成功")
+                    userEntity.value!!.avatar = bmobFile
+                } else {
+                    ToastUtils.showLong(e.message)
+                }
+            }
+        })
+
 
     }
 

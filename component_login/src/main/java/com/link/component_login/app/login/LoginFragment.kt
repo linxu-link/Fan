@@ -47,6 +47,7 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
         //登录按钮
         login_btn.setOnClickListener {
             mViewModel.phone.value = et_phone.text.toString()
+            mViewModel.password.value = et_password.text.toString()
             mViewModel.login()
         }
 
