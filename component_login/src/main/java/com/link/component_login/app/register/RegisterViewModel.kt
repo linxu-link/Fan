@@ -1,5 +1,6 @@
 package com.link.component_login.app.register
 
+import android.os.Build
 import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -7,11 +8,15 @@ import cn.bmob.v3.BmobSMS
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.QueryListener
 import cn.bmob.v3.listener.SaveListener
+import com.link.component_login.R
 import com.link.component_login.data.LoginRepository
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
+import com.link.librarymodule.utils.RxCountDown
 import com.link.librarymodule.utils.ToastUtils
+import com.link.librarymodule.utils.Utils
+import io.reactivex.functions.Consumer
 
 
 class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginRepository>(repository) {
@@ -22,6 +27,8 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
     val password = MutableLiveData<String>()
 
     val code = MutableLiveData<String>()
+
+    val countDown = MutableLiveData<Int>()
 
     //封装一个界面发生改变的观察者
     var uc = UIChangeObservable()
@@ -36,11 +43,12 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
 
 
     init {
-
         phone.value = null
         password.value = null
         code.value = null
         uc.pSwitchEvent.value = false
+
+        countDown.value = 0
 
     }
 
@@ -55,6 +63,9 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
         userEntity.username = phone.value
         userEntity.setPassword(password.value)
         userEntity.mobilePhoneNumber = phone.value
+        val device = UserEntity.Installation()
+        device.deviceOS = Build.MODEL + "-" + Build.VERSION.SDK_INT
+        userEntity.device = device
 
         userEntity.signOrLogin(code.value, object : SaveListener<UserEntity>() {
             override fun done(user: UserEntity?, e: BmobException?) {
@@ -74,13 +85,19 @@ class RegisterViewModel(repository: LoginRepository) : BaseViewModel<LoginReposi
     //请求验证码
     fun requestSMSCode() {
         if (TextUtils.isEmpty(phone.value)) {
-            ToastUtils.showShort("请输入验证码")
+            ToastUtils.showShort("请输入手机号码")
             return
         }
 
-        BmobSMS.requestSMSCode(phone.value, "即刻美食", object : QueryListener<Int>() {
+        BmobSMS.requestSMSCode(phone.value, Utils.getContext().resources.getString(R.string.application_name), object : QueryListener<Int>() {
             override fun done(smsId: Int?, e: BmobException?) {
                 if (e == null) {
+                    RxCountDown.countdown(60)
+                            .subscribe(Consumer {
+                                countDown.value = it
+                            }, Consumer {
+
+                            })
                     ToastUtils.showShort("发送成功")
                 } else {
                     ToastUtils.showLong(e.toString())

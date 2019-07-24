@@ -109,6 +109,18 @@ class RegisterFragment(override var layoutId: Int = R.layout.login_fragment_regi
         mViewModel.phone.observe(this, Observer {
             et_phone.setText(it)
         })
+
+        mViewModel.countDown.observe(this, Observer {
+            if (it != 0) {
+                btn_sms.text = "已发送${it}秒"
+                btn_sms.isEnabled = false
+                btn_sms.background=resources.getDrawable(R.drawable.shape_stroke_corner_25dp_grey_dark_full)
+            } else if (it == 0) {
+                btn_sms.text = resources.getString(R.string.login_send_sms)
+                btn_sms.isEnabled = true
+                btn_sms.background=resources.getDrawable(R.drawable.shape_stroke_corner_25dp_green_full)
+            }
+        })
     }
 
 

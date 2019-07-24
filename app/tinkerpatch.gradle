@@ -7,7 +7,7 @@ def bakPath = file("${buildDir}/bakApk/")
  * add apk from the build/bakApk
  */
 ext {
-    tinkerEnabled = true
+    tinkerEnabled = false
     //for normal build
     //old apk file to build patch apk
     tinkerOldApkPath = "${bakPath}/app-release-0424-07-07-20.apk"

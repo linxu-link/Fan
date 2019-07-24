@@ -15,6 +15,7 @@ import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.DownloadFileListener
 import cn.bmob.v3.listener.FindListener
+import com.link.fan.tinker.entity.Hotfix
 import com.link.librarymodule.utils.CommonUtil
 
 class TinkerService : Service() {

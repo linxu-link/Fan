@@ -31,6 +31,7 @@ class EntranceActivity : BaseActivity() {
         //启动热修复service
         TinkerService.runTinkerService(Utils.getContext())
 
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

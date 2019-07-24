@@ -6,22 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.multidex.MultiDex
-
-import com.link.fan.MainApplication
 import com.link.librarycomponent.AppConfig
 import com.link.librarymodule.BaseApplication
-import com.link.librarymodule.utils.RxUtils
 import com.tencent.tinker.anno.DefaultLifeCycle
 import com.tencent.tinker.entry.DefaultApplicationLike
 import com.tencent.tinker.loader.shareutil.ShareConstants
-
-import java.lang.reflect.Constructor
-import java.lang.reflect.Field
-import java.lang.reflect.Method
-import java.util.concurrent.TimeUnit
-
-import io.reactivex.Observable
-import io.reactivex.functions.Consumer
 
 @DefaultLifeCycle(application = "com.link.fan.tinker.MainTinkerApplication", flags = ShareConstants.TINKER_ENABLE_ALL, loadVerifyFlag = false)
 class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerifyFlag: Boolean, applicationStartElapsedTime: Long, applicationStartMillisTime: Long, tinkerResultIntent: Intent) : DefaultApplicationLike(application, tinkerFlags, tinkerLoadVerifyFlag, applicationStartElapsedTime, applicationStartMillisTime, tinkerResultIntent) {

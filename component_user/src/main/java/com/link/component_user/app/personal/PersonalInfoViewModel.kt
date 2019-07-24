@@ -1,9 +1,11 @@
 package com.link.component_user.app.personal
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import cn.bmob.v3.BmobUser
 import cn.bmob.v3.datatype.BmobFile
 import cn.bmob.v3.exception.BmobException
+import cn.bmob.v3.listener.FetchUserInfoListener
 import cn.bmob.v3.listener.UpdateListener
 import cn.bmob.v3.listener.UploadFileListener
 import com.link.component_user.data.UserRepository
@@ -39,13 +41,27 @@ class PersonalInfoViewModel(repository: UserRepository) : BaseViewModel<UserRepo
         userEntity.value!!.update(object : UpdateListener() {
             override fun done(e: BmobException?) {
                 if (e == null) {
-                    ToastUtils.showShort("更新成功")
-                    uc.pUpdateEvent.value = true
+                    updateUserData()
                 } else {
                     ToastUtils.showLong(e.toString())
                 }
             }
 
+        })
+    }
+
+    private fun updateUserData() {
+        BmobUser.fetchUserInfo(object : FetchUserInfoListener<BmobUser>() {
+            override fun done(user: BmobUser, e: BmobException?) {
+                if (e == null) {
+                    ToastUtils.showShort("更新成功")
+                    userEntity.value = BmobUser.getCurrentUser(UserEntity::class.java)
+                    uc.pUpdateEvent.value = true
+                } else {
+                    ToastUtils.showLong(e.message)
+                    Log.e("error", e.message)
+                }
+            }
         })
     }
 

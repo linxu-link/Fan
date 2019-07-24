@@ -32,7 +32,6 @@ class UserViewModel(repository: UserRepository) : BaseViewModel<UserRepository>(
                 }
             }
         })
-
     }
 
 

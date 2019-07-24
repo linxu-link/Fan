@@ -1,4 +1,4 @@
-package com.link.fan.tinker
+package com.link.fan.tinker.entity
 
 import cn.bmob.v3.BmobObject
 import cn.bmob.v3.datatype.BmobFile
