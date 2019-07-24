@@ -27,6 +27,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.File;
+import java.net.Proxy;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -83,6 +84,7 @@ public class RetrofitClient {
         okHttpClient = new OkHttpClient.Builder()
                 .cookieJar(new CookieJarImpl(new PersistentCookieStore(mContext)))
                 .cache(cache)
+                .proxy(Proxy.NO_PROXY)
                 .addInterceptor(new BaseInterceptor(headers))
                 .addInterceptor(new CacheInterceptor(mContext))
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
