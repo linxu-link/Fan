@@ -7,41 +7,50 @@
     android:background="@android:color/white"
     tools:context=".app.SplashActivity">
 
-    <ImageView
+    <FrameLayout
+        android:id="@+id/splash_framelayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
-        android:scaleType="fitXY"
-        android:src="@mipmap/splash_2"
+        android:layout_marginBottom="@dimen/dp_24"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/splash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/splash" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="精致的生活从美食开始"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/logo" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:text="@string/application_name"
-        android:textColor="@color/font_color"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/jump_button"

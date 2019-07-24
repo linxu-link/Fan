@@ -1,4 +1,4 @@
-package com.link.component_menu.app
+package com.link.component_menu.app.adapter
 
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter

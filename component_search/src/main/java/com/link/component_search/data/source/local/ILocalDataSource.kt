@@ -1,11 +1,24 @@
 package com.link.component_search.data.source.local
 
-import com.link.component_search.data.entity.MenuResult
-import com.link.librarycomponent.entity.base.BaseEntity
-import io.reactivex.Observable
+import com.link.component_search.data.entity.HistoryEntity
+import io.reactivex.Flowable
 
 interface ILocalDataSource {
 
-    fun getCatalogData(): Observable<String>
+    /**
+     * 获取搜索历史
+     */
+    fun getSearchHistory(): Flowable<List<HistoryEntity>>
+
+    /**
+     * 插入搜索历史
+     */
+    fun insertSearchData(searchWord: HistoryEntity)
+
+    /**
+     * 清空搜索历史
+     */
+    fun clearSearchHistory(list: List<HistoryEntity>)
+
 
 }

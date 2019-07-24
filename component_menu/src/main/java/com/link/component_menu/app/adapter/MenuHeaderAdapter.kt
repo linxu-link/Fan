@@ -1,4 +1,4 @@
-package com.link.component_menu.app
+package com.link.component_menu.app.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder

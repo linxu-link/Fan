@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
+import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.Glide
 import com.link.component_user.R
 import com.link.component_user.app.ViewModelFactory
@@ -15,6 +16,7 @@ import com.link.component_user.app.personal.PersonalInfoFragment
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.router.StartRouter
+import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.utils.ToastUtils
 import kotlinx.android.synthetic.main.user_fragment_user.*
@@ -83,7 +85,9 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         }
 
         img_update.setOnClickListener {
-
+            val updateService = ARouter.getInstance().build(RouterConstant.UPDATE).navigation() as IUpdateService
+            updateService.startUpdateService()
+            ToastUtils.showLong("请稍后……")
         }
 
         img_share.setOnClickListener {

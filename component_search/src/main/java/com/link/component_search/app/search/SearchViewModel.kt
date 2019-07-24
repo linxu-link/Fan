@@ -1,15 +1,18 @@
 package com.link.component_search.app.search
 
+import android.database.sqlite.SQLiteConstraintException
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.link.component_search.data.SearchRepository
+import com.link.component_search.data.entity.HistoryEntity
 import com.link.component_search.data.entity.MenuDetail
 import com.link.component_search.data.entity.MenuResult
 import com.link.librarycomponent.entity.base.BaseEntity
 import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.utils.ToastUtils
+import com.link.librarymodule.utils.executors.AppExecutors
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
@@ -18,17 +21,8 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
 
     val searchWord = MutableLiveData<String>()
     val searchId = MutableLiveData<String>()
-
     val searchData = MutableLiveData<List<MenuDetail>>()
-
-    val searchHistory = MutableLiveData<List<String>>()
-
-    val uc = UIChangeObservable()
-
-    inner class UIChangeObservable() {
-        val jump = SingleLiveEvent<Boolean>()
-    }
-
+    val searchHistory = MutableLiveData<List<HistoryEntity>>()
 
     fun search(menu: String, pn: Int, rn: Int) {
         addSubscribe(model.search(menu, pn, rn)
@@ -41,17 +35,6 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
                         ToastUtils.showLong(it.reason)
                     }
                 })
-    }
-
-    fun getSearchData() {
-        addSubscribe(model.getCatalogData()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(Consumer {
-                    val data = Gson().fromJson<BaseEntity<MenuResult>>(it, object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                    searchData.value = data.result.data
-                }))
-
     }
 
     fun index(pn: Int, rn: Int) {
@@ -70,9 +53,39 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
 
     }
 
-    fun getHistory() {
+    fun getSearchHistoryData() {
+        addSubscribe(model.getSearchHistory()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(Consumer {
+                    searchHistory.value = it
+                }))
+
+    }
+
+    fun insertSearchWord(searchWord: String) {
+
+        val executor = AppExecutors()
+        executor.diskIO().execute(Runnable {
+            val search = HistoryEntity()
+            search.content = searchWord
+            try {
+                getModel().insertSearchData(search)
+            } catch (e: SQLiteConstraintException) {
+                e.printStackTrace()
+            }
+        })
 
 
+    }
+
+    fun clearSearchHistory() {
+        if (searchHistory.value != null) {
+            val executor = AppExecutors()
+            executor.diskIO().execute(Runnable {
+                getModel().clearSearchHistory(searchHistory.value!!)
+            })
+        }
     }
 
 }

@@ -15,6 +15,7 @@ import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.ToastUtils
+import com.tencent.mmkv.MMKV
 
 class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRepository>(model) {
 
@@ -22,6 +23,8 @@ class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRe
     val phone = MutableLiveData<String>()
     //密码的绑定
     val password = MutableLiveData<String>()
+    //是否记住密码
+    val rememberPwd = MutableLiveData<Boolean>()
 
     //封装一个界面发生改变的观察者
     var uc = UIChangeObservable()
@@ -32,22 +35,31 @@ class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRe
     }
 
     init {
-        phone.value=getModel().getUserInfo().mobilePhoneNumber
-        password.value=getModel().getUserInfo().pwd
-        uc.pSwitchEvent.value=false
+        rememberPwd.value = false
+        uc.pSwitchEvent.value = false
     }
 
     //清除用户名的点击事件, 逻辑从View层转换到ViewModel层
-    fun clearPhone(){
-        phone.value=null
+    fun clearPhone() {
+        phone.value = null
     }
 
+
+    fun getUserData() {
+        val remember = MMKV.defaultMMKV().getBoolean("remember_pwd", false)
+        rememberPwd.value = remember
+        if (remember) {
+            val userEntity = getModel().getUserInfo()
+
+            phone.value = userEntity.mobilePhoneNumber
+            password.value = userEntity.pwd
+        }
+    }
 
     /**
      * 登录操作
      */
     fun login() {
-
         if (TextUtils.isEmpty(phone.value)) {
             ToastUtils.showShort("请输入手机号码！")
             return
@@ -57,15 +69,15 @@ class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRe
             return
         }
 
-        val userEntity=UserEntity()
-
-        BmobUser.loginByAccount(phone.value,password.value,object : LogInListener<UserEntity>(){
-
+        BmobUser.loginByAccount(phone.value, password.value, object : LogInListener<UserEntity>() {
             override fun done(user: UserEntity?, e: BmobException?) {
-                if (e!=null){
+                if (e != null) {
                     ToastUtils.showShort(e.toString())
                     Log.e("error", e.toString());
-                }else{
+                } else {
+                    if (rememberPwd.value!!) {
+                        getModel().saveUserInfo(phone.value!!, password.value!!)
+                    }
                     ToastUtils.showLong("登录成功")
                     AppManager.instance.finishAllActivity()
                     ARouter.getInstance().build(RouterConstant.APP).navigation()

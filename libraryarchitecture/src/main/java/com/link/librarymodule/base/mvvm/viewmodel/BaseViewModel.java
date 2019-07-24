@@ -1,6 +1,5 @@
 package com.link.librarymodule.base.mvvm.viewmodel;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.lifecycle.Lifecycle;
@@ -11,7 +10,6 @@ import androidx.lifecycle.ViewModel;
 import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent;
 import com.link.librarymodule.base.mvvm.model.BaseModel;
 
-import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 

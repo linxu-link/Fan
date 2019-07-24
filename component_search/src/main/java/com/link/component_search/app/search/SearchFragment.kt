@@ -3,12 +3,14 @@ package com.link.component_search.app.search
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.google.gson.Gson
 import com.link.component_search.R
 import com.link.component_search.app.SearchViewModelFactory
@@ -44,9 +46,7 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
     override fun initView() {
         super.initView()
 
-        val list = arrayListOf("Staggered", "Staggered", "StaggeredGridLayoutManager", "StaggeredGridLayoutManager", "StaggeredGridLayoutManager")
-
-        mAdapter = SearchAdapter(android.R.layout.simple_list_item_activated_1, list)
+        mAdapter = SearchAdapter(android.R.layout.simple_list_item_activated_1, null)
         rvList.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         rvList.adapter = mAdapter
 
@@ -58,6 +58,11 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
                 mViewModel.searchWord.value = menu
                 Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
             }
+        }
+
+        mAdapter.setOnItemClickListener { _, _, position ->
+            mViewModel.searchWord.value = mAdapter.getItem(position)!!.content
+            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
 
 
@@ -89,16 +94,30 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
             mViewModel.searchWord.value = "可乐鸡翅"
             Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
+
+        header.findViewById<TextView>(R.id.btn_clear).setOnClickListener {
+            mViewModel.clearSearchHistory()
+        }
+
         mAdapter.addHeaderView(header)
     }
 
     override fun getData() {
         super.getData()
-
+        mViewModel.getSearchHistoryData()
     }
 
     override fun initViewObservable() {
         super.initViewObservable()
+
+        mViewModel.searchHistory.observe(this, Observer {
+            mAdapter.setNewData(it)
+        })
+
+        mViewModel.searchWord.observe(this, Observer {
+            mViewModel.insertSearchWord(it)
+        })
+
     }
 
 }

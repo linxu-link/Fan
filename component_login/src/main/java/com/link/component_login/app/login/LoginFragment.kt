@@ -12,6 +12,7 @@ import com.link.component_login.R
 import com.link.component_login.app.ViewModelFactory
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.utils.SimpleTextWatcher
+import com.tencent.mmkv.MMKV
 import kotlinx.android.synthetic.main.login_fragment_login.*
 
 /**
@@ -39,7 +40,7 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
 
     override fun initView() {
         super.initView()
-        val back=mRootView!!.findViewById<ImageView>(R.id.back)
+        val back = mRootView!!.findViewById<ImageView>(R.id.back)
         back.setOnClickListener {
             activity!!.onBackPressed()
         }
@@ -53,8 +54,10 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
 
         //记住密码按钮
         remember_pwd.setOnCheckedChangeListener { _, isChecked ->
-
+            mViewModel.rememberPwd.value = isChecked
         }
+        remember_pwd.isChecked = mViewModel.rememberPwd.value!!
+
 
         //清除手机号码
         clear_phone.setOnClickListener {
@@ -106,7 +109,14 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
             }
         })
 
+        mViewModel.rememberPwd.observe(this, Observer {
+            MMKV.defaultMMKV().encode("remember_pwd", it)
+        })
+    }
 
+    override fun getData() {
+        super.getData()
+        mViewModel.getUserData()
     }
 
 

@@ -7,11 +7,11 @@ interface ILocalDataSource {
     /**
      * 保存用户信息
      */
-    fun saveUserInfo()
+    fun saveUserInfo(phone: String, password: String)
 
     /**
      * 获取用户信息
      */
-    fun getUserInfo():UserEntity
+    fun getUserInfo(): UserEntity
 
 }

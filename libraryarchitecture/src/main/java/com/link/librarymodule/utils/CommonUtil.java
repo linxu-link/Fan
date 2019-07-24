@@ -29,7 +29,7 @@ public class CommonUtil {
     public static PackageInfo getPackageInfo() {
         PackageInfo info = new PackageInfo();
         try {
-            info = BaseApplication.instance.getPackageManager().getPackageInfo(BaseApplication.instance.getPackageName(), 0);
+            info = Utils.getContext().getPackageManager().getPackageInfo(Utils.getContext().getPackageName(), 0);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class CommonUtil {
      */
     public static int dp2px(float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
-                BaseApplication.instance.getResources().getDisplayMetrics());
+                Utils.getContext().getResources().getDisplayMetrics());
     }
 
     /**
@@ -55,7 +55,7 @@ public class CommonUtil {
      */
     public static int dp2sp(float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, dp,
-                BaseApplication.instance.getResources().getDisplayMetrics());
+                Utils.getContext().getResources().getDisplayMetrics());
     }
 
     /**
@@ -81,11 +81,11 @@ public class CommonUtil {
      * @return
      */
     public static int getDisWidth() {
-        return BaseApplication.instance.getResources().getDisplayMetrics().widthPixels;
+        return Utils.getContext().getResources().getDisplayMetrics().widthPixels;
     }
 
     public static int getPx(float dp) {
-        return (int) (BaseApplication.instance.getResources().getDisplayMetrics().density * dp);
+        return (int) (Utils.getContext().getResources().getDisplayMetrics().density * dp);
     }
 
     public static byte[] hamcSha1(byte[] data, byte[] key) {

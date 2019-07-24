@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.link.component_menu.R
+import com.link.component_menu.app.adapter.MenuAdapter
+import com.link.component_menu.app.adapter.MenuFooterAdapter
+import com.link.component_menu.app.adapter.MenuHeaderAdapter
 import com.link.component_menu.data.entity.MenuDetail
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
@@ -45,6 +48,9 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
 
     override fun initView() {
         super.initView()
+        toolbar.setNavigationOnClickListener {
+            activity!!.onBackPressed()
+        }
         mAdapter = MenuAdapter(R.layout.menu_item, null)
         rvList.addItemDecoration(ItemDecoration(0, 10, 10, 0))
         rvList.adapter = mAdapter
@@ -82,6 +88,7 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
 
         val rv_list = footerView.findViewById<RecyclerView>(R.id.rv_list)
         rv_list.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+        rv_list.addItemDecoration(ItemDecoration(0,8,10,8))
         rv_list.adapter = mFooterAdapter
         mAdapter.addFooterView(footerView)
     }
@@ -105,7 +112,7 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
             Glide.with(context!!).load(it.albums[0]).into(cover)
             toolbar.title = it.title
             val tag = it.tags.split(";")[0]
-//            mViewModel.getRecommend(tag)
+            mViewModel.getRecommend(tag)
             mViewModel.isCollection(it.id)
         })
 
@@ -114,11 +121,11 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
         })
 
         mViewModel.isCollection.observe(this, Observer {
-            val btnCollection=headerView.findViewById<TextView>(R.id.btn_collection)
-            if (it){
+            val btnCollection = headerView.findViewById<TextView>(R.id.btn_collection)
+            if (it) {
                 btnCollection.text = "已收藏"
                 btnCollection.setBackgroundResource(R.drawable.shape_stroke_corner_5dp_grey_dark_full)
-            }else{
+            } else {
                 btnCollection.text = "收藏"
                 btnCollection.setBackgroundResource(R.drawable.shape_stroke_corner_5dp_main_full)
             }

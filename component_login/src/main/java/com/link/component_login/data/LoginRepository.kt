@@ -6,10 +6,10 @@ import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.model.BaseModel
 
 class LoginRepository private constructor(
-    val httpDataSource: IHttpDataSource,
-    val localDataSource: ILocalDataSource?
+        val httpDataSource: IHttpDataSource,
+        val localDataSource: ILocalDataSource
 ) :
-    BaseModel() ,IHttpDataSource,ILocalDataSource{
+        BaseModel(), IHttpDataSource, ILocalDataSource {
 
 
     companion object {
@@ -17,24 +17,21 @@ class LoginRepository private constructor(
         @Volatile
         private var instance: LoginRepository? = null
 
-        fun getInstance(httpDataSource: IHttpDataSource, localDataSource: ILocalDataSource?) =
-            instance ?: synchronized(this) {
-                instance
-                    ?: LoginRepository(httpDataSource, localDataSource).also {
-                    instance = it
+        fun getInstance(httpDataSource: IHttpDataSource, localDataSource: ILocalDataSource) =
+                instance ?: synchronized(this) {
+                    instance
+                            ?: LoginRepository(httpDataSource, localDataSource).also {
+                                instance = it
+                            }
                 }
-            }
     }
 
-    override fun saveUserInfo() {
-
+    override fun saveUserInfo(phone: String, password: String) {
+        return localDataSource.saveUserInfo(phone, password)
     }
 
-    override fun getUserInfo():UserEntity {
-        val userEntity=UserEntity()
-        userEntity.pwd="123456"
-        userEntity.mobilePhoneNumber="18911560821"
-       return userEntity
+    override fun getUserInfo(): UserEntity {
+        return localDataSource.getUserInfo()
     }
 
 }
