@@ -60,9 +60,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':librarycomponent')
-    if (!splash_isSingleCompile) {
-        runtimeOnly project(':component_splash')
-    }
     if (!login_isSingleCompile) {
         runtimeOnly project(':component_login')
     }
@@ -82,6 +79,7 @@ dependencies {
         runtimeOnly project(':component_update')
     }
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt deps.alibaba.router_compiler
     //热修复
     compileOnly(deps.tinker.anno) { changing = true }

@@ -3,10 +3,13 @@ package com.link.fan.app.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.launcher.ARouter
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.widgets.navgation.BottomNavigationBar
 import com.link.fan.R
+import com.link.librarycomponent.router.RouterConstant
+import com.link.librarycomponent.service.update.IUpdateService
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment(override var layoutId: Int= R.layout.fragment_main)
@@ -18,7 +21,6 @@ class MainFragment(override var layoutId: Int= R.layout.fragment_main)
         super.onViewCreated(view, savedInstanceState)
 
         bottom_navigation_bar.setOnItemClickListener(this)
-
         mFragmentList.add(ServiceFactory.getInstance().mainService!!.newMainFragment(bundle = null)!!)
         mFragmentList.add(ServiceFactory.getInstance().mainService!!.newCatalogFragment(bundle = null)!!)
         mFragmentList.add(ServiceFactory.getInstance().mainService!!.newFindFragment(bundle = null)!!)

@@ -2,7 +2,6 @@ include ':libraryflipview'
 include ':librarybase'
 include ':libraryarchitecture', ':librarycomponent'
 
-include ':component_splash'
 include ':component_login'
 include ':component_main'
 include ':component_search'

@@ -88,7 +88,7 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
 
         val rv_list = footerView.findViewById<RecyclerView>(R.id.rv_list)
         rv_list.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
-        rv_list.addItemDecoration(ItemDecoration(0,8,10,8))
+        rv_list.addItemDecoration(ItemDecoration(0,8,0,8))
         rv_list.adapter = mFooterAdapter
         mAdapter.addFooterView(footerView)
     }

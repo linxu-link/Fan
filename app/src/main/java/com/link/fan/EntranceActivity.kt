@@ -25,12 +25,12 @@ class EntranceActivity : BaseActivity() {
         fullScreen(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_container)
-        //启动更新service
-        val updateService = ARouter.getInstance().build(RouterConstant.UPDATE).navigation()!! as IUpdateService
-        updateService.startUpdateService()
         //启动热修复service
         TinkerService.runTinkerService(Utils.getContext())
 
+        //启动更新service
+        val updateService = ARouter.getInstance().build(RouterConstant.UPDATE).navigation()!! as IUpdateService
+        updateService.startUpdateService()
 
     }
 

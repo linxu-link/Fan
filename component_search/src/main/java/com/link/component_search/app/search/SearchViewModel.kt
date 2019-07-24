@@ -21,16 +21,16 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
 
     val searchWord = MutableLiveData<String>()
     val searchId = MutableLiveData<String>()
-    val searchData = MutableLiveData<List<MenuDetail>>()
+    val searchData = MutableLiveData<MenuResult>()
     val searchHistory = MutableLiveData<List<HistoryEntity>>()
 
-    fun search(menu: String, pn: Int, rn: Int) {
-        addSubscribe(model.search(menu, pn, rn)
+    fun search(pn: Int, rn: Int) {
+        addSubscribe(model.search(searchWord.value!!, pn, rn)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     if (it.resultcode == "200") {
-                        searchData.value = it.result.data
+                        searchData.value = it.result
                     } else {
                         ToastUtils.showLong(it.reason)
                     }
@@ -43,7 +43,7 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(Consumer {
                     if (it.resultcode == "200") {
-                        searchData.value = it.result.data
+                        searchData.value = it.result
                     } else {
                         ToastUtils.showLong(it.reason)
                     }

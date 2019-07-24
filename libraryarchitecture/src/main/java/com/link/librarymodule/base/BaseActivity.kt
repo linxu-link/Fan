@@ -14,14 +14,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if (setLightBar()) {
-            setAndroidNativeLightStatusBar(this, true)
-        }
-    }
-
-    open fun setLightBar(): Boolean {
-        return true
+        setAndroidNativeLightStatusBar(this, true)
     }
 
 

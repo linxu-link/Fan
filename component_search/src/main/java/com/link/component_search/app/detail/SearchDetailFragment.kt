@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.google.gson.Gson
 import com.link.component_search.R
 import com.link.component_search.app.SearchViewModelFactory
@@ -66,7 +67,9 @@ class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment
         rvList.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         rvList.addItemDecoration(ItemDecoration(5, 5, 5, 5))
         rvList.adapter = mAdapter
-        mAdapter.setNewData(mViewModel.searchData.value)
+        if (mViewModel.searchData.value != null) {
+            mAdapter.setNewData(mViewModel.searchData.value!!.data)
+        }
         mAdapter.setOnItemClickListener { _, _, position ->
             ARouter.getInstance()
                     .build(RouterConstant.MENU)
@@ -80,22 +83,41 @@ class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment
             }
         }
 
+        mAdapter.setOnLoadMoreListener({
+            if (mViewModel.searchId.value != null) {
+                //在上一次数据
+                mViewModel.index(mViewModel.searchData.value!!.pn.toInt() + 10, 10)
+            } else {
+                mViewModel.search(mViewModel.searchData.value!!.pn.toInt() + 10, 10)
+            }
+        }, rvList)
+
     }
 
 
     override fun initViewObservable() {
         super.initViewObservable()
+
         mViewModel.searchData.observe(this, Observer {
-            mAdapter.setNewData(it)
+            if (it.pn == "0") {
+                mAdapter.setNewData(it.data)
+            } else {
+                mAdapter.addData(it.data)
+            }
+            mAdapter.loadMoreComplete()
+            if (it.data.isEmpty()) {
+                mAdapter.loadMoreEnd(true)
+            }
+            mAdapter.setEnableLoadMore(it.data.size <= 10)
         })
 
         mViewModel.searchWord.observe(this, Observer {
             et_search.setText(it)
-            mViewModel.search(it, 0, 20)
+            mViewModel.search(0, 10)
         })
 
         mViewModel.searchId.observe(this, Observer {
-            mViewModel.index(0, 20)
+            mViewModel.index(0, 10)
         })
 
     }
