@@ -1,15 +1,12 @@
 package com.link.component_search.app.detail
 
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.google.gson.Gson
 import com.link.component_search.R
 import com.link.component_search.app.SearchViewModelFactory
@@ -17,7 +14,6 @@ import com.link.component_search.app.search.SearchViewModel
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.constant.Constant
-import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.search_fragment_search.*
 

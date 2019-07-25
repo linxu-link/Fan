@@ -17,6 +17,7 @@ import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.HorizontalBar
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.main_fragment_recommend.*
+import kotlinx.android.synthetic.main.main_recommend_head.*
 
 /**
  * @author WJ
@@ -92,6 +93,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         mViewModel.bannerData.observe(this, Observer {
             mHeadAdapter.setNewData(it)
             line.mMaxNum = mViewModel.bannerData.value!!.size
+            line.mCurrentNum = 1f
         })
         line.mMaxNum = 1
 
@@ -103,7 +105,6 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         mAdapter.addHeaderView(headView)
 
 
-        line.mCurrentNum = 1f
         rvHead.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -121,6 +122,8 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
     //头部 横向滑动页面
     private fun initHeaderView2() {
+        val headView2 = LayoutInflater.from(context).inflate(R.layout.main_recommend_head2, null)
+        val rvHead = headView2.findViewById<RecyclerView>(R.id.rv_head2)
 
         mHead2Adapter = RecommendHeadAdapter(R.layout.main_item_recommend_head_item2, null)
 
@@ -128,8 +131,6 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
             mHead2Adapter.setNewData(it)
         })
 
-        val headView2 = LayoutInflater.from(context).inflate(R.layout.main_recommend_head2, null)
-        val rvHead = headView2.findViewById<RecyclerView>(R.id.rv_head2)
         rvHead.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         rvHead.adapter = mHead2Adapter
         rvHead.addItemDecoration(ItemDecoration(0, 0, 16, 0))

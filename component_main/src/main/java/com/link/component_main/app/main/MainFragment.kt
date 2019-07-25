@@ -29,7 +29,7 @@ class MainFragment(override var layoutId: Int = R.layout.main_fragment_main) : B
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mFragmentList = arrayListOf<Fragment>()
-        val titles = arrayOf("今日推荐", "早餐达人", "丰盛午餐", "美味晚餐", "健身增肌")
+        val titles = arrayOf("夏日推荐", "早餐达人", "丰盛午餐", "美味晚餐", "创意甜点")
         mFragmentList.add(RecommendFragment.newInstance(0))
         mFragmentList.add(RecommendFragment.newInstance(1))
         mFragmentList.add(RecommendFragment.newInstance(2))

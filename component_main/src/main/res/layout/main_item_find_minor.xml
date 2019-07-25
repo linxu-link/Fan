@@ -88,6 +88,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/text_light"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:textSize="@dimen/text_middle_size"
         app:layout_constraintBottom_toBottomOf="@+id/main_textview7"
         app:layout_constraintEnd_toEndOf="@+id/content"
