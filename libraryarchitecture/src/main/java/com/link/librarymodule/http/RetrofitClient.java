@@ -78,7 +78,7 @@ public class RetrofitClient {
                 cache = new Cache(httpCacheDirectory, CACHE_TIMEOUT);
             }
         } catch (Exception e) {
-//            KLog.e("Could not create http cache", e);
+            e.printStackTrace();
         }
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory();
         okHttpClient = new OkHttpClient.Builder()

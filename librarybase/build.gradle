@@ -87,6 +87,8 @@ dependencies {
     api 'com.afollestad.material-dialogs:commons:0.9.4.5'
     //sp
     api 'com.tencent:mmkv:1.0.22'
+    //bugly
+    api 'com.tencent.bugly:crashreport:3.0.0'
 }
 
 repositories {

@@ -16,6 +16,7 @@ import com.link.component_menu.app.adapter.MenuHeaderAdapter
 import com.link.component_menu.data.entity.MenuDetail
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
+import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.android.synthetic.main.menu_fragment_menu.*
 
 /**

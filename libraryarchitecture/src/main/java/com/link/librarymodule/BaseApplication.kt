@@ -6,10 +6,12 @@ import android.content.Context
 import android.os.Bundle
 import androidx.annotation.NonNull
 import cn.bmob.v3.Bmob
+import cn.bmob.v3.Bmob.getApplicationContext
 import com.alibaba.android.arouter.launcher.ARouter
 import com.link.librarymodule.constant.Constant
 import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.Utils
+import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
 
 
@@ -36,7 +38,7 @@ abstract class BaseApplication : Application() {
             initARouter(application)
             initBmobSdk(application.applicationContext)
             initMMKV(application)
-
+            initBugly(application)
             application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
                 override fun onActivityPaused(activity: Activity?) {
 
@@ -92,6 +94,13 @@ abstract class BaseApplication : Application() {
          */
         private fun initMMKV(context: Context) {
             MMKV.initialize(context)
+        }
+
+        /**
+         * 初始化bugly
+         */
+        private fun initBugly(context: Context){
+            CrashReport.initCrashReport(context, Constant.BUGLY_ID, BuildConfig.DEBUG);
         }
 
     }
