@@ -84,12 +84,12 @@ public class RetrofitClient {
         okHttpClient = new OkHttpClient.Builder()
                 .cookieJar(new CookieJarImpl(new PersistentCookieStore(mContext)))
                 .cache(cache)
-                .proxy(Proxy.NO_PROXY)
+//                .proxy(Proxy.NO_PROXY)
                 .addInterceptor(new BaseInterceptor(headers))
                 .addInterceptor(new CacheInterceptor(mContext))
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
                 .addInterceptor(new LoggingInterceptor
-                        .Builder()//构建者模式
+                        .Builder()
                         .loggable(true) //是否开启日志打印
                         .setLevel(Level.BASIC) //打印的等级
                         .log(Platform.INFO) // 打印类型

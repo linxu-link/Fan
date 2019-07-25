@@ -21,8 +21,9 @@ class CollectionViewModel(repository: UserRepository) : BaseViewModel<UserReposi
 
 
     fun getCollectionData() {
+        userEntity ?: return
         val query = BmobQuery<Collection>()
-        query.addWhereEqualTo("userId", "link12345")
+        query.addWhereEqualTo("userId", userEntity.objectId)
         query.findObjects(object : FindListener<Collection>() {
             override fun done(list: MutableList<Collection>?, e: BmobException?) {
                 if (e == null) {

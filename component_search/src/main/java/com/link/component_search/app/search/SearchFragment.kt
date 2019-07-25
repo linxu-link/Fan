@@ -45,7 +45,7 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
 
     override fun initView() {
         super.initView()
-
+        refresh.isEnabled = false
         mAdapter = SearchAdapter(android.R.layout.simple_list_item_activated_1, null)
         rvList.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         rvList.adapter = mAdapter

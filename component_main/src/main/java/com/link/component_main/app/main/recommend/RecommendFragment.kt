@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.google.gson.Gson
 import com.link.component_main.R
 import com.link.component_main.app.MainViewModelFactory
+import com.link.component_main.app.main.recommend.adapter.RecommendHeadAdapter
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.HorizontalBar
@@ -59,7 +60,6 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
     override fun initView() {
         super.initView()
-
         refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
         refresh.setOnRefreshListener {
             getData()
@@ -67,40 +67,20 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
         mAdapter = RecommendHeadAdapter(R.layout.main_item_recommend, null)
 
-        if (index == 0) {
-
-            mViewModel.moreData.observe(this, Observer {
-                mAdapter.setNewData(it)
-                refresh.isRefreshing = false
-            })
-
-
-            initHeaderView()
-            initHeaderView2()
-        } else {
-
-            mViewModel.otherData.observe(this, Observer {
-                mAdapter.setNewData(it)
-                refresh.isRefreshing = false
-            })
-
-        }
-
         rv_list.adapter = mAdapter
         rv_list.addItemDecoration(ItemDecoration(0, 8, 0, 8))
 
         mAdapter.setOnItemClickListener { adapter, view, position ->
-
             val data = Gson().toJson(mAdapter.getItem(position))
-
             ARouter.getInstance().build(RouterConstant.MENU)
-                    .withString("MenuDetail",data)
+                    .withString("MenuDetail", data)
                     .navigation()
 
         }
 
     }
 
+    //头部 banner
     private fun initHeaderView() {
 
         mHeadAdapter = RecommendHeadAdapter(R.layout.main_item_recommend_head_item, null)
@@ -130,8 +110,16 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
                 line.mCurrentNum = getPositionAndOffset(rvHead).toFloat() + 1
             }
         })
+        mHeadAdapter.setOnItemClickListener { _, _, position ->
+            ARouter.getInstance()
+                    .build(RouterConstant.MENU)
+                    .withString("MenuDetail", Gson().toJson(mHeadAdapter.getItem(position)))
+                    .navigation()
+        }
+
     }
 
+    //头部 横向滑动页面
     private fun initHeaderView2() {
 
         mHead2Adapter = RecommendHeadAdapter(R.layout.main_item_recommend_head_item2, null)
@@ -146,6 +134,14 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         rvHead.adapter = mHead2Adapter
         rvHead.addItemDecoration(ItemDecoration(0, 0, 16, 0))
         mAdapter.addHeaderView(headView2)
+
+        mHead2Adapter.setOnItemClickListener { _, _, position ->
+
+            ARouter.getInstance()
+                    .build(RouterConstant.MENU)
+                    .withString("MenuDetail", Gson().toJson(mHeadAdapter.getItem(position)))
+                    .navigation()
+        }
 
     }
 
@@ -168,6 +164,25 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
             mViewModel.getRecommendData()
         } else {
             mViewModel.getData(index)
+        }
+    }
+
+    override fun initViewObservable() {
+        super.initViewObservable()
+        //当index=0时载入两个头部文件
+        if (index == 0) {
+            mViewModel.moreData.observe(this, Observer {
+                mAdapter.setNewData(it)
+                refresh.isRefreshing = false
+            })
+            initHeaderView()
+            initHeaderView2()
+        } else {
+            mViewModel.otherData.observe(this, Observer {
+                mAdapter.setNewData(it)
+                refresh.isRefreshing = false
+            })
+
         }
     }
 

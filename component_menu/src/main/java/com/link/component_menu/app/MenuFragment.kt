@@ -8,12 +8,15 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.link.component_menu.R
 import com.link.component_menu.app.adapter.MenuAdapter
 import com.link.component_menu.app.adapter.MenuFooterAdapter
 import com.link.component_menu.app.adapter.MenuHeaderAdapter
 import com.link.component_menu.data.entity.MenuDetail
+import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import com.tencent.bugly.crashreport.CrashReport
@@ -53,7 +56,7 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
             activity!!.onBackPressed()
         }
         mAdapter = MenuAdapter(R.layout.menu_item, null)
-        rvList.addItemDecoration(ItemDecoration(0, 10, 10, 0))
+        rvList.addItemDecoration(ItemDecoration(0, 10, 0, 10))
         rvList.adapter = mAdapter
         refresh.isEnabled = false
         initHeaderView()
@@ -89,9 +92,16 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
 
         val rv_list = footerView.findViewById<RecyclerView>(R.id.rv_list)
         rv_list.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
-        rv_list.addItemDecoration(ItemDecoration(0,8,0,8))
         rv_list.adapter = mFooterAdapter
         mAdapter.addFooterView(footerView)
+
+        mFooterAdapter.setOnItemChildClickListener { _, _, position ->
+
+            ARouter.getInstance()
+                    .build(RouterConstant.MENU)
+                    .withString("MenuDetail", Gson().toJson(mFooterAdapter.getItem(position)))
+                    .navigation()
+        }
     }
 
     override fun initViewObservable() {

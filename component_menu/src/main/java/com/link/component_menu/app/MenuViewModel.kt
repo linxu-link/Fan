@@ -31,6 +31,8 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
 
     val isCollection = MutableLiveData<Boolean>()
 
+    val userEntity = BmobUser.getCurrentUser(UserEntity::class.java)
+
     private var objectId = ""
 
     init {
@@ -47,7 +49,7 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
                             if (it.resultcode == "200") {
                                 recommendList.value = it.result.data
                             } else {
-                                ToastUtils.showLong(it.reason)
+//                                ToastUtils.showLong(it.reason)
                             }
                         }, Consumer {
 
@@ -58,10 +60,10 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
 
     //是否收藏
     fun isCollection(menuId: String) {
-        val user = BmobUser.getCurrentUser(UserEntity::class.java)
+        userEntity ?: return
 
         val query = BmobQuery<Collection>()
-        query.addWhereEqualTo("userId", "link12345")
+        query.addWhereEqualTo("userId", userEntity.objectId)
                 .addWhereEqualTo("id", menuId)
         query.findObjects(object : FindListener<Collection>() {
             override fun done(list: MutableList<Collection>?, e: BmobException?) {
@@ -84,12 +86,13 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
 
     //设定收藏
     fun setCollection() {
-        val user = BmobUser.getCurrentUser(UserEntity::class.java)
+        userEntity ?: return
+
         val menuEntity = menuDetail.value ?: return
         val collection = Collection()
 
         if (!isCollection.value!!) {
-            collection.userId = "link12345"
+            collection.userId = userEntity.objectId
             collection.id = menuEntity.id
             collection.title = menuEntity.title
             collection.tags = menuEntity.tags
@@ -128,18 +131,18 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
 
     //保存足迹
     private fun saveFootPrint(menuId: String) {
-        val user = BmobUser.getCurrentUser(UserEntity::class.java)
+        userEntity ?: return
         val menuEntity = menuDetail.value ?: return
 
         val query = BmobQuery<FootPrint>()
-        query.addWhereEqualTo("userId", "link12345").addWhereEqualTo("id", menuId)
+        query.addWhereEqualTo("userId", userEntity.objectId).addWhereEqualTo("id", menuId)
 
         query.findObjects(object : FindListener<FootPrint>() {
             override fun done(list: MutableList<FootPrint>?, e: BmobException?) {
                 if (e == null) {
                     if (list.isNullOrEmpty()) {
                         val footPrint = FootPrint()
-                        footPrint.userId = "link12345"
+                        footPrint.userId = userEntity.objectId
                         footPrint.id = menuEntity.id
                         footPrint.title = menuEntity.title
                         footPrint.tags = menuEntity.tags
@@ -159,8 +162,6 @@ class MenuViewModel constructor(repository: MenuRepository) : BaseViewModel<Menu
                             }
 
                         })
-                    } else {
-                        Log.e("TAG", "${list!!.size}")
                     }
                 } else {
                     Log.e("error", e.toString())

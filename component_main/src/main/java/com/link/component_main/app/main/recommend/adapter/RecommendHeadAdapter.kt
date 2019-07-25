@@ -1,4 +1,4 @@
-package com.link.component_main.app.main.recommend
+package com.link.component_main.app.main.recommend.adapter
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

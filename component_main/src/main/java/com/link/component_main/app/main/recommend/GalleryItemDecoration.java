@@ -10,9 +10,7 @@ import android.view.WindowManager;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * Created by Micky on 2018/12/3.
- */
+@Deprecated
 public class GalleryItemDecoration extends RecyclerView.ItemDecoration{
 
     int mPageMargin = 15 ;//自定义默认item边距

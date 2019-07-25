@@ -13,6 +13,7 @@ import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.utils.executors.AppExecutors
+import com.tencent.bugly.proguard.t
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
@@ -24,6 +25,8 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
     val searchData = MutableLiveData<MenuResult>()
     val searchHistory = MutableLiveData<List<HistoryEntity>>()
 
+    val enableLoadMore = MutableLiveData<Boolean>()
+
     fun search(pn: Int, rn: Int) {
         addSubscribe(model.search(searchWord.value!!, pn, rn)
                 .subscribeOn(Schedulers.newThread())
@@ -31,8 +34,10 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
                 .subscribe {
                     if (it.resultcode == "200") {
                         searchData.value = it.result
+                        enableLoadMore.value = it.result.data.size == 10
                     } else {
                         ToastUtils.showLong(it.reason)
+                        enableLoadMore.value = false
                     }
                 })
     }
@@ -41,13 +46,15 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
         addSubscribe(model.index(searchId.value!!, pn, rn)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
-                .subscribe(Consumer {
+                .subscribe({
                     if (it.resultcode == "200") {
                         searchData.value = it.result
+                        enableLoadMore.value = it.result.data.size == 10
                     } else {
+                        enableLoadMore.value = false
                         ToastUtils.showLong(it.reason)
                     }
-                }, Consumer {
+                }, {
                     ToastUtils.showLong(it.toString())
                 }))
 

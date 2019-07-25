@@ -3,6 +3,7 @@ package com.link.component_search.app.detail
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +25,7 @@ import kotlinx.android.synthetic.main.search_fragment_search.*
  * @author WJ
  * @date 2019-07-16
  *
- * 描述：
+ * 描述：搜索结果页面
  */
 class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment_search) : BaseMvvmFragment<SearchViewModel>() {
 
@@ -82,22 +83,26 @@ class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment
                 mViewModel.searchWord.value = menu
             }
         }
-
+        mAdapter.setEnableLoadMore(false)
         mAdapter.setOnLoadMoreListener({
             if (mViewModel.searchId.value != null) {
-                //在上一次数据
+                //在上一次数据的起始下标下+10 作为新的起始下标
                 mViewModel.index(mViewModel.searchData.value!!.pn.toInt() + 10, 10)
             } else {
                 mViewModel.search(mViewModel.searchData.value!!.pn.toInt() + 10, 10)
             }
         }, rvList)
 
+        refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
+        refresh.setOnRefreshListener {
+            getData()
+        }
+
     }
 
 
     override fun initViewObservable() {
         super.initViewObservable()
-
         mViewModel.searchData.observe(this, Observer {
             if (it.pn == "0") {
                 mAdapter.setNewData(it.data)
@@ -105,26 +110,32 @@ class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment
                 mAdapter.addData(it.data)
             }
             mAdapter.loadMoreComplete()
-            if (it.data.isEmpty()) {
-                mAdapter.loadMoreEnd(true)
-            }
-            mAdapter.setEnableLoadMore(it.data.size <= 10)
+            refresh.isRefreshing = false
+        })
+
+        mViewModel.enableLoadMore.observe(this, Observer {
+            mAdapter.setEnableLoadMore(it)
         })
 
         mViewModel.searchWord.observe(this, Observer {
             et_search.setText(it)
-            mViewModel.search(0, 10)
+            getData()
         })
 
         mViewModel.searchId.observe(this, Observer {
-            mViewModel.index(0, 10)
+            getData()
         })
 
     }
 
     override fun getData() {
         super.getData()
-
+        refresh.isRefreshing = true
+        if (mViewModel.searchId.value != null) {
+            mViewModel.index(0, 10)
+        } else {
+            mViewModel.search(0, 10)
+        }
     }
 
 
