@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/user_imageview2"
+        android:id="@+id/logo"
         android:layout_width="@dimen/dp_100"
         android:layout_height="@dimen/dp_100"
         android:layout_marginTop="60dp"
@@ -39,7 +39,7 @@
         android:paddingRight="@dimen/dp_8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_imageview2">
+        app:layout_constraintTop_toBottomOf="@+id/logo">
 
         <TextView
             android:layout_gravity="center_vertical"
@@ -165,7 +165,7 @@
         android:textColor="@color/font_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_imageview2" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
