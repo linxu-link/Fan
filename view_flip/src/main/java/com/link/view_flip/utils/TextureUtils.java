@@ -1,7 +1,7 @@
-package com.link.libraryflipview.utils;
+package com.link.view_flip.utils;
 
 
-import com.link.libraryflipview.flip.Texture;
+import com.link.view_flip.flip.Texture;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

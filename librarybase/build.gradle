@@ -23,7 +23,7 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api project(":libraryflipview")
+    api project(':view_flip')
     api 'androidx.appcompat:appcompat:1.0.2'
     api 'androidx.core:core-ktx:1.0.2'
     api 'androidx.recyclerview:recyclerview:1.0.0'

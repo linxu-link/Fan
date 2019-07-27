@@ -15,14 +15,14 @@ limitations under the License.
 
  */
 
-package com.link.libraryflipview.flip;
+package com.link.view_flip.flip;
 
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.link.libraryflipview.utils.AphidLog;
-import com.link.libraryflipview.utils.TextureUtils;
-import com.link.libraryflipview.utils.UI;
+import com.link.view_flip.utils.AphidLog;
+import com.link.view_flip.utils.TextureUtils;
+import com.link.view_flip.utils.UI;
 
 import javax.microedition.khronos.opengles.GL10;
 

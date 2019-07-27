@@ -19,7 +19,7 @@
             <option value="$PROJECT_DIR$/libraryarchitecture" />
             <option value="$PROJECT_DIR$/librarybase" />
             <option value="$PROJECT_DIR$/librarycomponent" />
-            <option value="$PROJECT_DIR$/libraryflipview" />
+            <option value="$PROJECT_DIR$/view_flip" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

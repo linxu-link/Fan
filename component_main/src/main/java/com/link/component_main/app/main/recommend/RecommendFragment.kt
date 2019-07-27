@@ -17,7 +17,6 @@ import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 import com.link.librarymodule.widgets.HorizontalBar
 import com.link.librarymodule.widgets.recyclerview.ItemDecoration
 import kotlinx.android.synthetic.main.main_fragment_recommend.*
-import kotlinx.android.synthetic.main.main_recommend_head.*
 
 /**
  * @author WJ
@@ -117,6 +116,13 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
                     .withString("MenuDetail", Gson().toJson(mHeadAdapter.getItem(position)))
                     .navigation()
         }
+
+
+        var functions:(i:Int,j:Int)->Unit=::plus
+
+    }
+
+    fun plus(i:Int,j:Int){
 
     }
 

@@ -15,7 +15,7 @@ limitations under the License.
 
  */
 
-package com.link.libraryflipview.flip;
+package com.link.view_flip.flip;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -37,7 +37,7 @@ import android.widget.AdapterView;
 
 
 import com.link.libraryflipview.R;
-import com.link.libraryflipview.utils.AphidLog;
+import com.link.view_flip.utils.AphidLog;
 
 import java.util.LinkedList;
 

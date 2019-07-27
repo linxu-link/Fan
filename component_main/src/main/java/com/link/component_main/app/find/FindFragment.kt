@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.google.gson.Gson
 import com.link.component_main.app.MainViewModelFactory
 import com.link.librarycomponent.router.RouterConstant
-import com.link.libraryflipview.flip.FlipViewController
+import com.link.view_flip.flip.FlipViewController
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 
 class FindFragment(override var layoutId: Int = 0) : BaseMvvmFragment<FindViewModel>() {

@@ -2,6 +2,4 @@
     <string name="user_app_name">User</string>
     <string name="user_app_introduction">《饭fan》是一个十分的精简、无广告食谱类APP，希望它可以帮助你快速、健康地设计自己的食谱</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

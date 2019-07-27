@@ -1,4 +1,4 @@
-include ':libraryflipview'
+include ':view_flip'
 include ':librarybase'
 include ':libraryarchitecture', ':librarycomponent'
 

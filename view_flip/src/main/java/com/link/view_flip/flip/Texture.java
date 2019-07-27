@@ -1,9 +1,9 @@
-package com.link.libraryflipview.flip;
+package com.link.view_flip.flip;
 
 import android.graphics.Bitmap;
 import android.opengl.GLUtils;
 
-import com.link.libraryflipview.utils.AphidLog;
+import com.link.view_flip.utils.AphidLog;
 
 import javax.microedition.khronos.opengles.GL10;
 
