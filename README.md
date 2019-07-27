@@ -33,13 +33,13 @@
 
 #### 二、APP概览
 
-![首页](https://user-gold-cdn.xitu.io/2019/7/27/16c34112fecd2250?w=1080&h=1920&f=png&s=1014084)
+![首页](https://user-gold-cdn.xitu.io/2019/7/28/16c345d37d4c94f6?w=500&h=889&f=png&s=461247)
 
-![分类](https://user-gold-cdn.xitu.io/2019/7/27/16c3411a0680e9a2?w=1080&h=1920&f=png&s=107704)
+![分类](https://user-gold-cdn.xitu.io/2019/7/28/16c345bd53d20019?w=500&h=889&f=png&s=77918)
 
-![发现](https://user-gold-cdn.xitu.io/2019/7/27/16c3412ca904c9e3?w=1080&h=1920&f=png&s=1260096)
+![发现](https://user-gold-cdn.xitu.io/2019/7/28/16c345c2d86a37c5?w=500&h=889&f=png&s=565595)
 
-![我的](https://user-gold-cdn.xitu.io/2019/7/27/16c34135fe4a753e?w=1080&h=1920&f=png&s=307364)
+![我的](https://user-gold-cdn.xitu.io/2019/7/28/16c345e1997529f0?w=500&h=889&f=png&s=114420)
 
 #### 三、源码结构
 本项目概念上的结构如图所示
