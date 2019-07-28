@@ -8,10 +8,6 @@ android {
 
     defaultConfig libDefaultConfig
 
-    dataBinding {
-        enabled true
-    }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -74,7 +70,7 @@ dependencies {
     releaseApi deps.leakcanary.android_no_op
     debugApi deps.leakcanary.support_fragment
 
-    api deps.BaseRecyclerView
+    api deps.baseRecyclerView
     //sp
     api deps.mmkv
     //bugly

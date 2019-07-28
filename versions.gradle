@@ -1,24 +1,18 @@
 ext.deps = [:]
 def versions = [:]
-versions.android_gradle_plugin = '3.4.1'
-
-versions.arch_core = "1.1.1"
 versions.room = "2.1.0"
 versions.lifecycle = "2.0.0"
 versions.junit = "4.12"
 versions.retrofit = "2.3.0"
 versions.glide = "4.9.0"
 versions.timber = "4.5.1"
-
 versions.rxjava2 = "2.1.13"
 versions.rxandroid = "2.0.1"
 versions.rxlifecycle = "2.2.2"
 versions.rxbinding = "3.0.0-alpha2"
-
-versions.tinker = "1.9.5"
+versions.navigation = "2.0.0"
+versions.tinker = "1.9.9"
 versions.multidex = '1.0.3'
-versions.logger = '1.15'
-versions.gson = '2.7'
 def deps = [:]
 
 def room = [:]
@@ -31,9 +25,6 @@ lifecycle.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.life
 lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
 deps.lifecycle = lifecycle
 
-def arch_core = [:]
-arch_core.testing = "android.arch.core:core-testing:$versions.arch_core"
-deps.arch_core = arch_core
 
 def androidx = [:]
 androidx.recyclerview = "androidx.recyclerview:recyclerview:1.0.0"
@@ -44,8 +35,9 @@ androidx.legacy = "androidx.legacy:legacy-support-v4:1.0.0"
 deps.androidx = androidx
 
 def navigation = [:]
-navigation.fragment_ktx = "androidx.navigation:navigation-fragment-ktx:2.0.0"
-navigation.ui_ktx = "androidx.navigation:navigation-ui-ktx:2.0.0"
+navigation.fragment_ktx = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+navigation.ui_ktx = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+navigation.gradle_plugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
 deps.navigation = navigation
 
 def retrofit = [:]
@@ -91,9 +83,9 @@ glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
 deps.glide = glide
 
 def tinker = [:]
-tinker.anno = "com.tencent.tinker:tinker-android-anno:1.9.9"
-tinker.lib = "com.tencent.tinker:tinker-android-lib:1.9.9"
-tinker.gradle_plugin = "com.tencent.tinker:tinker-patch-gradle-plugin:1.9.9"
+tinker.anno = "com.tencent.tinker:tinker-android-anno:$versions.tinker"
+tinker.lib = "com.tencent.tinker:tinker-android-lib:$versions.tinker"
+tinker.gradle_plugin = "com.tencent.tinker:tinker-patch-gradle-plugin:$versions.tinker"
 deps.tinker = tinker
 
 def alibaba = [:]
@@ -124,13 +116,12 @@ bugly.nativecrashreport = 'com.tencent.bugly:nativecrashreport:3.3.1'
 deps.bugly = bugly
 
 deps.junit = "junit:junit:$versions.junit"
-deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
-
-deps.bmob='cn.bmob.android:bmob-sdk:3.7.3-rc1'
-deps.matisse='com.zhihu.android:matisse:0.5.2-beta5'
-deps.BaseRecyclerView='com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
-deps.mmkv="com.tencent:mmkv:1.0.22"
-deps.bugly='com.tencent.bugly:crashreport:3.0.0'
+deps.android_gradle_plugin = "com.android.tools.build:gradle:3.4.1"
+deps.bmob = 'cn.bmob.android:bmob-sdk:3.7.3-rc1'
+deps.matisse = 'com.zhihu.android:matisse:0.5.2-beta5'
+deps.baseRecyclerView = 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+deps.mmkv = "com.tencent:mmkv:1.0.22"
+deps.bugly = 'com.tencent.bugly:crashreport:3.0.0'
 deps.materialish_progress = "com.pnikosis:materialish-progress:$versions.materialish_progress"
 deps.logger = "com.orhanobut:logger:$versions.logger"
 deps.gson = "com.google.code.gson:gson:$versions.gson"
