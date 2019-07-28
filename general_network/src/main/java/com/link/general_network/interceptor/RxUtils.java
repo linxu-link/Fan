@@ -1,7 +1,8 @@
-package com.link.librarymodule.utils;
+package com.link.general_network.interceptor;
 
-import com.link.librarymodule.http.BaseResponse;
-import com.link.librarymodule.http.ExceptionHandle;
+
+import com.link.general_network.BaseResponse;
+import com.link.general_network.ExceptionHandle;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;

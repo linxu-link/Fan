@@ -36,7 +36,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 
 
-import com.link.libraryflipview.R;
+import com.link.view_flip.R;
 import com.link.view_flip.utils.AphidLog;
 
 import java.util.LinkedList;
