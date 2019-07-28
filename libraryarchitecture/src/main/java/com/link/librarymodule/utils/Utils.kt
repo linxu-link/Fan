@@ -1,4 +1,4 @@
-package com.link.librarybase
+package com.link.librarymodule.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -22,7 +22,7 @@ class Utils private constructor() {
          */
         @JvmStatic
         fun init(context: Context) {
-            Utils.context = context.applicationContext
+            Companion.context = context.applicationContext
         }
 
         /**

@@ -1,4 +1,4 @@
-package com.link.librarybase
+package com.link.librarymodule.utils
 
 import android.app.Activity
 import androidx.fragment.app.Fragment

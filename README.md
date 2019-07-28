@@ -1,34 +1,34 @@
 ### 前言
-至今为止从事Android开发两年多了，17年开始实习时，恰逢项目刚刚立项，当时新项目沿用了15年旧项目的MVC架构，从那之后一直都是根据飘忽不定的需求敲代码。直到18年中，随着功能的增多，项目变得极难维护，调试旧代码经常找不到位置，也就是从那时起，我开始意识到一个好架构的重要性！
-
-本篇文章主要介绍，我在把公司的项目组件化后得到的一些经验，并结合Android Jetpack实现组件化MVVM架构的一次尝试，其中MVVM架构设计得或许并不恰当，不过没关系，后续会逐步优化。
-
-需要说明的是，实际使用了databinding后，不仅调试bug时想砸电脑，后来在读过nanchen大佬的文章[《不一样的角度谈 DataBinding的坑》](https://dwz.cn/s5KjNQQJ)后决定，在本次MVVM的组件化尝试不会采用Data Binding。
-
-同时项目本身的代码也没有刻意的优化，因为在后续的文章中会以该项目为主，系统性的讲解在Android开发中常用启动优化、内存优化以及布局优化。如果感兴趣的话请关注我哦。
-
-开源地址：https://github.com/linux-link/Fan
-
-下载体验：小米应用商店搜索《饭fan》
+至今为止从事Android开发两年多了，17年开始实习时，恰逢APP刚刚立项不久，当时新项目沿用了旧项目古老的MVC架构。从那之后一直都是根据飘忽不定的需求，没有规则的垒代码。直到18年中，其他项目组的APP功能也被集成到了这一个APP中，APP代码、功能爆炸性增多，项目开始变得极难维护，调试旧代码经常找不到位置，需要全局搜索连蒙带猜，也就是从那时起，我开始意识到一个好架构的重要性！
 
 ### 目录
 * 项目简介
 * APP概览
 * 源代码使用方法
-
+* 后续展望
+* 总结
+* 参考资料
 ### 正文
 #### 一、项目简介
-本次实践的项目是一个菜谱类型的APP。
+本次实践的内容是基于Android JetPack组件实现MVVM架构，并结合当下较为流行的组件化开发方式，编写的一个菜谱类型的小型应用。组件化的过程中结合了我把公司的APP组件化后，得到一些经验和教训，做了一些优化和调整。
 
-数据来源：[聚合数据-菜谱大全](https://www.juhe.cn/docs/api/id/46)
+实际的项目已经上架小米应用商店，欢迎搜索《饭fan》下载体验。
 
-后台服务器：[Bmob](https://www.bmob.cn/)
+**需要强调的是**，实际使用了Data Binding后，不仅调试bug时想砸电脑，后来在读过nanchen大佬的文章[《不一样的角度谈 DataBinding的坑》](https://dwz.cn/s5KjNQQJ)后决定，在本次实践不采用Data Binding。
 
-开发语言：Kotlin（部分使用了Java）
+本项目中当前的MVVM架构设计的可能并不理想，而且界面优化还存在一定的问题，不过没关系，后续会以该项目为案例，系统性的实践Android中常见的启动优化、内存优化以及布局优化等等，实践过程也会完整的整理成文章记录下来，方便日后学习、讨论，如果感兴趣话记得关注哦。
 
-主要使用的Jetpack组件：Navigation、ViewModel、Room、LiveData、Lifecycle
+**数据来源**：[聚合数据-菜谱大全](https://www.juhe.cn/docs/api/id/46)
 
-第三方框架：App中使用了很多第三方框架，全部放在LibraryBase中用于集中管理，这里只列举几种-Tinker、ARouter、Glide、Rxjava、Retrofit、BaseRecyclerViewAdapterHelper等等。
+**后台服务器**：[Bmob](https://www.bmob.cn/)
+
+**开发语言**：Kotlin（部分使用了Java）
+
+**主要使用的Jetpack组件**：Navigation、ViewModel、Room、LiveData、Lifecycle
+
+**使用到的第三方框架**：App中使用了很多第三方框架，这里只列举几种，Tinker、ARouter、Glide、Rxjava、Retrofit、BaseRecyclerViewAdapterHelper等等。
+
+**开源地址**：https://github.com/linux-link/Fan
 
 
 #### 二、APP概览
@@ -85,4 +85,22 @@
 需要单独说明的是，每一个子组件中还包含了一个gradle.properties文件，里面设定了该组件被编译成AAR库时一些属性，以及私有maven仓库的地址和用户名与密码。
 
 后面可以将子组件编译一个aar库，然后通过maven_push.gradle上传到私有maven仓库里，不过本项目只完成了一部分，关键的私有maven仓库还没有搭建好，后续会陆续处理。
+
+### 后续展望
+当前的APP依然十分简单，或者说简陋，当前正在学习如何部署、开发一个简单的后台，后面会逐渐放弃bmob，同时增加APP的复杂度，引入更多的开发技术，比如我最感兴趣的插件化、NDK、React Native或者Flutter等等。
+
+最终目的还是希望能在一个APP实践当下的主流开发技术，然后从中选择一个方向深入研究，不过这都是后话了。毕竟理想很丰满，现实很骨干=_=。
+
+### 四、总结
+以上就是本项目的大致概览，总得来说，你既可以用它来学习组件化开发，也可以用它来学习Android Jetpack组件的实际运用，还可以用来学习如何优化一个APP，不过这等我后续的更新了，布局优化中工具的使用，已经先行发布了，请移步[「Android布局优化 1」布局优化工具的使用](https://www.jianshu.com/p/aa2bf172a7ae)。
+
+如有任何问题、建议请给我留言或者在github中提交issue。感谢您的阅读。
+
+### 五、参考资料
+[《如何构建Android MVVM 应用框架》](https://tech.meituan.com/2016/11/11/android-mvvm.html)
+
+[《Android 组件化最佳实践》](https://dwz.cn/lOeaiPi8)
+
+[《来自一位阿里朋友的组件化架构实践》](https://dwz.cn/rPM80kL7)
+
 

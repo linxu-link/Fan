@@ -1,7 +1,7 @@
 package com.link.component_search.data.source.local
 
 import com.link.component_search.data.entity.HistoryEntity
-import com.link.librarybase.Utils
+import com.link.librarymodule.utils.Utils
 import io.reactivex.Flowable
 
 class LocalDataSourceImpl constructor(val searchDataBase: SearchDataBase = SearchDataBase.getInstance(Utils.getContext())) : ILocalDataSource {

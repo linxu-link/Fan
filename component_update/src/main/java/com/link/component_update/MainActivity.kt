@@ -6,7 +6,7 @@ import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
 import com.link.component_update.data.entity.Update
 import com.link.librarymodule.base.BaseActivity
-import com.link.librarybase.ToastUtils
+import com.link.librarymodule.utils.ToastUtils
 
 class MainActivity : BaseActivity() {
 

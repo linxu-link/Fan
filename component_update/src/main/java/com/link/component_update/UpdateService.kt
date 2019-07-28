@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.component_update.app.UpdateService
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.update.IUpdateService
-import com.link.librarybase.Utils
+import com.link.librarymodule.utils.Utils
 
 @Route(path = RouterConstant.UPDATE)
 class UpdateService : IUpdateService {

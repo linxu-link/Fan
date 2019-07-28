@@ -11,10 +11,9 @@ import com.link.component_main.data.MainRepository
 import com.link.component_main.data.entity.Find
 import com.link.component_main.data.entity.MenuDetail
 import com.link.component_main.data.entity.MenuResult
-import com.link.component_main.data.entity.Recommend
 import com.link.librarycomponent.entity.base.BaseEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarybase.ToastUtils
+import com.link.librarymodule.utils.ToastUtils
 
 class FindViewModel(repository: MainRepository) : BaseViewModel<MainRepository>(repository) {
 

@@ -10,7 +10,7 @@ import com.link.component_user.data.UserRepository
 import com.link.component_user.data.entity.Collection
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarybase.ToastUtils
+import com.link.librarymodule.utils.ToastUtils
 
 class CollectionViewModel(repository: UserRepository) : BaseViewModel<UserRepository>(repository) {
 

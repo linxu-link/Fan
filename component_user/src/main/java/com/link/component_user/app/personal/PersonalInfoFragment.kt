@@ -15,7 +15,7 @@ import com.link.component_user.app.ViewModelFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.router.StartRouter
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import com.link.librarybase.AppManager
+import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.GlideLoadEngine
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType

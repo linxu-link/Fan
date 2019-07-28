@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.link.librarybase.Utils;
-import com.link.librarymodule.BaseApplication;
-
 import java.lang.ref.WeakReference;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

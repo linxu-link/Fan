@@ -1,13 +1,14 @@
-package com.link.general_network;
+package com.link.librarymodule.http;
 
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.link.general_network.HttpsUtils;
 import com.link.general_network.interceptor.BaseInterceptor;
 import com.link.general_network.interceptor.CacheInterceptor;
 import com.link.general_network.interceptor.logging.Level;
 import com.link.general_network.interceptor.logging.LoggingInterceptor;
-import com.link.librarybase.Utils;
+import com.link.librarymodule.utils.Utils;
 
 import java.io.File;
 import java.net.Proxy;
@@ -27,23 +28,24 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by goldze on 2017/5/10.
- * RetrofitClient封装单例类, 实现网络请求
+ * @author WJ
+ * @date 2019-07-14
+ * <p>
+ * 描述：retrofit封装
  */
 public class RetrofitClient {
+
     //超时时间
     private static final int DEFAULT_TIMEOUT = 20;
     //缓存时间
     private static final int CACHE_TIMEOUT = 10 * 1024 * 1024;
     //服务端根路径
-    public static String baseUrl = "https://apis.juhe.cn/";
+    private static String baseUrl = "https://apis.juhe.cn/";
 
     private static Context mContext = Utils.Companion.getContext();
 
-    private static OkHttpClient okHttpClient;
     private static Retrofit retrofit;
 
-    private Cache cache = null;
     private File httpCacheDirectory;
 
     private static class SingletonHolder {
@@ -65,37 +67,38 @@ public class RetrofitClient {
         }
 
         if (httpCacheDirectory == null) {
-            httpCacheDirectory = new File(mContext.getCacheDir(), "goldze_cache");
+            httpCacheDirectory = new File(mContext.getCacheDir(), "android_fan_cache");
         }
 
+        Cache cache = null;
         try {
-            if (cache == null) {
-                cache = new Cache(httpCacheDirectory, CACHE_TIMEOUT);
-            }
+            cache = new Cache(httpCacheDirectory, CACHE_TIMEOUT);
         } catch (Exception e) {
             e.printStackTrace();
         }
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory();
-        okHttpClient = new OkHttpClient.Builder()
+        // 这里你可以根据自己的机型设置同时连接的个数和时间，我这里8个，和每个保持时间为10s
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .cache(cache)
+                //禁止代理，可以防止charles抓包
                 .proxy(Proxy.NO_PROXY)
                 .addInterceptor(new BaseInterceptor(headers))
                 .addInterceptor(new CacheInterceptor(mContext))
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
                 .addInterceptor(new LoggingInterceptor
                         .Builder()
-                        .loggable(true) //是否开启日志打印
-                        .setLevel(Level.BASIC) //打印的等级
-                        .log(Platform.INFO) // 打印类型
-                        .request("Request") // request的Tag
-                        .response("Response")// Response的Tag
-                        .addHeader("log-header", "I am the log request header.") // 添加打印头, 注意 key 和 value 都不能是中文
+                        .loggable(true)
+                        .setLevel(Level.BASIC)
+                        .log(Platform.INFO)
+                        .request("Request")
+                        .response("Response")
+                        .addHeader("log-header", "I am the log request header.")
                         .build()
                 )
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-                .connectionPool(new ConnectionPool(8, 15, TimeUnit.SECONDS))
-                // 这里你可以根据自己的机型设置同时连接的个数和时间，我这里8个，和每个保持时间为10s
+                // 设置同时连接的个数和时间
+                .connectionPool(new ConnectionPool(5, 15, TimeUnit.SECONDS))
                 .build();
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
@@ -106,10 +109,7 @@ public class RetrofitClient {
 
     }
 
-    /**
-     * create you ApiService
-     * Create an implementation of the API endpoints defined by the {@code service} interface.
-     */
+
     public <T> T create(final Class<T> service) {
         if (service == null) {
             throw new RuntimeException("Api service is null!");
@@ -117,17 +117,6 @@ public class RetrofitClient {
         return retrofit.create(service);
     }
 
-    /**
-     * /**
-     * execute your customer API
-     * For example:
-     * MyApiService service =
-     * RetrofitClient.getInstance(MainActivity.this).create(MyApiService.class);
-     * <p>
-     * RetrofitClient.getInstance(MainActivity.this)
-     * .execute(service.lgon("name", "password"), subscriber)
-     * * @param subscriber
-     */
 
     public static <T> T execute(Observable<T> observable, Observer<T> subscriber) {
         observable.subscribeOn(Schedulers.io())

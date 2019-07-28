@@ -3,7 +3,7 @@ package com.link.component_login.data
 import com.link.component_login.data.source.http.HttpDataSourceImpl
 import com.link.component_login.data.source.http.HttpService
 import com.link.component_login.data.source.loacl.LocalDataSourceImpl
-import com.link.general_network.RetrofitClient
+import com.link.librarymodule.http.RetrofitClient
 
 class Injection {
 

@@ -13,7 +13,7 @@ import com.link.component_login.app.ViewModelFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.router.StartRouter
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import com.link.librarybase.AppManager
+import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.SimpleTextWatcher
 import kotlinx.android.synthetic.main.login_fragment_register.*
 import kotlinx.android.synthetic.main.login_fragment_register.clear_phone

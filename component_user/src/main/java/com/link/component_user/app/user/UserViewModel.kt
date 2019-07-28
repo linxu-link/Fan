@@ -6,10 +6,9 @@ import cn.bmob.v3.BmobUser
 import com.link.component_user.data.UserRepository
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.google.android.material.snackbar.Snackbar
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FetchUserInfoListener
-import com.link.librarybase.ToastUtils
+import com.link.librarymodule.utils.ToastUtils
 
 
 class UserViewModel(repository: UserRepository) : BaseViewModel<UserRepository>(repository) {

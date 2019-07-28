@@ -4,12 +4,13 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.link.fan.tinker.TinkerService
+import com.link.librarymodule.utils.ToastUtils
+import com.link.librarymodule.utils.Utils
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.base.BaseActivity
-import com.link.fan.R
-import com.link.fan.tinker.TinkerService
-import com.link.librarybase.Utils
+import com.link.librarymodule.constant.Constant
 
 /**
  * @author WJ
@@ -25,6 +26,15 @@ class EntranceActivity : BaseActivity() {
         fullScreen(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_container)
+
+        if (Constant.BMOB_ID.isEmpty()){
+            ToastUtils.showLong("请完善BMOB_ID")
+            return
+        }else if (Constant.JUHE_KEY.isEmpty()){
+            ToastUtils.showLong("请完善聚合数据的key")
+            return
+        }
+
         //启动热修复service
         TinkerService.runTinkerService(Utils.getContext())
 

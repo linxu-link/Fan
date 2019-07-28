@@ -4,11 +4,10 @@ package com.link.fan.app.splash
 import android.Manifest
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.link.fan.R
-import com.link.librarybase.AppManager
-import com.link.librarybase.ToastUtils
+import com.link.librarymodule.utils.AppManager
+import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.utils.rxpermissions2.RxPermissions
 import io.reactivex.functions.Consumer
