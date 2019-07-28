@@ -19,6 +19,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(":libraryarchitecture")
+    implementation project(":librarybase")
     testImplementation 'junit:junit:4.12'
 }

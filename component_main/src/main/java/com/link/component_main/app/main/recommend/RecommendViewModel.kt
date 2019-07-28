@@ -13,7 +13,7 @@ import com.link.component_main.data.entity.MenuResult
 import com.link.component_main.data.entity.Recommend
 import com.link.librarycomponent.entity.base.BaseEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarymodule.utils.ToastUtils
+import com.link.librarybase.ToastUtils
 
 
 class RecommendViewModel(repository: MainRepository) : BaseViewModel<MainRepository>(repository) {

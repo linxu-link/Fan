@@ -9,12 +9,13 @@ import cn.bmob.v3.listener.LogInListener
 import com.alibaba.android.arouter.launcher.ARouter
 import com.link.component_login.app.register.RegisterFragment
 import com.link.component_login.data.LoginRepository
+
+import com.link.librarybase.AppManager
+import com.link.librarybase.ToastUtils
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
-import com.link.librarymodule.utils.AppManager
-import com.link.librarymodule.utils.ToastUtils
 import com.tencent.mmkv.MMKV
 
 class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRepository>(model) {

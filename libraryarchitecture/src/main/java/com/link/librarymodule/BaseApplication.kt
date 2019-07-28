@@ -8,9 +8,9 @@ import androidx.annotation.NonNull
 import cn.bmob.v3.Bmob
 import cn.bmob.v3.Bmob.getApplicationContext
 import com.alibaba.android.arouter.launcher.ARouter
+import com.link.librarybase.AppManager
+import com.link.librarybase.Utils
 import com.link.librarymodule.constant.Constant
-import com.link.librarymodule.utils.AppManager
-import com.link.librarymodule.utils.Utils
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
 

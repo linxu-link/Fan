@@ -14,8 +14,8 @@ import cn.bmob.v3.listener.SaveListener
 import com.link.component_update.data.entity.Update
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.utils.CommonUtil
-import com.link.librarymodule.utils.ToastUtils
-import com.link.librarymodule.utils.Utils
+import com.link.librarybase.ToastUtils
+import com.link.librarybase.Utils
 
 const val CHECK_UPDATE = 0x1000
 

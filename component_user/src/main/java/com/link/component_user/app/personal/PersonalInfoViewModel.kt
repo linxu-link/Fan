@@ -12,7 +12,7 @@ import com.link.component_user.data.UserRepository
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
-import com.link.librarymodule.utils.ToastUtils
+import com.link.librarybase.ToastUtils
 import java.io.File
 
 class PersonalInfoViewModel(repository: UserRepository) : BaseViewModel<UserRepository>(repository) {

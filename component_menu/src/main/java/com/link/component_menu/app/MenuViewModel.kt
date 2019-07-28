@@ -14,7 +14,7 @@ import com.link.component_menu.data.entity.FootPrint
 import com.link.component_menu.data.entity.MenuDetail
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarymodule.utils.ToastUtils
+import com.link.librarybase.ToastUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers

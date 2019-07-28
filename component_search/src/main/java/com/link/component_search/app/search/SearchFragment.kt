@@ -16,7 +16,7 @@ import com.link.component_search.R
 import com.link.component_search.app.SearchViewModelFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import com.link.librarymodule.utils.ToastUtils
+import com.link.librarybase.ToastUtils
 import kotlinx.android.synthetic.main.search_fragment_search.*
 
 /**

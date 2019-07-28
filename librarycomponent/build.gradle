@@ -19,8 +19,6 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(":libraryarchitecture")
-    api project(":general_network")
-    api project(":view_flip")
     testImplementation 'junit:junit:4.12'
 }
 

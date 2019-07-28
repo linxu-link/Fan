@@ -9,7 +9,7 @@ import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.base.BaseActivity
 import com.link.fan.R
 import com.link.fan.tinker.TinkerService
-import com.link.librarymodule.utils.Utils
+import com.link.librarybase.Utils
 
 /**
  * @author WJ

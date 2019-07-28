@@ -11,7 +11,7 @@ import com.link.component_search.data.entity.MenuResult
 import com.link.librarycomponent.entity.base.BaseEntity
 import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarymodule.utils.ToastUtils
+import com.link.librarybase.ToastUtils
 import com.link.librarymodule.utils.executors.AppExecutors
 import com.tencent.bugly.proguard.t
 import io.reactivex.android.schedulers.AndroidSchedulers

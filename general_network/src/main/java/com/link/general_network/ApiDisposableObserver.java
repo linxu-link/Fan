@@ -1,10 +1,8 @@
 package com.link.general_network;
 
-
-
-import com.link.librarymodule.utils.AppManager;
-import com.link.librarymodule.utils.ToastUtils;
-import com.link.librarymodule.utils.Utils;
+import com.link.librarybase.AppManager;
+import com.link.librarybase.ToastUtils;
+import com.link.librarybase.Utils;
 
 import io.reactivex.observers.DisposableObserver;
 

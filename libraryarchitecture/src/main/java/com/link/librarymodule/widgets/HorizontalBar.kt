@@ -7,7 +7,6 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.link.librarymodule.R
-import com.link.librarymodule.utils.ToastUtils
 
 
 class HorizontalBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {

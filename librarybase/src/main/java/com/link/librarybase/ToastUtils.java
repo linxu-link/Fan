@@ -1,4 +1,4 @@
-package com.link.librarymodule.utils;
+package com.link.librarybase;
 
 import android.content.Context;
 import android.os.Handler;
@@ -10,7 +10,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
-import androidx.annotation.*;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 import java.lang.ref.WeakReference;
 

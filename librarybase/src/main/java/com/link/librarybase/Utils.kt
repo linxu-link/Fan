@@ -1,4 +1,4 @@
-package com.link.librarymodule.utils
+package com.link.librarybase
 
 import android.annotation.SuppressLint
 import android.content.Context

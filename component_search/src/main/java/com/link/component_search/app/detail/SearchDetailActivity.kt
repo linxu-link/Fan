@@ -10,7 +10,7 @@ import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.base.ContainerActivity
 import com.link.librarymodule.constant.Constant
-import com.link.librarymodule.utils.ToastUtils
+import com.link.librarybase.ToastUtils
 
 @Route(path = RouterConstant.SEARCH_DETAIL)
 class SearchDetailActivity : ContainerActivity() {

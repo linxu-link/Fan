@@ -7,8 +7,7 @@ import com.link.general_network.interceptor.BaseInterceptor;
 import com.link.general_network.interceptor.CacheInterceptor;
 import com.link.general_network.interceptor.logging.Level;
 import com.link.general_network.interceptor.logging.LoggingInterceptor;
-import com.link.librarymodule.utils.HttpsUtils;
-import com.link.librarymodule.utils.Utils;
+import com.link.librarybase.Utils;
 
 import java.io.File;
 import java.net.Proxy;

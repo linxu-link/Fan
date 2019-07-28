@@ -1,7 +1,7 @@
 package com.link.component_main.data.source.local
 
 import com.link.librarymodule.BaseApplication
-import com.link.librarymodule.utils.Utils
+import com.link.librarybase.Utils
 import io.reactivex.Observable
 import java.io.IOException
 

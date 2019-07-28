@@ -10,7 +10,7 @@ import com.link.component_user.data.UserRepository
 import com.link.component_user.data.entity.FootPrint
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarymodule.utils.ToastUtils
+import com.link.librarybase.ToastUtils
 
 class FootPrintViewModel(repository: UserRepository) : BaseViewModel<UserRepository>(repository) {
 

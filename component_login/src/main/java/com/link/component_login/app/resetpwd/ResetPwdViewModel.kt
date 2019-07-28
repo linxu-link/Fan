@@ -11,7 +11,7 @@ import cn.bmob.v3.listener.UpdateListener
 import com.link.component_login.data.LoginRepository
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.bus.event.SingleLiveEvent
-import com.link.librarymodule.utils.ToastUtils
+import com.link.librarybase.ToastUtils
 
 
 class ResetPwdViewModel(repository: LoginRepository) : BaseViewModel<LoginRepository>(repository) {
