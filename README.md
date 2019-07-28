@@ -33,45 +33,56 @@
 
 #### 二、APP概览
 
-![首页](https://user-gold-cdn.xitu.io/2019/7/28/16c345d37d4c94f6?w=500&h=889&f=png&s=461247)
+![首页](https://user-gold-cdn.xitu.io/2019/7/28/16c37c87bf86bf75?w=300&h=533&f=png&s=203386)
 
-![分类](https://user-gold-cdn.xitu.io/2019/7/28/16c345bd53d20019?w=500&h=889&f=png&s=77918)
+![分类](https://user-gold-cdn.xitu.io/2019/7/28/16c37c8f577c2e59?w=300&h=533&f=png&s=36833)
 
-![发现](https://user-gold-cdn.xitu.io/2019/7/28/16c345c2d86a37c5?w=500&h=889&f=png&s=565595)
+![发现](https://user-gold-cdn.xitu.io/2019/7/28/16c37c94d9581f8e?w=300&h=533&f=png&s=243837)
 
-![我的](https://user-gold-cdn.xitu.io/2019/7/28/16c345e1997529f0?w=500&h=889&f=png&s=114420)
+![我的](https://user-gold-cdn.xitu.io/2019/7/28/16c37c98edc992fa?w=300&h=533&f=png&s=48005)
 
 #### 三、源码结构
 本项目概念上的结构如图所示
 
 
-![](https://user-gold-cdn.xitu.io/2019/7/28/16c3457be63da8bf?w=1216&h=1240&f=png&s=102441)
+![](https://user-gold-cdn.xitu.io/2019/7/28/16c37be12644b795?w=1184&h=1214&f=png&s=104514)
+
 实际结构如图所示
-![](https://user-gold-cdn.xitu.io/2019/7/27/16c341b6e1bde7df?w=646&h=1110&f=png&s=135035)
+
+![](https://user-gold-cdn.xitu.io/2019/7/28/16c37caa1744353e?w=400&h=768&f=png&s=126463)
+
 下面分别解释各个module的作用：
 
 * Library-Base
 
     整个项目的基类，所有的第三方框架和自定义View框架都在这里添加依赖，以方便统一管理。
+* View_Xxx
+    
+    通用的自定义View框架。一些APP特有的view效果可以抽出独立成一个Module。例如：本项目使用了一个仿红板报的3D翻页效果库，就可以把它独立成一个module。
+
+* General_Xxx
+
+    通用的自定义工具框架。一些所有项目可以公用的框架，为了方便日后在其他项目中使用，可以抽出独立成一个module，不能与项目的业务逻辑有关联。例如：本项目中网络框架就被单独封装成一个module。
 * Library-Architecture
     
-    通用组件库。一般包含网络封装库、BaseApplication、常用的工具类以及架构层的封装例如BaseMvvmActivity等等。
+    通用框架库。一般包含BaseApplication、常用的工具类以及架构层的封装例如BaseMvvmActivity等等。
     
     这个module在封装时需要考虑一定的通用性，最理想的情况的是，在重新开一个新的项目时，可以直接拷贝使用。
 * Library-Component
 
-    服务于组件化的module。与业务逻辑相关，主要包含一些组件化的封装，同时一些子组件需要抽出的公共类也会放在这里。
+    服务于组件化的module。与业务逻辑相关，主要包含一些组件化的封装，一些子组件需要抽出的公共类也会放在这里。需要注意的是，Library-Component是其他所有子组件必需依赖的库。
 * Component_Xxx
 
     子组件。APP中各个业务逻辑的具体实现，既可以编译为library，用作其他组件的类库，也可以编译为application，可以独立运行调试。
     
     在项目根目录的build.gradle可以通过xxx_isSingleCompile的值来控制各个module是否需要独立运行。
     
-* View_XXX
+
+* app
+
+    整个项目的入口，又被成为APP壳，在这里面将所有的子组件全部打包进apk中，，为了加快编译速度，主要使用runtimeOnly。
     
-    自定义的View框架。一些APP特有的view效果可以抽出独立成一个Module。例如：本项目使用了一个仿红板报的3D翻页效果库，就可以把它独立成一个类库。
-    
-需要单独说明的是，每一个子组件中还包含了一个gradle.properties文件，里面设定该组件被编译成AAR库时一些属性，以及私有maven仓库的地址和用户名与密码。
+需要单独说明的是，每一个子组件中还包含了一个gradle.properties文件，里面设定了该组件被编译成AAR库时一些属性，以及私有maven仓库的地址和用户名与密码。
 
 后面可以将子组件编译一个aar库，然后通过maven_push.gradle上传到私有maven仓库里，不过本项目只完成了一部分，关键的私有maven仓库还没有搭建好，后续会陆续处理。
-    
+
