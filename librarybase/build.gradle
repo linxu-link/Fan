@@ -19,6 +19,9 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
+    api project(":general_network")
+    api project(":view_flip")
+
     api deps.androidx.recyclerview
     api deps.androidx.core_ktx
     api deps.androidx.appcompat
@@ -64,13 +67,14 @@ dependencies {
     api deps.glide.runtime
     //图片选择框架
     api deps.matisse
+    //基础的recyclerview封装
+    api deps.baseRecyclerView
 
     //内存泄漏检测
     debugApi deps.leakcanary.android
     releaseApi deps.leakcanary.android_no_op
     debugApi deps.leakcanary.support_fragment
 
-    api deps.baseRecyclerView
     //sp
     api deps.mmkv
     //bugly
