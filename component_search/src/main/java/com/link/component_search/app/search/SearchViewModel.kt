@@ -25,7 +25,7 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
         addSubscribe(model.search(searchWord.value!!, pn, rn)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
+                .subscribe({
                     if (it.resultcode == "200") {
                         searchData.value = it.result
                         enableLoadMore.value = it.result.data.size == 10
@@ -33,7 +33,9 @@ class SearchViewModel constructor(repository: SearchRepository) : BaseViewModel<
                         ToastUtils.showLong(it.reason)
                         enableLoadMore.value = false
                     }
-                })
+                }, {
+                    ToastUtils.showLong(it.toString())
+                }))
     }
 
     fun index(pn: Int, rn: Int) {

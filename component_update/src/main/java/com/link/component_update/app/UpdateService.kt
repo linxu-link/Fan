@@ -20,7 +20,12 @@ import com.link.librarymodule.utils.Utils
 const val CHECK_UPDATE = 0x1000
 
 const val SAVE_INSTALLATION = 0x1001
-
+/**
+ * @author WJ
+ * @date 2019-07-20
+ *
+ * 描述：更新检查的service
+ */
 class UpdateService : Service() {
 
 
@@ -56,7 +61,7 @@ class UpdateService : Service() {
         query.findObjects(object : FindListener<Update>() {
             override fun done(list: List<Update>?, e: BmobException?) {
                 if (e == null) {
-                    if (list != null && list.size > 0) {
+                    if (list != null && list.isNotEmpty()) {
                         val intent = Intent(Utils.getContext(), UpdateActivity::class.java)
                         intent.putExtra(Update::class.java.canonicalName, list[0])
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK

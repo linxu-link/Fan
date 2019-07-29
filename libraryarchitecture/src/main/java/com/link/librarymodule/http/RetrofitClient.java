@@ -77,13 +77,12 @@ public class RetrofitClient {
             e.printStackTrace();
         }
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory();
-        // 这里你可以根据自己的机型设置同时连接的个数和时间，我这里8个，和每个保持时间为10s
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .cache(cache)
                 //禁止代理，可以防止charles抓包
                 .proxy(Proxy.NO_PROXY)
                 .addInterceptor(new BaseInterceptor(headers))
-                .addInterceptor(new CacheInterceptor(mContext))
+//                .addInterceptor(new CacheInterceptor(mContext))
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
                 .addInterceptor(new LoggingInterceptor
                         .Builder()
