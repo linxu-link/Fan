@@ -8,7 +8,7 @@ class Constant {
         //聚合数据的ID，请在 https://www.juhe.cn/docs/api/id/46  中注册并申请数据
         const val JUHE_KEY = ""
         //bugly 一个bug反馈系统，请在：https://bugly.qq.com/v2/ 中接入，也可以不接入。
-        const val BUGLY_ID = ""
+        const val BUGLY_ID = "34d53ff9a0"
 
         const val WEIXING_ID=""
 
