@@ -11,7 +11,10 @@ import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import java.lang.reflect.ParameterizedType
 
 /**
- * Created by goldze on 2017/6/15.
+ * @author WJ
+ * @date 2019-05-29
+ * 
+ * 描述：
  */
 abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseView {
     protected lateinit var mViewModel: VM
@@ -132,6 +135,9 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
         return ViewModelProviders.of(fragment).get(cls)
     }
 
+    /**
+     * 结束当前fragment
+     */
     fun finish() {
         activity!!.finish()
     }

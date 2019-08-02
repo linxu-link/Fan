@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".app.detail.SearchDetailActivity"
+            android:name=".ui.detail.SearchDetailActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
     </application>
 

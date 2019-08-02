@@ -4,7 +4,7 @@
     package="com.link.component_login">
 
     <application>
-        <activity android:name=".app.personal.PersonalInfoActivity"></activity>
+        <activity android:name=".ui.personal.PersonalInfoActivity"></activity>
         <activity android:name=".MainActivity" />
     </application>
 

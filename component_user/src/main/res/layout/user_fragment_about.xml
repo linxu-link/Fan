@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/grey_light"
     android:fitsSystemWindows="true"
-    tools:context=".app.about.AboutFragment">
+    tools:context=".ui.about.AboutFragment">
 
     <include
         layout="@layout/include_toolbar"

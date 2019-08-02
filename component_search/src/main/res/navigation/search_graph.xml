@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/search_searchfragment"
-        android:name="com.link.component_search.app.search.SearchFragment"
+        android:name="com.link.component_search.ui.search.SearchFragment"
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_searchfragment_to_searchdetailfragment"
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/search_searchdetailfragment"
-        android:name="com.link.component_search.app.detail.SearchDetailFragment"
+        android:name="com.link.component_search.ui.detail.SearchDetailFragment"
         android:label="SearchDetailFragment" >
         <action
             android:id="@+id/action_searchdetailfragment_to_searchfragment"

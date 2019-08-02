@@ -2,6 +2,7 @@ package com.link.librarymodule.base
 
 import android.annotation.TargetApi
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -9,7 +10,12 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
-
+/**
+ * @author WJ
+ * @date 2019-05-29
+ * 
+ * 描述：
+ */
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,5 +149,47 @@ abstract class BaseActivity : AppCompatActivity() {
             }
         }
     }
+
+    /*======================================================================================*/
+    /**
+     * 跳转页面
+     *
+     * @param clz 所跳转的目的Activity类
+     */
+    fun startActivity(clz: Class<*>) {
+        startActivity(Intent(this, clz))
+    }
+
+    /**
+     * 跳转页面
+     *
+     * @param clz    所跳转的目的Activity类
+     * @param bundle 跳转所携带的信息
+     */
+    fun startActivity(clz: Class<*>, bundle: Bundle?) {
+        val intent = Intent(this, clz)
+        if (bundle != null) {
+            intent.putExtras(bundle)
+        }
+        startActivity(intent)
+    }
+
+
+    /**
+     * 跳转容器页面
+     *
+     * @param canonicalName 规范名 : Fragment.class.getCanonicalName()
+     * @param bundle        跳转所携带的信息
+     */
+    @JvmOverloads
+    fun startContainerActivity(canonicalName: String, bundle: Bundle? = null) {
+        val intent = Intent(this, ContainerActivity::class.java)
+        intent.putExtra(ContainerActivity.FRAGMENT, canonicalName)
+        if (bundle != null) {
+            intent.putExtra(ContainerActivity.BUNDLE, bundle)
+        }
+        startActivity(intent)
+    }
+
 
 }

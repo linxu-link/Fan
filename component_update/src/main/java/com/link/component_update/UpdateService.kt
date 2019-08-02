@@ -3,7 +3,7 @@ package com.link.component_update
 import android.content.Context
 import android.content.Intent
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.link.component_update.app.UpdateService
+import com.link.component_update.ui.UpdateService
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.utils.Utils

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.link.component_login.app.login.LoginFragment"
+        android:name="com.link.component_login.ui.login.LoginFragment"
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.link.component_login.app.register.RegisterFragment"
+        android:name="com.link.component_login.ui.register.RegisterFragment"
         android:label="RegisterFragment">
         <action
             android:id="@+id/action_registerfragment_to_personalinfofragment"
@@ -40,11 +40,11 @@
 
     <fragment
         android:id="@+id/resetpwdfragment"
-        android:name="com.link.component_login.app.resetpwd.ResetPwdFragment"
+        android:name="com.link.component_login.ui.resetpwd.ResetPwdFragment"
         android:label="ResetPwdFragment" />
     <fragment
         android:id="@+id/login_personalinfofragment"
-        android:name="com.link.component_login.app.personal.PersonalInfoFragment"
+        android:name="com.link.component_login.ui.personal.PersonalInfoFragment"
         android:label="login_fragment_personal_info"
         tools:layout="@layout/login_fragment_personal_info" />
 </navigation>

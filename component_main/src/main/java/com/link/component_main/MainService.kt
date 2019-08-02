@@ -2,9 +2,9 @@ package com.link.component_main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.link.component_main.app.find.FindFragment
-import com.link.component_main.app.main.MainFragment
-import com.link.component_main.app.catalog.CatalogFragment
+import com.link.component_main.ui.find.FindFragment
+import com.link.component_main.ui.main.MainFragment
+import com.link.component_main.ui.catalog.CatalogFragment
 import com.link.librarycomponent.service.main.IMainService
 
 class MainService : IMainService {
