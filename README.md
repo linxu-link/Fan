@@ -30,26 +30,24 @@
 
 **开源地址**：https://github.com/linux-link/Fan
 
-
 #### 二、APP概览
 
-![首页](https://user-gold-cdn.xitu.io/2019/7/28/16c37c87bf86bf75?w=300&h=533&f=png&s=203386)
+![首页](https://upload-images.jianshu.io/upload_images/3146091-d3395313a99f0102?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![分类](https://user-gold-cdn.xitu.io/2019/7/28/16c37c8f577c2e59?w=300&h=533&f=png&s=36833)
+![分类](https://upload-images.jianshu.io/upload_images/3146091-091e88293cbf55d6?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![发现](https://user-gold-cdn.xitu.io/2019/7/28/16c37c94d9581f8e?w=300&h=533&f=png&s=243837)
+![发现](https://upload-images.jianshu.io/upload_images/3146091-2442b0fe3d0b008d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![我的](https://user-gold-cdn.xitu.io/2019/7/28/16c37c98edc992fa?w=300&h=533&f=png&s=48005)
+![我的](https://upload-images.jianshu.io/upload_images/3146091-947b48ff75d2b0a8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 三、源码结构
 本项目概念上的结构如图所示
 
-
-![](https://user-gold-cdn.xitu.io/2019/8/2/16c50a69642c9161?w=1160&h=1236&f=png&s=98337)
+![image](https://upload-images.jianshu.io/upload_images/3146091-c25e27033a5510ec?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 实际结构如图所示
 
-![](https://user-gold-cdn.xitu.io/2019/7/28/16c37caa1744353e?w=400&h=768&f=png&s=126463)
+![image](https://upload-images.jianshu.io/upload_images/3146091-2bbe6636d76ad995?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 下面分别解释各个module的作用：
 
@@ -94,7 +92,9 @@
 ### 四、总结
 以上就是本项目的大致概览，总得来说，你既可以用它来学习组件化开发，也可以用它来学习Android Jetpack组件的实际运用，还可以用来学习如何优化一个APP，不过这等我后续的更新了，布局优化中工具的使用，已经先行发布了，请移步[「Android布局优化 1」布局优化工具的使用](https://www.jianshu.com/p/aa2bf172a7ae)。
 
-如有任何问题、建议请给我留言或者在github中提交issue。感谢您的阅读。
+如有任何问题、建议请给我留言或者在github中提交issue。感谢您的阅读，欢迎下载体验。
+![下载二维码.png](https://upload-images.jianshu.io/upload_images/3146091-e51928b12b0583f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ### 五、参考资料
 [《如何构建Android MVVM 应用框架》](https://tech.meituan.com/2016/11/11/android-mvvm.html)
