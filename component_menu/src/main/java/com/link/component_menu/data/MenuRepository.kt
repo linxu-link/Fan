@@ -4,14 +4,14 @@ import com.link.component_menu.data.entity.MenuResult
 import com.link.component_menu.data.source.http.IHttpDataSource
 import com.link.component_menu.data.source.local.ILocalDataSource
 import com.link.librarycomponent.entity.base.BaseEntity
-import com.link.librarymodule.base.mvvm.model.BaseModel
+import com.link.librarymodule.base.mvvm.model.BaseRepository
 import io.reactivex.Observable
 
 class MenuRepository private constructor(
         private val httpDataSource: IHttpDataSource,
         private val localDataSource: ILocalDataSource
 ) :
-        BaseModel(), ILocalDataSource, IHttpDataSource {
+        BaseRepository(), ILocalDataSource, IHttpDataSource {
 
 
     companion object {

@@ -2,16 +2,14 @@ package com.link.component_main.data
 
 import com.link.component_main.data.source.http.IHttpDataSource
 import com.link.component_main.data.source.local.ILocalDataSource
-import com.link.librarymodule.BaseApplication
-import com.link.librarymodule.base.mvvm.model.BaseModel
+import com.link.librarymodule.base.mvvm.model.BaseRepository
 import io.reactivex.Observable
-import java.io.IOException
 
 class MainRepository private constructor(
         val httpDataSource: IHttpDataSource,
         val localDataSource: ILocalDataSource
 ) :
-        BaseModel(), ILocalDataSource {
+        BaseRepository(), ILocalDataSource {
 
 
 

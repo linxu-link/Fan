@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
  * @author WJ
  * @date 2019-05-29
  * 
- * 描述：
+ * 描述：基类
  */
 abstract class BaseActivity : AppCompatActivity() {
 

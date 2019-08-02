@@ -1,10 +1,11 @@
 package com.link.component_login
 
 import android.app.Application
+import com.link.librarycomponent.FanApplication
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarymodule.BaseApplication
 
-class LoginApplication : BaseApplication() {
+class LoginApplication : FanApplication() {
 
     override fun onCreate() {
         super.onCreate()

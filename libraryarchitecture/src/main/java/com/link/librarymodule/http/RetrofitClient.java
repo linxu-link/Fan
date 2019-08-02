@@ -3,9 +3,8 @@ package com.link.librarymodule.http;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.link.general_network.HttpsUtils;
+import com.link.general_network.utils.HttpsUtils;
 import com.link.general_network.interceptor.BaseInterceptor;
-import com.link.general_network.interceptor.CacheInterceptor;
 import com.link.general_network.interceptor.logging.Level;
 import com.link.general_network.interceptor.logging.LoggingInterceptor;
 import com.link.librarymodule.utils.Utils;

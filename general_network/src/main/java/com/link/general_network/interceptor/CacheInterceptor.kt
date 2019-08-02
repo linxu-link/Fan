@@ -3,13 +3,12 @@ package com.link.general_network.interceptor
 import android.content.Context
 
 
-import com.link.general_network.NetworkUtil
+import com.link.general_network.utils.NetworkUtil
 
 import java.io.IOException
 
 import okhttp3.CacheControl
 import okhttp3.Interceptor
-import okhttp3.Request
 import okhttp3.Response
 
 /**

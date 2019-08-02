@@ -13,7 +13,12 @@ import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
-
+/**
+ * @author WJ
+ * @date 2019-05-29
+ * 
+ * 描述：Fragment基类
+ */
 abstract class BaseFragment : Fragment() {
 
     protected var mRootView: View? = null

@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent;
-import com.link.librarymodule.base.mvvm.model.BaseModel;
+import com.link.librarymodule.base.mvvm.model.BaseRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +23,7 @@ import io.reactivex.functions.Consumer;
  * <p>
  * 描述：
  */
-public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBaseViewModel, Consumer<Disposable> {
+public class BaseViewModel<M extends BaseRepository> extends ViewModel implements IBaseViewModel, Consumer<Disposable> {
     protected M model;
     private UIChangeLiveData uc;
     //管理RxJava，主要针对RxJava异步操作造成的内存泄漏
@@ -155,9 +155,6 @@ public class BaseViewModel<M extends BaseModel> extends ViewModel implements IBa
     @Override
     protected void onCleared() {
         super.onCleared();
-        if (model != null) {
-            model.onCleared();
-        }
         //ViewModel销毁时会执行，同时取消所有异步任务
         if (mCompositeDisposable != null) {
             mCompositeDisposable.clear();

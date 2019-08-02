@@ -13,7 +13,7 @@ import java.lang.reflect.ParameterizedType
  * @author WJ
  * @date 2019-05-29
  *
- * 描述：
+ * 描述：Mvvm架构下Activity基类
  */
 abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseView {
 
@@ -47,7 +47,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
 
 
     /**
-     * 注入绑定
+     * 初始化view
      */
     fun initView() {
         mViewModel = initViewModel()
@@ -88,7 +88,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
     }
 
     /**
-     * 数据初始化
+     * 获取数据
      */
     override fun getData() {
 
@@ -102,7 +102,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
     }
 
     /**
-     *  页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
+     *  页面事件监听的方法，一般根据ViewModel的数据监听，操作View
      */
     override fun initViewObservable() {
 
@@ -122,8 +122,5 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
         return ViewModelProviders.of(activity).get(clazz)
     }
 
-    fun getViewModel(): VM? {
-        return mViewModel
-    }
 
 }

@@ -2,13 +2,13 @@ package com.link.component_user.data
 
 import com.link.component_user.data.source.http.IHttpDataSource
 import com.link.component_user.data.source.local.ILocalDataSource
-import com.link.librarymodule.base.mvvm.model.BaseModel
+import com.link.librarymodule.base.mvvm.model.BaseRepository
 
 class UserRepository private constructor(
         private val httpDataSource: IHttpDataSource,
         private val localDataSource: ILocalDataSource
 ) :
-        BaseModel(), ILocalDataSource, IHttpDataSource {
+        BaseRepository(), ILocalDataSource, IHttpDataSource {
 
 
     companion object {

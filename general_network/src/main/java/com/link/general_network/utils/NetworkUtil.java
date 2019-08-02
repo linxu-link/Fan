@@ -1,4 +1,4 @@
-package com.link.general_network;
+package com.link.general_network.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

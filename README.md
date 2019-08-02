@@ -12,7 +12,6 @@
 #### 一、项目简介
 本次实践的内容是基于Android JetPack组件实现MVVM架构，并结合当下较为流行的组件化开发方式，编写的一个菜谱类型的小型应用。组件化的过程中结合了我把公司的APP组件化后，得到一些经验和教训，做了一些优化和调整。
 
-实际的项目已经上架小米应用商店，欢迎搜索《饭fan》下载体验。
 
 **需要强调的是**，实际使用了Data Binding后，不仅调试bug时想砸电脑，后来在读过nanchen大佬的文章[《不一样的角度谈 DataBinding的坑》](https://dwz.cn/s5KjNQQJ)后决定，在本次实践不采用Data Binding。
 
@@ -29,6 +28,7 @@
 **使用到的第三方框架**：App中使用了很多第三方框架，这里只列举几种，Tinker、ARouter、Glide、Rxjava、Retrofit、BaseRecyclerViewAdapterHelper等等。
 
 **开源地址**：https://github.com/linux-link/Fan
+
 
 
 #### 二、APP概览

@@ -1,4 +1,4 @@
-package com.link.general_network;
+package com.link.general_network.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

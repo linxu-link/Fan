@@ -14,7 +14,7 @@ import java.lang.reflect.ParameterizedType
  * @author WJ
  * @date 2019-05-29
  * 
- * 描述：
+ * 描述：Mvvm架构下Fragment基类
  */
 abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseView {
     protected lateinit var mViewModel: VM

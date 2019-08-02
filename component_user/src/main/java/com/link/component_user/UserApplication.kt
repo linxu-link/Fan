@@ -1,6 +1,7 @@
 package com.link.component_user
 
 import android.app.Application
+import com.link.librarycomponent.FanApplication
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarymodule.BaseApplication
 /**
@@ -9,7 +10,7 @@ import com.link.librarymodule.BaseApplication
  *
  * 描述：
  */
-class UserApplication : BaseApplication() {
+class UserApplication : FanApplication() {
 
     override fun onCreate() {
         super.onCreate()
