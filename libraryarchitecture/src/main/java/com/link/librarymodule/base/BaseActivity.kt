@@ -3,6 +3,8 @@ package com.link.librarymodule.base
 import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -191,5 +193,16 @@ abstract class BaseActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+
+    /**
+     * 设置APP的字体不跟随系统的字体设置
+     */
+    override fun getResources(): Resources {
+        val res=super.getResources()
+        val config = Configuration()
+        config.setToDefaults()
+        res.updateConfiguration(config,res.getDisplayMetrics())
+        return res
+    }
 
 }
