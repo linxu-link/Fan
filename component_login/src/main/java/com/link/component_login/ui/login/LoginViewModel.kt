@@ -13,8 +13,8 @@ import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.ToastUtils
 import com.link.librarycomponent.entity.user.UserEntity
 import com.link.librarycomponent.router.RouterConstant
+import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.tencent.mmkv.MMKV
 
 class LoginViewModel constructor(model: LoginRepository) : BaseViewModel<LoginRepository>(model) {

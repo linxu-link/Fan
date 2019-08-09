@@ -10,8 +10,8 @@ import cn.bmob.v3.listener.UpdateListener
 import cn.bmob.v3.listener.UploadFileListener
 import com.link.component_user.data.UserRepository
 import com.link.librarycomponent.entity.user.UserEntity
+import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.ToastUtils
 import java.io.File
 

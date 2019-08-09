@@ -1,6 +1,3 @@
-repositories {
-    google()
-}
 if (login_isSingleCompile) {
     apply plugin: 'com.android.application'
 } else {

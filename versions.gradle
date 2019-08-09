@@ -124,6 +124,7 @@ deps.mmkv = "com.tencent:mmkv:1.0.22"
 deps.bugly = 'com.tencent.bugly:crashreport:3.0.0'
 deps.materialish_progress = "com.pnikosis:materialish-progress:$versions.materialish_progress"
 deps.basepopup = "com.github.razerdp:BasePopup:2.1.9"
+deps.x5webview='com.tencent.tbs.tbssdk:sdk:43697'
 ext.deps = deps
 
 //自定义类库

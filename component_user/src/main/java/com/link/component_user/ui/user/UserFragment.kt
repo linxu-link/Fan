@@ -104,7 +104,7 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         }
 
         img_suggest.setOnClickListener {
-            ToastUtils.showLong("此功能开发中，敬请期待")
+            ARouter.getInstance().build(RouterConstant.SHOPPING).navigation()
         }
 
         user_view.setOnClickListener {

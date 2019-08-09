@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.link.component_shopping">
+
+    <application>
+        <activity android:name=".ShoppingActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:process=":shopping"/>
+    </application>
+
+</manifest>

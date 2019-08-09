@@ -1,15 +1,12 @@
 buildscript {
+
     apply from: 'versions.gradle'
     addRepos(repositories)
     dependencies {
         classpath deps.android_gradle_plugin
         classpath deps.tinker.gradle_plugin
         classpath deps.kotlin.plugin
-        classpath deps.navigation.gradle_plugin }
-
-    repositories {
-        google()
-        jcenter()
+        classpath deps.navigation.gradle_plugin
     }
 
     ext.libDefaultConfig = {
@@ -21,8 +18,6 @@ buildscript {
             }
         }
     }
-
-
 
 }
 
@@ -62,5 +57,6 @@ ext {
     search_isSingleCompile = false
     menu_isSingleCompile = false
     update_isSingleCompile = false
-    hotfix_isSingleCompile = true
+    pay_isSingleCompile=false
+    shopping_isSingleCompile=false
 }

@@ -81,6 +81,9 @@ dependencies {
     if (!update_isSingleCompile) {
         runtimeOnly project(':component_update')
     }
+    if (!shopping_isSingleCompile) {
+        runtimeOnly project(':component_shopping')
+    }
 
     kapt deps.alibaba.router_compiler
     //热修复

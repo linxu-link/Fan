@@ -17,6 +17,12 @@ android {
 
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(":general_network")
@@ -68,16 +74,17 @@ dependencies {
     api deps.baseRecyclerView
 
     //内存泄漏检测
-    debugApi deps.leakcanary.android
-    releaseApi deps.leakcanary.android_no_op
-    debugApi deps.leakcanary.support_fragment
+//    debugApi deps.leakcanary.android
+//    releaseApi deps.leakcanary.android_no_op
+//    debugApi deps.leakcanary.support_fragment
 
     //sp
     api deps.mmkv
     //bugly
     api deps.bugly
+    //腾讯x5webview
+    api deps.x5webview
+    //微信开放平台
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.4.3'
 }
 
-repositories {
-    google()
-}

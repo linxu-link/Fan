@@ -14,6 +14,8 @@ class RouterConstant {
         const val SEARCH_DETAIL = "/component_search/search_detail"
         //更新
         const val UPDATE = "/component_update/update"
+        //商城
+        const val SHOPPING="/component_shopping/shopping"
     }
 
 }
