@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.multidex.MultiDex
 import com.link.librarycomponent.AppConfig
+import com.link.librarycomponent.FanApplication
 import com.link.librarymodule.BaseApplication
 import com.tencent.tinker.anno.DefaultLifeCycle
 import com.tencent.tinker.entry.DefaultApplicationLike
@@ -21,7 +22,7 @@ class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerif
         if (application.applicationContext.packageName != getCurrentProcessName(application.applicationContext)) {
             return
         }
-        BaseApplication.setApplication(application)
+        FanApplication.setApplication(application)
         initModuleApp(application)
         initModuleData(application)
         if (Build.VERSION.SDK_INT >= 28) {

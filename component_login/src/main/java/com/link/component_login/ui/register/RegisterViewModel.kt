@@ -11,8 +11,8 @@ import cn.bmob.v3.listener.SaveListener
 import com.link.component_login.R
 import com.link.component_login.data.LoginRepository
 import com.link.librarycomponent.entity.user.UserEntity
+import com.link.librarymodule.base.mvvm.livedata.SingleLiveEvent
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
-import com.link.librarymodule.bus.event.SingleLiveEvent
 import com.link.librarymodule.utils.RxCountDown
 import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.utils.Utils
