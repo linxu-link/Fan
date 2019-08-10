@@ -118,13 +118,9 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         }
 
 
-        var functions:(i:Int,j:Int)->Unit=::plus
 
     }
 
-    fun plus(i:Int,j:Int){
-
-    }
 
     //头部 横向滑动页面
     private fun initHeaderView2() {
