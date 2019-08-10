@@ -65,6 +65,7 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":librarycomponent")
+    api (name: 'alipaySdk-15.6.5-20190718211159-noUtdid', ext: 'aar')
     kapt deps.alibaba.router_compiler
     testImplementation 'junit:junit:4.12'
 }

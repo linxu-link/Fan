@@ -40,16 +40,9 @@ class ShoppingActivity : BaseActivity() {
         }
     }
 
-    /**
-     * 记录用户点击后退按钮的时间差
-     */
-    private var endTime: Long = 0
 
     /**
      * 监听 android 后退按钮点击事件。
-     * 1、首先判断当前网页是否还可以进行后退页面的操作，如果可以的话那么就后退网页。
-     * 2、如果网页已经不可以进行后退操作了（即：网页在首页中，虚拟任务栈中，只包含了 imooc 。）
-     * 在这种情况下，则会提示 "再按一次退出程序" ， 用户 两秒内再次点击后退按钮，则退出应用
      */
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         //        监听 android 后退按钮点击事件。
@@ -62,14 +55,6 @@ class ShoppingActivity : BaseActivity() {
                 finish()
                 return true
             }
-            //            2、如果网页已经不可以进行后退操作了（即：网页在首页中，虚拟任务栈中，只包含了 imooc 。）
-            //          在这种情况下，则会提示 "再按一次退出程序" ， 用户 两秒内再次点击后退按钮，则退出应用
-//            if (System.currentTimeMillis() - endTime > 2000) {
-//                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show()
-//                endTime = System.currentTimeMillis()
-//            } else {
-//                finish()
-//            }
         }
         return true
     }

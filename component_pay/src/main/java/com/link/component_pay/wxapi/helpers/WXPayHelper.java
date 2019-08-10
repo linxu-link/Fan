@@ -23,12 +23,13 @@ public class WXPayHelper {
 
     public WXPayHelper (Context context) {
         this.mContext = context;
+        initWXPay();
     }
 
     /**
      * 初始化微信支付服务
      */
-    public void initWXPay () {
+    private void initWXPay () {
         mWXApi = WXAPIFactory.createWXAPI(mContext, null);
         // 将该app注册到微信
         mWXApi.registerApp(WXConstants.WX_APP_ID);
