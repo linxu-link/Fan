@@ -7,6 +7,7 @@
 
         <activity
             android:name=".ui.UpdateActivity"
+            android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/update_dialog" />
         <service

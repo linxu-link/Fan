@@ -4,7 +4,10 @@
 
     <application>
 
-        <activity android:name=".router.SchemaFilterActivity">
+        <activity android:name=".router.SchemaFilterActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            >
             <!-- Schame -->
             <intent-filter>
                 <data

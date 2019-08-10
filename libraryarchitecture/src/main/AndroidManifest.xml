@@ -12,7 +12,10 @@
 
     <application>
 
-        <activity android:name=".base.ContainerActivity" />
+        <activity android:name=".base.ContainerActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            />
 
         <provider
             android:name="androidx.core.content.FileProvider"

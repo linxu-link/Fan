@@ -3,9 +3,11 @@
     package="com.link.component_shopping">
 
     <application>
-        <activity android:name=".ShoppingActivity"
+        <activity
+            android:name=".ShoppingActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:process=":shopping"/>
+            android:process=":shopping"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

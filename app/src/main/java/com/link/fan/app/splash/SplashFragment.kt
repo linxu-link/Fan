@@ -12,12 +12,20 @@ import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.utils.rxpermissions2.RxPermissions
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.fragment_splash.*
-
+/**
+ * @author WJ
+ * @date 2019-07-10
+ *
+ * 描述：闪屏
+ */
 class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : BaseFragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //把文字设为透明，翻转90度
+        tv_splash.rotationX = 90f
+        tv_splash.alpha = 0f
 
         val rxPermissions = RxPermissions(this)
         rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -33,14 +41,9 @@ class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : Ba
                 })
     }
 
-    override fun onResume() {
-        super.onResume()
-        startAnimation()
-    }
-
 
     private fun startAnimation() {
-        splash.animate().setDuration(4000)
+        splash.animate().setDuration(3500)
                 .scaleX(1.8f)
                 .scaleY(1.8f)
                 .withEndAction {
@@ -49,14 +52,12 @@ class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : Ba
                 }
                 .start()
 
-
-        tv_splash.rotationX = 90f
-        tv_splash.alpha = 0f
-
-        tv_splash.animate().setDuration(4000)
+        tv_splash.animate().setDuration(3500)
                 .rotationX(0f)
                 .alpha(0.8f)
                 .start()
     }
+
+
 
 }
