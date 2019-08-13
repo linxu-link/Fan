@@ -78,6 +78,8 @@ dependencies {
 //    releaseApi deps.leakcanary.android_no_op
 //    debugApi deps.leakcanary.support_fragment
 
+    debugApi'com.squareup.leakcanary:leakcanary-android:2.0-beta-2'
+
     //sp
     api deps.mmkv
     //bugly

@@ -52,7 +52,7 @@ public class X5WebView extends WebView {
     private void init (Context context) {
         this.mContext = context;
 //      打开此代码可使移动设备链接 chrome 调试
-//        setWebContentsDebuggingEnabled(true);
+        setWebContentsDebuggingEnabled(true);
 
 //        设置 jsBridge
 //        addJavascriptInterface(new JavaScriptInterface(mContext), "androidJSBridge");

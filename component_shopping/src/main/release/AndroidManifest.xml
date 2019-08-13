@@ -8,6 +8,11 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:process=":shopping"
             android:screenOrientation="portrait" />
+        <service
+            android:name=".service.ShoppingServiceImpl"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":shopping" />
     </application>
 
 </manifest>

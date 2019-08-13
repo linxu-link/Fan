@@ -8,6 +8,7 @@ import com.link.fan.tinker.TinkerService
 import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.utils.Utils
 import com.link.librarycomponent.router.RouterConstant
+import com.link.librarycomponent.service.shopping.IShoppingService
 import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.constant.Constant
@@ -39,8 +40,12 @@ class EntranceActivity : BaseActivity() {
         TinkerService.runTinkerService(Utils.getContext())
 
         //启动更新service
-        val updateService = ARouter.getInstance().build(RouterConstant.UPDATE).navigation()!! as IUpdateService
+        val updateService = ARouter.getInstance().build(RouterConstant.UPDATE_SERVICE).navigation()!! as IUpdateService
         updateService.startUpdateService()
+
+        //启动商城的service
+        val shoppingService = ARouter.getInstance().build(RouterConstant.SHOPPING_SERVICE).navigation()!! as IShoppingService
+        shoppingService.startShoppingService()
 
     }
 

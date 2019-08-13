@@ -8,7 +8,7 @@ import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.utils.Utils
 
-@Route(path = RouterConstant.UPDATE)
+@Route(path = RouterConstant.UPDATE_SERVICE)
 class UpdateService : IUpdateService {
 
     override fun startUpdateService() {

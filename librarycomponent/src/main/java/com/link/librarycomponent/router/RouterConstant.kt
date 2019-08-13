@@ -12,10 +12,12 @@ class RouterConstant {
         //检索
         const val SEARCH = "/component_search/search"
         const val SEARCH_DETAIL = "/component_search/search_detail"
-        //更新
-        const val UPDATE = "/component_update/update"
+        //更新的service
+        const val UPDATE_SERVICE = "/component_update/update_service"
         //商城
         const val SHOPPING="/component_shopping/shopping"
+        //商城的service
+        const val SHOPPING_SERVICE="/component_shopping/shopping_service"
     }
 
 }
