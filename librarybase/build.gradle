@@ -78,7 +78,7 @@ dependencies {
 //    releaseApi deps.leakcanary.android_no_op
 //    debugApi deps.leakcanary.support_fragment
 
-    debugApi'com.squareup.leakcanary:leakcanary-android:2.0-beta-2'
+    debugApi 'com.squareup.leakcanary:leakcanary-android:2.0-beta-2'
 
     //sp
     api deps.mmkv
@@ -86,7 +86,10 @@ dependencies {
     api deps.bugly
     //腾讯x5webview
     api deps.x5webview
+    //webview加速
+    api 'com.tencent.sonic:sdk:3.1.0'
+
     //微信开放平台
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.4.3'
-}
 
+}

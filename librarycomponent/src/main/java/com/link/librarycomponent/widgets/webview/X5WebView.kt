@@ -14,6 +14,9 @@ import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
 import com.tencent.smtt.sdk.WebViewClient
+import com.link.general_network.utils.NetworkUtil.url
+
+
 
 
 class X5WebView : WebView {
@@ -70,10 +73,22 @@ class X5WebView : WebView {
         webSettings.builtInZoomControls = false
         webSettings.displayZoomControls = true
 
-        //不允许缓存
-        webSettings.setAppCacheEnabled(false)
-        //        设置缓存策略
-        webSettings.cacheMode = WebSettings.LOAD_NO_CACHE
+//        //不允许缓存
+//        webSettings.setAppCacheEnabled(false)
+//        //        设置缓存策略
+//        webSettings.cacheMode = WebSettings.LOAD_NO_CACHE
+
+        removeJavascriptInterface("searchBoxJavaBridge_")
+        // init webview settings
+        webSettings.allowContentAccess = true
+        webSettings.databaseEnabled = true
+        webSettings.domStorageEnabled = true
+        webSettings.setAppCacheEnabled(true)
+        webSettings.savePassword = false
+        webSettings.saveFormData = false
+        webSettings.useWideViewPort = true
+        webSettings.loadWithOverviewMode = true
+
     }
 
     /**
@@ -108,6 +123,13 @@ class X5WebView : WebView {
                     onWebViewListener!!.shouldInterceptRequest(request)
                 } else {
                     null
+                }
+            }
+
+            override fun onPageFinished(p0: WebView?, url: String?) {
+                super.onPageFinished(p0, url)
+                if (onWebViewListener != null) {
+                    onWebViewListener!!.onPageFinished(url)
                 }
             }
         }
@@ -168,6 +190,7 @@ class X5WebView : WebView {
 
         fun shouldInterceptRequest(request: WebResourceRequest? = null, url: String? = null): WebResourceResponse?
 
+        fun onPageFinished(url:String?)
     }
 
 }

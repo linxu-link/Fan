@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Handler
 import android.os.IBinder
 import android.os.Message
-import com.link.librarycomponent.widgets.webview.WebViewInstance
 
 /**
  * @author WJ
