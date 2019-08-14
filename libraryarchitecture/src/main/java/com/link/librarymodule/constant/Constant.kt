@@ -21,8 +21,9 @@ class Constant {
         //easy mock url 标识
         const val MOCK="mock"
 
-        //商城的访问地址
+        //自定义商城的访问地址
         const val BASE_SHOPPING_WEB_URL="http://118.24.197.176"
+//        const val BASE_SHOPPING_WEB_URL="http://192.168.1.109:8080/"
 
 
 

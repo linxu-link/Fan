@@ -26,7 +26,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
         initParam()
         setContentView(mLayoutId)
         //初始化DataBinging和ViewModel
-        initView()
+        initViewModel()
         //ViewModel与View的契约事件回掉逻辑
         registorUIChangeLiveDataCallBack()
         //页面数据初始化
@@ -49,8 +49,8 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
     /**
      * 初始化view
      */
-    fun initView() {
-        mViewModel = initViewModel()
+    fun initViewModel() {
+        mViewModel = getViewModel()
         if (mViewModel == null) {
             val modelClass: Class<VM>
             val type = javaClass.genericSuperclass
@@ -111,9 +111,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
     /**
      * 初始化ViewModel
      */
-    open fun initViewModel(): VM? {
-        return null
-    }
+    abstract fun getViewModel(): VM
 
     /**
      * 创建ViewModel

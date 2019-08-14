@@ -2,6 +2,7 @@ package com.link.component_shopping.service
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.shopping.IShoppingService
@@ -14,7 +15,8 @@ import com.link.librarymodule.utils.Utils
  * 描述：用于启动真正的shoppingService
  */
 @Route(path = RouterConstant.SHOPPING_SERVICE)
-class ShoppingService:IShoppingService {
+class ShoppingService : IShoppingService {
+
 
     override fun startShoppingService() {
         val intent = Intent()

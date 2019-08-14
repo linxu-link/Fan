@@ -1,16 +1,13 @@
 package com.link.librarycomponent
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
-import android.os.Bundle
 import androidx.annotation.NonNull
 import cn.bmob.v3.Bmob
 import com.alibaba.android.arouter.launcher.ARouter
 import com.link.librarymodule.BaseApplication
 import com.link.librarymodule.BuildConfig
 import com.link.librarymodule.constant.Constant
-import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.Utils
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
