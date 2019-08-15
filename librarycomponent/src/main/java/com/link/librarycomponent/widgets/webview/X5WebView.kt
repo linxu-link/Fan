@@ -73,13 +73,13 @@ class X5WebView : WebView {
         webSettings.builtInZoomControls = false
         webSettings.displayZoomControls = true
 
-//        //不允许缓存
+        //不允许缓存
 //        webSettings.setAppCacheEnabled(false)
-//        //        设置缓存策略
-//        webSettings.cacheMode = WebSettings.LOAD_NO_CACHE
+        //设置缓存策略
+//        webSettings.cacheMode = WebSettings.LOAD_DEFAULT
 
         removeJavascriptInterface("searchBoxJavaBridge_")
-        // init webview settings
+
         webSettings.allowContentAccess = true
         webSettings.databaseEnabled = true
         webSettings.domStorageEnabled = true
@@ -144,9 +144,9 @@ class X5WebView : WebView {
                 super.onProgressChanged(webView, i)
                 //回调网页加载状态
                 if (onWebViewListener != null) {
-                    onWebViewListener!!.onProgressChanged(webView, i)
+                    onWebViewListener!!.onProgressChanged(i)
                 }
-                Log.e("TAG", "${i}")
+//                Log.e("TAG", "${i}")
             }
 
 
@@ -166,17 +166,6 @@ class X5WebView : WebView {
         }
     }
 
-    override fun destroy() {
-        super.destroy()
-        clearHistory()
-        clearCache(true)
-        loadUrl("about:blank")
-        clearFormData()
-        pauseTimers()
-        mContext = null
-        onWebViewListener = null
-    }
-
 
     //回调接口
     private var onWebViewListener: OnWebViewListener? = null
@@ -186,7 +175,7 @@ class X5WebView : WebView {
     }
 
     interface OnWebViewListener {
-        fun onProgressChanged(webView: WebView?, progress: Int)
+        fun onProgressChanged( progress: Int)
 
         fun shouldInterceptRequest(request: WebResourceRequest? = null, url: String? = null): WebResourceResponse?
 

@@ -8,9 +8,12 @@ import android.os.Build
 import androidx.multidex.MultiDex
 import com.link.librarycomponent.AppConfig
 import com.link.librarycomponent.FanApplication
+import com.link.librarycomponent.widgets.webview.sonic.SonicRuntimeImpl
 import com.link.librarymodule.BaseApplication
 import com.link.librarymodule.utils.Utils
 import com.tencent.smtt.sdk.QbSdk.getCurrentProcessName
+import com.tencent.sonic.sdk.SonicConfig
+import com.tencent.sonic.sdk.SonicEngine
 import com.tencent.tinker.anno.DefaultLifeCycle
 import com.tencent.tinker.entry.DefaultApplicationLike
 import com.tencent.tinker.loader.shareutil.ShareConstants
@@ -23,6 +26,9 @@ class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerif
         //只在主进程中初始化
         if (application.applicationContext.packageName != getCurrentProcessName(application.applicationContext)) {
             Utils.init(application)
+            if (!SonicEngine.isGetInstanceAllowed()) {
+                SonicEngine.createInstance(SonicRuntimeImpl(Utils.getContext()), SonicConfig.Builder().build())
+            }
             return
         }
         FanApplication.setApplication(application)

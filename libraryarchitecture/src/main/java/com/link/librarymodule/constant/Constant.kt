@@ -23,7 +23,7 @@ class Constant {
 
         //自定义商城的访问地址
         const val BASE_SHOPPING_WEB_URL="http://118.24.197.176"
-//        const val BASE_SHOPPING_WEB_URL="http://192.168.1.109:8080/"
+//        const val BASE_SHOPPING_WEB_URL="http://192.168.0.4:8080/"
 
 
 

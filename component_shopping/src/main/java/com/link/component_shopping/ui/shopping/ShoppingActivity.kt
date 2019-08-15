@@ -1,10 +1,13 @@
 package com.link.component_shopping.ui.shopping
 
 import android.os.Bundle
+import android.os.Process
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.FrameLayout
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.link.component_shopping.R
 import com.link.component_shopping.jsinterface.JavaScriptInterface
 import com.link.component_shopping.ui.ViewModelFactory
 import com.link.librarycomponent.router.RouterConstant
@@ -17,10 +20,7 @@ import com.link.librarymodule.utils.Utils
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse
 import com.tencent.smtt.sdk.WebView
-import com.tencent.sonic.sdk.SonicConfig
-import com.tencent.sonic.sdk.SonicEngine
-import com.tencent.sonic.sdk.SonicSession
-import com.tencent.sonic.sdk.SonicSessionConfig
+import com.tencent.sonic.sdk.*
 
 
 /**
@@ -30,7 +30,7 @@ import com.tencent.sonic.sdk.SonicSessionConfig
  * 描述：购物商城
  */
 @Route(path = RouterConstant.SHOPPING)
-class ShoppingActivity(override var mLayoutId: Int = com.link.component_shopping.R.layout.shopping_activity_main) : BaseMvvmActivity<ShoppingViewModel>() {
+class ShoppingActivity(override var mLayoutId: Int = R.layout.shopping_activity_main) : BaseMvvmActivity<ShoppingViewModel>() {
 
     override fun getViewModel(): ShoppingViewModel {
         return ViewModelFactory.getInstance().create(ShoppingViewModel::class.java)
@@ -40,58 +40,61 @@ class ShoppingActivity(override var mLayoutId: Int = com.link.component_shopping
 
     private var mJavaScriptInterface: JavaScriptInterface? = null
 
-    private var sonicSession: SonicSession? = null
+    private var mSonicSession: SonicSession? = null
+
+    private var mSonicSessionClient: SonicSessionClientImpl? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fullScreen(this)
 
-        if (!SonicEngine.isGetInstanceAllowed()) {
-            SonicEngine.createInstance(SonicRuntimeImpl(Utils.getContext()), SonicConfig.Builder().build())
-        }
+        initSonic()
+        initWebView()
 
-        val sonicSessionClient: SonicSessionClientImpl
-        sonicSession = SonicEngine.getInstance().createSession(Constant.BASE_SHOPPING_WEB_URL, SonicSessionConfig.Builder().build())
-        if (null != sonicSession) {
-            sonicSessionClient = SonicSessionClientImpl()
-            sonicSession!!.bindClient(sonicSessionClient)
+        getData()
+    }
+
+    private fun initSonic(){
+        val sessionConfigBuilder = SonicSessionConfig.Builder()
+        sessionConfigBuilder.setSessionMode(SonicConstants.SESSION_MODE_DEFAULT)
+
+        mSonicSession = SonicEngine.getInstance().createSession(Constant.BASE_SHOPPING_WEB_URL, sessionConfigBuilder.build())
+        if (null != mSonicSession) {
+            mSonicSessionClient = SonicSessionClientImpl()
+            mSonicSession!!.bindClient(mSonicSessionClient)
         } else {
-            throw UnknownError("create session fail!")
+//            throw UnknownError("create session fail!")
         }
 
+
+    }
+
+    private fun initWebView(){
         if (mX5WebView == null) {
             mX5WebView = X5WebView(this, null)
-            findViewById<FrameLayout>(com.link.component_shopping.R.id.content).addView(mX5WebView, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
+            findViewById<FrameLayout>(R.id.content).addView(mX5WebView, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
         }
-        mX5WebView!!.loadUrl(Constant.BASE_SHOPPING_WEB_URL)
         mJavaScriptInterface = JavaScriptInterface(this)
         mX5WebView!!.addJavascriptInterface(mJavaScriptInterface, "androidJSBridge")
 
         mX5WebView!!.setOnWebViewListener(object : X5WebView.OnWebViewListener {
             override fun onPageFinished(url: String?) {
-                if (sonicSession != null) {
-                    sonicSession!!.sessionClient.pageFinish(url);
+                if (mSonicSession != null) {
+                    mSonicSession!!.sessionClient.pageFinish(url);
                 }
             }
 
             override fun shouldInterceptRequest(request: WebResourceRequest?, url: String?): WebResourceResponse? {
-
+                if (mSonicSession != null) {
+                    return mSonicSession!!.sessionClient.requestResource(url) as WebResourceResponse?
+                }
                 return null
             }
 
-            override fun onProgressChanged(webView: WebView?, progress: Int) {
+            override fun onProgressChanged(progress: Int) {
 
             }
         })
-
-        if (sonicSessionClient != null) {
-            sonicSessionClient.bindWebView(mX5WebView!!)
-            sonicSessionClient.clientReady()
-        } else { // default mode
-            mX5WebView!!.loadUrl(Constant.BASE_SHOPPING_WEB_URL)
-        }
-
-
     }
 
     override fun getData() {
@@ -108,6 +111,16 @@ class ShoppingActivity(override var mLayoutId: Int = com.link.component_shopping
 
         mViewModel!!.secondData.observe(this, Observer {
             mJavaScriptInterface!!.secondsData = it
+
+            //网络数据加载完毕后，webview开始加载对应的URL
+            if (mSonicSessionClient != null) {
+                mSonicSessionClient!!.bindWebView(mX5WebView!!)
+                mSonicSessionClient!!.clientReady()
+            } else {
+                //不采用sonic加载
+                mX5WebView!!.loadUrl(Constant.BASE_SHOPPING_WEB_URL)
+            }
+
         })
 
     }
@@ -116,10 +129,11 @@ class ShoppingActivity(override var mLayoutId: Int = com.link.component_shopping
      * 监听 android 后退按钮点击事件。
      */
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        //        监听 android 后退按钮点击事件。
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             //1、首先判断当前网页是否还可以进行后退页面的操作，如果可以的话那么就后退网页。
-            if (mX5WebView!!.canGoBack() && !Constant.BASE_SHOPPING_WEB_URL.equals(mX5WebView!!.getUrl())) {
+            Log.e("TAG", "${mX5WebView!!.canGoBack()} ");
+
+            if (mX5WebView!!.canGoBack() && Constant.BASE_SHOPPING_WEB_URL != mX5WebView!!.url) {
                 mX5WebView!!.goBack()
                 return true
             } else {
@@ -131,15 +145,13 @@ class ShoppingActivity(override var mLayoutId: Int = com.link.component_shopping
     }
 
     override fun onDestroy() {
-        super.onDestroy()
-        findViewById<FrameLayout>(com.link.component_shopping.R.id.content).removeAllViews()
-        mX5WebView!!.destroy()
-        mX5WebView = null
-
-        if (null != sonicSession) {
-            sonicSession!!.destroy()
-            sonicSession = null
+        if (null != mSonicSession) {
+            mSonicSession!!.destroy()
+            mSonicSession = null
         }
+        super.onDestroy()
 
+        //关闭当前进程，清理内存
+        Process.killProcess(Process.myPid())
     }
 }

@@ -41,6 +41,8 @@ class ShoppingViewModel(repository: ShoppingRepository) : BaseViewModel<Shopping
                             secondData.value=Gson().toJson(it.result.data)
                         }
                     }
+                }, Consumer {
+
                 })
         )
 

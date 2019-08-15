@@ -29,8 +29,6 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
         initViewModel()
         //ViewModel与View的契约事件回掉逻辑
         registorUIChangeLiveDataCallBack()
-        //页面数据初始化
-        getData()
         //页面事件监听方法，一般用于ViewModel层转到View层的事件注册
         initViewObservable()
         //注册RxBus
