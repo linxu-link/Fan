@@ -17,6 +17,8 @@
 
         <activity
             android:name=".EntranceActivity"
+            android:theme="@style/App_StartAppTheme"
+            android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

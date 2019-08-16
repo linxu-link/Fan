@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navBarHeight"
+        android:background="@android:color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="支付宝支付结果"
+            android:gravity="center"
+            android:textColor="@color/font_color"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="120dp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/success"/>
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/textSize"
+            android:textStyle="bold"
+            android:textColor="@color/font_color"
+            android:layout_marginTop="@dimen/marginSize"
+            android:text="支付返回信息"/>
+
+        <TextView
+            style="@style/commitBtn"
+            android:text="返回"
+            android:layout_marginTop="62dp"
+            android:onClick="onBackClick"/>
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

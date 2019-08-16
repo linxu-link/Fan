@@ -3,10 +3,12 @@ package com.link.librarymodule.http;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.link.general_network.interceptor.CacheInterceptor;
 import com.link.general_network.utils.HttpsUtils;
 import com.link.general_network.interceptor.BaseInterceptor;
 import com.link.general_network.interceptor.logging.Level;
 import com.link.general_network.interceptor.logging.LoggingInterceptor;
+import com.link.librarymodule.constant.Constant;
 import com.link.librarymodule.utils.Utils;
 
 import java.io.File;
@@ -30,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @author WJ
  * @date 2019-07-14
  * <p>
- * 描述：retrofit封装
+ * 描述：retrofit简单封装
  */
 public class RetrofitClient {
 
@@ -38,10 +40,8 @@ public class RetrofitClient {
     private static final int DEFAULT_TIMEOUT = 20;
     //缓存时间
     private static final int CACHE_TIMEOUT = 10 * 1024 * 1024;
-    //服务端根路径
-    private static String baseUrl = "https://apis.juhe.cn/";
 
-    private static Context mContext = Utils.Companion.getContext();
+    private static Context mContext = Utils.getContext();
 
     private static Retrofit retrofit;
 
@@ -56,13 +56,13 @@ public class RetrofitClient {
     }
 
     private RetrofitClient() {
-        this(baseUrl, null);
+        this(Constant.MOCK_DATA_URL, null);
     }
 
     private RetrofitClient(String url, Map<String, String> headers) {
 
         if (TextUtils.isEmpty(url)) {
-            url = baseUrl;
+            url = Constant.MOCK_DATA_URL;
         }
 
         if (httpCacheDirectory == null) {
@@ -81,7 +81,8 @@ public class RetrofitClient {
                 //禁止代理，可以防止charles抓包
                 .proxy(Proxy.NO_PROXY)
                 .addInterceptor(new BaseInterceptor(headers))
-//                .addInterceptor(new CacheInterceptor(mContext))
+                .addInterceptor(new CacheInterceptor(mContext))
+                .addInterceptor(new UrlInterceptor())
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
                 .addInterceptor(new LoggingInterceptor
                         .Builder()
@@ -98,6 +99,7 @@ public class RetrofitClient {
                 // 设置同时连接的个数和时间
                 .connectionPool(new ConnectionPool(5, 15, TimeUnit.SECONDS))
                 .build();
+
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())

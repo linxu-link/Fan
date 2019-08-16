@@ -8,7 +8,15 @@ import android.os.Build
 import androidx.multidex.MultiDex
 import com.link.librarycomponent.AppConfig
 import com.link.librarycomponent.FanApplication
+<<<<<<< HEAD
+=======
+import com.link.librarycomponent.widgets.webview.sonic.SonicRuntimeImpl
+>>>>>>> hybird
 import com.link.librarymodule.BaseApplication
+import com.link.librarymodule.utils.Utils
+import com.tencent.smtt.sdk.QbSdk.getCurrentProcessName
+import com.tencent.sonic.sdk.SonicConfig
+import com.tencent.sonic.sdk.SonicEngine
 import com.tencent.tinker.anno.DefaultLifeCycle
 import com.tencent.tinker.entry.DefaultApplicationLike
 import com.tencent.tinker.loader.shareutil.ShareConstants
@@ -20,6 +28,10 @@ class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerif
         super.onCreate()
         //只在主进程中初始化
         if (application.applicationContext.packageName != getCurrentProcessName(application.applicationContext)) {
+            Utils.init(application)
+            if (!SonicEngine.isGetInstanceAllowed()) {
+                SonicEngine.createInstance(SonicRuntimeImpl(Utils.getContext()), SonicConfig.Builder().build())
+            }
             return
         }
         FanApplication.setApplication(application)
@@ -28,20 +40,6 @@ class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerif
         if (Build.VERSION.SDK_INT >= 28) {
             closeAndroidPDialog()
         }
-    }
-
-
-    //获取当前进程的名字
-    private fun getCurrentProcessName(context: Context): String? {
-        val pid = android.os.Process.myPid()
-        val mActivityManager = context
-                .getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        for (appProcess in mActivityManager.runningAppProcesses) {
-            if (appProcess.pid == pid) {
-                return appProcess.processName
-            }
-        }
-        return null
     }
 
     override fun onBaseContextAttached(base: Context?) {
@@ -104,8 +102,21 @@ class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerif
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
+
+    //获取当前进程的名字
+    private fun getCurrentProcessName(context: Context): String? {
+        val pid = android.os.Process.myPid()
+        val mActivityManager = context
+                .getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        for (appProcess in mActivityManager.runningAppProcesses) {
+            if (appProcess.pid == pid) {
+                return appProcess.processName
+            }
+        }
+        return null
+    }
+
 
 
 }

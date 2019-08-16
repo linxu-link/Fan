@@ -1,0 +1,71 @@
+if (pay_isSingleCompile) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply from: '../maven_push.gradle'
+android {
+    compileSdkVersion build_versions.compile_sdk
+    resourcePrefix "pay_"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        if (menu_isSingleCompile) {
+            applicationId "com.link.component_pay"
+        }
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+
+    sourceSets {
+        main {
+            if (pay_isSingleCompile.toBoolean()) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            }
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":librarycomponent")
+    api (name: 'alipaySdk-15.6.5-20190718211159-noUtdid', ext: 'aar')
+    kapt deps.alibaba.router_compiler
+    testImplementation 'junit:junit:4.12'
+}

@@ -14,7 +14,7 @@
     <com.link.librarymodule.widgets.navgation.BottomNavigationBar
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?android:attr/actionBarSize"
         android:layout_gravity="bottom" />
 
 </FrameLayout>

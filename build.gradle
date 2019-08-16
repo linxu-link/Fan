@@ -1,4 +1,5 @@
 buildscript {
+
     apply from: 'versions.gradle'
     addRepos(repositories)
     dependencies {
@@ -6,11 +7,6 @@ buildscript {
         classpath deps.tinker.gradle_plugin
         classpath deps.kotlin.plugin
         classpath deps.navigation.gradle_plugin
-    }
-
-    repositories {
-        google()
-        jcenter()
     }
 
     ext.libDefaultConfig = {
@@ -23,11 +19,15 @@ buildscript {
         }
     }
 
-
 }
 
 allprojects {
     addRepos(repositories)
+    repositories {
+        flatDir {
+            dirs project(':component_pay').file('libs')
+        }
+    }
 }
 
 task clean(type: Delete) {
@@ -62,5 +62,6 @@ ext {
     search_isSingleCompile = false
     menu_isSingleCompile = false
     update_isSingleCompile = false
-    hotfix_isSingleCompile = true
+    pay_isSingleCompile=false
+    shopping_isSingleCompile=false
 }

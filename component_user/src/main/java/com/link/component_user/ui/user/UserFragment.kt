@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
-import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.Glide
 import com.link.component_user.R
@@ -86,7 +85,7 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         }
 
         img_update.setOnClickListener {
-            val updateService = ARouter.getInstance().build(RouterConstant.UPDATE).navigation() as IUpdateService
+            val updateService = ARouter.getInstance().build(RouterConstant.UPDATE_SERVICE).navigation() as IUpdateService
             updateService.startUpdateService()
             ToastUtils.showLong("请稍后……")
         }
@@ -104,7 +103,7 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
         }
 
         img_suggest.setOnClickListener {
-            ToastUtils.showLong("此功能开发中，敬请期待")
+            ARouter.getInstance().build(RouterConstant.SHOPPING).navigation()
         }
 
         user_view.setOnClickListener {

@@ -26,7 +26,7 @@ class UpdateActivity : BaseActivity() {
         setContentView(R.layout.update_fragment)
 
         version_name.text = mUpdateEntity.versionCode
-        content.text = mUpdateEntity.updateContent
+        content.text = mUpdateEntity.updateContent.replace(";","\n")
 
         if (mUpdateEntity.forceUpdate) {
             cancel.visibility = View.INVISIBLE

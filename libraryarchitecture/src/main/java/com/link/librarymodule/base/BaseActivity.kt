@@ -193,7 +193,6 @@ abstract class BaseActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
     /**
      * 设置APP的字体不跟随系统的字体设置
      */

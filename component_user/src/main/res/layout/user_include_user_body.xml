@@ -121,7 +121,7 @@
         style="@style/WrapWrap"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        android:text="意见反馈"
+        android:text="购物商城（试做）"
         android:textColor="@color/font_color"
         android:textSize="@dimen/text_small_size"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,6 +1,3 @@
-repositories {
-    google()
-}
 if (menu_isSingleCompile) {
     apply plugin: 'com.android.application'
 } else {
@@ -56,7 +53,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":librarycomponent")
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt deps.alibaba.router_compiler
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

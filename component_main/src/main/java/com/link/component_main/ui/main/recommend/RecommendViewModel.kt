@@ -1,107 +1,86 @@
 package com.link.component_main.ui.main.recommend
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import cn.bmob.v3.BmobQuery
-import cn.bmob.v3.exception.BmobException
-import cn.bmob.v3.listener.FindListener
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.link.component_main.data.MainRepository
 import com.link.component_main.data.entity.MenuDetail
-import com.link.component_main.data.entity.MenuResult
-import com.link.component_main.data.entity.Recommend
-import com.link.librarycomponent.entity.base.BaseEntity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.utils.ToastUtils
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 
 class RecommendViewModel(repository: MainRepository) : BaseViewModel<MainRepository>(repository) {
 
-
+    //首页轮播图
     var bannerData = MutableLiveData<List<MenuDetail>>()
+    //今日推荐
     var todayData = MutableLiveData<List<MenuDetail>>()
+    //更多推荐
     var moreData = MutableLiveData<List<MenuDetail>>()
 
+    //其他页面的主体数据 例如：早餐、中餐等等
     var otherData = MutableLiveData<List<MenuDetail>>()
 
-    init {
-
-    }
-
-
+    /**
+     * 获取夏日推荐的数据
+     */
     fun getRecommendData() {
 
-        val query = BmobQuery<Recommend>()
-        query.addQueryKeys("banner,today,more")
-        query.findObjects(object : FindListener<Recommend>() {
-
-            override fun done(list: List<Recommend>?, e: BmobException?) {
-                if (e == null) {
-                    if (list != null && list.isNotEmpty()) {
-                        val banner = Gson().fromJson<BaseEntity<MenuResult>>(list[0].banner.toString(), object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                        bannerData.value = banner.result.data
-
-                        val today = Gson().fromJson<BaseEntity<MenuResult>>(list[0].today.toString(), object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                        todayData.value = today.result.data
-
-                        val more = Gson().fromJson<BaseEntity<MenuResult>>(list[0].more.toString(), object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                        moreData.value = more.result.data
-
+        addSubscribe(model.banner()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe({ data ->
+                    if (data.resultcode == "200") {
+                        bannerData.value = data.result.data
                     }
-                } else {
-                    Log.e("error", e.toString())
-                    ToastUtils.showLong(e.toString())
-                }
-            }
+                }, { t -> ToastUtils.showShort(t.toString()) })
+        )
 
-        })
+        addSubscribe(model.more()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe({ data ->
+                    if (data.resultcode == "200") {
+                        moreData.value = data.result.data
+                    }
+                }, { t -> ToastUtils.showShort(t.toString()) })
+        )
 
+        addSubscribe(model.today()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe({ data ->
+                    if (data.resultcode == "200") {
+                        todayData.value = data.result.data
+                    }
+                }, { t -> ToastUtils.showShort(t.toString()) })
+        )
     }
 
+    /**
+     * 获取其他推荐的数据
+     */
     fun getData(index: Int) {
 
-        val query = BmobQuery<Recommend>()
+        var dataSource=model.breakfast()
 
-        if (index == 1) {
-            query.addQueryKeys("breakfast")
-        } else if (index == 2) {
-            query.addQueryKeys("lunch")
-        } else if (index == 3) {
-            query.addQueryKeys("dinner")
-        }else if(index==4){
-            query.addQueryKeys("motion")
+        when (index) {
+            1 -> dataSource=model.breakfast()
+            2 -> dataSource=model.launch()
+            3 -> dataSource=model.dinner()
+            4 -> dataSource=model.motion()
         }
-        query.findObjects(object : FindListener<Recommend>() {
 
-            override fun done(list: List<Recommend>?, e: BmobException?) {
-                if (e == null) {
-                    if (list != null && list.isNotEmpty()) {
-
-                        var json = ""
-
-                        if (index == 1) {
-                            json = list[0].breakfast.toString()
-                        } else if (index == 2) {
-                            json = list[0].lunch.toString()
-                        } else if (index == 3) {
-                            json = list[0].dinner.toString()
-                        }else if (index==4){
-                            json=list[0].motion.toString()
-                        }
-
-                        val result = Gson().fromJson<BaseEntity<MenuResult>>(json, object : TypeToken<BaseEntity<MenuResult>>() {}.type)
-                        otherData.value = result.result.data
-
-
+        addSubscribe(dataSource
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe({ data ->
+                    if (data.resultcode == "200") {
+                        otherData.value = data.result.data
                     }
-                } else {
-                    Log.e("error", e.toString())
-                    ToastUtils.showLong(e.toString())
-                }
-            }
+                }, { t -> ToastUtils.showShort(t.toString()) })
+        )
 
-        })
 
     }
 

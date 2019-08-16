@@ -81,8 +81,12 @@ dependencies {
     if (!update_isSingleCompile) {
         runtimeOnly project(':component_update')
     }
+    if (!shopping_isSingleCompile) {
+        runtimeOnly project(':component_shopping')
+    }
 
     kapt deps.alibaba.router_compiler
+    kapt deps.room.compiler
     //热修复
     compileOnly(deps.tinker.anno) { changing = true }
 
@@ -91,6 +95,3 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-repositories {
-    google()
-}

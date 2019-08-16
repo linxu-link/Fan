@@ -45,6 +45,8 @@ class MainFragment(override var layoutId: Int = R.layout.main_fragment_main) : B
         searchBar.setOnClickListener {
             StartRouter.navigation(RouterConstant.SEARCH)
         }
+
+
     }
 
 }

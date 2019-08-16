@@ -16,8 +16,9 @@ versions.multidex = '1.0.3'
 def deps = [:]
 
 def room = [:]
-room.runtime = "androidx.room:room-runtime:$versions.room"
+room.runtime = "androidx.room:room-ktx:$versions.room"
 room.rxjava2 = "androidx.room:room-rxjava2:$versions.room"
+room.compiler="androidx.room:room-compiler:$versions.room"
 deps.room = room
 
 def lifecycle = [:]
@@ -124,6 +125,7 @@ deps.mmkv = "com.tencent:mmkv:1.0.22"
 deps.bugly = 'com.tencent.bugly:crashreport:3.0.0'
 deps.materialish_progress = "com.pnikosis:materialish-progress:$versions.materialish_progress"
 deps.basepopup = "com.github.razerdp:BasePopup:2.1.9"
+deps.x5webview='com.tencent.tbs.tbssdk:sdk:43697'
 ext.deps = deps
 
 //自定义类库
@@ -136,8 +138,8 @@ def build_versions = [:]
 build_versions.min_sdk = 19
 build_versions.target_sdk = 28
 build_versions.compile_sdk = 28
-build_versions.versionCode = 20190729
-build_versions.versionName = "1.0.1"
+build_versions.versionCode = 20190815
+build_versions.versionName = "1.0.3"
 ext.build_versions = build_versions
 
 

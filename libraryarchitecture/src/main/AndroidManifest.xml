@@ -2,6 +2,7 @@
     package="com.link.librarymodule">
 
     <!--允许联网 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -12,7 +13,9 @@
 
     <application>
 
-        <activity android:name=".base.ContainerActivity" />
+        <activity android:name=".base.ContainerActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
