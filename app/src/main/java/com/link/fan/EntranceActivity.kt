@@ -3,15 +3,15 @@ package com.link.fan
 import android.os.Bundle
 import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
-import com.link.fan.tinker.TinkerService
-import com.link.librarymodule.utils.ToastUtils
-import com.link.librarymodule.utils.Utils
+import com.link.fan.tasks.HotfixTask
+import com.link.fan.tasks.ShoppingProcessTask
+import com.link.fan.tasks.UpdateTask
 import com.link.librarycomponent.router.RouterConstant
-import com.link.librarycomponent.service.shopping.IShoppingService
-import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.constant.Constant
+import com.link.librarymodule.launchstarter.DelayInitDispatcher
+import com.link.librarymodule.launchstarter.TaskDispatcher
+import com.link.librarymodule.utils.ToastUtils
 
 /**
  * @author WJ
@@ -28,24 +28,21 @@ class EntranceActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_container)
 
-        if (Constant.BMOB_ID.isEmpty()){
+        if (Constant.BMOB_ID.isEmpty()) {
             ToastUtils.showLong("请完善BMOB_ID")
             return
-        }else if (Constant.JUHE_KEY.isEmpty()){
+        } else if (Constant.JUHE_KEY.isEmpty()) {
             ToastUtils.showLong("请完善聚合数据的key")
             return
         }
 
-        //启动热修复service
-        TinkerService.runTinkerService(Utils.getContext())
-
-        //启动更新service
-        val updateService = ARouter.getInstance().build(RouterConstant.UPDATE_SERVICE).navigation()!! as IUpdateService
-        updateService.startUpdateService()
-
-        //启动商城的service
-        val shoppingService = ARouter.getInstance().build(RouterConstant.SHOPPING_SERVICE).navigation()!! as IShoppingService
-        shoppingService.startShoppingService()
+        //task延迟初始化调度器
+        val dispatcher = DelayInitDispatcher()
+        //延迟初始化 热修复检查、shopping进程启动、更新检查
+        dispatcher.addTask(HotfixTask())
+                .addTask(ShoppingProcessTask())
+                .addTask(UpdateTask())
+                .start()
 
     }
 

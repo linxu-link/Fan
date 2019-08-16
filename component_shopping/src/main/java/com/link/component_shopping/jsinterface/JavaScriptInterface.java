@@ -47,7 +47,6 @@ public class JavaScriptInterface {
 
     @JavascriptInterface
     public String getGoodsData(){
-        Log.d("TAG",mGoodsData);
         return mGoodsData;
     }
 

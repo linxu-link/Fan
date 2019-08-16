@@ -54,5 +54,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":librarycomponent")
     kapt deps.alibaba.router_compiler
+    kapt deps.room.compiler
     testImplementation 'junit:junit:4.12'
 }

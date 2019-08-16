@@ -26,6 +26,7 @@ class ShoppingServiceImpl: Service() {
             when (msg.what) {
                 INIT_WEB_VIEW -> initWebView()
                 else -> {
+
                 }
             }
         }

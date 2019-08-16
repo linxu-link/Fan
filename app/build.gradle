@@ -86,6 +86,7 @@ dependencies {
     }
 
     kapt deps.alibaba.router_compiler
+    kapt deps.room.compiler
     //热修复
     compileOnly(deps.tinker.anno) { changing = true }
 

@@ -12,7 +12,12 @@ import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.shopping.IShoppingService
 import com.link.librarycomponent.service.update.IUpdateService
 import kotlinx.android.synthetic.main.fragment_main.*
-
+/**
+ * @author WJ
+ * @date 2019-07-16
+ *
+ * 描述：主页
+ */
 class MainFragment(override var layoutId: Int = R.layout.fragment_main)
     : BaseFragment(), BottomNavigationBar.OnClickListener {
 

@@ -1,7 +1,7 @@
 <resources>
 
     <style name="App_StartAppTheme" parent="AppTheme">
-        <item name="android:windowBackground">@mipmap/splash_backgroud</item>
+        <item name="android:windowBackground">@mipmap/splash</item>
     </style>
 
 </resources>

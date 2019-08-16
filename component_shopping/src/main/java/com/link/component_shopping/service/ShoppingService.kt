@@ -2,7 +2,6 @@ package com.link.component_shopping.service
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.service.shopping.IShoppingService

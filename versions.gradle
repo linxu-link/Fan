@@ -16,8 +16,9 @@ versions.multidex = '1.0.3'
 def deps = [:]
 
 def room = [:]
-room.runtime = "androidx.room:room-runtime:$versions.room"
+room.runtime = "androidx.room:room-ktx:$versions.room"
 room.rxjava2 = "androidx.room:room-rxjava2:$versions.room"
+room.compiler="androidx.room:room-compiler:$versions.room"
 deps.room = room
 
 def lifecycle = [:]
@@ -137,8 +138,8 @@ def build_versions = [:]
 build_versions.min_sdk = 19
 build_versions.target_sdk = 28
 build_versions.compile_sdk = 28
-build_versions.versionCode = 20190810
-build_versions.versionName = "1.0.2"
+build_versions.versionCode = 20190815
+build_versions.versionName = "1.0.3"
 ext.build_versions = build_versions
 
 

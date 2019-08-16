@@ -76,19 +76,13 @@ public class AliPayHelper {
     private Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
         public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case SDK_PAY_FLAG: {
-                    @SuppressWarnings("unchecked")
-                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
-
-//                    跳转到处理支付宝回调的 Activity
-                    Intent intent = new Intent(mContext, AliPayResultActivity.class);
-                    intent.putExtra("PayResult", payResult);
-                    mContext.startActivity(intent);
-                    break;
-                }
-                default:
-                    break;
+            //                    跳转到处理支付宝回调的 Activity
+            if (msg.what == SDK_PAY_FLAG) {
+                @SuppressWarnings("unchecked")
+                PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+                Intent intent = new Intent(mContext, AliPayResultActivity.class);
+                intent.putExtra("PayResult", payResult);
+                mContext.startActivity(intent);
             }
         };
     };
