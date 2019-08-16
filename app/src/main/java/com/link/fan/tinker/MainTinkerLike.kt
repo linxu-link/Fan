@@ -8,13 +8,9 @@ import android.os.Build
 import androidx.multidex.MultiDex
 import com.link.librarycomponent.AppConfig
 import com.link.librarycomponent.FanApplication
-<<<<<<< HEAD
-=======
 import com.link.librarycomponent.widgets.webview.sonic.SonicRuntimeImpl
->>>>>>> hybird
 import com.link.librarymodule.BaseApplication
 import com.link.librarymodule.utils.Utils
-import com.tencent.smtt.sdk.QbSdk.getCurrentProcessName
 import com.tencent.sonic.sdk.SonicConfig
 import com.tencent.sonic.sdk.SonicEngine
 import com.tencent.tinker.anno.DefaultLifeCycle
