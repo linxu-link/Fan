@@ -66,9 +66,11 @@ class TinkerService : Service() {
                     if (data != null) {
                         hotfix = data[0]
                         mHandler.sendEmptyMessage(DOWNLOAD_PATH) //检查是否有补丁
+                    }else{
+                        stopSelf()
                     }
                 } else {
-
+                    stopSelf()
                 }
             }
 
@@ -124,7 +126,7 @@ class TinkerService : Service() {
             }
 
         } else {
-            //            ToastUtils.showShortSafe("SD卡未挂载");
+            //ToastUtils.showShortSafe("SD卡未挂载");
             stopSelf()
         }
     }

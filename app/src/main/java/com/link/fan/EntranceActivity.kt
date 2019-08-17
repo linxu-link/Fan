@@ -10,7 +10,6 @@ import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.constant.Constant
 import com.link.librarymodule.launchstarter.DelayInitDispatcher
-import com.link.librarymodule.launchstarter.TaskDispatcher
 import com.link.librarymodule.utils.ToastUtils
 
 /**

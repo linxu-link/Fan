@@ -24,19 +24,15 @@ const val SAVE_INSTALLATION = 0x1001
  * @author WJ
  * @date 2019-07-20
  *
- * 描述：更新检查的service
+ * 描述：更新检查的service，同时向服务器保存设备ID
  */
-class UpdateService : Service() {
+class UpdateServiceImpl : Service() {
 
 
     override fun onBind(intent: Intent): IBinder? {
         return null
     }
 
-
-    override fun onCreate() {
-        super.onCreate()
-    }
 
     private val mHandler = object : Handler() {
         override fun handleMessage(msg: Message) {
@@ -66,15 +62,19 @@ class UpdateService : Service() {
                         intent.putExtra(Update::class.java.canonicalName, list[0])
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
+                        stopSelf()
                     }
                 } else {
                     Log.e("TAG", e.toString())
-                    ToastUtils.showLong(e.toString())
                 }
+                stopSelf()
             }
         })
     }
 
+    /**
+     * 保存设备的ID
+     */
     private fun saveInstallation() {
         val installation = UserEntity.Installation()
         installation.deviceOS = Build.MODEL + "-" + Build.VERSION.SDK_INT
@@ -83,6 +83,7 @@ class UpdateService : Service() {
                 if (e != null) {
                     Log.e("TAG", e.toString())
                 }
+                stopSelf()
             }
 
         })

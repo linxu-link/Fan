@@ -1,4 +1,4 @@
-package com.link.librarycomponent.tasks
+package com.link.fan.tasks
 
 import com.link.librarymodule.BuildConfig
 import com.link.librarymodule.constant.Constant

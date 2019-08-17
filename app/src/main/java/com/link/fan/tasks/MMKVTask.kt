@@ -1,4 +1,4 @@
-package com.link.librarycomponent.tasks
+package com.link.fan.tasks
 
 import com.link.librarymodule.launchstarter.task.Task
 import com.tencent.mmkv.MMKV

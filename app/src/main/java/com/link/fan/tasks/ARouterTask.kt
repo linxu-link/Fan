@@ -1,4 +1,4 @@
-package com.link.librarycomponent.tasks
+package com.link.fan.tasks
 
 import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter

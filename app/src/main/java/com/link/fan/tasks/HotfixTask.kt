@@ -14,7 +14,7 @@ class HotfixTask: Task() {
 
     override fun run() {
         //启动热修复service
-        TinkerService.runTinkerService(Utils.getContext())
+        TinkerService.runTinkerService(mContext)
     }
 
 

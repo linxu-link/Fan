@@ -1,4 +1,4 @@
-package com.link.librarycomponent.tasks
+package com.link.fan.tasks
 
 import cn.bmob.v3.Bmob
 import com.link.librarymodule.constant.Constant

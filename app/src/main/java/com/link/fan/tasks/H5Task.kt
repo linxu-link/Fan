@@ -1,15 +1,20 @@
-package com.link.librarycomponent.tasks
+package com.link.fan.tasks
 
+import com.link.librarycomponent.widgets.webview.sonic.SonicRuntimeImpl
 import com.link.librarymodule.launchstarter.task.Task
+import com.link.librarymodule.utils.Utils
 import com.tencent.smtt.sdk.QbSdk
+import com.tencent.sonic.sdk.SonicConfig
+import com.tencent.sonic.sdk.SonicEngine
 
 /**
  * @author WJ
  * @date 2019-08-15
  *
- * 描述：初始化腾讯x5内核的task
+ * 描述：初始化腾讯x5内核的webview，和vasSonic，Webview加速器 的task
  */
-class X5WebViewTask : Task() {
+class H5Task : Task() {
+
     override fun run() {
         //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
         val cb = object : QbSdk.PreInitCallback {
@@ -24,6 +29,7 @@ class X5WebViewTask : Task() {
         }
         //x5内核初始化接口
         QbSdk.initX5Environment(mContext, cb)
+
     }
 
     override fun onlyInMainProcess(): Boolean {

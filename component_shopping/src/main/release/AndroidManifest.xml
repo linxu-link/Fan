@@ -10,9 +10,9 @@
             android:screenOrientation="portrait" />
         <service
             android:name=".service.ShoppingServiceImpl"
+            android:process=":shopping"
             android:enabled="true"
-            android:exported="false"
-            android:process=":shopping" />
+            android:exported="false" />
     </application>
 
 </manifest>

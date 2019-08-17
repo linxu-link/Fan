@@ -88,4 +88,6 @@ dependencies {
     //微信开放平台
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.4.3'
 
+    api "me.weishu:epic:0.3.6"
+
 }

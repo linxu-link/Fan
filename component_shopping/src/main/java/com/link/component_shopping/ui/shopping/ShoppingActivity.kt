@@ -57,7 +57,10 @@ class ShoppingActivity(override var mLayoutId: Int = R.layout.shopping_activity_
     private fun initSonic(){
         val sessionConfigBuilder = SonicSessionConfig.Builder()
         sessionConfigBuilder.setSessionMode(SonicConstants.SESSION_MODE_DEFAULT)
-
+        //初始化vasSonic
+        if (!SonicEngine.isGetInstanceAllowed()) {
+            SonicEngine.createInstance(SonicRuntimeImpl(this), SonicConfig.Builder().build())
+        }
         mSonicSession = SonicEngine.getInstance().createSession(Constant.BASE_SHOPPING_WEB_URL, sessionConfigBuilder.build())
         if (null != mSonicSession) {
             mSonicSessionClient = SonicSessionClientImpl()

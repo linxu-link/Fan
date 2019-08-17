@@ -10,7 +10,9 @@ import com.link.component_main.data.entity.MenuDetail
 class RecommendHeadAdapter(layoutResId: Int, data: MutableList<MenuDetail>?) : BaseQuickAdapter<MenuDetail, BaseViewHolder>(layoutResId, data) {
     override fun convert(helper: BaseViewHolder, item: MenuDetail) {
         helper.setText(R.id.name,item.title)
-        Glide.with(mContext).load(item.albums[0]).into(helper.getView(R.id.img) as ImageView)
+        Glide.with(mContext)
+                .load(item.albums[0])
+                .into(helper.getView(R.id.img) as ImageView)
     }
 
 }

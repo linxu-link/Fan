@@ -10,10 +10,7 @@ import java.io.BufferedReader
 import java.io.FileInputStream
 import java.io.InputStreamReader
 
-/**
- * Created by goldze on 2017/5/14.
- * 常用工具类
- */
+
 class Utils private constructor() {
 
 
@@ -29,7 +26,7 @@ class Utils private constructor() {
          */
         @JvmStatic
         fun init(context: Context) {
-            Companion.context = context.applicationContext
+            this.context = context
         }
 
         /**

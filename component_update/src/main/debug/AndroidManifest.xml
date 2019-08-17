@@ -30,7 +30,7 @@
             android:theme="@style/update_dialog" />
 
         <service
-            android:name=".ui.UpdateService"
+            android:name=".ui.UpdateServiceImpl"
             android:enabled="true"
             android:exported="false" />
 

@@ -9,8 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/dp_40"
-        android:layout_height="@dimen/dp_40"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
         android:layout_marginStart="128dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
@@ -35,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:textSize="@dimen/text_big_size"
         android:text="爱生活，爱美食"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
