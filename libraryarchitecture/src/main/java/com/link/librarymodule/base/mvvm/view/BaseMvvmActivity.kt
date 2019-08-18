@@ -118,5 +118,20 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
         return ViewModelProviders.of(activity).get(clazz)
     }
 
+    override fun onLoading(){
+
+    }
+
+    override fun onSuccess() {
+
+    }
+
+    override fun onDataEmpty() {
+
+    }
+
+    override fun onNetworkError() {
+
+    }
 
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.link.librarymodule.R
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import java.lang.reflect.ParameterizedType
@@ -140,5 +141,22 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
      */
     fun finish() {
         activity!!.finish()
+    }
+
+    override fun onLoading(){
+        layoutId= R.layout.layout_loading
+    }
+
+    override fun onSuccess() {
+
+    }
+
+    override fun onDataEmpty() {
+        layoutId= R.layout.layout_empty
+    }
+
+
+    override fun onNetworkError() {
+        layoutId= R.layout.layout_network_error
     }
 }
