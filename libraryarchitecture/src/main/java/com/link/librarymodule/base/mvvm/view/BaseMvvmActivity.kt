@@ -1,7 +1,9 @@
 package com.link.librarymodule.base.mvvm.view
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -159,15 +161,15 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IB
                 .onRetryListener(object : OnRetryListener {
                     override fun onRetry() {
                         //点击重试
-                        showLoading()
+                        showContent()
                         loadData()
                     }
                 })
                 .onNetworkListener(object : OnNetworkListener {
                     override fun onNetwork() {
                         //网络异常，点击重试
-                        showLoading()
-                        loadData()
+                        val intent = Intent(Settings.ACTION_WIFI_SETTINGS)
+                        startActivity(intent)
                     }
                 })
                 .build()

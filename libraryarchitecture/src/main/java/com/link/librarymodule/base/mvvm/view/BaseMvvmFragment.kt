@@ -15,6 +15,11 @@ import com.link.librarymodule.base.BaseStateFragment
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.receiver.NetworkConnectChangedReceiver
 import java.lang.reflect.ParameterizedType
+import androidx.core.content.ContextCompat.startActivity
+import android.provider.Settings.ACTION_WIFI_SETTINGS
+import android.content.Intent
+import android.provider.Settings
+
 
 /**
  * @author WJ
@@ -180,15 +185,15 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(), IB
                 .onRetryListener(object : OnRetryListener {
                     override fun onRetry() {
                         //点击重试
-                        showLoading()
+                        showContent()
                         loadData()
                     }
                 })
                 .onNetworkListener(object : OnNetworkListener {
                     override fun onNetwork() {
-                        //网络异常，点击重试
-                        showLoading()
-                        loadData()
+                        //网络异常，点击设置
+                        val intent = Intent(ACTION_WIFI_SETTINGS)
+                        startActivity(intent)
                     }
                 })
                 .build()

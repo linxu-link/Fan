@@ -138,8 +138,8 @@ def build_versions = [:]
 build_versions.min_sdk = 19
 build_versions.target_sdk = 28
 build_versions.compile_sdk = 28
-build_versions.versionCode = 20190815
-build_versions.versionName = "1.0.3"
+build_versions.versionCode = 20190819
+build_versions.versionName = "1.0.4"
 ext.build_versions = build_versions
 
 
