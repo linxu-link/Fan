@@ -41,13 +41,13 @@ class CollectionFragment(override var layoutId: Int = R.layout.user_fragment_col
         super.initView()
         refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
         refresh.setOnRefreshListener {
-            getData()
+            loadData()
         }
         val title = mRootView!!.findViewById<TextView>(R.id.title)
         val back = mRootView!!.findViewById<ImageView>(R.id.back)
         title.text = "我的收藏"
         back.setOnClickListener {
-            activity!!.onBackPressed()
+            mActivity!!.onBackPressed()
         }
 
         mAdapter = CollectionAdapter(R.layout.user_item_collection, null)
@@ -63,8 +63,8 @@ class CollectionFragment(override var layoutId: Int = R.layout.user_fragment_col
         })
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
+        super.loadData()
         refresh.isRefreshing = true
         mViewModel.getCollectionData()
     }

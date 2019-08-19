@@ -43,13 +43,13 @@ class FootPrintFragment(override var layoutId: Int = R.layout.user_fragment_foot
         super.initView()
         refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
         refresh.setOnRefreshListener {
-            getData()
+            loadData()
         }
         val title = mRootView!!.findViewById<TextView>(R.id.title)
         val back = mRootView!!.findViewById<ImageView>(R.id.back)
         title.text = "我的足迹"
         back.setOnClickListener {
-            activity!!.onBackPressed()
+            mActivity!!.onBackPressed()
         }
 
         mAdapter = FootPrintAdapter(R.layout.user_item_foot_print, null)
@@ -61,13 +61,14 @@ class FootPrintFragment(override var layoutId: Int = R.layout.user_fragment_foot
         super.initViewObservable()
         mViewModel.mFootPrintData.observe(this, Observer {
             mAdapter.setNewData(it)
+            showContent()
             refresh.isRefreshing = false
         })
 
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
+        super.loadData()
         refresh.isRefreshing = true
         mViewModel.getFootPrintData()
     }

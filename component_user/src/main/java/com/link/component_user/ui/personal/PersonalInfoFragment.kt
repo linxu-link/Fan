@@ -57,7 +57,7 @@ class PersonalInfoFragment(override var layoutId: Int = R.layout.user_fragment_p
         val rightIcon = mRootView!!.findViewById<ImageView>(R.id.right_icon)
         title.text = "我的信息"
         back.setOnClickListener {
-            activity!!.onBackPressed()
+            mActivity!!.onBackPressed()
         }
         rightIcon.visibility = View.VISIBLE
         rightIcon.setOnClickListener {
@@ -116,7 +116,7 @@ class PersonalInfoFragment(override var layoutId: Int = R.layout.user_fragment_p
 
         mViewModel.uc.pUpdateEvent.observe(this, Observer {
             if (it) {
-                activity!!.onBackPressed()
+                mActivity!!.onBackPressed()
             }
         })
     }

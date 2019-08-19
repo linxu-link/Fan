@@ -4,9 +4,11 @@ package com.link.component_search.data.source.http
 import com.link.component_search.data.entity.CategoryResult
 import com.link.component_search.data.entity.MenuResult
 import com.link.librarycomponent.entity.base.BaseEntity
+import com.link.librarymodule.constant.Constant
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import java.util.*
 
@@ -17,6 +19,7 @@ interface HttpService {
      * parentid：分类ID，默认全部
      */
     @FormUrlEncoded
+    @Headers("${Constant.URL_TYPE}:${Constant.JUHE}")
     @POST("cook/category")
     fun category(
             @Field("key") key: String,
@@ -29,6 +32,7 @@ interface HttpService {
      * menu:菜谱的关键词
      */
     @FormUrlEncoded
+    @Headers("${Constant.URL_TYPE}:${Constant.JUHE}")
     @POST("cook/query.php")
     fun query(
             @Field("key") key: String,
@@ -46,6 +50,7 @@ interface HttpService {
      * format:steps字段屏蔽，默认显示，format=1时屏蔽
      */
     @FormUrlEncoded
+    @Headers("${Constant.URL_TYPE}:${Constant.JUHE}")
     @POST("cook/index")
     fun index(
             @Field("key") key: String,
@@ -61,6 +66,7 @@ interface HttpService {
      * id:菜谱的详细ID
      */
     @FormUrlEncoded
+    @Headers("${Constant.URL_TYPE}:${Constant.JUHE}")
     @POST("cook/queryid")
     fun queryid(
             @Field("key") key: String,

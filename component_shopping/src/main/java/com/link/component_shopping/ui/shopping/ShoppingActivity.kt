@@ -16,10 +16,8 @@ import com.link.librarycomponent.widgets.webview.sonic.SonicRuntimeImpl
 import com.link.librarycomponent.widgets.webview.sonic.SonicSessionClientImpl
 import com.link.librarymodule.base.mvvm.view.BaseMvvmActivity
 import com.link.librarymodule.constant.Constant
-import com.link.librarymodule.utils.Utils
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse
-import com.tencent.smtt.sdk.WebView
 import com.tencent.sonic.sdk.*
 
 
@@ -51,7 +49,7 @@ class ShoppingActivity(override var mLayoutId: Int = R.layout.shopping_activity_
         initSonic()
         initWebView()
 
-        getData()
+        loadData()
     }
 
     private fun initSonic(){
@@ -100,8 +98,8 @@ class ShoppingActivity(override var mLayoutId: Int = R.layout.shopping_activity_
         })
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
+        super.loadData()
         mViewModel!!.getRemoteData()
     }
 
@@ -110,6 +108,7 @@ class ShoppingActivity(override var mLayoutId: Int = R.layout.shopping_activity_
 
         mViewModel!!.goodsData.observe(this, Observer {
             mJavaScriptInterface!!.goodsData = it
+            showContent()
         })
 
         mViewModel!!.secondData.observe(this, Observer {

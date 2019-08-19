@@ -102,17 +102,19 @@ class CatalogDetailFragment(override var layoutId: Int = R.layout.main_fragment_
             mViewModel.cataLog.observe(this, Observer {
                 mLeftAdapter.setNewData(it)
                 mRightAdapter.setNewData(mViewModel.cataLog.value!![0].list)
+                showContent()
             })
         }else{
             mViewModel.ingredients.observe(this, Observer {
                 mLeftAdapter.setNewData(it)
                 mRightAdapter.setNewData(mViewModel.ingredients.value!![0].list)
+                showContent()
             })
         }
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
+        super.loadData()
         if (index == 0) {
             mViewModel.getCatalogData()
         } else {

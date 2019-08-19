@@ -51,13 +51,13 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
             val menu: String = et_search.text.toString()
             if (menu.isNotEmpty()) {
                 mViewModel.searchWord.value = menu
-                Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+                Navigation.findNavController(mActivity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
             }
         }
 
         mAdapter.setOnItemClickListener { _, _, position ->
             mViewModel.searchWord.value = mAdapter.getItem(position)!!.content
-            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+            Navigation.findNavController(mActivity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
 
 
@@ -67,27 +67,27 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
         val header = LayoutInflater.from(context).inflate(R.layout.search_head_view, null)
         header.findViewById<FrameLayout>(R.id.search_recommend_1).setOnClickListener {
             mViewModel.searchWord.value = "宫保鸡丁"
-            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+            Navigation.findNavController(mActivity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_2).setOnClickListener {
             mViewModel.searchWord.value = "糖醋排骨"
-            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+            Navigation.findNavController(mActivity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_3).setOnClickListener {
             mViewModel.searchWord.value = "红烧肉"
-            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+            Navigation.findNavController(mActivity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_4).setOnClickListener {
             mViewModel.searchWord.value = "水煮肉片"
-            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+            Navigation.findNavController(mActivity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_5).setOnClickListener {
             mViewModel.searchWord.value = "麻婆豆腐"
-            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+            Navigation.findNavController(mActivity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_6).setOnClickListener {
             mViewModel.searchWord.value = "可乐鸡翅"
-            Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
+            Navigation.findNavController(mActivity!!, R.id.root_view).navigate(R.id.action_searchfragment_to_searchdetailfragment)
         }
 
         header.findViewById<TextView>(R.id.btn_clear).setOnClickListener {
@@ -97,8 +97,8 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
         mAdapter.addHeaderView(header)
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
+        super.loadData()
         mViewModel.getSearchHistoryData()
     }
 
@@ -107,6 +107,7 @@ class SearchFragment(override var layoutId: Int = R.layout.search_fragment_searc
 
         mViewModel.searchHistory.observe(this, Observer {
             mAdapter.setNewData(it)
+            showContent()
         })
 
         mViewModel.searchWord.observe(this, Observer {

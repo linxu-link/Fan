@@ -1,7 +1,9 @@
 package com.link.general_statelayout.listener
 
-interface OnShowOrHideListener {
-    fun onViewShow()
+import android.view.View
 
-    fun onViewHide()
+interface OnShowOrHideListener {
+    fun onViewShow(view: View, id: Int)
+
+    fun onViewHide(view: View, id: Int)
 }

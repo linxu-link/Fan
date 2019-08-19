@@ -16,10 +16,8 @@ import com.link.component_user.ui.personal.PersonalInfoFragment
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.router.StartRouter
-import com.link.librarycomponent.service.shopping.IShoppingService
 import com.link.librarycomponent.service.update.IUpdateService
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-import com.link.librarymodule.utils.RxCountDown
 import com.link.librarymodule.utils.ToastUtils
 import kotlinx.android.synthetic.main.user_fragment_user.*
 import kotlinx.android.synthetic.main.user_include_user_body.*
@@ -145,13 +143,14 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
                     Log.e("error", it.avatar!!.url + "," + it.avatar!!.fileUrl)
                 }
             }
+            showContent()
         })
 
     }
 
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
+        super.loadData()
         if (mViewModel.userEntity.value != null) {
             mViewModel.getUserData()
         }

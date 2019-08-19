@@ -17,7 +17,7 @@ interface HttpService {
      * 获取商城的活动的数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/newGoods")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/newGoods")
     fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>>
 
 
@@ -25,7 +25,7 @@ interface HttpService {
      * 获取商城的活动的数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/newSeconds")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/newSeconds")
     fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>>
 
 

@@ -74,56 +74,56 @@ interface HttpService {
      * 获取app首页的轮播图数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/banner")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/banner")
     fun banner(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取app首页的今日推荐数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/today")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/today")
     fun today(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取app首页的更多推荐数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/more")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/more")
     fun more(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取app首页的早餐推荐数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/breakfast")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/breakfast")
     fun breakfast(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取app首页的午餐推荐数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/launch")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/launch")
     fun launch(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取app首页的晚餐推荐数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/dinner")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/dinner")
     fun dinner(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取app首页的创意推荐数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/motion")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/motion")
     fun motion(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取app 发现页面的数据
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("api/find")
+    @GET("mock/5d4cd6c6151be0350086e1ee/api/find")
     fun find(): Observable<BaseEntity<MenuResult>>
 
 

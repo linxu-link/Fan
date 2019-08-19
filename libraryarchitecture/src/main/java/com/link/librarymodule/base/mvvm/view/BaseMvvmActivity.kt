@@ -5,7 +5,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.link.general_statelayout.StateLayoutManager
+import com.link.general_statelayout.listener.OnNetworkListener
+import com.link.general_statelayout.listener.OnRetryListener
 import com.link.librarymodule.base.BaseActivity
+import com.link.librarymodule.base.BaseStateActivity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import java.lang.reflect.ParameterizedType
 
@@ -15,7 +19,7 @@ import java.lang.reflect.ParameterizedType
  *
  * 描述：Mvvm架构下Activity基类
  */
-abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseView {
+abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IBaseView {
 
     protected var mViewModel: VM? = null
     abstract var mLayoutId: Int
@@ -24,7 +28,6 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
         super.onCreate(savedInstanceState)
         //页面接受的参数方法
         initParam()
-        setContentView(mLayoutId)
         //初始化DataBinging和ViewModel
         initViewModel()
         //ViewModel与View的契约事件回掉逻辑
@@ -88,7 +91,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
     /**
      * 获取数据
      */
-    override fun getData() {
+    override fun loadData() {
 
     }
 
@@ -118,20 +121,30 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseActivity(), IBaseVi
         return ViewModelProviders.of(activity).get(clazz)
     }
 
-    override fun onLoading(){
+    /*=================================状态切换===========================================*/
 
-    }
-
-    override fun onSuccess() {
-
-    }
-
-    override fun onDataEmpty() {
-
-    }
-
-    override fun onNetworkError() {
-
+    override fun initStatusLayout() {
+        mStatusLayoutManager = StateLayoutManager.newBuilder(this)
+                .contentView(mLayoutId)
+                .emptyDataView(mEmptyLayoutId)
+                .errorView(mErrorLayoutId)
+                .loadingView(mLoadingLayoutId)
+                .networkErrorView(mNetworkErrorLayoutId)
+                .onRetryListener(object : OnRetryListener {
+                    override fun onRetry() {
+                        //点击重试
+                        showLoading()
+                        loadData()
+                    }
+                })
+                .onNetworkListener(object : OnNetworkListener {
+                    override fun onNetwork() {
+                        //网络异常，点击重试
+                        showLoading()
+                        loadData()
+                    }
+                })
+                .build()
     }
 
 }

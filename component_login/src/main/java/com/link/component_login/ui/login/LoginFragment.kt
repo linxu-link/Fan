@@ -42,7 +42,7 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
         super.initView()
         val back = mRootView!!.findViewById<ImageView>(R.id.back)
         back.setOnClickListener {
-            activity!!.onBackPressed()
+            mActivity!!.onBackPressed()
         }
 
         //登录按钮
@@ -114,8 +114,7 @@ class LoginFragment(override var layoutId: Int = R.layout.login_fragment_login) 
         })
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
         mViewModel.getUserData()
     }
 

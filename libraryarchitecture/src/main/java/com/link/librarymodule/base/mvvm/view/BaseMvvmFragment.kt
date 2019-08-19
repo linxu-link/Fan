@@ -1,13 +1,16 @@
 package com.link.librarymodule.base.mvvm.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.link.librarymodule.R
-import com.link.librarymodule.base.BaseFragment
+import com.link.general_statelayout.StateLayoutManager
+import com.link.general_statelayout.listener.OnNetworkListener
+import com.link.general_statelayout.listener.OnRetryListener
+import com.link.librarymodule.base.BaseStateFragment
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import java.lang.reflect.ParameterizedType
 
@@ -17,7 +20,7 @@ import java.lang.reflect.ParameterizedType
  * 
  * 描述：Mvvm架构下Fragment基类
  */
-abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseView {
+abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(),IBaseView {
     protected lateinit var mViewModel: VM
 
 
@@ -44,7 +47,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
         //私有的ViewModel与View的契约事件回调逻辑
         registorUIChangeLiveDataCallBack()
         //页面数据初始化方法
-        getData()
+        loadData()
         //页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
         initViewObservable()
         //注册RxBus
@@ -70,12 +73,6 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
         //        mViewModel.injectLifecycleProvider(this);
     }
 
-    /**
-     * 初始化UI
-     */
-    open fun initView() {
-
-    }
 
     /**
      * =====================================================================
@@ -95,9 +92,9 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
             startContainerActivity(canonicalName, bundle)
         })
         //关闭界面
-        mViewModel.uc.finishEvent.observe(this, Observer { activity!!.finish() })
+        mViewModel.uc.finishEvent.observe(this, Observer { mActivity!!.finish() })
         //关闭上一层
-        mViewModel.uc.onBackPressedEvent.observe(this, Observer { activity!!.onBackPressed() })
+        mViewModel.uc.onBackPressedEvent.observe(this, Observer { mActivity!!.onBackPressed() })
     }
 
 
@@ -117,8 +114,11 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
     abstract fun getViewModel(): VM
 
 
-    override fun getData() {
-
+    /**
+     *加载数据时，自动展示加载中的页面，对于一些页面包含了下拉刷新的，则需要重写loadData且不能使用super
+     */
+    override fun loadData() {
+        showLoading()
     }
 
     override fun initViewObservable() {
@@ -140,23 +140,35 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseFragment(), IBaseVi
      * 结束当前fragment
      */
     fun finish() {
-        activity!!.finish()
+        mActivity!!.finish()
     }
 
-    override fun onLoading(){
-        layoutId= R.layout.layout_loading
+    /*=================================状态切换===========================================*/
+
+
+    override fun initStatusLayout() {
+        mStatusLayoutManager = StateLayoutManager.newBuilder(mActivity as Context)
+                .contentView(layoutId)
+                .emptyDataView(mEmptyLayoutId)
+                .errorView(mErrorLayoutId)
+                .loadingView(mLoadingLayoutId)
+                .networkErrorView(mNetworkErrorLayoutId)
+                .onRetryListener(object : OnRetryListener {
+                    override fun onRetry() {
+                        //点击重试
+                        showLoading()
+                        loadData()
+                    }
+                })
+                .onNetworkListener(object : OnNetworkListener {
+                    override fun onNetwork() {
+                        //网络异常，点击重试
+                        showLoading()
+                        loadData()
+                    }
+                })
+                .build()
     }
 
-    override fun onSuccess() {
 
-    }
-
-    override fun onDataEmpty() {
-        layoutId= R.layout.layout_empty
-    }
-
-
-    override fun onNetworkError() {
-        layoutId= R.layout.layout_network_error
-    }
 }

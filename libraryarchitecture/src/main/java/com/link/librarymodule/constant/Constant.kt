@@ -17,7 +17,7 @@ class Constant {
         const val JUHE="juhe"
 
         //easy mock 数据url
-        const val MOCK_DATA_URL="https://www.easy-mock.com/mock/5d4cd6c6151be0350086e1ee/"
+        const val MOCK_DATA_URL="https://www.easy-mock.com/"
         //easy mock url 标识
         const val MOCK="mock"
 

@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.google.gson.Gson
 import com.link.component_main.ui.MainViewModelFactory
 import com.link.librarycomponent.router.RouterConstant
+import com.link.librarymodule.R
 import com.link.view_flip.flip.FlipViewController
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
 
@@ -51,8 +52,8 @@ class FindFragment(override var layoutId: Int = 0) : BaseMvvmFragment<FindViewMo
 
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
+        super.loadData()
         mViewModel.getData()
     }
 
@@ -60,6 +61,7 @@ class FindFragment(override var layoutId: Int = 0) : BaseMvvmFragment<FindViewMo
         super.initViewObservable()
         mViewModel.data.observe(this, Observer {
             mAdapter.setData(it)
+            showContent()
         })
     }
 

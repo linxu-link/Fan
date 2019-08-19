@@ -55,7 +55,7 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
     override fun initView() {
         super.initView()
         toolbar.setNavigationOnClickListener {
-            activity!!.onBackPressed()
+            mActivity!!.onBackPressed()
         }
         mAdapter = MenuAdapter(R.layout.menu_item, null)
         rvList.addItemDecoration(ItemDecoration(0, 10, 0, 10))
@@ -115,6 +115,7 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
         super.initViewObservable()
         mViewModel.ingredients.observe(this, Observer {
             mHeader1Adapter.setNewData(it)
+            showContent()
         })
 
         mViewModel.burden.observe(this, Observer {
@@ -152,8 +153,8 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
 
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
+        super.loadData()
         if (arguments != null) {
             mViewModel.menuDetail.value = arguments!!.getParcelable(MenuDetail::class.java.canonicalName)
         }

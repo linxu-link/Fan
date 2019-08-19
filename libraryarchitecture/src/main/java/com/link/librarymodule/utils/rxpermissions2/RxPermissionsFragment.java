@@ -74,7 +74,7 @@ public class RxPermissionsFragment extends Fragment {
     boolean isGranted(String permission) {
         final FragmentActivity fragmentActivity = getActivity();
         if (fragmentActivity == null) {
-            throw new IllegalStateException("This fragment must be attached to an activity.");
+            throw new IllegalStateException("This fragment must be attached to an mActivity.");
         }
         return fragmentActivity.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
     }
@@ -83,7 +83,7 @@ public class RxPermissionsFragment extends Fragment {
     boolean isRevoked(String permission) {
         final FragmentActivity fragmentActivity = getActivity();
         if (fragmentActivity == null) {
-            throw new IllegalStateException("This fragment must be attached to an activity.");
+            throw new IllegalStateException("This fragment must be attached to an mActivity.");
         }
         return fragmentActivity.getPackageManager().isPermissionRevokedByPolicy(permission, getActivity().getPackageName());
     }

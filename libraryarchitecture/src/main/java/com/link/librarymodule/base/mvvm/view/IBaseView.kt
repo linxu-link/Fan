@@ -10,7 +10,7 @@ interface IBaseView {
     /**
      * 请求网络接口
      */
-    fun getData();
+    fun loadData();
 
     /**
      *
@@ -18,24 +18,5 @@ interface IBaseView {
     fun initViewObservable()
 
 
-    /**
-     * 数据载入中
-     */
-    fun onLoading()
-
-    /**
-     * 网络异常
-     */
-    fun onNetworkError()
-
-    /**
-     * 页面无数据
-     */
-    fun onDataEmpty()
-
-    /**
-     * 数据载入成功
-     */
-    fun onSuccess()
 
 }

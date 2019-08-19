@@ -52,9 +52,9 @@ public class UrlInterceptor implements Interceptor {
             String urlName = urlNameList.get(0);
             HttpUrl baseURL;
             //根据头信息中配置的value,来匹配新的base_url地址
-            if ("mock".equals(urlName)) {
+            if (Constant.MOCK.equals(urlName)) {
                 baseURL = HttpUrl.parse(Constant.MOCK_DATA_URL);
-            } else if ("juhe".equals(urlName)) {
+            } else if (Constant.JUHE.equals(urlName)) {
                 baseURL = HttpUrl.parse(Constant.JUHE_DATA_URL);
             }  else {
                 baseURL = HttpUrl.parse(Constant.JUHE_DATA_URL);

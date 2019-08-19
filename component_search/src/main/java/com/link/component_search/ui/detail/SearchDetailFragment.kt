@@ -91,7 +91,7 @@ class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment
 
         refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
         refresh.setOnRefreshListener {
-            getData()
+            loadData()
         }
 
     }
@@ -105,6 +105,7 @@ class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment
             } else {
                 mAdapter.addData(it.data)
             }
+            showContent()
             mAdapter.loadMoreComplete()
             refresh.isRefreshing = false
         })
@@ -115,17 +116,16 @@ class SearchDetailFragment(override var layoutId: Int = R.layout.search_fragment
 
         mViewModel.searchWord.observe(this, Observer {
             et_search.setText(it)
-            getData()
+            loadData()
         })
 
         mViewModel.searchId.observe(this, Observer {
-            getData()
+            loadData()
         })
 
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
         refresh.isRefreshing = true
         if (mViewModel.searchId.value != null) {
             mViewModel.index(0, 10)

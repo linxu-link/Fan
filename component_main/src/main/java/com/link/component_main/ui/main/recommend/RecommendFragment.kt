@@ -62,7 +62,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         super.initView()
         refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
         refresh.setOnRefreshListener {
-            getData()
+            loadData()
         }
 
         mAdapter = RecommendHeadAdapter(R.layout.main_item_recommend, null)
@@ -160,8 +160,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
         return 0
     }
 
-    override fun getData() {
-        super.getData()
+    override fun loadData() {
         refresh.isRefreshing = true
         if (index == 0) {
             mViewModel.getRecommendData()
@@ -177,6 +176,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
             mViewModel.moreData.observe(this, Observer {
                 mAdapter.setNewData(it)
                 refresh.isRefreshing = false
+                showContent()
             })
             initHeaderView()
             initHeaderView2()
@@ -184,8 +184,8 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
             mViewModel.otherData.observe(this, Observer {
                 mAdapter.setNewData(it)
                 refresh.isRefreshing = false
+                showContent()
             })
-
         }
     }
 
