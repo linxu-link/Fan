@@ -1,4 +1,4 @@
-include ':view_flip', ':general_network', ':component_shopping', ':component_pay'
+include ':view_flip', ':general_statelayout','view_common',':general_network'
 include ':librarybase'
 include ':libraryarchitecture', ':librarycomponent'
 
@@ -8,4 +8,5 @@ include ':component_search'
 include ':component_user'
 include ':component_menu'
 include ':component_update'
+include ':component_pay',':component_shopping'
 include ':app'

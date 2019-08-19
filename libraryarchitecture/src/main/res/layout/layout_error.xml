@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:padding="@dimen/dp_20"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_150" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/error_type"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_200"
+            android:src="@drawable/ic_network_error" />
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="载入中……"
+            android:textColor="@color/text_light"
+            android:textSize="@dimen/text_big_size" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/error_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/shape_stroke_corner_10dp_orange_full"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingRight="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="重新加载"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_big_size" />
+
+    </LinearLayout>
+</FrameLayout>
