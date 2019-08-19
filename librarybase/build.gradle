@@ -27,7 +27,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(":general_network")
     api project(":view_flip")
-//    api project(":view_common")
+    api project(":view_common")
     api project(":general_statelayout")
 
     api deps.androidx.recyclerview

@@ -1,5 +1,6 @@
 package com.link.librarymodule.base.mvvm.view
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import com.link.general_statelayout.listener.OnRetryListener
 import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.base.BaseStateActivity
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
+import com.link.librarymodule.receiver.NetworkConnectChangedReceiver
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -19,13 +21,21 @@ import java.lang.reflect.ParameterizedType
  *
  * 描述：Mvvm架构下Activity基类
  */
-abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IBaseView {
+abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IBaseView,NetworkConnectChangedReceiver.NetworkChangeListener {
 
     protected var mViewModel: VM? = null
     abstract var mLayoutId: Int
 
+    //监听网络状态的广播
+    protected var mNetworkReceiver: NetworkConnectChangedReceiver? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //注册广播
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            mNetworkReceiver = NetworkConnectChangedReceiver(this)
+            mNetworkReceiver!!.setNetworkChangeListener(this)
+        }
         //页面接受的参数方法
         initParam()
         //初始化DataBinging和ViewModel
@@ -43,6 +53,10 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IB
         lifecycle.removeObserver(mViewModel!!)
         if (mViewModel != null) {
             mViewModel!!.registerRxBus()
+        }
+        //注销广播
+        if (mNetworkReceiver != null) {
+            mNetworkReceiver!!.unregisterNetworkReceiver(this)
         }
     }
 
@@ -88,6 +102,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IB
         mViewModel!!.uc.onBackPressedEvent.observe(this, Observer { onBackPressed() })
     }
 
+
     /**
      * 获取数据
      */
@@ -119,6 +134,17 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IB
      */
     fun <T : ViewModel> createViewModel(activity: FragmentActivity, clazz: Class<T>): T {
         return ViewModelProviders.of(activity).get(clazz)
+    }
+
+    /**
+     * 网络发生变化时回调
+     */
+    override fun onNetworkChange(isNetConnect: Boolean) {
+        if (!isNetConnect) {
+            showNetWorkError()
+        } else {
+            loadData()
+        }
     }
 
     /*=================================状态切换===========================================*/

@@ -1,8 +1,12 @@
 package com.link.librarymodule.base
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +16,18 @@ import androidx.annotation.Nullable
 import androidx.fragment.app.FragmentTransaction
 import com.link.general_statelayout.StateLayoutManager
 import com.link.librarymodule.R
+import com.link.librarymodule.receiver.NetworkConnectChangedReceiver
 
 const val STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN"
 
+const val SHOW_CONTENT = 0x2001
+
+/**
+ * @author WJ
+ * @date 2019-08-19
+ *
+ * 描述：控制页面状态的基础fragment
+ */
 abstract class BaseStateFragment : BaseFragment() {
 
     protected var mStatusLayoutManager: StateLayoutManager? = null
@@ -22,8 +35,11 @@ abstract class BaseStateFragment : BaseFragment() {
 
     //默认的网络错误布局id
     protected var mNetworkErrorLayoutId: Int = R.layout.layout_network_error
+    //默认的载入中布局id
     protected var mLoadingLayoutId: Int = R.layout.layout_loading
+    //默认的数据错误布局id
     protected var mErrorLayoutId: Int = R.layout.layout_error
+    //默认的空数据布局id
     protected var mEmptyLayoutId: Int = R.layout.layout_empty
 
 
@@ -114,16 +130,36 @@ abstract class BaseStateFragment : BaseFragment() {
 
     }
 
+
+
+
     /*---------------------------------下面是状态切换方法-----------------------------------------*/
 
+    val handler = @SuppressLint("HandlerLeak")
+    object : Handler() {
+
+        override fun handleMessage(msg: Message?) {
+            super.handleMessage(msg)
+            if (msg == null) {
+                return
+            }
+            when (msg.what) {
+                SHOW_CONTENT -> {
+                    if (mStatusLayoutManager != null) {
+                        mStatusLayoutManager!!.showContent()
+                    }
+                }
+            }
+        }
+
+    }
 
     /**
      * 加载成功
      */
     protected fun showContent() {
-        if (mStatusLayoutManager != null) {
-            mStatusLayoutManager!!.showContent()
-        }
+        //延迟1秒种，让动画转几圈
+        handler.sendEmptyMessageDelayed(SHOW_CONTENT, 1500)
     }
 
     /**
@@ -157,6 +193,7 @@ abstract class BaseStateFragment : BaseFragment() {
      * 加载loading
      */
     protected fun showLoading() {
+
         if (mStatusLayoutManager != null) {
             mStatusLayoutManager!!.showLoading()
         }

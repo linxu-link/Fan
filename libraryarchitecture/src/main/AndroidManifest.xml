@@ -26,6 +26,15 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
+
+        <receiver android:name=".receiver.NetworkConnectChangedReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.conn.NETWORK_STATE_CHANGED_ACTION" />
+                <action android:name="android.net.conn.NETWORK_STATE_CHANGED_ACTION" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

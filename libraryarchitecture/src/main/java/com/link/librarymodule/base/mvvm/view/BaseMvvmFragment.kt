@@ -1,6 +1,7 @@
 package com.link.librarymodule.base.mvvm.view
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -12,20 +13,29 @@ import com.link.general_statelayout.listener.OnNetworkListener
 import com.link.general_statelayout.listener.OnRetryListener
 import com.link.librarymodule.base.BaseStateFragment
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
+import com.link.librarymodule.receiver.NetworkConnectChangedReceiver
 import java.lang.reflect.ParameterizedType
 
 /**
  * @author WJ
  * @date 2019-05-29
- * 
+ *
  * 描述：Mvvm架构下Fragment基类
  */
-abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(),IBaseView {
+abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(), IBaseView, NetworkConnectChangedReceiver.NetworkChangeListener {
+
     protected lateinit var mViewModel: VM
 
+    //监听网络状态的广播
+    protected var mNetworkReceiver: NetworkConnectChangedReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //注册广播
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            mNetworkReceiver = NetworkConnectChangedReceiver(context)
+            mNetworkReceiver!!.setNetworkChangeListener(this)
+        }
         initViewModel()
         initParam()
     }
@@ -33,11 +43,13 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(),IBa
 
     override fun onDestroyView() {
         super.onDestroyView()
-        //解除Messenger注册
-//        Messenger.getDefault().unregister(mViewModel)
         //解除ViewModel生命周期感应
         lifecycle.removeObserver(mViewModel)
         mViewModel.removeRxBus()
+        //注销广播
+        if (mNetworkReceiver != null) {
+            mNetworkReceiver!!.unregisterNetworkReceiver(context)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -141,6 +153,18 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(),IBa
      */
     fun finish() {
         mActivity!!.finish()
+    }
+
+    /**
+     * 网络发生变化时回调
+     */
+    override fun onNetworkChange(isNetConnect: Boolean) {
+        if (!isNetConnect) {
+            showNetWorkError()
+        } else {
+            showContent()
+            loadData()
+        }
     }
 
     /*=================================状态切换===========================================*/
