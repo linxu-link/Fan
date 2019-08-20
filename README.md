@@ -18,36 +18,40 @@
 
 **项目当前的MVVM架构设计的可能并不理想，而且界面优化还存在一定的问题**，不过没关系，后续会以该项目为案例，系统性的实践Android中常见的启动优化、内存优化以及布局优化等等，实践过程也会完整的整理成文章记录下来，方便日后学习、讨论，如果感兴趣话记得关注哦。
 
-**数据来源**：[聚合数据-菜谱大全](https://www.juhe.cn/docs/api/id/46)
+**数据来源**：[聚合数据-菜谱大全](https://www.juhe.cn/docs/api/id/46)、[Easy-Mock](https://www.easy-mock.com/)
 
-**后台服务器**：[Bmob](https://www.bmob.cn/)
+**后台服务器**：[Bmob](https://www.bmob.cn/)（使用了bmob用户管理的部分api，其他数据主要使用easy-mock产生模拟数据）
 
 **开发语言**：Kotlin（部分使用了Java）
 
-**主要使用的Jetpack组件**：Navigation、ViewModel、Room、LiveData、Lifecycle
+**主要使用的Jetpack组件**：
+LiveData-[Android Architecture Components探索（1）-LiveData](https://www.jianshu.com/p/4e8424a51735)
+ViewModel-[Android Architecture Components探索（2）-ViewModel](https://www.jianshu.com/p/879036c1876b)
+Navigation-[Android Architecture Components探索（3）-Navigation](https://www.jianshu.com/p/aced993cb990)
+Room、Lifecycle
 
-**使用到的第三方框架**：App中使用了很多第三方框架，这里只列举几种，Tinker、ARouter、Glide、Rxjava、Retrofit、BaseRecyclerViewAdapterHelper等等。
+**使用到的第三方框架**：App中使用了很多第三方框架，这里只列举几种，Tinker（热修复）、ARouter、Glide、Rxjava、Retrofit、BaseRecyclerViewAdapterHelper等等。
 
 **开源地址**：https://github.com/linux-link/Fan
 
 #### 二、APP概览
 
-![首页](https://user-gold-cdn.xitu.io/2019/8/6/16c66f63f30cb86f?w=300&h=533&f=png&s=185422)
+![首页](https://upload-images.jianshu.io/upload_images/3146091-dcb87aa1cec4913b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![分类](https://user-gold-cdn.xitu.io/2019/8/6/16c66f63f32732e3?w=300&h=533&f=png&s=39155)
+![分类](https://upload-images.jianshu.io/upload_images/3146091-451c7af09e760d36?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![发现](https://user-gold-cdn.xitu.io/2019/8/6/16c66f63f318242e?w=300&h=533&f=png&s=236423)
+![发现](https://upload-images.jianshu.io/upload_images/3146091-016837957b9f5781?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![我的](https://user-gold-cdn.xitu.io/2019/8/6/16c66f63f348bdc0?w=300&h=533&f=png&s=45553)
+![我的](https://upload-images.jianshu.io/upload_images/3146091-c692f57789df800e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 三、源码结构
 本项目概念上的结构如图所示
 
-![image](https://user-gold-cdn.xitu.io/2019/8/6/16c66f63f35537ec?w=1160&h=1236&f=png&s=60526)
+![image](https://upload-images.jianshu.io/upload_images/3146091-bb3e8ce2feeb18a3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 实际结构如图所示
 
-![image](https://user-gold-cdn.xitu.io/2019/8/6/16c66f63fb28c5e2?w=400&h=768&f=png&s=126697)
+![image](https://upload-images.jianshu.io/upload_images/3146091-061f7c4ce847733f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 下面分别解释各个module的作用：
 
@@ -93,7 +97,7 @@
 以上就是本项目的大致概览，总得来说，你既可以用它来学习组件化开发，也可以用它来学习Android Jetpack组件的实际运用，还可以用来学习如何优化一个APP，不过这等我后续的更新了，内存优化部分，已经先行发布了，请移步[「Android内存优化 1」-Android的内存机制与管理建议](https://www.jianshu.com/p/527bef3c517e)。
 
 如有任何问题、建议请给我留言或者在github中提交issue。感谢您的阅读，欢迎下载体验。
-![下载二维码.png](https://user-gold-cdn.xitu.io/2019/8/6/16c66f641e0f21f4?w=336&h=336&f=png&s=2129)
+![下载二维码.png](https://upload-images.jianshu.io/upload_images/3146091-d406f644fac1713c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 ### 五、参考资料
