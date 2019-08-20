@@ -12,7 +12,12 @@ import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.R
 import com.link.view_flip.flip.FlipViewController
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
-
+/**
+ * @author WJ
+ * @date 2019-07-20
+ *
+ * 描述：发现界面，交互方式有bug
+ */
 class FindFragment(override var layoutId: Int = 0) : BaseMvvmFragment<FindViewModel>() {
 
 

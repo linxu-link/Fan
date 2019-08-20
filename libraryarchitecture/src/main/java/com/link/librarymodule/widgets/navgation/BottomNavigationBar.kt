@@ -3,11 +3,17 @@ package com.link.librarymodule.widgets.navgation
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
 import com.link.librarymodule.R
 
-
+/**
+ * @author WJ
+ * @date 2019-07-20
+ *
+ * 描述：底部NavigationBar
+ */
 class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : FrameLayout(context, attrs, defStyleAttr), RadioGroup.OnCheckedChangeListener {
 
