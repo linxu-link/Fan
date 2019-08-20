@@ -24,13 +24,6 @@ android {
     }
 
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
     kapt {
         arguments {
             arg("AROUTER_MODULE_NAME", project.getName())
@@ -45,6 +38,11 @@ android {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
             }
         }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
     }
 
 

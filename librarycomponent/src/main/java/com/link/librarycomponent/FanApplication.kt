@@ -3,6 +3,7 @@ package com.link.librarycomponent
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import androidx.annotation.Keep
 import androidx.annotation.NonNull
 import com.link.librarymodule.BaseApplication
 import com.link.librarymodule.utils.AppManager
@@ -13,6 +14,7 @@ import com.link.librarymodule.utils.AppManager
  *
  * 描述：项目的基础Application
  */
+@Keep
 abstract class FanApplication : BaseApplication() {
 
     override fun onCreate() {

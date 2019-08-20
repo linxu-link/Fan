@@ -38,7 +38,7 @@ android {
         release {
             release {
                 //是否混淆
-                minifyEnabled false
+                minifyEnabled true
                 //是否移除无用资源
                 zipAlignEnabled true
                 //混淆的配置文件

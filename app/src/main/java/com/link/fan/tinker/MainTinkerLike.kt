@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import androidx.annotation.Keep
 import androidx.multidex.MultiDex
 import com.link.fan.tasks.*
 import com.link.librarycomponent.AppConfig
@@ -16,6 +17,7 @@ import com.tencent.tinker.entry.DefaultApplicationLike
 import com.tencent.tinker.loader.shareutil.ShareConstants
 
 @DefaultLifeCycle(application = "com.link.fan.tinker.MainTinkerApplication", flags = ShareConstants.TINKER_ENABLE_ALL, loadVerifyFlag = false)
+@Keep
 class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerifyFlag: Boolean, applicationStartElapsedTime: Long, applicationStartMillisTime: Long, tinkerResultIntent: Intent) : DefaultApplicationLike(application, tinkerFlags, tinkerLoadVerifyFlag, applicationStartElapsedTime, applicationStartMillisTime, tinkerResultIntent) {
 
     override fun onCreate() {
