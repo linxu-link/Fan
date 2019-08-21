@@ -17,7 +17,6 @@ import com.tencent.tinker.entry.DefaultApplicationLike
 import com.tencent.tinker.loader.shareutil.ShareConstants
 
 @DefaultLifeCycle(application = "com.link.fan.tinker.MainTinkerApplication", flags = ShareConstants.TINKER_ENABLE_ALL, loadVerifyFlag = false)
-@Keep
 class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerifyFlag: Boolean, applicationStartElapsedTime: Long, applicationStartMillisTime: Long, tinkerResultIntent: Intent) : DefaultApplicationLike(application, tinkerFlags, tinkerLoadVerifyFlag, applicationStartElapsedTime, applicationStartMillisTime, tinkerResultIntent) {
 
     override fun onCreate() {

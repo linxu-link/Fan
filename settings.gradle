@@ -1,4 +1,4 @@
-include ':view_flip', ':general_statelayout','view_common',':general_network'
+include ':view_flip', ':general_statelayout', ':general_daemon','view_common',':general_network'
 include ':librarybase'
 include ':libraryarchitecture', ':librarycomponent'
 

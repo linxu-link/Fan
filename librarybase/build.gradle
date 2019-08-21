@@ -27,6 +27,7 @@ dependencies {
     api project(":view_flip")
     api project(":view_common")
     api project(":general_statelayout")
+    api project(":general_daemon")
 
     api deps.androidx.recyclerview
     api deps.androidx.core_ktx

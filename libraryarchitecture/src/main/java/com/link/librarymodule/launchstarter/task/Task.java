@@ -107,6 +107,7 @@ public abstract class Task implements ITask {
         return false;
     }
 
+
     /**
      * 是否只在主进程，默认是
      *
