@@ -1,4 +1,4 @@
-package com.link.component_shopping.service
+package com.link.fan.service
 
 import android.content.Intent
 import android.os.IBinder
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
  * 进程做了保活
  */
 
-class ShoppingServiceImpl : AbsWorkService() {
+class ShoppingService : AbsWorkService() {
 
     override fun onBind(intent: Intent, alwaysNull: Void?): IBinder? {
         return null

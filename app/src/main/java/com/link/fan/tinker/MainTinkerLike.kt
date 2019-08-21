@@ -31,6 +31,7 @@ class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerif
                 .addTask(BuglyTask())
                 .addTask(MMKVTask())
                 .addTask(H5Task())
+                .addTask(DaemonTask())
                 .addTask(UtilTask())
                 .start()
         dispatcher.await()

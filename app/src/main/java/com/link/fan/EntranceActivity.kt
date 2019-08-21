@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.fan.tasks.HotfixTask
-import com.link.fan.tasks.ShoppingProcessTask
+import com.link.fan.tasks.ReceiverTask
 import com.link.fan.tasks.UpdateTask
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.BaseActivity
@@ -27,19 +27,11 @@ class EntranceActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_container)
 
-        if (Constant.BMOB_ID.isEmpty()) {
-            ToastUtils.showLong("请完善BMOB_ID")
-            return
-        } else if (Constant.JUHE_KEY.isEmpty()) {
-            ToastUtils.showLong("请完善聚合数据的key")
-            return
-        }
-
         //task延迟初始化调度器
         val dispatcher = DelayInitDispatcher()
-        //延迟初始化 热修复检查、shopping进程启动、更新检查
+        //延迟初始化 热修复检查、启动广播、更新检查
         dispatcher.addTask(HotfixTask())
-                .addTask(ShoppingProcessTask())
+                .addTask(ReceiverTask())
                 .addTask(UpdateTask())
                 .start()
 

@@ -44,7 +44,7 @@
             android:permission="android.permission.BIND_JOB_SERVICE"
             android:enabled="true"
             android:exported="true"
-            android:process="@string/process_name"/>
+            android:process=":daemon"/>
 
     </application>
 

@@ -38,6 +38,10 @@ class Constant {
 
         const val BUNDLE_DATA = "bundle_data"
 
+        /**********************************************广播通知******************************************/
+
+        //shopping进程关闭的广播
+        const val ACTION_SHOPPING="com.link.fan.ACTION_SHOPPING"
     }
 
 }

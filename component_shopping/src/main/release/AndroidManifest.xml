@@ -6,13 +6,8 @@
         <activity
             android:name=".ui.shopping.ShoppingActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:process=":shopping"
+            android:process=":daemon"
             android:screenOrientation="portrait" />
-        <service
-            android:name=".service.ShoppingServiceImpl"
-            android:process=":shopping"
-            android:enabled="true"
-            android:exported="false" />
     </application>
 
 </manifest>

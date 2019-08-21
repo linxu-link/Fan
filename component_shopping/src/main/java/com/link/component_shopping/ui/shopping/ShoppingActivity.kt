@@ -1,5 +1,6 @@
 package com.link.component_shopping.ui.shopping
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Process
 import android.util.Log
@@ -152,7 +153,7 @@ class ShoppingActivity(override var mLayoutId: Int = R.layout.shopping_activity_
             mSonicSession = null
         }
         super.onDestroy()
-
+        sendBroadcast(Intent(Constant.ACTION_SHOPPING))
         //关闭当前进程，清理内存
         Process.killProcess(Process.myPid())
     }

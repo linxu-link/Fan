@@ -35,7 +35,7 @@ public class NetworkConnectChangedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())) {
-            Log.e("onReceive: ", NetworkUtil.isNetworkAvailable(context) + "");
+//            Log.e("onReceive: ", NetworkUtil.isNetworkAvailable(context) + "");
             if (mNetworkChangeListener!=null){
                 mNetworkChangeListener.onNetworkChange(NetworkUtil.isNetworkAvailable(context));
             }
