@@ -23,11 +23,15 @@ repositories {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    //网络框架
+    //通用网络框架
 //    api project(":general_network")
+    //通用UI库
 //    api project(":view_common")
+    //通用页面状态管理库（原项目地址：https://github.com/yangchong211/YCStateLayout）
 //    api project(":general_statelayout")
+    //仿红板报翻页效果的类库（有bug，原项目已经停止维护，只clone了源码，地址我给忘记了）
 //    api project(":view_flip")
+    //用于进程保活的类库（原项目地址：https://github.com/xingda920813/HelloDaemon）
 //    api project(":general_daemon")
     api deps.fan.viewCommon
     api deps.fan.statelayout
