@@ -23,11 +23,6 @@ buildscript {
 
 allprojects {
     addRepos(repositories)
-    repositories {
-        flatDir {
-            dirs project(':component_pay').file('libs')
-        }
-    }
 }
 
 task clean(type: Delete) {

@@ -17,14 +17,9 @@
             <option value="$PROJECT_DIR$/component_shopping" />
             <option value="$PROJECT_DIR$/component_update" />
             <option value="$PROJECT_DIR$/component_user" />
-            <option value="$PROJECT_DIR$/general_daemon" />
-            <option value="$PROJECT_DIR$/general_network" />
-            <option value="$PROJECT_DIR$/general_statelayout" />
             <option value="$PROJECT_DIR$/libraryarchitecture" />
             <option value="$PROJECT_DIR$/librarybase" />
             <option value="$PROJECT_DIR$/librarycomponent" />
-            <option value="$PROJECT_DIR$/view_common" />
-            <option value="$PROJECT_DIR$/view_flip" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

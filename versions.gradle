@@ -91,6 +91,7 @@ deps.tinker = tinker
 
 def alibaba = [:]
 alibaba.router = "com.alibaba:arouter-api:1.4.1"
+alibaba.alipay = "com.alipay:sdk:1.0.0@aar"
 alibaba.router_compiler = "com.alibaba:arouter-compiler:1.2.2"
 alibaba.oss = "com.aliyun.dpa:oss-android-sdk:2.9.2"
 alibaba.push = "com.aliyun.ams:alicloud-android-push:3.1.4"
@@ -129,9 +130,13 @@ deps.x5webview='com.tencent.tbs.tbssdk:sdk:43697'
 ext.deps = deps
 
 //自定义类库
-def link = [:]
-link.user = "com.link:user:0.0.1"
-deps.link = link
+def fan = [:]
+fan.network = "com.link:network:1.0.0@aar"
+fan.statelayout = "com.link:statelayout:1.0.0@aar"
+fan.filpView = "com.link:filpView:1.0.0@aar"
+fan.viewCommon = "com.link:viewCommon:1.0.0@aar"
+fan.daemon = "com.link:daemon:1.0.0@aar"
+deps.fan = fan
 
 
 def build_versions = [:]
@@ -147,12 +152,12 @@ def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.jcenter()
     handler.mavenCentral()
+    handler.maven { url 'https://jitpack.io' }
+    //私有maven
+    handler.maven { url "http://119.3.215.243:9882/repository/fan/"}
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     //Bmob的maven仓库地址--必填
     handler.maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
-    handler.maven { url 'https://jitpack.io' }
-    //私有maven
-//    handler.maven { url "http://192.168.23.64:8081/repository/ykt_group/"}
 }
 
 ext.addRepos = this.&addRepos

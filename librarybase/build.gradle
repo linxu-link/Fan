@@ -23,11 +23,17 @@ repositories {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api project(":general_network")
-    api project(":view_flip")
-    api project(":view_common")
-    api project(":general_statelayout")
-    api project(":general_daemon")
+    //网络框架
+//    api project(":general_network")
+//    api project(":view_common")
+//    api project(":general_statelayout")
+//    api project(":view_flip")
+//    api project(":general_daemon")
+    api deps.fan.viewCommon
+    api deps.fan.statelayout
+    api deps.fan.network
+    api deps.fan.daemon
+    api deps.fan.filpView
 
     api deps.androidx.recyclerview
     api deps.androidx.core_ktx
