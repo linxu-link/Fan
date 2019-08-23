@@ -23,7 +23,7 @@ class ShoppingService : AbsWorkService() {
     }
 
     override fun onServiceKilled(rootIntent: Intent?) {
-        println("保存数据到磁盘。")
+//        println("保存数据到磁盘。")
     }
 
 
@@ -36,17 +36,17 @@ class ShoppingService : AbsWorkService() {
     }
 
     override fun startWork(intent: Intent, flags: Int, startId: Int) {
-        println("检查磁盘中是否有上次销毁时保存的数据")
+//        println("检查磁盘中是否有上次销毁时保存的数据")
         sDisposable = Observable
                 .interval(3, TimeUnit.SECONDS)
                 //取消任务时取消定时唤醒
                 .doOnDispose {
-                    println("保存数据到磁盘。")
+//                    println("保存数据到磁盘。")
                     cancelJobAlarmSub()
                 }
                 .subscribe { count ->
-                    println("每 3 秒采集一次数据... count = " + count!!)
-                    if (count > 0 && count % 18 == 0L) println("保存数据到磁盘。 saveCount = " + (count / 18 - 1))
+//                    println("每 3 秒采集一次数据... count = " + count!!)
+//                    if (count > 0 && count % 18 == 0L) println("保存数据到磁盘。 saveCount = " + (count / 18 - 1))
                 }
     }
 
