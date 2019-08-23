@@ -103,6 +103,7 @@
 -keep class com.link.component_update.data.entity.** { *; }
 -keep class com.link.component_user.data.entity.** { *; }
 -keep class com.link.librarycomponent.entity.** { *; }
+-keep class com.link.fan.tinker.entity.** { *; }
 
 #---------------------------------第三方包-------------------------------
 #baseAdapter
@@ -174,6 +175,7 @@
 #tinker
 -dontwarn com.tencent.tinker.**
 -keep class com.tencent.tinker.**{*;}
+-keep class com.link.fan.tinker.MainTinkerLike{*;}
 
 #支付宝支付
 -keep class com.alipay.android.app.IAlixPay{*;}

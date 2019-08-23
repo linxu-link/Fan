@@ -1,6 +1,7 @@
 package com.link.fan
 
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.fan.tasks.HotfixTask
@@ -11,6 +12,8 @@ import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.constant.Constant
 import com.link.librarymodule.launchstarter.DelayInitDispatcher
 import com.link.librarymodule.utils.ToastUtils
+import com.link.librarymodule.utils.Utils
+import com.meituan.android.walle.WalleChannelReader
 
 /**
  * @author WJ
@@ -35,6 +38,7 @@ class EntranceActivity : BaseActivity() {
                 .addTask(UpdateTask())
                 .start()
 
+//        Log.d("TAG", "当前渠道${WalleChannelReader.getChannel(Utils.getContext())}")
     }
 
     override fun onSupportNavigateUp(): Boolean {

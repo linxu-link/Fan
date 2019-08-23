@@ -1,0 +1,26 @@
+#这里只生成小米、三星、线下的渠道
+xiaomi # 小米
+samsungapps #三星
+offline #线下（推广时诱导用户安装的渠道包，便于后台统计线下推广的效率）
+
+#meituan # 美团
+#hiapk
+#anzhi
+#91com
+#gfan
+#appchina
+#nduoa
+#3gcn
+#mumayi
+#10086com
+#wostore
+#189store
+#lenovomm
+#hicloud
+#meizu
+#wandou
+#Google Play
+#googleplay
+#baidu # 百度
+#360cn #360
+# 应用宝 myapp

@@ -1,8 +1,11 @@
+import com.android.build.gradle.api.BaseVariant
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'walle'
 apply from: 'tinkerpatch.gradle'
 android {
     compileSdkVersion build_versions.compile_sdk
@@ -93,5 +96,41 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+
+walle {
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels")
+//    projectName - 项目名字
+//    appName - App模块名字
+//    packageName - applicationId (App包名packageName)
+//    buildType - buildType (release/debug等)
+//    channel - channel名称 (对应渠道打包中的渠道名字)
+//    versionName - versionName (显示用的版本号)
+//    versionCode - versionCode (内部版本号)
+//    buildTime - buildTime (编译构建日期时间)
+//    fileSHA1 - fileSHA1 (最终APK文件的SHA1哈希值)
+//    flavorName - 编译构建 productFlavors 名
+    apkFileNameFormat = '${appName}-${channel}-${buildType}-v${versionName}.apk'
+    //configFile与channelFile两者必须存在一个，否则无法生成渠道包。两者都存在时优先执行configFile
+    channelFile = new File("${project.getProjectDir()}/channel")
+//    channelFile只支持渠道写入，如果想插入除渠道以外的其他信息，请在walle配置中使用configFile
+    //configFile = new File("${project.getProjectDir()}/config.json")
+}
+
+
+// 根据不同的applicationId来配置不同的channelFile／configFile
+afterEvaluate {
+    project.android.applicationVariants.all { BaseVariant variant ->
+        variant.assemble.doFirst {
+            if (variant.applicationId.endsWith(".debug")) {
+                project.walle.channelFile = new File("${project.getProjectDir()}/channel_debug")
+            }
+        }
+    }
 }
 
