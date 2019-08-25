@@ -134,15 +134,12 @@ Room、Lifecycle
 H5部分是根据慕课网的一个vue.js课程中使用的源码改造的，所以源代码无法公开。不过我同样架设了一个可以在公网访问的地址：[http://118.24.197.176](http://118.24.197.176)，因为数据需要使用APP的内置网络服务获取，所以在浏览器中访问这个地址是缺失部分数据的。
 
 **2019-08-23更新**
-- 1.0.4版集成了美团walle多渠道打包，多渠道打包最重要的意义在于后台统计，打出不同的渠道包，网络请求时带上渠道标识，这可以便于后台统计
+- 1.0.4版集成了美团walle多渠道打包，实际开发中打出不同的渠道包，网络请求时带上渠道标识，这可以方便后台对于APP的统计。
 
 在需要渠道等信息时可以通过下面代码进行获取
 String channel = WalleChannelReader.getChannel(this.getApplicationContext());
 
-如何生成渠道包
-生成渠道包的方式是和assemble${variantName}Channels指令结合，渠道包的生成目录默认存放在 build/outputs/apk/，也可以通过walle闭包中的apkOutputFolder参数来指定输出目录
-
-生成渠道包 ./gradlew clean assembleReleaseChannels
+使用./gradlew clean assembleReleaseChannels指令生成渠道包，渠道包的生成目录默认存放在 build/outputs/apk/，也可以通过walle闭包中的apkOutputFolder参数来指定输出目录。
 
 ### 六、总结
 以上就是本项目的大致概览，总得来说，你既可以用它来学习组件化开发，也可以用它来学习Android Jetpack组件的实际运用，还可以用来学习如何优化一个APP，不过这等我后续的更新了，当前已经更新的有
