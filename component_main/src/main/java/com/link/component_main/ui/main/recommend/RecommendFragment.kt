@@ -3,6 +3,7 @@ package com.link.component_main.ui.main.recommend
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
+import androidx.core.os.TraceCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -60,6 +61,9 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
     override fun initView() {
         super.initView()
+
+
+
         refresh.setColorSchemeColors(ContextCompat.getColor(context!!, R.color.colorPrimary))
         refresh.setOnRefreshListener {
             loadData()
@@ -171,6 +175,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
 
     override fun initViewObservable() {
         super.initViewObservable()
+
         //当index=0时载入两个头部文件
         if (index == 0) {
             mViewModel.moreData.observe(this, Observer {
@@ -187,6 +192,7 @@ class RecommendFragment(override var layoutId: Int = R.layout.main_fragment_reco
                 showContent()
             })
         }
+
     }
 
 

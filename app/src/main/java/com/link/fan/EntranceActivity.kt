@@ -2,6 +2,7 @@ package com.link.fan
 
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.fan.tasks.HotfixTask
@@ -39,6 +40,7 @@ class EntranceActivity : BaseActivity() {
                 .start()
 
 //        Log.d("TAG", "当前渠道${WalleChannelReader.getChannel(Utils.getContext())}")
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

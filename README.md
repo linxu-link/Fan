@@ -145,7 +145,9 @@ String channel = WalleChannelReader.getChannel(this.getApplicationContext());
 生成渠道包 ./gradlew clean assembleReleaseChannels
 
 ### 六、总结
-以上就是本项目的大致概览，总得来说，你既可以用它来学习组件化开发，也可以用它来学习Android Jetpack组件的实际运用，还可以用来学习如何优化一个APP，不过这等我后续的更新了，内存优化部分，已经先行发布了，请移步[「Android内存优化 1」-Android的内存机制与管理建议](https://www.jianshu.com/p/527bef3c517e)。
+以上就是本项目的大致概览，总得来说，你既可以用它来学习组件化开发，也可以用它来学习Android Jetpack组件的实际运用，还可以用来学习如何优化一个APP，不过这等我后续的更新了，当前已经更新的有
+- [「Android内存优化 1」-Android的内存机制与管理建议](https://www.jianshu.com/p/527bef3c517e)
+- [「深入理解Android布局优化 1」-布局的加载流程与绘制原理](https://www.jianshu.com/p/aa2bf172a7ae)
 
 如有任何问题、建议请给我留言或者在github中提交issue。感谢您的阅读，欢迎下载体验。
 ![下载二维码.png](https://upload-images.jianshu.io/upload_images/3146091-6d427831355b8b79?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

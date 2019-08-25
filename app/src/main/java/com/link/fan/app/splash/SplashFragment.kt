@@ -4,6 +4,7 @@ package com.link.fan.app.splash
 import android.Manifest
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.TraceCompat
 import androidx.navigation.fragment.findNavController
 import com.link.fan.R
 import com.link.librarymodule.utils.AppManager
@@ -23,9 +24,9 @@ import kotlinx.android.synthetic.main.fragment_splash.*
 class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : BaseFragment() {
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val rxPermissions = RxPermissions(this)
         rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,

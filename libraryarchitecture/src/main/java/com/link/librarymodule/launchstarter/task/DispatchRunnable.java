@@ -27,7 +27,7 @@ public class DispatchRunnable implements Runnable {
 
     @Override
     public void run() {
-        TraceCompat.beginSection(mTask.getClass().getSimpleName());
+//        TraceCompat.beginSection(mTask.getClass().getSimpleName());
         DispatcherLog.i(mTask.getClass().getSimpleName()
                 + " begin run" + "  Situation  " + TaskStat.getCurrentSituation());
 
@@ -62,7 +62,7 @@ public class DispatchRunnable implements Runnable {
             }
             DispatcherLog.i(mTask.getClass().getSimpleName() + " finish");
         }
-        TraceCompat.endSection();
+//        TraceCompat.endSection();
     }
 
     /**

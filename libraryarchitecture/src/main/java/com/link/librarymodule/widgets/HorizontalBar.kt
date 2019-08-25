@@ -5,8 +5,10 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import com.link.librarymodule.R
+import java.util.*
 
 
 class HorizontalBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
@@ -57,6 +59,10 @@ class HorizontalBar @JvmOverloads constructor(context: Context, attrs: Attribute
             mPaint.color = context.resources.getColor(R.color.colorPrimary)
             canvas.drawLine(20f, 30f, mCurrentLineWidth, 30f, mPaint)
         }
+
+
+
+        Log.e("TAG", "xxxxx")
     }
 
     private var mLineAnimator: ObjectAnimator? = null
