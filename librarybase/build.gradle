@@ -33,6 +33,7 @@ dependencies {
 //    api project(":view_flip")
     //用于进程保活的类库（原项目地址：https://github.com/xingda920813/HelloDaemon）
 //    api project(":general_daemon")
+    api project(":general_picture")
     api deps.fan.viewCommon
     api deps.fan.statelayout
     api deps.fan.network

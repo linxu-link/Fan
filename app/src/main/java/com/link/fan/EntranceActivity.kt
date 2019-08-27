@@ -1,20 +1,17 @@
 package com.link.fan
 
 import android.os.Bundle
-import android.util.Log
-import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.bumptech.glide.Glide
 import com.link.fan.tasks.HotfixTask
 import com.link.fan.tasks.ReceiverTask
 import com.link.fan.tasks.UpdateTask
+import com.link.general_picture.ImageLoadBuilder
+import com.link.general_picture.ImageLoader
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.BaseActivity
-import com.link.librarymodule.constant.Constant
 import com.link.librarymodule.launchstarter.DelayInitDispatcher
-import com.link.librarymodule.utils.ToastUtils
-import com.link.librarymodule.utils.Utils
-import com.meituan.android.walle.WalleChannelReader
 
 /**
  * @author WJ
@@ -40,6 +37,8 @@ class EntranceActivity : BaseActivity() {
                 .start()
 
 //        Log.d("TAG", "当前渠道${WalleChannelReader.getChannel(Utils.getContext())}")
+
+
 
     }
 

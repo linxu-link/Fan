@@ -1,5 +1,6 @@
 buildscript {
 
+
     apply from: 'versions.gradle'
     addRepos(repositories)
     dependencies {
@@ -19,6 +20,7 @@ buildscript {
             }
         }
     }
+
 
 }
 
@@ -58,6 +60,6 @@ ext {
     search_isSingleCompile = false
     menu_isSingleCompile = false
     update_isSingleCompile = false
-    pay_isSingleCompile=false
-    shopping_isSingleCompile=false
+    pay_isSingleCompile =false
+    shopping_isSingleCompile =false
 }

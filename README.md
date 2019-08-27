@@ -141,6 +141,9 @@ String channel = WalleChannelReader.getChannel(this.getApplicationContext());
 
 使用./gradlew clean assembleReleaseChannels指令生成渠道包，渠道包的生成目录默认存放在 build/outputs/apk/，也可以通过walle闭包中的apkOutputFolder参数来指定输出目录。
 
+**2019-08-27**
+- 封装一个图片载入框架
+
 ### 六、总结
 以上就是本项目的大致概览，总得来说，你既可以用它来学习组件化开发，也可以用它来学习Android Jetpack组件的实际运用，还可以用来学习如何优化一个APP，不过这等我后续的更新了，当前已经更新的有
 - [「全面理解Android内存优化 1」-Android的内存机制与管理建议](https://www.jianshu.com/p/527bef3c517e)
