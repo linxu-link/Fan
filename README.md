@@ -142,7 +142,9 @@ String channel = WalleChannelReader.getChannel(this.getApplicationContext());
 使用./gradlew clean assembleReleaseChannels指令生成渠道包，渠道包的生成目录默认存放在 build/outputs/apk/，也可以通过walle闭包中的apkOutputFolder参数来指定输出目录。
 
 **2019-08-27**
-- 封装一个图片载入框架
+- 新增一个以glide为基础，运用策略、单例、建造模式封装的一个可以在使用灵活切换（例如从glide切换为picasso）的图片载入框架general_picture，目前依然在优化中，暂时可以正常使用。
+实际开发中方图片载入框架需要足够的灵活，否则一但需要切换图片加载框架，绝对会非常麻烦。
+
 
 ### 六、总结
 以上就是本项目的大致概览，总得来说，你既可以用它来学习组件化开发，也可以用它来学习Android Jetpack组件的实际运用，还可以用来学习如何优化一个APP，不过这等我后续的更新了，当前已经更新的有
