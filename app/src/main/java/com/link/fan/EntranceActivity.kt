@@ -3,12 +3,11 @@ package com.link.fan
 import android.os.Bundle
 import androidx.navigation.findNavController
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.bumptech.glide.Glide
 import com.link.fan.tasks.HotfixTask
 import com.link.fan.tasks.ReceiverTask
 import com.link.fan.tasks.UpdateTask
-import com.link.general_picture.ImageLoadBuilder
 import com.link.general_picture.ImageLoader
+import com.link.general_picture.glide.GlideStrategy
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.launchstarter.DelayInitDispatcher
@@ -37,7 +36,6 @@ class EntranceActivity : BaseActivity() {
                 .start()
 
 //        Log.d("TAG", "当前渠道${WalleChannelReader.getChannel(Utils.getContext())}")
-
 
 
     }

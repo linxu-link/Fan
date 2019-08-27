@@ -16,6 +16,8 @@ import com.link.component_menu.ui.adapter.MenuAdapter
 import com.link.component_menu.ui.adapter.MenuFooterAdapter
 import com.link.component_menu.ui.adapter.MenuHeaderAdapter
 import com.link.component_menu.data.entity.MenuDetail
+import com.link.general_picture.ImageLoader
+import com.link.general_picture.glide.GlideStrategy
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.router.StartRouter
@@ -128,7 +130,7 @@ class MenuFragment(override var layoutId: Int = R.layout.menu_fragment_menu) : B
             mViewModel.ingredients.value = it.ingredients.split(";")
             mViewModel.burden.value = it.burden.split(";")
             mAdapter.setNewData(it.steps)
-            Glide.with(context!!).load(it.albums[0]).into(cover)
+            ImageLoader.getInstance().with(context!!).load(it.albums[0]).build(GlideStrategy()).into(cover)
             toolbar.title = it.title
             val tag = it.tags.split(";")[0]
             mViewModel.getRecommend(tag)

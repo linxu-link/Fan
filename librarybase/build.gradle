@@ -33,12 +33,14 @@ dependencies {
 //    api project(":view_flip")
     //用于进程保活的类库（原项目地址：https://github.com/xingda920813/HelloDaemon）
 //    api project(":general_daemon")
-    api project(":general_picture")
+    //一个与业务解耦的图片加载框架
+//    api project(":general_picture")
     api deps.fan.viewCommon
     api deps.fan.statelayout
     api deps.fan.network
     api deps.fan.daemon
     api deps.fan.filpView
+    api deps.fan.picture
 
     api deps.androidx.recyclerview
     api deps.androidx.core_ktx
@@ -78,7 +80,7 @@ dependencies {
     api deps.alibaba.router
     //云数据库bmob
     api deps.bmob
-    //图片加载框架
+
     api deps.glide.runtime
     //图片选择框架
     api deps.matisse

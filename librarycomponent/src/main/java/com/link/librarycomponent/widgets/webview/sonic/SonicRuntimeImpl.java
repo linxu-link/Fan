@@ -46,7 +46,7 @@ public class SonicRuntimeImpl extends SonicRuntime {
      */
     @Override
     public String getUserAgent() {
-        return "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Build/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Mobile Safari/537.36";
+        return "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 6 Builder/LYZ28E) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Mobile Safari/537.36";
     }
 
     /**

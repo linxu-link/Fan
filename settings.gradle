@@ -1,5 +1,5 @@
-//include ':view_flip', ':general_statelayout', ':general_daemon','view_common',':general_network'
-include ':librarybase', ':general_picture'
+//include ':view_flip', ':general_statelayout', ':general_daemon','view_common',':general_network',':general_picture'
+include ':librarybase'
 include ':libraryarchitecture', ':librarycomponent'
 
 include ':component_login'

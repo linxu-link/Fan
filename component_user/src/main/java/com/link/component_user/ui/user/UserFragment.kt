@@ -13,6 +13,8 @@ import com.link.component_user.ui.about.AboutFragment
 import com.link.component_user.ui.collection.CollectionFragment
 import com.link.component_user.ui.footprint.FootPrintFragment
 import com.link.component_user.ui.personal.PersonalInfoFragment
+import com.link.general_picture.ImageLoader
+import com.link.general_picture.glide.GlideStrategy
 import com.link.librarycomponent.ServiceFactory
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.router.StartRouter
@@ -139,7 +141,7 @@ class UserFragment(override var layoutId: Int = R.layout.user_fragment_user) : B
                 username.text = it.displayName
                 user_phone.text = it.mobilePhoneNumber
                 if (it.avatar != null) {
-                    Glide.with(context!!).load(it.avatar!!.url).into(user_avatar)
+                    ImageLoader.getInstance().with(context!!).load(it.avatar!!.url).build(GlideStrategy()).into(user_avatar)
                     Log.e("error", it.avatar!!.url + "," + it.avatar!!.fileUrl)
                 }
             }

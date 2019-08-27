@@ -12,6 +12,8 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.link.component_user.R
 import com.link.component_user.ui.ViewModelFactory
+import com.link.general_picture.ImageLoader
+import com.link.general_picture.glide.GlideStrategy
 import com.link.librarycomponent.router.RouterConstant
 import com.link.librarycomponent.router.StartRouter
 import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
@@ -126,10 +128,11 @@ class PersonalInfoFragment(override var layoutId: Int = R.layout.user_fragment_p
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
             val path = Matisse.obtainPathResult(data)[0]
-            Glide.with(this)
-                    .asBitmap()
-                    .load(path)
-                    .into(avatar)
+
+            //可能有bug
+//            Glide.with(this).asBitmap().load(path).into(avatar)
+            ImageLoader.getInstance().with(context).load(path).build(GlideStrategy()).into(avatar)
+
             mViewModel.updateAvatar(path)
 
         }

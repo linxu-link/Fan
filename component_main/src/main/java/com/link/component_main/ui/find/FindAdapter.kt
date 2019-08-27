@@ -10,6 +10,8 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.link.component_main.R
 import com.link.component_main.data.entity.MenuDetail
+import com.link.general_picture.ImageLoader
+import com.link.general_picture.glide.GlideStrategy
 
 class FindAdapter(var context: Context) : BaseAdapter() {
 
@@ -40,7 +42,7 @@ class FindAdapter(var context: Context) : BaseAdapter() {
         }
 
         if (mData != null && !mData.isNullOrEmpty()) {
-            Glide.with(context).load(mData!![position].albums[0]).into(holder.cover!!)
+            ImageLoader.getInstance().with(context).load(mData!![position].albums[0]).build(GlideStrategy()).into(holder.cover!!)
             holder.name!!.text = mData!![position].title
             holder.content!!.text = mData!![position].imtro
             holder.tags!!.text = mData!![position].tags

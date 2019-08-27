@@ -136,6 +136,7 @@ fan.statelayout = "com.link:statelayout:1.0.0@aar"
 fan.filpView = "com.link:filpView:1.0.0@aar"
 fan.viewCommon = "com.link:viewCommon:1.0.0@aar"
 fan.daemon = "com.link:daemon:1.0.0@aar"
+fan.picture = "com.link:picture:1.0.1@aar"
 deps.fan = fan
 
 

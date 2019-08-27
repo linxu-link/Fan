@@ -1,7 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 apply from: '../maven_push.gradle'
 
 android {
@@ -22,5 +19,7 @@ dependencies {
     implementation deps.androidx.appcompat
     //图片加载框架
     implementation deps.glide.runtime
+    annotationProcessor deps.glide.compiler
+
     testImplementation 'junit:junit:4.12'
 }
