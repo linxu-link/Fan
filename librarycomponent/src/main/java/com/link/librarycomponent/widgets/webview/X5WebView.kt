@@ -17,8 +17,6 @@ import com.tencent.smtt.sdk.WebViewClient
 import com.link.general_network.utils.NetworkUtil.url
 
 
-
-
 class X5WebView : WebView {
 
     //    上下文
