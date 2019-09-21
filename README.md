@@ -29,7 +29,7 @@
 LiveData-[Android Architecture Components探索（1）-LiveData](https://www.jianshu.com/p/4e8424a51735)
 ViewModel-[Android Architecture Components探索（2）-ViewModel](https://www.jianshu.com/p/879036c1876b)
 Navigation-[Android Architecture Components探索（3）-Navigation](https://www.jianshu.com/p/aced993cb990)
-Room、Lifecycle
+Room、Lifecycle（本着学习的态度，后续会考虑引入DataBing）
 
 **使用到的第三方框架**：App中使用了很多第三方框架，这里只列举几种，Tinker（热修复）、ARouter、Glide、RxJava、Retrofit、BaseRecyclerViewAdapterHelper、X5WebView等等。
 
@@ -162,5 +162,3 @@ String channel = WalleChannelReader.getChannel(this.getApplicationContext());
 [《Android 组件化最佳实践》](https://dwz.cn/lOeaiPi8)
 
 [《来自一位阿里朋友的组件化架构实践》](https://dwz.cn/rPM80kL7)
-
-
