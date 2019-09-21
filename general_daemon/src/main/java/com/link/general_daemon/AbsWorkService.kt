@@ -19,8 +19,6 @@ import org.jetbrains.annotations.Nullable
  */
 abstract class AbsWorkService : Service() {
 
-
-
     protected var mFirstStarted = true
 
     /**

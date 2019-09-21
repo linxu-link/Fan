@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit
 
 class WatchDogService : Service() {
 
-
     /**
      * 守护服务，运行在:watch子进程中
      */

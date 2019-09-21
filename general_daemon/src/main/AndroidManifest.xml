@@ -36,7 +36,7 @@
 
 
         <service android:name=".WatchDogService"
-            android:process=":daemon"/>
+            android:process=":watch"/>
 
         <service android:name=".WatchDogService$WatchDogNotificationService" />
 
