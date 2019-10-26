@@ -6,9 +6,12 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'walle'
-apply from: 'tinkerpatch.gradle'
+//apply from: 'tinkerpatch.gradle'
 android {
     compileSdkVersion build_versions.compile_sdk
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.link.fan"
         minSdkVersion build_versions.min_sdk
@@ -23,8 +26,8 @@ android {
                 includeCompileClasspath = true
             }
         }
-        ndk{
-            abiFilters 'armeabi','x86'
+        ndk {
+            abiFilters 'armeabi', 'x86'
         }
     }
 
@@ -61,6 +64,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':libraryarchitecture')
     //热修复
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     compileOnly(deps.tinker.anno) { changing = true }
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -102,4 +106,3 @@ afterEvaluate {
         }
     }
 }
-

@@ -15,10 +15,8 @@ import com.link.librarymodule.base.BaseStateFragment
 import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
 import com.link.librarymodule.receiver.NetworkConnectChangedReceiver
 import java.lang.reflect.ParameterizedType
-import androidx.core.content.ContextCompat.startActivity
 import android.provider.Settings.ACTION_WIFI_SETTINGS
 import android.content.Intent
-import android.provider.Settings
 
 
 /**
@@ -72,7 +70,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(), IB
     }
 
     fun initViewModel() {
-        mViewModel = getViewModel()
+        mViewModel = returnViewModel()
         if (mViewModel == null) {
             val modelClass: Class<*>
             val type = javaClass.genericSuperclass
@@ -128,7 +126,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(), IB
      *
      * @return 继承BaseViewModel的ViewModel
      */
-    abstract fun getViewModel(): VM
+    abstract fun returnViewModel(): VM
 
 
     /**

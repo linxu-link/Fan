@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:weightSum="4">
+        android:weightSum="4.5">
 
         <RadioButton
             android:id="@+id/home"
@@ -39,6 +39,15 @@
             android:drawableTop="@drawable/selector_classification_bg"
             android:gravity="center"
             android:text="分类" />
+
+        <com.link.librarymodule.widgets.navgation.CustomRadioButton
+            android:id="@+id/add_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:button="@null"
+            android:drawableLeft="@drawable/ic_add_menu" />
 
         <RadioButton
             android:id="@+id/find"

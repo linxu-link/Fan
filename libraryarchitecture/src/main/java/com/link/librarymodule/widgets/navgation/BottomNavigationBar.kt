@@ -3,7 +3,6 @@ package com.link.librarymodule.widgets.navgation
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
 import com.link.librarymodule.R
@@ -29,7 +28,7 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         if (listener!=null){
-            listener!!.onItemClickListener(checkedId)
+            listener!!.onBottomItemClickListener(checkedId)
         }
         for (index in array) {
             rootView.findViewById<RadioButton>(index).setTextColor(ContextCompat.getColor(context,R.color.font_color))
@@ -50,7 +49,7 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
 
     interface OnClickListener {
 
-        fun onItemClickListener(checkedId: Int)
+        fun onBottomItemClickListener(checkedId: Int)
 
     }
 

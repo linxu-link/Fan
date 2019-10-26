@@ -5,11 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.multidex.MultiDex
+import com.link.fan.FanApplication
 import com.link.fan.tasks.BmobTask
 import com.link.fan.tasks.BuglyTask
 import com.link.fan.tasks.MMKVTask
 import com.link.fan.tasks.UtilTask
-import com.link.librarycomponent.FanApplication
 import com.link.librarymodule.launchstarter.TaskDispatcher
 import com.tencent.tinker.anno.DefaultLifeCycle
 import com.tencent.tinker.entry.DefaultApplicationLike
@@ -30,16 +30,6 @@ class MainTinkerLike(application: Application, tinkerFlags: Int, tinkerLoadVerif
     override fun onCreate() {
         super.onCreate()
         FanApplication.setApplication(application)
-        //task初始化调度器
-        TaskDispatcher.init(application)
-        val dispatcher = TaskDispatcher.createInstance()
-
-        dispatcher.addTask(BmobTask())
-                .addTask(BuglyTask())
-                .addTask(MMKVTask())
-                .addTask(UtilTask())
-                .start()
-        dispatcher.await()
 
         if (Build.VERSION.SDK_INT >= 28) {
             closeAndroidPDialog()

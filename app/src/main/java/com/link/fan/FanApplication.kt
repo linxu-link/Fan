@@ -5,7 +5,12 @@ import android.app.Application
 import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.annotation.NonNull
+import com.link.fan.tasks.BmobTask
+import com.link.fan.tasks.BuglyTask
+import com.link.fan.tasks.MMKVTask
+import com.link.fan.tasks.UtilTask
 import com.link.librarymodule.BaseApplication
+import com.link.librarymodule.launchstarter.TaskDispatcher
 import com.link.librarymodule.utils.AppManager
 
 /**
@@ -15,7 +20,7 @@ import com.link.librarymodule.utils.AppManager
  * 描述：项目的基础Application
  */
 @Keep
-abstract class FanApplication : BaseApplication() {
+class FanApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -32,6 +37,17 @@ abstract class FanApplication : BaseApplication() {
         @Synchronized
         @JvmStatic
         fun setApplication(@NonNull application: Application) {
+            //task初始化调度器
+            TaskDispatcher.init(application)
+            val dispatcher = TaskDispatcher.createInstance()
+
+            dispatcher.addTask(BmobTask())
+                    .addTask(BuglyTask())
+                    .addTask(MMKVTask())
+                    .addTask(UtilTask())
+                    .start()
+            dispatcher.await()
+
             application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
                 override fun onActivityPaused(activity: Activity?) {
 

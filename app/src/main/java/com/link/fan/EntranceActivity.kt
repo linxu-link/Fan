@@ -24,12 +24,12 @@ class EntranceActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_container)
 
-        //task延迟初始化调度器
-        val dispatcher = DelayInitDispatcher()
-        //延迟初始化 热修复检查、更新检查
-        dispatcher.addTask(HotfixTask())
-                .addTask(UpdateTask())
-                .start()
+//        //task延迟初始化调度器
+//        val dispatcher = DelayInitDispatcher()
+//        //延迟初始化 热修复检查、更新检查
+//        dispatcher.addTask(HotfixTask())
+//                .addTask(UpdateTask())
+//                .start()
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -8,7 +8,6 @@ import android.widget.RadioButton
 
 class CustomRadioButton @JvmOverloads constructor(context: Context, attributeSet: AttributeSet? = null) : RadioButton(context, attributeSet) {
 
-
     init {
 
     }
