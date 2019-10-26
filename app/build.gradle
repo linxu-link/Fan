@@ -51,12 +51,6 @@ android {
         }
     }
 
-    kapt {
-        arguments {
-            arg("AROUTER_MODULE_NAME", project.getName())
-        }
-    }
-
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -65,34 +59,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':librarycomponent')
-    if (!login_isSingleCompile) {
-        runtimeOnly project(':component_login')
-    }
-    if (!user_isSingleCompile) {
-        runtimeOnly project(':component_user')
-    }
-    if (!main_isSingleCompile) {
-        runtimeOnly project(':component_main')
-    }
-    if (!search_isSingleCompile) {
-        runtimeOnly project(':component_search')
-    }
-    if (!menu_isSingleCompile) {
-        runtimeOnly project(':component_menu')
-    }
-    if (!update_isSingleCompile) {
-        runtimeOnly project(':component_update')
-    }
-    if (!shopping_isSingleCompile) {
-        runtimeOnly project(':component_shopping')
-    }
-
-    kapt deps.alibaba.router_compiler
-    kapt deps.room.compiler
+    implementation project(':libraryarchitecture')
     //热修复
     compileOnly(deps.tinker.anno) { changing = true }
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

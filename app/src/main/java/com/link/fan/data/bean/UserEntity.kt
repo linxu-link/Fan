@@ -1,4 +1,4 @@
-package com.link.librarycomponent.entity.user
+package com.link.fan.data.bean
 
 import cn.bmob.v3.BmobInstallation
 import cn.bmob.v3.BmobUser

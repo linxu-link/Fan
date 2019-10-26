@@ -23,8 +23,6 @@ import kotlinx.android.synthetic.main.fragment_splash.*
  */
 class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : BaseFragment() {
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val rxPermissions = RxPermissions(this)
@@ -46,22 +44,6 @@ class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : Ba
                 })
     }
 
-
-    private fun startAnimation() {
-//        splash.animate().setDuration(3500)
-//                .scaleX(1.8f)
-//                .scaleY(1.8f)
-//                .withEndAction {
-//                    findNavController().popBackStack()
-//                    findNavController().navigate(R.id.mainFragment)
-//                }
-//                .start()
-
-//        tv_splash.animate().setDuration(3500)
-//                .rotationX(0f)
-//                .alpha(0.8f)
-//                .start()
-    }
 
 
 }

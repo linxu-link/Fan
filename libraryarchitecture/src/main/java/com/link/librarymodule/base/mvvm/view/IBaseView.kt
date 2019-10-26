@@ -17,6 +17,4 @@ interface IBaseView {
      */
     fun initViewObservable()
 
-
-
 }

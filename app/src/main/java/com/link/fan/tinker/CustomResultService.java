@@ -6,7 +6,15 @@ import com.tencent.tinker.lib.util.TinkerLog;
 import com.tencent.tinker.lib.util.TinkerServiceInternals;
 
 import java.io.File;
-
+/**
+ * <pre>
+ *  copyright:TS
+ *  author:wujia
+ *  create:2019-10-26-09:46
+ *  email:wujia0916@thundersoft.com
+ *  description:  
+ * <pre>
+ */
 public class CustomResultService extends DefaultTinkerResultService {
 
     private static final String TAG = "Tinker.SampleResultService";

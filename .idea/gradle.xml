@@ -9,17 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/component_login" />
-            <option value="$PROJECT_DIR$/component_main" />
-            <option value="$PROJECT_DIR$/component_menu" />
-            <option value="$PROJECT_DIR$/component_pay" />
-            <option value="$PROJECT_DIR$/component_search" />
-            <option value="$PROJECT_DIR$/component_shopping" />
-            <option value="$PROJECT_DIR$/component_update" />
-            <option value="$PROJECT_DIR$/component_user" />
             <option value="$PROJECT_DIR$/libraryarchitecture" />
             <option value="$PROJECT_DIR$/librarybase" />
-            <option value="$PROJECT_DIR$/librarycomponent" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

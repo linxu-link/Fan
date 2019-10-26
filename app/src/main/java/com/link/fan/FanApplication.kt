@@ -1,4 +1,4 @@
-package com.link.librarycomponent
+package com.link.fan
 
 import android.app.Activity
 import android.app.Application

@@ -2,23 +2,20 @@ package com.link.fan
 
 import android.os.Bundle
 import androidx.navigation.findNavController
-import com.alibaba.android.arouter.facade.annotation.Route
 import com.link.fan.tasks.HotfixTask
-import com.link.fan.tasks.ReceiverTask
 import com.link.fan.tasks.UpdateTask
-import com.link.general_picture.ImageLoader
-import com.link.general_picture.glide.GlideStrategy
-import com.link.librarycomponent.router.RouterConstant
 import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.launchstarter.DelayInitDispatcher
 
 /**
- * @author WJ
- * @date 2019-07-21
- *
- * 描述：入口activity
+ * <pre>
+ *  copyright:TS
+ *  author:wujia
+ *  create:2019-07-21-09:45
+ *  email:wujia0916@thundersoft.com
+ *  description:
+ * <pre>
  */
-@Route(path = RouterConstant.APP)
 class EntranceActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,15 +26,10 @@ class EntranceActivity : BaseActivity() {
 
         //task延迟初始化调度器
         val dispatcher = DelayInitDispatcher()
-        //延迟初始化 热修复检查、启动广播、更新检查
+        //延迟初始化 热修复检查、更新检查
         dispatcher.addTask(HotfixTask())
-                .addTask(ReceiverTask())
                 .addTask(UpdateTask())
                 .start()
-
-//        Log.d("TAG", "当前渠道${WalleChannelReader.getChannel(Utils.getContext())}")
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

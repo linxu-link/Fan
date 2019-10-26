@@ -15,9 +15,16 @@ import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.DownloadFileListener
 import cn.bmob.v3.listener.FindListener
-import com.link.fan.tinker.entity.Hotfix
 import com.link.librarymodule.utils.CommonUtil
-
+/**
+ * <pre>
+ *  copyright:TS
+ *  author:wujia
+ *  create:2019-10-26-09:46
+ *  email:wujia0916@thundersoft.com
+ *  description:
+ * <pre>
+ */
 class TinkerService : Service() {
     //补丁的文件夹
     private var mPatchFileDir: String? = null
@@ -55,16 +62,16 @@ class TinkerService : Service() {
         return START_NOT_STICKY //START_NOT_STICKY表示service如果被系统回收不重启
     }
 
-    private var hotfix: Hotfix? = null
+    private var mHotfixEntity: HotfixEntity? = null
 
     private fun checkPatchUpdate() {
-        val query = BmobQuery<Hotfix>()
+        val query = BmobQuery<HotfixEntity>()
         query.addWhereEqualTo("versionName", CommonUtil.getPackageInfo().versionName)
-        query.findObjects(object : FindListener<Hotfix>() {
-            override fun done(data: MutableList<Hotfix>?, e: BmobException?) {
+        query.findObjects(object : FindListener<HotfixEntity>() {
+            override fun done(data: MutableList<HotfixEntity>?, e: BmobException?) {
                 if (e == null) {
                     if (data != null) {
-                        hotfix = data[0]
+                        mHotfixEntity = data[0]
                         mHandler.sendEmptyMessage(DOWNLOAD_PATH) //检查是否有补丁
                     }else{
                         stopSelf()
@@ -79,16 +86,16 @@ class TinkerService : Service() {
 
 
     private fun downPatch() {
-        if (hotfix == null) {
+        if (mHotfixEntity == null) {
             return
         }
-        mPatchFilePath = mPatchFileDir + hotfix!!.patchCode + PATH_DOT
+        mPatchFilePath = mPatchFileDir + mHotfixEntity!!.patchCode + PATH_DOT
         //判断该补丁是否存在，如果已经存在，不需要重复下载
         val patch = File(mPatchFilePath)
         if (patch.exists()) {
             return
         }
-        hotfix!!.patch.download(patch, object : DownloadFileListener() {
+        mHotfixEntity!!.patch.download(patch, object : DownloadFileListener() {
             override fun onProgress(p0: Int?, p1: Long) {
 
             }

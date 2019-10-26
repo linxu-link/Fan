@@ -13,7 +13,15 @@ import com.tencent.tinker.lib.reporter.PatchReporter;
 import com.tencent.tinker.lib.service.DefaultTinkerResultService;
 import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
-
+/**
+ * <pre>
+ *  copyright:TS
+ *  author:wujia
+ *  create:2019-10-26-09:46
+ *  email:wujia0916@thundersoft.com
+ *  description:  
+ * <pre>
+ */
 public class TinkerManager {
     private static boolean isInstalled = false;
 
