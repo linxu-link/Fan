@@ -16,7 +16,7 @@ import com.link.librarymodule.R
 class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : FrameLayout(context, attrs, defStyleAttr), RadioGroup.OnCheckedChangeListener {
 
-    private val array= arrayOf(R.id.home,R.id.classification,R.id.find,R.id.mine)
+    private val array= arrayOf(R.id.home,R.id.community,R.id.mall,R.id.mine)
 
 
     init {

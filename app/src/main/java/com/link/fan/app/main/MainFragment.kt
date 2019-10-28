@@ -54,12 +54,12 @@ class MainFragment(override var layoutId: Int = R.layout.fragment_main) : BaseFr
             }
             mCurrent = mFragmentList[0]
 
-        } else if (checkedId == R.id.classification) {
+        } else if (checkedId == R.id.community) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }
             mCurrent = mFragmentList[1]
-        } else if (checkedId == R.id.find) {
+        } else if (checkedId == R.id.mall) {
             if (mCurrent != null) {
                 transaction.hide(mCurrent!!)
             }

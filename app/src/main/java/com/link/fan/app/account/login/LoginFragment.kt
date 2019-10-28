@@ -1,7 +1,8 @@
 package com.link.fan.app.account.login
 
 import com.link.fan.R
-import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
+import com.link.librarymodule.base.BaseFragment
+
 /**
  * <pre>
  *  copyright:TS
@@ -11,11 +12,7 @@ import com.link.librarymodule.base.mvvm.view.BaseMvvmFragment
  *  description:  
  * <pre>
  */
-class LoginFragment(override var layoutId: Int = R.layout.fragment_login) : BaseMvvmFragment<LoginViewModel>() {
+class LoginFragment(override var layoutId: Int = R.layout.fragment_login) : BaseFragment() {
 
-    override fun returnViewModel(): LoginViewModel {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-
-    }
 
 }

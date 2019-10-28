@@ -31,14 +31,14 @@
             android:text="首页" />
 
         <RadioButton
-            android:id="@+id/classification"
+            android:id="@+id/community"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/selector_classification_bg"
             android:gravity="center"
-            android:text="分类" />
+            android:text="社区" />
 
         <com.link.librarymodule.widgets.navgation.CustomRadioButton
             android:id="@+id/add_menu"
@@ -50,14 +50,14 @@
             android:drawableLeft="@drawable/ic_add_menu" />
 
         <RadioButton
-            android:id="@+id/find"
+            android:id="@+id/mall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/selector_find_bg"
             android:gravity="center"
-            android:text="发现" />
+            android:text="商城" />
 
         <RadioButton
             android:id="@+id/mine"
