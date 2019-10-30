@@ -4,6 +4,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -172,5 +173,16 @@ public class CommonUtil {
         return dm.densityDpi;
     }
 
+
+    /**
+     * 获取状态栏高度
+     *
+     * @return
+     */
+    public static int getStatusBarHeight() {
+        Resources resources = Resources.getSystem();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        return resources.getDimensionPixelSize(resourceId);
+    }
 
 }

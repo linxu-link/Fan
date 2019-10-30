@@ -4,47 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:background="@color/transparent"
     android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/transparent"
     android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:padding="8dp"
-        android:src="@drawable/ic_scan"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
+    <FrameLayout
+        android:id="@+id/notice"
         android:layout_width="40dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_msg"
-        app:layout_constraintBottom_toBottomOf="@+id/back"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/back" />
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_msg" />
+
+        <TextView
+            android:id="@+id/tv_send_count"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="top|right"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_stroke_circle_red"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="1dp"
+            android:textColor="@android:color/white"
+            android:textSize="7sp"
+            tools:text="11" />
+    </FrameLayout>
 
     <include
         android:id="@+id/textView"
         layout="@layout/include_search"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/back"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toTopOf="@+id/back" />
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

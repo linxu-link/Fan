@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_100">
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:layout_marginStart="32dp"
+        android:drawableTop="@mipmap/logo"
+        android:gravity="center"
+        android:text="家常菜"
+        android:textColor="@color/text_light_dark"
+        android:textSize="@dimen/text_big_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:layout_marginStart="16dp"
+        android:drawableTop="@mipmap/logo"
+        android:gravity="center"
+        android:text="西餐"
+        android:textColor="@color/text_light_dark"
+        android:textSize="@dimen/text_big_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView14"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:layout_marginStart="16dp"
+        android:drawableTop="@mipmap/logo"
+        android:gravity="center"
+        android:text="甜品"
+        android:textColor="@color/text_light_dark"
+        android:textSize="@dimen/text_big_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView15"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:drawableTop="@mipmap/logo"
+        android:gravity="center"
+        android:text="猜你喜欢"
+        android:textColor="@color/text_light_dark"
+        android:textSize="@dimen/text_big_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

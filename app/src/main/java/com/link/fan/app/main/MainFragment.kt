@@ -2,7 +2,6 @@ package com.link.fan.app.main
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.link.fan.R
 import com.link.fan.app.main.community.CommunityFragment
