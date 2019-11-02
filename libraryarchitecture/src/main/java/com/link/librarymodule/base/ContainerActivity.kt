@@ -43,11 +43,11 @@ open class ContainerActivity : BaseActivity() {
         trans.commitAllowingStateLoss()
         mFragment = WeakReference(fragment)
     }
-
-    override fun onSaveInstanceState(outState: Bundle?) {
-        super.onSaveInstanceState(outState)
-        supportFragmentManager.putFragment(outState!!, FRAGMENT_TAG, mFragment!!.get()!!)
-    }
+//
+//    override fun onSaveInstanceState(outState: Bundle?) {
+//        super.onSaveInstanceState(outState)
+//        supportFragmentManager.putFragment(outState!!, FRAGMENT_TAG, mFragment!!.get()!!)
+//    }
 
     open fun initFragmentFormIntent(intent: Intent): Fragment {
         try {

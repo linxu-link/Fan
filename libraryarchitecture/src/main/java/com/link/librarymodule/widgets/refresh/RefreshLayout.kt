@@ -68,7 +68,6 @@ class RefreshLayout @JvmOverloads constructor(context: Context, attributeSet: At
 
 
 
-
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
 
         when (event!!.action) {

@@ -14,6 +14,7 @@ import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.base.BaseStateFragment
 import com.link.librarymodule.utils.RxCountDown
 import com.link.librarymodule.utils.rxpermissions2.RxPermissions
+import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.fragment_splash.*
 
@@ -28,18 +29,21 @@ import kotlinx.android.synthetic.main.fragment_splash.*
  */
 class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : BaseFragment() {
 
+    private var mDisposable: Disposable? = null
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+    override fun onStart() {
+        super.onStart()
         val rxPermissions = RxPermissions(this)
-        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+
+        mDisposable = rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.READ_PHONE_STATE)
-                .subscribe(Consumer {
+                .subscribe(Consumer { it ->
                     if (it) {
                         RxCountDown.countdown(2).subscribe(Consumer {
                             if (it == 0) {
-                                Navigation.findNavController(activity!!,R.id.root_view).navigate(R.id.action_splashFragment_to_mainFragment)
+                                Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_splashFragment_to_loginFragment)
                             }
                         })
                     } else {
@@ -49,6 +53,12 @@ class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : Ba
                 })
     }
 
+    override fun onStop() {
+        super.onStop()
+        if (mDisposable != null && !mDisposable!!.isDisposed) {
+            mDisposable!!.dispose()
+        }
+    }
 
 
 }

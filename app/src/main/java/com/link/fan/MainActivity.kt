@@ -1,11 +1,10 @@
 package com.link.fan
 
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.link.fan.tasks.HotfixTask
-import com.link.fan.tasks.UpdateTask
+import com.link.fan.databinding.ActivityMainBinding
 import com.link.librarymodule.base.BaseActivity
-import com.link.librarymodule.launchstarter.DelayInitDispatcher
 
 /**
  * <pre>
@@ -16,14 +15,13 @@ import com.link.librarymodule.launchstarter.DelayInitDispatcher
  *  description:
  * <pre>
  */
-class EntranceActivity : BaseActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //开启全屏占用
         fullScreen(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.navigation_container)
-
+        DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 //        //task延迟初始化调度器
 //        val dispatcher = DelayInitDispatcher()
 //        //延迟初始化 热修复检查、更新检查
@@ -32,9 +30,10 @@ class EntranceActivity : BaseActivity() {
 //                .start()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.container).navigateUp()
-    }
+//
+//    override fun onSupportNavigateUp(): Boolean {
+//        return findNavController(R.id.nav_host).navigateUp()
+//    }
 
 
 }

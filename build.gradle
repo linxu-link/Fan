@@ -31,10 +31,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-repositories {
-    google()
-    jcenter()
-}
 
 
 //分包配置

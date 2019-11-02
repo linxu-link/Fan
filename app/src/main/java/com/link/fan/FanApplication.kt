@@ -5,7 +5,6 @@ import android.app.Application
 import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.annotation.NonNull
-import com.link.fan.tasks.BmobTask
 import com.link.fan.tasks.BuglyTask
 import com.link.fan.tasks.MMKVTask
 import com.link.fan.tasks.UtilTask
@@ -41,8 +40,7 @@ class FanApplication : BaseApplication() {
             TaskDispatcher.init(application)
             val dispatcher = TaskDispatcher.createInstance()
 
-            dispatcher.addTask(BmobTask())
-                    .addTask(BuglyTask())
+            dispatcher.addTask(BuglyTask())
                     .addTask(MMKVTask())
                     .addTask(UtilTask())
                     .start()

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.link.fan">
 
-
     <application
         android:name=".FanApplication"
         android:icon="@mipmap/logo"
@@ -16,7 +15,13 @@
         tools:replace="android:name,android:theme,android:label,android:icon">
 
         <activity
-            android:name=".EntranceActivity"
+            android:name=".app.update.UpdateActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/update_dialog" />
+
+        <activity
+            android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
@@ -26,22 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <provider
-            android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.link.fan.BmobContentProvider"
-            android:exported="false" />
-
-        <service
-            android:name=".tinker.TinkerService"
-            android:enabled="true"
-            android:exported="false" />
-        <service
-            android:name=".tinker.CustomResultService"
-            android:enabled="true"
-            android:exported="false" />
-
-
     </application>
 
 </manifest>

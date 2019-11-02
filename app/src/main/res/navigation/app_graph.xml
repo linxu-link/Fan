@@ -30,6 +30,6 @@
         android:label="MainFragment" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.link.fan.app.account.login.LoginFragment"
+        android:name="com.link.fan.app.login.LoginFragment"
         android:label="LoginFragment" />
 </navigation>
