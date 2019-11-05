@@ -3,6 +3,9 @@ package com.link.fan.data
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.link.fan.app.login.LoginViewModel
+import com.link.fan.app.main.home.HomeViewModel
+import com.link.fan.data.repository.AppRepository
+import java.lang.RuntimeException
 
 /**
  * copyright:TS
@@ -12,11 +15,16 @@ import com.link.fan.app.login.LoginViewModel
  * description:  生产viewModel的工厂
  */
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory constructor(private val repository: AppRepository) : ViewModelProvider.NewInstanceFactory() {
 
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return LoginViewModel() as T
+        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+            return LoginViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            return HomeViewModel(repository) as T
+        }
+        throw RuntimeException("viewModel is null")
     }
 
 

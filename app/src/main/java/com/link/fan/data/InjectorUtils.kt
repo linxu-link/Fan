@@ -1,6 +1,5 @@
 package com.link.fan.data
 
-import android.content.Context
 import com.link.fan.data.repository.AppRepository
 import com.link.fan.data.repository.source.local.LocalServiceImpl
 import com.link.fan.data.repository.source.net.NetServiceImpl
@@ -16,7 +15,7 @@ import com.link.librarymodule.http.RetrofitClient
  */
 object InjectorUtils {
 
-    fun provideRepository(): AppRepository {
+    private fun provideRepository(): AppRepository {
 
         val service: RetrofitHttpService = RetrofitClient.getInstance().create(RetrofitHttpService::class.java)
         //网络数据源
@@ -28,9 +27,12 @@ object InjectorUtils {
     }
 
 
-    fun loginViewModelFactory(context: Context): ViewModelFactory {
-        return ViewModelFactory()
+    fun loginViewModelFactory(): ViewModelFactory {
+        return ViewModelFactory(provideRepository())
     }
 
+    fun homeViewModelFactory(): ViewModelFactory {
+        return ViewModelFactory(provideRepository())
+    }
 
 }

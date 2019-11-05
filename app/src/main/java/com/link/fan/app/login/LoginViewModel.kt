@@ -26,10 +26,12 @@ class LoginViewModel constructor(private var repository: AppRepository) : ViewMo
     fun login() {
 
         if (phoneCode.value.isNullOrEmpty()) {
+            ToastUtils.showShort("请输入验证码")
             return
         }
 
         if (phoneNumber.value.isNullOrEmpty()) {
+            ToastUtils.showShort("请输入手机号码")
             return
         }
 

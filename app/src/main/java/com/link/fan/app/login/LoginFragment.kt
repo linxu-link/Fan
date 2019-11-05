@@ -25,7 +25,7 @@ import com.link.fan.databinding.FragmentLoginBinding
 class LoginFragment : Fragment(), View.OnClickListener {
 
     private val viewModel: LoginViewModel by viewModels {
-        InjectorUtils.loginViewModelFactory(requireContext())
+        InjectorUtils.loginViewModelFactory()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -59,7 +59,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
             R.id.btn_send_code -> {
                 viewModel.clickSmsCode()
-                startActivity(Intent(requireActivity(), UpdateActivity::class.java))
             }
         }
     }
