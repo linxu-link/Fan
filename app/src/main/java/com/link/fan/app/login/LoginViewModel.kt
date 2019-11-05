@@ -2,6 +2,7 @@ package com.link.fan.app.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.link.fan.data.repository.AppRepository
 import com.link.librarymodule.utils.RxCountDown
 import com.link.librarymodule.utils.ToastUtils
 import io.reactivex.disposables.Disposable
@@ -15,7 +16,7 @@ import io.reactivex.functions.Consumer
  * email:wujia0916@thundersoft.com
  * description:
  */
-class LoginViewModel : ViewModel() {
+class LoginViewModel constructor(private var repository: AppRepository) : ViewModel() {
 
     var phoneNumber = MutableLiveData<String>("")
     var phoneCode = MutableLiveData<String>("")
@@ -28,20 +29,25 @@ class LoginViewModel : ViewModel() {
             return
         }
 
-        if (this.phoneNumber.value.isNullOrEmpty()) {
+        if (phoneNumber.value.isNullOrEmpty()) {
             return
         }
+
+        repository.login(phoneNumber.value!!, phoneCode.value!!)
+
     }
 
     private var mDisposable: Disposable? = null
 
-    fun clickPhoneCode() {
+    fun clickSmsCode() {
         if (sendBtnEnable.value!!) {
 
             if (phoneNumber.value.isNullOrEmpty()) {
                 ToastUtils.showShort("请输入手机号码")
                 return
             }
+
+            repository.getSmsCode(phoneNumber.value!!)
 
             mDisposable = RxCountDown.countdown(60)
                     .subscribe(Consumer {

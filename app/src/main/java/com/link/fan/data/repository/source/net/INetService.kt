@@ -1,0 +1,46 @@
+package com.link.fan.data.repository.source.net
+
+import cn.bmob.v3.exception.BmobException
+import com.link.fan.data.bean.BaseEntity
+import com.link.fan.data.bean.MenuResult
+import io.reactivex.Observable
+
+/**
+ * copyright:TS
+ * author:wujia
+ * create:2019-11-05-18:52
+ * email:wujia0916@thundersoft.com
+ * description:  定义网络数据源的操作，如果操作很多的话，建议按照模块做拆分
+ */
+interface INetService {
+
+    /**
+     * 获取首页的轮播图.
+     */
+    fun homeBanner(): Observable<BaseEntity<MenuResult>>
+
+    /**
+     * 获取首页的今日推荐.
+     */
+    fun today(): Observable<BaseEntity<MenuResult>>
+
+    /**
+     * 获取首页的最新菜谱.
+     */
+    fun lastMenu(): Observable<BaseEntity<MenuResult>>
+
+    /**
+     * 获取首页的菜谱列表.
+     */
+    fun home(): Observable<BaseEntity<MenuResult>>
+
+    /**
+     * 登录
+     */
+    fun login(phone: String, smsCode: String): BmobException?
+
+    /**
+     * 获取验证码
+     */
+    fun getSmsCode(phone: String):BmobException?
+}

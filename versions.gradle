@@ -160,7 +160,7 @@ def addRepos(RepositoryHandler handler) {
     handler.maven { url "http://119.3.215.243:9882/repository/fan/" }
 //    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     //Bmob的maven仓库地址--必填
-//    handler.maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
+    handler.maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
 }
 
 ext.addRepos = this.&addRepos

@@ -79,7 +79,7 @@ dependencies {
     api(deps.tinker.lib) { changing = true }
 
     //云数据库bmob
-//    api deps.bmob
+    api deps.bmob
 
     api deps.glide.runtime
     //图片选择框架

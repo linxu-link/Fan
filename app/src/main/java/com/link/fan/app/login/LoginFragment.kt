@@ -58,7 +58,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 viewModel.clickQQ()
             }
             R.id.btn_send_code -> {
-                viewModel.clickPhoneCode()
+                viewModel.clickSmsCode()
                 startActivity(Intent(requireActivity(), UpdateActivity::class.java))
             }
         }
