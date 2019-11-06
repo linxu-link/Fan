@@ -1,19 +1,15 @@
 package com.link.fan.data.repository.source.net
 
-import cn.bmob.v3.Bmob
 import cn.bmob.v3.BmobSMS
 import cn.bmob.v3.BmobUser
-import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.LogInListener
 import cn.bmob.v3.listener.QueryListener
+import cn.bmob.v3.listener.SaveListener
 import com.link.fan.R
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.MenuResult
-import com.link.librarymodule.utils.RxCountDown
-import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.utils.Utils
 import io.reactivex.Observable
-import java.util.concurrent.CountDownLatch
 
 /**
  * copyright:TS
@@ -42,38 +38,21 @@ class NetServiceImpl constructor(private val service: RetrofitHttpService) : INe
     }
 
     /**
-     * 登录，将第三方SDK的异步操作，使用CountDownLatch修改为同步操作
+     * 登录，第三方SDK提供
      */
-    override fun login(phone: String, smsCode: String): BmobException? {
-        val countDownLatch = CountDownLatch(1)
-        var bmobException: BmobException? = null
-        BmobUser.loginBySMSCode(phone, smsCode, object : LogInListener<BmobUser>() {
-
-            override fun done(user: BmobUser?, exception: BmobException?) {
-                bmobException = exception
-                countDownLatch.countDown()
-            }
-
-        })
-        countDownLatch.await()
-        return bmobException
+    override fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>) {
+        val user=BmobUser()
+        user.mobilePhoneNumber=phone
+        user.username=phone
+        user.setPassword(phone)
+        user.signOrLogin(smsCode,listener)
     }
 
     /**
-     * 获取短信验证码，将第三方SDK的异步操作，使用CountDownLatch修改为同步操作
+     * 获取短信验证码，第三方SDK提供
      */
-    override fun getSmsCode(phone: String): BmobException? {
-
-        val countDownLatch = CountDownLatch(1)
-        var bmobException: BmobException? = null
-        BmobSMS.requestSMSCode(phone, Utils.getContext().resources.getString(R.string.application_name), object : QueryListener<Int>() {
-            override fun done(smsId: Int?, e: BmobException?) {
-                bmobException = e
-                countDownLatch.countDown()
-            }
-        })
-        countDownLatch.await()
-        return bmobException
+    override fun getSmsCode(phone: String, listener: QueryListener<Int>) {
+        BmobSMS.requestSMSCode(phone, Utils.getContext().resources.getString(R.string.sms_template), listener)
     }
 
     companion object {

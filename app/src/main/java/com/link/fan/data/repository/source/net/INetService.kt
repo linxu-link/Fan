@@ -1,6 +1,9 @@
 package com.link.fan.data.repository.source.net
 
-import cn.bmob.v3.exception.BmobException
+import cn.bmob.v3.BmobUser
+import cn.bmob.v3.listener.LogInListener
+import cn.bmob.v3.listener.QueryListener
+import cn.bmob.v3.listener.SaveListener
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.MenuResult
 import io.reactivex.Observable
@@ -37,10 +40,10 @@ interface INetService {
     /**
      * 登录
      */
-    fun login(phone: String, smsCode: String): BmobException?
+    fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>)
 
     /**
      * 获取验证码
      */
-    fun getSmsCode(phone: String):BmobException?
+    fun getSmsCode(phone: String, listener: QueryListener<Int>)
 }

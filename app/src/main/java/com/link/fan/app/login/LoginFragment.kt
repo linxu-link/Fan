@@ -1,6 +1,5 @@
 package com.link.fan.app.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.link.fan.R
-import com.link.fan.app.update.UpdateActivity
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentLoginBinding
 

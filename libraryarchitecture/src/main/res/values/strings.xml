@@ -1,3 +1,4 @@
 <resources>
     <string name="application_name">膳道</string>
+    <string name="sms_template">饭fan</string>
 </resources>
