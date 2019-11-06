@@ -12,13 +12,11 @@ import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentLoginBinding
 
 /**
- * <pre>
  *  copyright:TS
  *  author:wujia
  *  create:2019-10-26-11:45
  *  email:wujia0916@thundersoft.com
- *  description:
- * <pre>
+ *  description:登录界面
  */
 class LoginFragment : Fragment(), View.OnClickListener {
 

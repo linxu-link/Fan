@@ -20,28 +20,28 @@ interface RetrofitHttpService {
      * 获取首页的轮播图.
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5d4cd6c6151be0350086e1ee/fan/home/banner")
+    @GET("mock/5dc147a511f6e545761fac9a/fan/home/banner")
     fun homeBanner(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的今日推荐.
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5d4cd6c6151be0350086e1ee/fan/home/today")
+    @GET("mock/5dc147a511f6e545761fac9a/fan/home/today")
     fun today(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的最新菜谱.
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5d4cd6c6151be0350086e1ee/fan/home/last_menu")
+    @GET("mock/5dc147a511f6e545761fac9a/fan/home/last_menu")
     fun lastMenu(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的菜谱列表.
      */
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5d4cd6c6151be0350086e1ee/fan/home")
+    @GET("mock/5dc147a511f6e545761fac9a/fan/home")
     fun home(): Observable<BaseEntity<MenuResult>>
 
 }

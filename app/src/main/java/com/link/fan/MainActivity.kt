@@ -2,24 +2,21 @@ package com.link.fan
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import com.link.fan.databinding.ActivityMainBinding
 import com.link.librarymodule.base.BaseActivity
 
 /**
- * <pre>
  *  copyright:TS
  *  author:wujia
  *  create:2019-07-21-09:45
  *  email:wujia0916@thundersoft.com
  *  description:
- * <pre>
  */
 class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //开启全屏占用
-        fullScreen(this)
+//        fullScreen(this)
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 //        //task延迟初始化调度器

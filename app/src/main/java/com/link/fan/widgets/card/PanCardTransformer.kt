@@ -44,9 +44,6 @@ class PanCardTransformer constructor(private var mViewPager: ViewPager, private 
 
     }
 
-    override fun onPageScrollStateChanged(state: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
         var realCurrentPosition = 0
@@ -86,11 +83,12 @@ class PanCardTransformer constructor(private var mViewPager: ViewPager, private 
         mLastOffset = positionOffset
     }
 
+    override fun onPageScrollStateChanged(state: Int) {
+    }
+
     override fun onPageSelected(position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun transformPage(page: View, position: Float) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

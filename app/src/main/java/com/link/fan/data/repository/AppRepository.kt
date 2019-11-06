@@ -11,7 +11,6 @@ import com.link.fan.data.repository.source.net.INetService
 import io.reactivex.Observable
 
 /**
- * copyright:TS
  * author:wujia
  * create:2019-11-05-18:49
  * email:wujia0916@thundersoft.com
