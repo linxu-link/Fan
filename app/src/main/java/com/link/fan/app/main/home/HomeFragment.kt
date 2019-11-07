@@ -13,6 +13,7 @@ import androidx.lifecycle.observe
 import com.link.fan.R
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentHomeBinding
+import com.link.librarymodule.base.BaseStateFragment
 import com.link.librarymodule.utils.CommonUtil
 import kotlinx.android.synthetic.main.fragment_home.*
 
