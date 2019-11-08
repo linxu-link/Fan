@@ -20,14 +20,13 @@ import kotlin.collections.ArrayList
  * email:wujia0916@thundersoft.com
  * description:支持九宫格布局的layout
  * 步骤 1. 效果分析，自定义属性
-2. 测量控件的宽高
-3. 摆放控件的位置
-4. 绘制控件
-5. 用户交互（事件处理）
+ * 2. 测量控件的宽高
+ * 3. 摆放控件的位置
+ * 4. 绘制控件
+ * 5. 用户交互（事件处理）
  */
-const val MAX_COUNT = 9
 
-abstract class NineLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : ViewGroup(context, attrs, defStyleAttr) {
+class NineLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : ViewGroup(context, attrs, defStyleAttr) {
 
     private var mSpacing = 3f
 
@@ -175,12 +174,10 @@ abstract class NineLayout @JvmOverloads constructor(context: Context, attrs: Att
         val imageView = ImageView(context)
         imageView.scaleType = ImageView.ScaleType.FIT_XY
         imageView.setOnClickListener {
-            onClickImage(position, url)
+            mClickListener?.onItemClickListener(imageView, url, position)
         }
         return imageView
     }
-
-    abstract fun onClickImage(position: Int, url: String)
 
     //渲染图片到ImageView，只有一张图片时，单独渲染
     protected fun displayOneImage(imageView: ImageView, url: String) {
@@ -206,6 +203,18 @@ abstract class NineLayout @JvmOverloads constructor(context: Context, attrs: Att
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         return super.onTouchEvent(event)
+    }
+
+    private var mClickListener: ItemClickListener? = null
+
+    fun setOnItemClickListener(listener: ItemClickListener) {
+        mClickListener = listener
+    }
+
+    public interface ItemClickListener {
+
+        fun onItemClickListener(view: ImageView, url: String, position: Int)
+
     }
 
 }

@@ -51,14 +51,132 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="0dp"
         android:layout_height="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout2" />
 
-    </FrameLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
 
+        <FrameLayout
+            android:id="@+id/ll_mine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="1dp"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:drawableRight="@drawable/ic_arrow_right_grey"
+                android:gravity="center_vertical"
+                android:text="个人信息"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/text_middle_size" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_gravity="bottom"
+                android:background="@color/text_light" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/ll_message"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="1dp"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:drawableRight="@drawable/ic_arrow_right_grey"
+                android:gravity="center_vertical"
+                android:text="我的消息"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/text_middle_size" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_gravity="bottom"
+                android:background="@color/text_light" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/ll_cahce"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="1dp"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:drawableRight="@drawable/ic_arrow_right_grey"
+                android:gravity="center_vertical"
+                android:text="清空缓存"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/text_middle_size" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_gravity="bottom"
+                android:background="@color/text_light" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/ll_setting"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="1dp"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:drawableRight="@drawable/ic_arrow_right_grey"
+                android:gravity="center_vertical"
+                android:text="设置"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/text_middle_size" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_gravity="bottom"
+                android:background="@color/text_light" />
+
+        </FrameLayout>
+
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

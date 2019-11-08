@@ -24,7 +24,6 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class CommonUtil {
 
-
     public static PackageInfo getPackageInfo() {
         PackageInfo info = new PackageInfo();
         try {

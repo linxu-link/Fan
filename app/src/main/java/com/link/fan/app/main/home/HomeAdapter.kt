@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.link.fan.data.bean.MenuDetail
-import com.link.fan.databinding.ListItemHomeMenuBinding
+import com.link.fan.databinding.ListItemHomeBinding
 
 /**
  * copyright:TS
@@ -21,7 +21,7 @@ import com.link.fan.databinding.ListItemHomeMenuBinding
 class HomeAdapter : ListAdapter<MenuDetail, HomeAdapter.HomeHolder>(HomeDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
-        return HomeHolder(ListItemHomeMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return HomeHolder(ListItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: HomeHolder, position: Int) {
@@ -29,7 +29,7 @@ class HomeAdapter : ListAdapter<MenuDetail, HomeAdapter.HomeHolder>(HomeDiffCall
         holder.bind(menuResult)
     }
 
-    class HomeHolder(private val binding: ListItemHomeMenuBinding) : RecyclerView.ViewHolder(binding.root) {
+    class HomeHolder(private val binding: ListItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.setClickListener {

@@ -5,6 +5,9 @@ import cn.bmob.v3.BmobUser
 import cn.bmob.v3.listener.LogInListener
 import cn.bmob.v3.listener.QueryListener
 import cn.bmob.v3.listener.SaveListener
+import com.link.component_shopping.data.entity.EntityResult
+import com.link.component_shopping.data.entity.GoodsEntity
+import com.link.component_shopping.data.entity.SecondsEntity
 import com.link.fan.R
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.MenuResult
@@ -20,6 +23,14 @@ import io.reactivex.Observable
  * 如果有需要，可以在这里对网络来源的数据做简单的处理
  */
 class NetServiceImpl constructor(private val service: RetrofitHttpService) : INetService {
+
+    override fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>> {
+        return service.getSeconds()
+    }
+
+    override fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>> {
+        return service.getGoods()
+    }
 
     override fun homeBanner(): Observable<BaseEntity<MenuResult>> {
         return service.homeBanner()

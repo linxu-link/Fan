@@ -1,5 +1,8 @@
 package com.link.fan.data.repository.source.net
 
+import com.link.component_shopping.data.entity.EntityResult
+import com.link.component_shopping.data.entity.GoodsEntity
+import com.link.component_shopping.data.entity.SecondsEntity
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.MenuResult
 import com.link.librarymodule.constant.Constant
@@ -43,5 +46,20 @@ interface RetrofitHttpService {
     @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
     @GET("mock/5dc147a511f6e545761fac9a/fan/home")
     fun home(): Observable<BaseEntity<MenuResult>>
+
+    /**
+     * 获取商城的活动的数据
+     */
+    @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
+    @GET("mock/5dc147a511f6e545761fac9a/fan/mall/newGoods")
+    fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>>
+
+
+    /**
+     * 获取商城的活动的数据
+     */
+    @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
+    @GET("mock/5dc147a511f6e545761fac9a/fan/mall/newSeconds")
+    fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>>
 
 }

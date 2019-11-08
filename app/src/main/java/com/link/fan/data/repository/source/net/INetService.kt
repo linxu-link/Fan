@@ -4,6 +4,9 @@ import cn.bmob.v3.BmobUser
 import cn.bmob.v3.listener.LogInListener
 import cn.bmob.v3.listener.QueryListener
 import cn.bmob.v3.listener.SaveListener
+import com.link.component_shopping.data.entity.EntityResult
+import com.link.component_shopping.data.entity.GoodsEntity
+import com.link.component_shopping.data.entity.SecondsEntity
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.MenuResult
 import io.reactivex.Observable
@@ -46,4 +49,14 @@ interface INetService {
      * 获取验证码
      */
     fun getSmsCode(phone: String, listener: QueryListener<Int>)
+
+    /**
+     * 获取商品数据
+     */
+    fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>>
+
+    /**
+     * 获取秒杀数据
+     */
+    fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>>
 }
