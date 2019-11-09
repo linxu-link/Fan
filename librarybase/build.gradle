@@ -39,6 +39,7 @@ dependencies {
     api deps.fan.daemon
     api deps.fan.filpView
     api deps.fan.picture
+    api deps.alibaba.alipay
 
     //系统的核心库
     api deps.androidx.appcompat

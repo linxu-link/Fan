@@ -22,8 +22,8 @@ class Constant {
         const val MOCK="mock"
 
         //自定义商城的访问地址
-        const val BASE_SHOPPING_WEB_URL="http://118.24.197.176"
-//        const val BASE_SHOPPING_WEB_URL="http://192.168.0.4:8080/"
+        const val SHOPPING_WEB_URL="http://118.24.197.176"
+//        const val SHOPPING_WEB_URL="http://192.168.0.4:8080/"
 
 
 

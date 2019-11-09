@@ -16,7 +16,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //开启全屏占用
-//        fullScreen(this)
+        fullScreen(this)
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 //        //task延迟初始化调度器

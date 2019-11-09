@@ -8,9 +8,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+
 import com.alipay.sdk.app.PayTask;
-import com.link.component_pay.alipay.utils.OrderInfoUtil2_0;
-import com.link.component_pay.alipay.utils.PayResult;
+import com.link.fan.utils.alipay.utils.OrderInfoUtil2_0;
+import com.link.fan.utils.alipay.utils.PayResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
