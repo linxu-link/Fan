@@ -32,6 +32,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".utils.alipay.AliPayResultActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".utils.wxapi.WXPayEntryActivity"
+            android:screenOrientation="portrait" />
+
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.link.fan.BmobContentProvider" />

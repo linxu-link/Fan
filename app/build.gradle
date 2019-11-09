@@ -12,6 +12,7 @@ android {
     dataBinding {
         enabled = true
     }
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.link.fan"
         minSdkVersion build_versions.min_sdk

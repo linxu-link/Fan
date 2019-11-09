@@ -6,6 +6,8 @@ import com.google.gson.Gson
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
 import com.link.fan.data.repository.AppRepository
+import com.link.fan.utils.JsonUtil
+import com.link.librarymodule.utils.ToastUtils
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
@@ -29,23 +31,19 @@ class MallViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     if (it.resultcode == "200") {
 
-                        if (it.result.data.isNullOrEmpty()) {
-                            return@Consumer
-                        }
-
                         it.result.data?.let {
                             if (it[0] is GoodsEntity) {
-                                goodsData.value = Gson().toJson(it.result.data)
+                                goodsData.value = JsonUtil.toJson(it)
 
 
                             } else if (it[0] is SecondsEntity) {
-                                secondData.value = Gson().toJson(it.result.data)
+                                secondData.value = JsonUtil.toJson(it)
                             }
                         }
 
                     }
                 }, Consumer {
-
+                    ToastUtils.showShort(it?.message)
                 })
 
     }

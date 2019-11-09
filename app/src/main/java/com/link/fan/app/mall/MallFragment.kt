@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.link.fan.R
+import com.link.fan.utils.JavaScriptInterface
 
 /**
  *  copyright:TS
@@ -18,6 +19,11 @@ import com.link.fan.R
  */
 class MallFragment : Fragment() {
 
+    private var mX5WebView: X5WebView? = null
+
+    private var mJavaScriptInterface: JavaScriptInterface? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -27,6 +33,7 @@ class MallFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
         return inflater.inflate(R.layout.fragment_mall, container, false)
     }
 
