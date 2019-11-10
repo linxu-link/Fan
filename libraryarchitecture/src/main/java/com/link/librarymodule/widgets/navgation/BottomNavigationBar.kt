@@ -16,7 +16,7 @@ import com.link.librarymodule.R
 class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : FrameLayout(context, attrs, defStyleAttr), RadioGroup.OnCheckedChangeListener {
 
-    private val array= arrayOf(R.id.home,R.id.community,R.id.mall,R.id.mine)
+    private val array = arrayOf(R.id.home, R.id.community, R.id.mall, R.id.mine)
 
 
     init {
@@ -27,22 +27,18 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
-        if (listener!=null){
-            listener!!.onBottomItemClickListener(checkedId)
-        }
+        listener?.onBottomItemClickListener(checkedId)
         for (index in array) {
-            rootView.findViewById<RadioButton>(index).setTextColor(ContextCompat.getColor(context,R.color.font_color))
+            rootView.findViewById<RadioButton>(index).setTextColor(ContextCompat.getColor(context, R.color.font_color))
         }
-       setColor(rootView.findViewById(checkedId))
+        setColor(rootView.findViewById(checkedId))
     }
 
 
-
-    private fun setColor(view:TextView){
+    private fun setColor(view: TextView) {
 //        val tabLayout:TabLayout
-        view.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary))
+        view.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary))
     }
-
 
 
     private var listener: OnClickListener? = null
@@ -53,8 +49,8 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
 
     }
 
-    fun setOnItemClickListener(listener: OnClickListener){
-        this.listener=listener
+    fun setOnItemClickListener(listener: OnClickListener) {
+        this.listener = listener
     }
 
 }

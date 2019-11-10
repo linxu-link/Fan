@@ -14,13 +14,11 @@ import com.link.librarymodule.widgets.navgation.BottomNavigationBar
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
- * <pre>
  *  copyright:TS
  *  author:wujia
  *  create:2019-10-26-10:55
  *  email:wujia0916@thundersoft.com
  *  description:
- * <pre>
  */
 class MainFragment(override var layoutId: Int = R.layout.fragment_main) : BaseFragment(), BottomNavigationBar.OnClickListener {
 
@@ -68,7 +66,7 @@ class MainFragment(override var layoutId: Int = R.layout.fragment_main) : BaseFr
                 transaction.hide(mCurrent!!)
             }
             mCurrent = mFragmentList[3]
-        }else if (checkedId==R.id.add_menu){
+        } else if (checkedId == R.id.add_menu) {
             ToastUtils.showLong("add")
         }
 
