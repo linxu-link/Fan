@@ -18,19 +18,19 @@ import com.link.fan.databinding.ListItemHomeBinding
  * email:wujia0916@thundersoft.com
  * description:
  */
-class HomeAdapter : ListAdapter<MenuDetail, HomeAdapter.HomeHolder>(HomeDiffCallback()) {
+class HomeAdapter : ListAdapter<MenuDetail, HomeAdapter.HomeMasterHolder>(HomeDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
-        return HomeHolder(ListItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMasterHolder {
+        return HomeMasterHolder(ListItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: HomeHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeMasterHolder, position: Int) {
         val menuResult = getItem(position)
         holder.bind(menuResult)
     }
 
-    class HomeHolder(private val binding: ListItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
 
+    class HomeMasterHolder(private val binding: ListItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
                 binding.menu?.let { menu ->

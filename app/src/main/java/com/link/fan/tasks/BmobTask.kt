@@ -1,7 +1,7 @@
 package com.link.fan.tasks
 
 import cn.bmob.v3.Bmob
-import com.link.librarymodule.constant.Constant
+import com.link.librarymodule.constant.BMOB_ID
 import com.link.librarymodule.launchstarter.task.Task
 
 /**
@@ -12,6 +12,6 @@ import com.link.librarymodule.launchstarter.task.Task
  */
 class BmobTask : Task() {
     override fun run() {
-        Bmob.initialize(mContext, Constant.BMOB_ID)
+        Bmob.initialize(mContext, BMOB_ID)
     }
 }

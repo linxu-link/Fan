@@ -13,7 +13,6 @@ import androidx.lifecycle.observe
 import com.link.fan.R
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentHomeBinding
-import com.link.librarymodule.base.BaseStateFragment
 import com.link.librarymodule.utils.CommonUtil
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -51,6 +50,7 @@ class HomeFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false).apply {
             viewModel = this@HomeFragment.viewModel
             lifecycleOwner = viewLifecycleOwner
+
             refresh.setOnRefreshListener {
                 this@HomeFragment.viewModel.requestData()
             }
@@ -62,18 +62,20 @@ class HomeFragment : Fragment() {
             binding.root.layoutParams = layout
         }
 
-        addHeaderView()
-
-        val adapter = HomeAdapter()
+        val adapter = HomeAdapters(R.layout.list_item_home, null)
+        addHeaderView(adapter, binding)
         binding.menuList.adapter = adapter
-
         subscribeUi(adapter)
         return binding.root
     }
 
-    private fun addHeaderView(){
+    private fun addHeaderView(adapter: HomeAdapters, binding: FragmentHomeBinding) {
+        val headerView = layoutInflater.inflate(R.layout.layout_home_recommond_head, binding.root as ViewGroup, false)
 
+        val headerView2=layoutInflater.inflate(R.layout.layout_home_header,binding.root as ViewGroup,false)
 
+        adapter.addHeaderView(headerView2)
+        adapter.addHeaderView(headerView)
 
     }
 
@@ -82,14 +84,16 @@ class HomeFragment : Fragment() {
         viewModel.requestData()
     }
 
-    private fun subscribeUi(adapter: HomeAdapter) {
+    private fun subscribeUi(adapter: HomeAdapters) {
         viewModel.menuResult.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
-                adapter.submitList(data)
+                adapter.setNewData(data)
             }
-            refresh.isRefreshing=false
+            refresh.isRefreshing = false
         }
     }
 
 
 }
+
+

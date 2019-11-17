@@ -17,6 +17,13 @@
         android:orientation="vertical"
         tools:context=".app.main.home.HomeFragment">
 
+        <include
+            android:id="@+id/layout_search_bar"
+            layout="@layout/include_toolbar_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refresh"
             android:layout_width="match_parent"

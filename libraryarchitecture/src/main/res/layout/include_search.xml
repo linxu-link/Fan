@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/search_bar"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_40"
-    android:gravity="start|center_vertical"
+    android:layout_height="31dp"
     android:background="@drawable/shape_stroke_corner_5dp_grey_dark_full"
+    android:gravity="start|center_vertical"
     android:orientation="horizontal">
 
     <ImageView
-        android:layout_marginLeft="15dp"
-        android:padding="6dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:padding="6dp"
         android:src="@drawable/ic_search" />
 
     <TextView
-        android:layout_margin="3dp"
-        android:background="@null"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="3dp"
         android:layout_marginStart="8dp"
+        android:background="@null"
         android:gravity="start|center_vertical"
-        android:textColor="@color/grey"
+        android:textColor="@color/transparent_grey"
         android:textSize="@dimen/text_middle_size"
-        android:text="搜索菜谱、食材" />
+        android:text="请输入关键词" />
 
 </LinearLayout>

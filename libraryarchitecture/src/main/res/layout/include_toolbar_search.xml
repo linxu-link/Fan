@@ -12,14 +12,12 @@
         android:id="@+id/notice"
         android:layout_width="40dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dp_8"
-        android:layout_marginBottom="@dimen/dp_8"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/search_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/search_bar"
+        app:layout_constraintTop_toTopOf="@+id/search_bar">
 
-        <ImageView
+         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -38,20 +36,21 @@
             android:gravity="center"
             android:maxLines="1"
             android:padding="1dp"
+            android:text="11"
             android:textColor="@android:color/white"
             android:textSize="7sp"
             tools:text="11" />
     </FrameLayout>
 
     <include
-        android:id="@+id/textView"
+        android:id="@+id/search_bar"
         layout="@layout/include_search"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

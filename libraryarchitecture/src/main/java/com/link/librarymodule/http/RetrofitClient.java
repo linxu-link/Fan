@@ -8,7 +8,6 @@ import com.link.general_network.utils.HttpsUtils;
 import com.link.general_network.interceptor.BaseInterceptor;
 import com.link.general_network.interceptor.logging.Level;
 import com.link.general_network.interceptor.logging.LoggingInterceptor;
-import com.link.librarymodule.constant.Constant;
 import com.link.librarymodule.utils.Utils;
 
 import java.io.File;
@@ -27,6 +26,8 @@ import okhttp3.internal.platform.Platform;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.link.librarymodule.constant.ConstantKt.MOCK_DATA_URL;
 
 /**
  * @author WJ
@@ -56,13 +57,13 @@ public class RetrofitClient {
     }
 
     private RetrofitClient() {
-        this(Constant.MOCK_DATA_URL, null);
+        this(MOCK_DATA_URL, null);
     }
 
     private RetrofitClient(String url, Map<String, String> headers) {
 
         if (TextUtils.isEmpty(url)) {
-            url = Constant.MOCK_DATA_URL;
+            url = MOCK_DATA_URL;
         }
 
         if (httpCacheDirectory == null) {

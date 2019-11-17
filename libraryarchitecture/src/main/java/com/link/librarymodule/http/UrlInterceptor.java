@@ -2,7 +2,6 @@ package com.link.librarymodule.http;
 
 import android.text.TextUtils;
 
-import com.link.librarymodule.constant.Constant;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -14,6 +13,11 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static com.link.librarymodule.constant.ConstantKt.JUHE;
+import static com.link.librarymodule.constant.ConstantKt.JUHE_DATA_URL;
+import static com.link.librarymodule.constant.ConstantKt.MOCK;
+import static com.link.librarymodule.constant.ConstantKt.MOCK_DATA_URL;
 
 /**
  * 描述：url 拦截器，根据 url_type 使用不同的Base_url
@@ -52,12 +56,12 @@ public class UrlInterceptor implements Interceptor {
             String urlName = urlNameList.get(0);
             HttpUrl baseURL;
             //根据头信息中配置的value,来匹配新的base_url地址
-            if (Constant.MOCK.equals(urlName)) {
-                baseURL = HttpUrl.parse(Constant.MOCK_DATA_URL);
-            } else if (Constant.JUHE.equals(urlName)) {
-                baseURL = HttpUrl.parse(Constant.JUHE_DATA_URL);
+            if (MOCK.equals(urlName)) {
+                baseURL = HttpUrl.parse(MOCK_DATA_URL);
+            } else if (JUHE.equals(urlName)) {
+                baseURL = HttpUrl.parse(JUHE_DATA_URL);
             }  else {
-                baseURL = HttpUrl.parse(Constant.JUHE_DATA_URL);
+                baseURL = HttpUrl.parse(JUHE_DATA_URL);
             }
             //重建新的HttpUrl，需要重新设置的url部分
             HttpUrl newHttpUrl = oldUrl.newBuilder()

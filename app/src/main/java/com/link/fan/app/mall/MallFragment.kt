@@ -14,7 +14,7 @@ import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentMallBinding
 import com.link.fan.utils.JavaScriptInterface
 import com.link.fan.widgets.webview.X5WebView
-import com.link.librarymodule.constant.Constant
+import com.link.librarymodule.constant.SHOPPING_WEB_URL
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse
 import kotlinx.android.synthetic.main.fragment_mall.*
@@ -49,13 +49,13 @@ class MallFragment : Fragment() {
             viewModel = this@MallFragment.viewModel
             lifecycleOwner = viewLifecycleOwner
 
-
             mX5WebView = X5WebView(requireContext(), null)
             content?.addView(mX5WebView,
                     ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
             mJavaScriptInterface = JavaScriptInterface(requireContext())
             mX5WebView?.addJavascriptInterface(mJavaScriptInterface, "androidJSBridge")
             mX5WebView?.setOnWebViewListener(object : X5WebView.OnWebViewListener {
+
                 override fun shouldInterceptRequest(request: WebResourceRequest?, url: String?): WebResourceResponse? {
                     return null
                 }
@@ -85,7 +85,7 @@ class MallFragment : Fragment() {
     private fun subscribeUi() {
         viewModel.goodsData.observe(this, Observer {
             mJavaScriptInterface?.goodsData = it
-            mX5WebView?.loadUrl(Constant.SHOPPING_WEB_URL)
+            mX5WebView?.loadUrl(SHOPPING_WEB_URL)
         })
 
         viewModel.secondData.observe(this, Observer {

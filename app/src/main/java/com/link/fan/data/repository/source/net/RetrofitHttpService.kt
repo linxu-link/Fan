@@ -5,7 +5,8 @@ import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.MenuResult
-import com.link.librarymodule.constant.Constant
+import com.link.librarymodule.constant.MOCK
+import com.link.librarymodule.constant.URL_TYPE
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -22,44 +23,44 @@ interface RetrofitHttpService {
     /**
      * 获取首页的轮播图.
      */
-    @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5dc147a511f6e545761fac9a/fan/home/banner")
+    @Headers("${URL_TYPE}:${MOCK}")
+    @GET("mock/5dd13d3a11f6e545761facb1/fan/home/banner")
     fun homeBanner(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的今日推荐.
      */
-    @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5dc147a511f6e545761fac9a/fan/home/today")
+    @Headers("${URL_TYPE}:${MOCK}")
+    @GET("mock/5dd13d3a11f6e545761facb1/fan/home/today")
     fun today(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的最新菜谱.
      */
-    @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5dc147a511f6e545761fac9a/fan/home/last_menu")
+    @Headers("${URL_TYPE}:${MOCK}")
+    @GET("mock/5dd13d3a11f6e545761facb1/fan/home/last_menu")
     fun lastMenu(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的菜谱列表.
      */
-    @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5dc147a511f6e545761fac9a/fan/home")
+    @Headers("${URL_TYPE}:${MOCK}")
+    @GET("mock/5dd13d3a11f6e545761facb1/fan/home")
     fun home(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取商城的活动的数据
      */
-    @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5dc147a511f6e545761fac9a/fan/mall/newGoods")
+    @Headers("${URL_TYPE}:${MOCK}")
+    @GET("mock/5dd13d3a11f6e545761facb1/fan/mall/newGoods")
     fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>>
 
 
     /**
-     * 获取商城的活动的数据
+     * 获取商城的秒杀的数据
      */
-    @Headers("${Constant.URL_TYPE}:${Constant.MOCK}")
-    @GET("mock/5dc147a511f6e545761fac9a/fan/mall/newSeconds")
+    @Headers("${URL_TYPE}:${MOCK}")
+    @GET("mock/5dd13d3a11f6e545761facb1/fan/mall/newSeconds")
     fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>>
 
 }

@@ -8,6 +8,7 @@ import com.link.librarymodule.utils.ToastUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
+
 /**
  * copyright:TS
  * author:wujia
@@ -18,6 +19,10 @@ import io.reactivex.schedulers.Schedulers
 class HomeViewModel constructor(private val repository: AppRepository) : ViewModel() {
 
     val menuResult = MutableLiveData<MenuResult>()
+
+    val keywords = MutableLiveData<String>("请输入关键词")
+
+    val msgCount = MutableLiveData<Int>(10)
 
     fun requestData() {
 
