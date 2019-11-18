@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.link.fan.data.bean.MenuDetail
 import com.link.fan.databinding.ListItemHomeBinding
+import com.link.fan.databinding.ListItemHomeHeadBinding
 
 /**
  * copyright:TS
@@ -18,23 +19,23 @@ import com.link.fan.databinding.ListItemHomeBinding
  * email:wujia0916@thundersoft.com
  * description:
  */
-class HomeAdapter : ListAdapter<MenuDetail, HomeAdapter.HomeMasterHolder>(HomeDiffCallback()) {
+class RecommendAdapter : ListAdapter<MenuDetail, RecommendAdapter.RecommendHolder>(HomeDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMasterHolder {
-        return HomeMasterHolder(ListItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendHolder {
+        return RecommendHolder(ListItemHomeHeadBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: HomeMasterHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecommendHolder, position: Int) {
         val menuResult = getItem(position)
         holder.bind(menuResult)
     }
 
 
-    class HomeMasterHolder(private val binding: ListItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
+    class RecommendHolder constructor(private val binding: ListItemHomeHeadBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
-                binding.menu?.let { menu ->
-                    navigateToMenu(menu, it)
+                binding.menuDetail?.let { menuDetail ->
+                    navigateToMenu(menuDetail, it)
                 }
             }
         }
@@ -48,7 +49,7 @@ class HomeAdapter : ListAdapter<MenuDetail, HomeAdapter.HomeMasterHolder>(HomeDi
 
         fun bind(item: MenuDetail) {
             binding.apply {
-                menu = item
+                menuDetail = item
                 executePendingBindings()
             }
         }

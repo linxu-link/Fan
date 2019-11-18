@@ -27,8 +27,8 @@
             android:layout_height="20dp"
             android:layout_marginTop="20dp"
             android:background="@color/colorPrimary"
-            app:layout_constraintStart_toStartOf="@+id/recyclerView"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+            app:layout_constraintStart_toStartOf="@+id/recommend_list"
+            app:layout_constraintTop_toBottomOf="@+id/recommend_list" />
 
         <TextView
             android:id="@+id/textView20"
@@ -58,13 +58,13 @@
             android:textSize="@dimen/text_middle_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textView21"
-            app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/recommend_list"
             app:layout_constraintStart_toEndOf="@+id/textView21"
             app:layout_constraintTop_toTopOf="@+id/textView21"
             android:text="最新食谱" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/recommend_list"
             android:layout_width="0dp"
             android:layout_height="170dp"
             android:layout_marginTop="10dp"
@@ -73,6 +73,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/last_list"
             android:layout_width="0dp"
             android:layout_height="170dp"
             android:layout_marginTop="10dp"
@@ -88,6 +89,6 @@
             android:background="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/recommend_list" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

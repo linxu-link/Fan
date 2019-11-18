@@ -10,9 +10,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.link.fan.R
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentHomeBinding
+import com.link.fan.databinding.LayoutHomeRecommendHeadBinding
 import com.link.librarymodule.utils.CommonUtil
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -70,24 +73,49 @@ class HomeFragment : Fragment() {
     }
 
     private fun addHeaderView(adapter: HomeAdapters, binding: FragmentHomeBinding) {
-        val headerView = layoutInflater.inflate(R.layout.layout_home_recommond_head, binding.root as ViewGroup, false)
-
-        val headerView2=layoutInflater.inflate(R.layout.layout_home_header,binding.root as ViewGroup,false)
-
+        val headerView2 = layoutInflater.inflate(R.layout.layout_home_header, binding.root as ViewGroup, false)
         adapter.addHeaderView(headerView2)
-        adapter.addHeaderView(headerView)
+
+        val headBinding = DataBindingUtil.inflate<LayoutHomeRecommendHeadBinding>(
+                LayoutInflater.from(requireContext()),
+                R.layout.layout_home_recommend_head,
+                binding.root as ViewGroup, false)
+        val recommendAdapter = RecommendAdapter()
+        val lastAdapter = RecommendAdapter()
+        headBinding.recommendList.adapter = recommendAdapter
+        headBinding.recommendList.layoutManager=LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+        headBinding.lastList.adapter = lastAdapter
+        headBinding.lastList.layoutManager=LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+        subscribeUi(recommendAdapter, lastAdapter)
+        adapter.addHeaderView(headBinding.root)
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.requestData()
+        refresh.isRefreshing = true
     }
 
     private fun subscribeUi(adapter: HomeAdapters) {
-        viewModel.menuResult.observe(viewLifecycleOwner) { menuResult ->
+        viewModel.masterDataList.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
                 adapter.setNewData(data)
+            }
+            refresh.isRefreshing = false
+        }
+    }
+
+    private fun subscribeUi(recommendAdapter: RecommendAdapter, lastAdapter: RecommendAdapter) {
+        viewModel.lastDataList.observe(viewLifecycleOwner) { menuResult ->
+            menuResult?.run {
+                lastAdapter.submitList(data)
+            }
+            refresh.isRefreshing = false
+        }
+        viewModel.recommendDataList.observe(viewLifecycleOwner) { menuResult ->
+            menuResult?.run {
+                recommendAdapter.submitList(data)
             }
             refresh.isRefreshing = false
         }

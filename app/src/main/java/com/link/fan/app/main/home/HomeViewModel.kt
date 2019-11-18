@@ -18,7 +18,9 @@ import io.reactivex.schedulers.Schedulers
  */
 class HomeViewModel constructor(private val repository: AppRepository) : ViewModel() {
 
-    val menuResult = MutableLiveData<MenuResult>()
+    val masterDataList = MutableLiveData<MenuResult>()
+    val recommendDataList = MutableLiveData<MenuResult>()
+    val lastDataList = MutableLiveData<MenuResult>()
 
     val keywords = MutableLiveData<String>("请输入关键词")
 
@@ -31,7 +33,42 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     it?.run {
                         if (resultcode == "200") {
-                            menuResult.value = result
+                            masterDataList.value = result
+                        } else {
+                            ToastUtils.showShort(reason)
+                        }
+                    }
+                }, Consumer {
+                    it?.run {
+                        ToastUtils.showShort(message)
+                    }
+
+                })
+
+
+        repository.today().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(Consumer {
+                    it?.run {
+                        if (resultcode == "200") {
+                            recommendDataList.value = result
+                        } else {
+                            ToastUtils.showShort(reason)
+                        }
+                    }
+                }, Consumer {
+                    it?.run {
+                        ToastUtils.showShort(message)
+                    }
+
+                })
+
+        repository.lastMenu().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(Consumer {
+                    it?.run {
+                        if (resultcode == "200") {
+                            lastDataList.value = result
                         } else {
                             ToastUtils.showShort(reason)
                         }
