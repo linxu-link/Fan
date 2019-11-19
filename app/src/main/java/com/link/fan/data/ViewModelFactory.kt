@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.link.fan.app.login.LoginViewModel
 import com.link.fan.app.main.community.CommunityViewModel
 import com.link.fan.app.main.home.HomeViewModel
-import com.link.fan.app.mall.MallViewModel
+import com.link.fan.app.main.mall.MallViewModel
 import com.link.fan.data.repository.AppRepository
 import java.lang.RuntimeException
 

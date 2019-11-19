@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.link.fan.app.login.LoginViewModel" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="100dp"
+            android:text="爱与美食，不可辜负"
+            android:textColor="#686868"
+            android:textSize="@dimen/text_small_size"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="91dp"
+            app:cardCornerRadius="@dimen/dp_6"
+            app:cardElevation="@dimen/dp_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@mipmap/logo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="膳·道"
+            android:textColor="@color/font_color"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="55dp"
+            android:background="@mipmap/edit_background"
+            android:hint="请输入手机号码"
+            android:inputType="phone"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@={viewModel.phoneNumber}"
+            android:textColor="@color/text_light_dark"
+            android:textSize="@dimen/text_middle_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="18dp"
+            android:background="@mipmap/edit_background"
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@={viewModel.phoneCode}"
+            android:textColor="@color/text_light_dark"
+            android:textSize="@dimen/text_middle_size"
+            app:layout_constraintEnd_toEndOf="@+id/et_phone"
+            app:layout_constraintStart_toStartOf="@+id/et_phone"
+            app:layout_constraintTop_toBottomOf="@+id/et_phone" />
+
+        <TextView
+            android:id="@+id/btn_send_code"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="@{viewModel.sendBtnEnable}"
+            android:gravity="center"
+            android:onClick="@{clickListener}"
+            android:text="@{viewModel.codeBtnText}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_small_size"
+            app:layout_constraintBottom_toBottomOf="@+id/et_phone"
+            app:layout_constraintEnd_toEndOf="@+id/et_phone"
+            app:layout_constraintTop_toTopOf="@+id/et_phone"
+            tools:text="获取验证码" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="登录注册表示同意《用户协议》及《用户隐私》"
+            android:textSize="@dimen/text_small_size"
+            app:layout_constraintEnd_toEndOf="@+id/et_code"
+            app:layout_constraintStart_toStartOf="@+id/et_code"
+            app:layout_constraintTop_toBottomOf="@+id/et_code" />
+
+        <ImageView
+            android:id="@+id/btn_login"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/shape_stroke_corner_25dp_main_full"
+            android:elevation="@dimen/dp_2"
+            android:onClick="@{clickListener}"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            app:layout_constraintEnd_toEndOf="@+id/textView5"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6"
+            app:srcCompat="@drawable/ic_arrow_right_white" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="- 其他登录方式 -"
+            android:textSize="@dimen/text_small_size"
+            app:layout_constraintEnd_toEndOf="@+id/btn_login"
+            app:layout_constraintStart_toStartOf="@+id/btn_login"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+        <ImageView
+            android:id="@+id/btn_wx"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginEnd="45dp"
+            android:background="@drawable/shape_stroke_corner_25dp_white_full"
+            android:onClick="@{clickListener}"
+            android:padding="@dimen/dp_2"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_wb"
+            app:layout_constraintEnd_toStartOf="@+id/btn_wb"
+            app:layout_constraintTop_toTopOf="@+id/btn_wb"
+            app:srcCompat="@mipmap/weixing" />
+
+        <ImageView
+            android:id="@+id/btn_wb"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/shape_stroke_corner_25dp_white_full"
+            android:onClick="@{clickListener}"
+            android:padding="@dimen/dp_2"
+            app:layout_constraintEnd_toEndOf="@+id/textView7"
+            app:layout_constraintStart_toStartOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            app:srcCompat="@mipmap/weibo" />
+
+        <ImageView
+            android:id="@+id/btn_qq"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="45dp"
+            android:background="@drawable/shape_stroke_corner_25dp_white_full"
+            android:onClick="@{clickListener}"
+            android:padding="@dimen/dp_2"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_wb"
+            app:layout_constraintStart_toEndOf="@+id/btn_wb"
+            app:layout_constraintTop_toTopOf="@+id/btn_wb"
+            app:srcCompat="@mipmap/qq" />
+
+        <ImageView
+            android:id="@+id/textView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/login_backgroud"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

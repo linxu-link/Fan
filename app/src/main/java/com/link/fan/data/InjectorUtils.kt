@@ -34,5 +34,8 @@ object InjectorUtils {
     fun homeViewModelFactory(): ViewModelFactory {
         return ViewModelFactory(provideRepository())
     }
+    fun communityViewModelFactory(): ViewModelFactory {
+        return ViewModelFactory(provideRepository())
+    }
 
 }

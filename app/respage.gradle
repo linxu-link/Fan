@@ -1,0 +1,24 @@
+apply plugin: 'com.android.application'
+
+android {
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            res.srcDirs =
+                    ['src/main/res',
+                     'src/main/res/layout',
+                     'src/main/res/layout/home',
+                     'src/main/res/layout/community',
+                     'src/main/res/layout/mall',
+                     'src/main/res/layout/mine',
+                     'src/main/res/layout/account',
+                     'src/main/res/layout/splash',
+                     'src/main/res/drawable',
+                     'src/main/res/drawable/icon'
+                    ]
+        }
+        androidTest.setRoot('tests')
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+}

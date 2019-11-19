@@ -6,5 +6,6 @@
     <dimen name="radius">5sp</dimen>
     <dimen name="btnHeight">44sp</dimen>
     <dimen name="marginSize">16sp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'walle'
-//apply from: 'tinkerpatch.gradle'
+apply from: 'respage.gradle'
 android {
     compileSdkVersion build_versions.compile_sdk
     dataBinding {
@@ -62,15 +62,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':libraryarchitecture')
-    //热修复
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //热修复
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     compileOnly(deps.tinker.anno) { changing = true }
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

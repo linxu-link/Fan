@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.link.fan.R
 import com.link.fan.app.main.community.CommunityFragment
 import com.link.fan.app.main.home.HomeFragment
-import com.link.fan.app.mall.MallFragment
+import com.link.fan.app.main.mall.MallFragment
 import com.link.fan.app.main.mine.MineFragment
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.utils.ToastUtils

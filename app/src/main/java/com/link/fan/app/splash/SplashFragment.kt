@@ -2,21 +2,15 @@ package com.link.fan.app.splash
 
 
 import android.Manifest
-import android.os.Bundle
-import android.view.View
-import androidx.core.os.TraceCompat
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.link.fan.R
 import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.base.BaseFragment
-import com.link.librarymodule.base.BaseStateFragment
 import com.link.librarymodule.utils.RxCountDown
 import com.link.librarymodule.utils.rxpermissions2.RxPermissions
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
-import kotlinx.android.synthetic.main.fragment_splash.*
 
 /**
  * <pre>
@@ -30,7 +24,6 @@ import kotlinx.android.synthetic.main.fragment_splash.*
 class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : BaseFragment() {
 
     private var mDisposable: Disposable? = null
-
 
     override fun onStart() {
         super.onStart()

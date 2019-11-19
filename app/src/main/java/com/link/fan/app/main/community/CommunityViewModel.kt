@@ -6,5 +6,11 @@ import com.link.fan.data.repository.AppRepository
 class CommunityViewModel constructor(private val repository: AppRepository) : ViewModel() {
 
 
+    fun requestData(){
+
+
+
+    }
+
 
 }
