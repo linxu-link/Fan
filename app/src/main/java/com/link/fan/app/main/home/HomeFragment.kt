@@ -19,7 +19,6 @@ import com.link.fan.databinding.FragmentHomeBinding
 import com.link.fan.databinding.LayoutHomeHeaderBinding
 import com.link.fan.databinding.LayoutHomeRecommendHeadBinding
 import com.link.fan.widgets.card.PanCardTransformer
-import com.link.fan.widgets.card.ShadowTransformer
 import com.link.librarymodule.utils.CommonUtil
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_home_header.*
@@ -77,7 +76,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    private var transformer: ShadowTransformer? = null
+    private var transformer: PanCardTransformer? = null
 
     private fun addHeaderView(adapter: HomeAdapter, binding: FragmentHomeBinding) {
         val headBinding = DataBindingUtil.inflate<LayoutHomeHeaderBinding>(LayoutInflater.from(requireContext()),
@@ -89,7 +88,7 @@ class HomeFragment : Fragment() {
         headBinding.viewPager.setPageTransformer(false, transformer)
         adapter.addHeaderView(headBinding.root)
 
-        transformer = ShadowTransformer(headBinding.viewPager, pageAdapter)
+        transformer = PanCardTransformer(headBinding.viewPager, pageAdapter)
 
         val recommendHead = DataBindingUtil.inflate<LayoutHomeRecommendHeadBinding>(
                 LayoutInflater.from(requireContext()),
@@ -130,6 +129,7 @@ class HomeFragment : Fragment() {
             }
             refresh.isRefreshing = false
         }
+
         viewModel.recommendLiveData.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
                 recommendAdapter.submitList(data)
@@ -143,7 +143,7 @@ class HomeFragment : Fragment() {
                     pageAdapter.setDataList(data)
                     viewPager.currentItem = 1
                     viewPager.offscreenPageLimit = data.size
-                    transformer?.enableScaling(true)
+                    transformer?.enableScale(true)
                 }
 
             }
