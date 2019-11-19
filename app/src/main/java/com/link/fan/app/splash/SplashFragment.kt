@@ -41,7 +41,7 @@ class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : Ba
                 Manifest.permission.READ_PHONE_STATE)
                 .subscribe(Consumer { it ->
                     if (it) {
-                        RxCountDown.countdown(2).subscribe(Consumer {
+                        RxCountDown.countdown(1).subscribe(Consumer {
                             if (it == 0) {
                                 Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_splashFragment_to_mainFragment)
                             }

@@ -15,10 +15,10 @@ import com.link.fan.data.bean.MenuDetail;
 
 import java.util.List;
 
-public class HomeAdapters extends BaseQuickAdapter<MenuDetail, HomeAdapters.HomeViewHolder> {
+public class HomeAdapter extends BaseQuickAdapter<MenuDetail, HomeAdapter.HomeViewHolder> {
 
 
-    public HomeAdapters(int layoutResId, @Nullable List<MenuDetail> data) {
+    public HomeAdapter(int layoutResId, @Nullable List<MenuDetail> data) {
         super(layoutResId, data);
     }
 

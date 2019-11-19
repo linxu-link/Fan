@@ -27,8 +27,7 @@ class PanCardTransformer constructor(private var mViewPager: ViewPager, private 
     }
 
 
-    public fun enableScale(enable: Boolean) {
-
+    fun enableScale(enable: Boolean) {
         //已经放大时关闭放大
         if (!enable && mIsScaled) {
             val currentCard = mAdapter.getCardView(mViewPager.currentItem) ?: return
@@ -63,7 +62,7 @@ class PanCardTransformer constructor(private var mViewPager: ViewPager, private 
         }
 
         //防止滑过头了
-        if (nextPosition > mAdapter.getItemCount() - 1 || realCurrentPosition > mAdapter.getItemCount() - 1) {
+        if (nextPosition > mAdapter.getCount() - 1 || realCurrentPosition > mAdapter.getCount() - 1) {
             return
         }
 

@@ -18,9 +18,10 @@ import io.reactivex.schedulers.Schedulers
  */
 class HomeViewModel constructor(private val repository: AppRepository) : ViewModel() {
 
-    val masterDataList = MutableLiveData<MenuResult>()
-    val recommendDataList = MutableLiveData<MenuResult>()
-    val lastDataList = MutableLiveData<MenuResult>()
+    val masterLiveData = MutableLiveData<MenuResult>()
+    val recommendLiveData = MutableLiveData<MenuResult>()
+    val lastMenuLiveData = MutableLiveData<MenuResult>()
+    val bannerLiveData = MutableLiveData<MenuResult>()
 
     val keywords = MutableLiveData<String>("请输入关键词")
 
@@ -33,7 +34,7 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     it?.run {
                         if (resultcode == "200") {
-                            masterDataList.value = result
+                            masterLiveData.value = result
                         } else {
                             ToastUtils.showShort(reason)
                         }
@@ -51,7 +52,7 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     it?.run {
                         if (resultcode == "200") {
-                            recommendDataList.value = result
+                            recommendLiveData.value = result
                         } else {
                             ToastUtils.showShort(reason)
                         }
@@ -68,7 +69,7 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     it?.run {
                         if (resultcode == "200") {
-                            lastDataList.value = result
+                            lastMenuLiveData.value = result
                         } else {
                             ToastUtils.showShort(reason)
                         }
@@ -79,6 +80,25 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                     }
 
                 })
+
+        repository.homeBanner().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(Consumer {
+                    it?.run {
+                        if (resultcode == "200") {
+                            bannerLiveData.value = result
+                        } else {
+                            ToastUtils.showShort(reason)
+                        }
+                    }
+                }, Consumer {
+                    it?.run {
+                        ToastUtils.showShort(message)
+                    }
+
+                })
+
+
     }
 
 }

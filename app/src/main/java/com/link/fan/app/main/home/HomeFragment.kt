@@ -13,11 +13,16 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.link.fan.R
+import com.link.fan.adapters.CardPagerAdapter
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentHomeBinding
+import com.link.fan.databinding.LayoutHomeHeaderBinding
 import com.link.fan.databinding.LayoutHomeRecommendHeadBinding
+import com.link.fan.widgets.card.PanCardTransformer
+import com.link.fan.widgets.card.ShadowTransformer
 import com.link.librarymodule.utils.CommonUtil
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.layout_home_header.*
 
 /**
  *  copyright:TS
@@ -65,29 +70,39 @@ class HomeFragment : Fragment() {
             binding.root.layoutParams = layout
         }
 
-        val adapter = HomeAdapters(R.layout.list_item_home, null)
+        val adapter = HomeAdapter(R.layout.list_item_home, null)
         addHeaderView(adapter, binding)
         binding.menuList.adapter = adapter
         subscribeUi(adapter)
         return binding.root
     }
 
-    private fun addHeaderView(adapter: HomeAdapters, binding: FragmentHomeBinding) {
-        val headerView2 = layoutInflater.inflate(R.layout.layout_home_header, binding.root as ViewGroup, false)
-        adapter.addHeaderView(headerView2)
+    private var transformer: ShadowTransformer? = null
 
-        val headBinding = DataBindingUtil.inflate<LayoutHomeRecommendHeadBinding>(
+    private fun addHeaderView(adapter: HomeAdapter, binding: FragmentHomeBinding) {
+        val headBinding = DataBindingUtil.inflate<LayoutHomeHeaderBinding>(LayoutInflater.from(requireContext()),
+                R.layout.layout_home_header,
+                binding.root as ViewGroup, false)
+        val pageAdapter = CardPagerAdapter()
+        headBinding.viewPager.adapter = pageAdapter
+
+        headBinding.viewPager.setPageTransformer(false, transformer)
+        adapter.addHeaderView(headBinding.root)
+
+        transformer = ShadowTransformer(headBinding.viewPager, pageAdapter)
+
+        val recommendHead = DataBindingUtil.inflate<LayoutHomeRecommendHeadBinding>(
                 LayoutInflater.from(requireContext()),
                 R.layout.layout_home_recommend_head,
                 binding.root as ViewGroup, false)
         val recommendAdapter = RecommendAdapter()
         val lastAdapter = RecommendAdapter()
-        headBinding.recommendList.adapter = recommendAdapter
-        headBinding.recommendList.layoutManager=LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
-        headBinding.lastList.adapter = lastAdapter
-        headBinding.lastList.layoutManager=LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
-        subscribeUi(recommendAdapter, lastAdapter)
-        adapter.addHeaderView(headBinding.root)
+        recommendHead.recommendList.adapter = recommendAdapter
+        recommendHead.recommendList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        recommendHead.lastList.adapter = lastAdapter
+        recommendHead.lastList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        subscribeUi(recommendAdapter, lastAdapter, pageAdapter)
+        adapter.addHeaderView(recommendHead.root)
 
     }
 
@@ -97,8 +112,8 @@ class HomeFragment : Fragment() {
         refresh.isRefreshing = true
     }
 
-    private fun subscribeUi(adapter: HomeAdapters) {
-        viewModel.masterDataList.observe(viewLifecycleOwner) { menuResult ->
+    private fun subscribeUi(adapter: HomeAdapter) {
+        viewModel.masterLiveData.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
                 adapter.setNewData(data)
             }
@@ -106,19 +121,35 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun subscribeUi(recommendAdapter: RecommendAdapter, lastAdapter: RecommendAdapter) {
-        viewModel.lastDataList.observe(viewLifecycleOwner) { menuResult ->
+    private fun subscribeUi(recommendAdapter: RecommendAdapter,
+                            lastAdapter: RecommendAdapter,
+                            pageAdapter: CardPagerAdapter) {
+        viewModel.lastMenuLiveData.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
                 lastAdapter.submitList(data)
             }
             refresh.isRefreshing = false
         }
-        viewModel.recommendDataList.observe(viewLifecycleOwner) { menuResult ->
+        viewModel.recommendLiveData.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
                 recommendAdapter.submitList(data)
             }
             refresh.isRefreshing = false
         }
+
+        viewModel.bannerLiveData.observe(viewLifecycleOwner) { menuResult ->
+            menuResult?.run {
+                for (menu in data) {
+                    pageAdapter.setDataList(data)
+                    viewPager.currentItem = 1
+                    viewPager.offscreenPageLimit = data.size
+                    transformer?.enableScaling(true)
+                }
+
+            }
+        }
+
+
     }
 
 

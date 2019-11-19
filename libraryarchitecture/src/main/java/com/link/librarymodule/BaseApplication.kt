@@ -9,4 +9,5 @@ import android.app.Application
  * 描述：框架提供application基础类
  */
 abstract class BaseApplication : Application() {
+
 }

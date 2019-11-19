@@ -21,4 +21,8 @@
         <item name="android:background">@drawable/btn_commit_select</item>
     </style>
 
+    <style name="ButtonStyle" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorAccent</item>
+    </style>
+
 </resources>

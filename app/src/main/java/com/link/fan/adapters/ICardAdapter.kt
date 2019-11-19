@@ -18,7 +18,7 @@ interface ICardAdapter {
 
     fun getElevation(): Float
 
-    fun getItemCount(): Int
+    fun getCount(): Int
 
     fun getCardView(position: Int): CardView?
 
