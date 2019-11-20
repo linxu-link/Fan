@@ -17,42 +17,21 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        app:cardElevation="@dimen/dp_2"
-        app:cardCornerRadius="@dimen/dp_4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardUseCompatPadding="true"
-        android:onClick="@{clickListener}">
+        android:layout_height="match_parent"
+        android:onClick="@{clickListener}"
+        app:cardCornerRadius="@dimen/dp_6"
+        app:cardElevation="@dimen/dp_2"
+        app:cardUseCompatPadding="true">
 
-        <FrameLayout
+        <ImageView
+            android:id="@+id/cover"
+            imageUrl="@{menuDetail.albums[0]}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            tools:src="@mipmap/logo" />
 
-            <ImageView
-                android:id="@+id/cover"
-                imageUrl="@{menuDetail.albums[0]}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                tools:src="@mipmap/logo" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/transparent_grey" />
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@{menuDetail.title}"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/text_largex_size"
-                tools:text="@string/application_name" />
-
-        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

@@ -42,13 +42,16 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="自己动手，丰衣足食" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
             imageUrl="@{user.avatar}"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@android:color/white"
+            android:background="@drawable/shape_circle_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@mipmap/logo" />

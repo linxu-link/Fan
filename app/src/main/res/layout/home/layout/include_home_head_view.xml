@@ -1,70 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_100">
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView12"
+    <FrameLayout
         android:layout_width="@dimen/dp_80"
-        android:layout_height="@dimen/dp_80"
-        android:layout_marginStart="48dp"
-        android:drawableTop="@mipmap/normal_food"
-        android:gravity="center"
-        android:text="家常菜"
-        android:textColor="@color/text_light_dark"
-        android:textSize="@dimen/text_middle_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="@dimen/dp_80">
 
-    <TextView
-        android:id="@+id/textView13"
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_gravity="top|center_horizontal"
+            android:src="@mipmap/normal_food"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="家常菜"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:textColor="@color/text_light_dark"
+            android:textSize="@dimen/text_middle_size" />
+
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="@dimen/dp_80"
-        android:layout_height="@dimen/dp_80"
-        android:layout_marginStart="8dp"
-        android:drawableTop="@mipmap/western_food"
-        android:gravity="center"
-        android:text="西餐"
-        android:textColor="@color/text_light_dark"
-        android:textSize="@dimen/text_middle_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView14"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="@dimen/dp_80">
 
-    <TextView
-        android:id="@+id/textView14"
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_gravity="top|center_horizontal"
+            android:src="@mipmap/western_food"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"/>
+
+        <TextView
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="西餐"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:textColor="@color/text_light_dark"
+            android:textSize="@dimen/text_middle_size" />
+
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="@dimen/dp_80"
-        android:layout_height="@dimen/dp_80"
-        android:layout_marginStart="8dp"
-        android:drawableTop="@mipmap/dessert"
-        android:gravity="center"
-        android:text="甜品"
-        android:textColor="@color/text_light_dark"
-        android:textSize="@dimen/text_middle_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView15"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="@dimen/dp_80">
 
-    <TextView
-        android:id="@+id/textView15"
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_gravity="top|center_horizontal"
+            android:src="@mipmap/dessert"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"/>
+
+        <TextView
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="甜品"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:textColor="@color/text_light_dark"
+            android:textSize="@dimen/text_middle_size" />
+
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="@dimen/dp_80"
-        android:layout_height="@dimen/dp_80"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="48dp"
-        android:drawableTop="@mipmap/guess_like"
-        android:gravity="center"
-        android:text="猜你喜欢"
-        android:textColor="@color/text_light_dark"
-        android:textSize="@dimen/text_middle_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="@dimen/dp_80">
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_gravity="top|center_horizontal"
+            android:src="@mipmap/guess_like"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"/>
+
+        <TextView
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="猜你喜欢"
+            android:layout_marginBottom="@dimen/dp_6"
+            android:textColor="@color/text_light_dark"
+            android:textSize="@dimen/text_middle_size" />
+
+    </FrameLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

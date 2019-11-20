@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/ic_settings_black" />
+
+    <FrameLayout
+        android:id="@+id/notice"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="match_parent"
+        android:layout_gravity="end">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/dp_6"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_msg" />
+
+        <TextView
+            android:id="@+id/tv_send_count"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="12dp"
+            android:background="@drawable/shape_stroke_circle_red"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="1dp"
+            android:text="11"
+            android:textColor="@android:color/white"
+            android:textSize="7sp"
+            tools:text="11" />
+    </FrameLayout>
+
+</FrameLayout>

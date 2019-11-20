@@ -10,6 +10,8 @@
         android:label="SplashFragment">
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splashFragment"
             app:destination="@id/mainFragment"
             app:enterAnim="@anim/slide_right_in"
             app:exitAnim="@anim/slide_left_out"
@@ -20,16 +22,34 @@
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/slide_right_in"
             app:exitAnim="@anim/slide_left_out"
+            app:launchSingleTop="false"
             app:popEnterAnim="@anim/slide_left_in"
-            app:popExitAnim="@anim/slide_right_out" />
+            app:popExitAnim="@anim/slide_right_out"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.link.fan.app.main.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment">
+
+        <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:popUpToInclusive="false"
+            app:popUpTo="@id/mainFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out" />
+    </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.link.fan.app.login.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="LoginFragment">
+
+    </fragment>
+
 </navigation>

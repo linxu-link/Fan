@@ -2,12 +2,4 @@
 //include ':general_adapter'
 include ':librarybase'
 include ':libraryarchitecture'
-
-//include ':component_login'
-//include ':component_main'
-//include ':component_search'
-//include ':component_user'
-//include ':component_menu'
-//include ':component_update'
-//include ':fan',':component_shopping'
 include ':app'

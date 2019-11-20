@@ -14,52 +14,47 @@
             type="android.view.View.OnClickListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/dp_4"
-        android:layout_height="@dimen/dp_250"
+        android:layout_height="@dimen/dp_200"
+        android:layout_marginTop="@dimen/dp_6"
+        android:layout_marginBottom="@dimen/dp_6"
+        android:background="@drawable/shape_stroke_corner_grey_5dp"
         android:onClick="@{clickListener}"
-        android:orientation="vertical">
+        app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/main_cardview"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/shape_stroke_corner_5dp_grey"
-            app:cardCornerRadius="@dimen/dp_10"
-            app:cardElevation="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:imageUrl="@{menu.albums[0]}"
+            tools:src="@mipmap/logo" />
 
-            <ImageView
-                android:id="@+id/img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                app:imageUrl="@{menu.albums[0]}"
-                tools:src="@mipmap/logo" />
-
-        </androidx.cardview.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_gradient_transparent_grey" />
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:gravity="start"
             android:text="@{menu.title}"
-            tools:text="@string/application_name"
-            android:textColor="@color/font_color"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/text_large_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            tools:text="@string/application_name" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
 </layout>

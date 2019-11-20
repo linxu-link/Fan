@@ -1,9 +1,0 @@
-<resources>
-
-    <style name="update_dialog" parent="Theme.AppCompat.Dialog">
-        <item name="android:windowBackground">@drawable/update_dialog_background</item>
-        <item name="android:windowCloseOnTouchOutside">false</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
-</resources>

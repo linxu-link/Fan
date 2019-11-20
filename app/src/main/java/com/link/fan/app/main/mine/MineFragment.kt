@@ -2,11 +2,8 @@ package com.link.fan.app.main.mine
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.fragment.app.Fragment
 import com.link.fan.R
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.utils.CommonUtil

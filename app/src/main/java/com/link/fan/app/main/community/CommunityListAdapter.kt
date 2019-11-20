@@ -43,7 +43,7 @@ class CommunityListAdapter : ListAdapter<MenuDetail, CommunityListAdapter.Commun
             //TODO
             val direction: NavDirections? = null
 //            val direction = HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(plant.plantId)
-            it.findNavController().navigate(direction!!)
+//            it.findNavController().navigate(direction!!)
         }
 
         fun bind(item: MenuDetail) {

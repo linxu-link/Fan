@@ -2,6 +2,7 @@ package com.link.fan
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.link.fan.databinding.ActivityMainBinding
 import com.link.librarymodule.base.BaseActivity
 
@@ -27,9 +28,9 @@ class MainActivity : BaseActivity() {
 //                .start()
     }
 
-//
+
 //    override fun onSupportNavigateUp(): Boolean {
-//        return findNavController(R.id.nav_host).navigateUp()
+//        return findNavController(R.id.nav_host).popBackStack()
 //    }
 
 

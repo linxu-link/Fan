@@ -44,7 +44,7 @@ class RecommendAdapter : ListAdapter<MenuDetail, RecommendAdapter.RecommendHolde
             //TODO
             val direction: NavDirections? = null
 //            val direction = HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(plant.plantId)
-            it.findNavController().navigate(direction!!)
+//            it.findNavController().navigate(direction!!)
         }
 
         fun bind(item: MenuDetail) {
