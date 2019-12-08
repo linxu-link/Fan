@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.link.fan.R
 import com.link.fan.adapters.CardPagerAdapter
+import com.link.fan.adapters.RecyclerViewScrollListener
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentHomeBinding
 import com.link.fan.databinding.LayoutHomeHeaderBinding

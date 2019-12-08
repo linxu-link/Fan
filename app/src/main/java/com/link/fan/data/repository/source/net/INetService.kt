@@ -1,12 +1,14 @@
 package com.link.fan.data.repository.source.net
 
 import cn.bmob.v3.BmobUser
+import cn.bmob.v3.listener.FindListener
 import cn.bmob.v3.listener.LogInListener
 import cn.bmob.v3.listener.QueryListener
 import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
+import com.link.fan.app.main.community.Community
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.MenuResult
 import io.reactivex.Observable
@@ -23,22 +25,22 @@ interface INetService {
     /**
      * 获取首页的轮播图.
      */
-    fun homeBanner(): Observable<BaseEntity<MenuResult>>
+    fun getHomeBanner(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的今日推荐.
      */
-    fun today(): Observable<BaseEntity<MenuResult>>
+    fun getTodayRecommend(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的最新菜谱.
      */
-    fun lastMenu(): Observable<BaseEntity<MenuResult>>
+    fun getLastMenu(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的菜谱列表.
      */
-    fun home(): Observable<BaseEntity<MenuResult>>
+    fun getHomeDataList(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 登录
@@ -59,4 +61,9 @@ interface INetService {
      * 获取秒杀数据
      */
     fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>>
+
+    /**
+     * 查询社区发帖数据
+     */
+    fun requestCommunityList(type: Int, listener: FindListener<Community>)
 }

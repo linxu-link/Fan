@@ -1,7 +1,6 @@
 package com.link.fan.app.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import cn.bmob.v3.BmobUser
@@ -11,7 +10,6 @@ import com.link.fan.app.main.home.HomeFragment
 import com.link.fan.app.main.mall.MallFragment
 import com.link.fan.app.main.mine.MineFragment
 import com.link.fan.app.main.mine.NoLoginMineFragment
-import com.link.fan.data.bean.UserEntity
 import com.link.librarymodule.base.BaseFragment
 import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.widgets.navgation.BottomNavigationBar

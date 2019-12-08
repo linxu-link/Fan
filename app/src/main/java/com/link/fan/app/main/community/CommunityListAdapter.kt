@@ -3,12 +3,16 @@ package com.link.fan.app.main.community
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.link.fan.R
 import com.link.fan.data.bean.MenuDetail
+import com.link.fan.databinding.ItemListCommunityBinding
 import com.link.fan.databinding.ListItemHomeHeadBinding
 
 /**
@@ -18,37 +22,35 @@ import com.link.fan.databinding.ListItemHomeHeadBinding
  * email:wujia0916@thundersoft.com
  * description:
  */
-class CommunityListAdapter : ListAdapter<MenuDetail, CommunityListAdapter.CommunityListHolder>(HomeDiffCallback()) {
+class CommunityListAdapter : ListAdapter<Community, CommunityListAdapter.CommunityListHolder>(HomeDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommunityListHolder {
-        return CommunityListHolder(ListItemHomeHeadBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return CommunityListHolder(ItemListCommunityBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: CommunityListHolder, position: Int) {
-        val menuResult = getItem(position)
-        holder.bind(menuResult)
+        val community = getItem(position)
+        holder.bind(community)
     }
 
 
-    class CommunityListHolder constructor(private val binding: ListItemHomeHeadBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CommunityListHolder constructor(private val binding: ItemListCommunityBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
-                binding.menuDetail?.let { menuDetail ->
-                    navigateToMenu(menuDetail, it)
+                binding.communityEnity?.objectId?.let { objectId ->
+                    navigateToMenu(objectId, it)
                 }
             }
         }
 
-        private fun navigateToMenu(menuDetail: MenuDetail, it: View) {
-            //TODO
-            val direction: NavDirections? = null
-//            val direction = HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(plant.plantId)
-//            it.findNavController().navigate(direction!!)
+        private fun navigateToMenu(objectId: String, view: View) {
+            val direction = CommunityListFragmentDirections.actionCommunityListFragmentToCommunityDetailFragment(objectId)
+            view.findNavController().navigate(direction)
         }
 
-        fun bind(item: MenuDetail) {
-            binding.apply {
-                menuDetail = item
+        fun bind(item: Community) {
+            with(binding) {
+                communityEnity = item
                 executePendingBindings()
             }
         }
@@ -58,13 +60,13 @@ class CommunityListAdapter : ListAdapter<MenuDetail, CommunityListAdapter.Commun
 
 }
 
-private class HomeDiffCallback : DiffUtil.ItemCallback<MenuDetail>() {
-    override fun areItemsTheSame(oldItem: MenuDetail, newItem: MenuDetail): Boolean {
-        return oldItem.id == newItem.id
+private class HomeDiffCallback : DiffUtil.ItemCallback<Community>() {
+    override fun areItemsTheSame(oldItem: Community, newItem: Community): Boolean {
+        return oldItem.objectId == newItem.objectId
     }
 
-    override fun areContentsTheSame(oldItem: MenuDetail, newItem: MenuDetail): Boolean {
-        return oldItem == newItem
+    override fun areContentsTheSame(oldItem: Community, newItem: Community): Boolean {
+        return oldItem.equals(newItem)
     }
 
 }

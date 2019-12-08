@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="communityEnity"
+            type="com.link.fan.app.main.community.Community" />
+
         <variable
             name="itemClickListener"
-            type="com.link.fan.widgets.layout.NineLayout.ItemClickListener" />
+            type="android.view.View.OnClickListener" />
 
         <variable
             name="clickListener"
@@ -14,47 +19,50 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{clickListener}"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{clickListener}">
 
-        <ImageView
-            android:id="@+id/imageView5"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_50"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/logo" />
+            tools:srcCompat="@mipmap/logo" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:text="@{communityEnity.author.displayName}"
             android:textColor="@color/text_light_dark"
-            android:textStyle="bold"
             android:textSize="@dimen/text_big_size"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/imageView5"
-            android:text="Link" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/avatar"
+            app:layout_constraintTop_toTopOf="@+id/avatar"
+            tools:text="Link" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{communityEnity.createdAt.toString()}"
             android:textColor="@color/text_light"
             android:textSize="@dimen/text_middle_size"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar"
             app:layout_constraintStart_toStartOf="@+id/textView8"
-            android:text="10-12 09:11" />
+            tools:text="10-12 09:11" />
 
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:onClick="@{itemClickListener}"
             app:layout_constraintBottom_toBottomOf="@+id/textView8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView8"
@@ -65,35 +73,36 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:text="@{communityEnity.title}"
+            android:textColor="@color/text_light_dark"
             android:textSize="@dimen/text_big_size"
             android:textStyle="bold"
-            android:textColor="@color/text_light_dark"
-            android:text="#晒出芝士小蛋糕#"
             app:layout_constraintEnd_toEndOf="@+id/imageView6"
-            app:layout_constraintStart_toStartOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+            app:layout_constraintStart_toStartOf="@+id/avatar"
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            tools:text="#晒出芝士小蛋糕#" />
 
         <TextView
             android:id="@+id/content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:text="@{communityEnity.content}"
             android:textColor="@color/text_light"
             android:textSize="@dimen/text_middle_size"
-            android:text="2019年10月了，开新篇了，今天中午的年糕，鸡 爪镇楼~~"
             app:layout_constraintEnd_toEndOf="@+id/title"
             app:layout_constraintStart_toStartOf="@+id/title"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="2019年10月了，开新篇了，今天中午的年糕，鸡 爪镇楼~~" />
 
         <com.link.fan.widgets.layout.NineLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            app:spacing="@dimen/dp_4"
             app:layout_constraintEnd_toEndOf="@+id/content"
             app:layout_constraintStart_toStartOf="@+id/content"
-            app:layout_constraintTop_toBottomOf="@+id/content" />
-
+            app:layout_constraintTop_toBottomOf="@+id/content"
+            app:spacing="@dimen/dp_4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

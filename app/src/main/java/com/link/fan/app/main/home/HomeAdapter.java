@@ -14,7 +14,13 @@ import com.link.fan.R;
 import com.link.fan.data.bean.MenuDetail;
 
 import java.util.List;
-
+/**
+ * copyright:TS
+ * author:wujia
+ * create:2019-11-11-21:05
+ * email:wujia0916@thundersoft.com
+ * description:
+ */
 public class HomeAdapter extends BaseQuickAdapter<MenuDetail, HomeAdapter.HomeViewHolder> {
 
 

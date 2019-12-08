@@ -7,16 +7,17 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.link.fan.app.splash.SplashFragment"
-        android:label="SplashFragment">
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/splashFragment"
             app:destination="@id/mainFragment"
             app:enterAnim="@anim/slide_right_in"
             app:exitAnim="@anim/slide_left_out"
             app:popEnterAnim="@anim/slide_left_in"
-            app:popExitAnim="@anim/slide_right_out" />
+            app:popExitAnim="@anim/slide_right_out"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -32,24 +33,75 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.link.fan.app.main.MainFragment"
-        android:label="MainFragment">
-
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_loginFragment"
-            app:popUpToInclusive="false"
-            app:popUpTo="@id/mainFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_right_in"
-            app:exitAnim="@anim/slide_left_out"
-            app:popEnterAnim="@anim/slide_left_in"
-            app:popExitAnim="@anim/slide_right_out" />
+            android:id="@+id/action_mainFragment_to_CommunityFragment"
+            app:destination="@id/CommunityFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_mallFragment"
+            app:destination="@id/mallFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_mineFragment2"
+            app:destination="@id/mineFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.link.fan.app.login.LoginFragment"
-        android:label="LoginFragment">
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/communityDetailFragment"
+        android:name="com.link.fan.app.main.community.detail.CommunityDetailFragment"
+        android:label="CommunityDetailFragment"
+        tools:layout="@layout/fragment_community_detail">
+
+        <argument
+            android:name="communityId"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CommunityFragment"
+        android:name="com.link.fan.app.main.community.CommunityFragment"
+        android:label="CommunityListFragment"
+        tools:layout="@layout/fragment_community">
+        <action
+            android:id="@+id/action_CommunityFragment_to_communityListFragment"
+            app:destination="@id/communityListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.link.fan.app.main.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/mallFragment"
+        android:name="com.link.fan.app.main.mall.MallFragment"
+        android:label="MallFragment"
+        tools:layout="@layout/fragment_mall" />
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.link.fan.app.main.mine.MineFragment"
+        android:label="MineFragment"
+        tools:layout="@layout/fragment_mine" />
+    <fragment
+        android:id="@+id/communityListFragment"
+        android:name="com.link.fan.app.main.community.CommunityListFragment"
+        android:label="CommunityListFragment">
+        <action
+            android:id="@+id/action_communityListFragment_to_communityDetailFragment"
+            app:destination="@id/communityDetailFragment" />
     </fragment>
 
 </navigation>

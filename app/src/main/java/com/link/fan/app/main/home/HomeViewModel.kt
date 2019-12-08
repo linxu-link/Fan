@@ -29,7 +29,7 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
 
     fun requestData() {
 
-        repository.home().observeOn(AndroidSchedulers.mainThread())
+        repository.getHomeDataList().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(Consumer {
                     it?.run {
@@ -47,7 +47,7 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 })
 
 
-        repository.today().observeOn(AndroidSchedulers.mainThread())
+        repository.getTodayRecommend().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(Consumer {
                     it?.run {
@@ -64,7 +64,7 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
 
                 })
 
-        repository.lastMenu().observeOn(AndroidSchedulers.mainThread())
+        repository.getLastMenu().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(Consumer {
                     it?.run {
@@ -81,7 +81,7 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
 
                 })
 
-        repository.homeBanner().observeOn(AndroidSchedulers.mainThread())
+        repository.getHomeBanner().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(Consumer {
                     it?.run {

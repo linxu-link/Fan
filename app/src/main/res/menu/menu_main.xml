@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:icon="@drawable/ic_home_press"
+        android:title="首页" />
+
+    <item
+        android:icon="@drawable/ic_classification_press"
+        android:title="社区" />
+
+    <item
+        android:icon="@drawable/ic_find_press"
+        android:title="商城" />
+
+    <item
+        android:icon="@drawable/ic_mine_press"
+        android:title="我的" />
+
+</menu>

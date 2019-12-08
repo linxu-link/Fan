@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/list_item_community" />
+                tools:listitem="@layout/item_list_community" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

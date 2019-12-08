@@ -1,86 +1,75 @@
 package com.link.fan.app.main.community
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.link.fan.R
-
-import com.link.fan.app.main.community.dummy.DummyContent
-import com.link.fan.app.main.community.dummy.DummyContent.DummyItem
+import com.link.fan.data.InjectorUtils
+import com.link.fan.databinding.FragmentCommunityListBinding
 
 /**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [CommunityListFragment.OnListFragmentInteractionListener] interface.
+ * copyright:TS
+ * author:wujia
+ * create:2019-11-21-20:09
+ * email:wujia0916@thundersoft.com
+ * description:
  */
 class CommunityListFragment : Fragment() {
 
-    // TODO: Customize parameters
-    private var columnCount = 1
-
-    private var listener: OnListFragmentInteractionListener? = null
+    private var mCommunityType = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
+            mCommunityType = it.getInt(COMMUNITY_TYPE)
         }
+    }
+
+    private val viewModel: CommunityViewModel by viewModels {
+        InjectorUtils.communityViewModelFactory()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_community_list, container, false)
+        val bind = DataBindingUtil.inflate<FragmentCommunityListBinding>(inflater, R.layout.fragment_community_list, container, false)
+                .apply {
+                    lifecycleOwner = this@CommunityListFragment.viewLifecycleOwner
+                    val adapter = CommunityListAdapter()
+                    subscribeUi(adapter)
+                    list.adapter = adapter
+                }
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context)
-                adapter = MyItemRecyclerViewAdapter(DummyContent.ITEMS, listener)
+        return bind.root
+    }
+
+    private fun subscribeUi(adapter: CommunityListAdapter) {
+        viewModel.communityLiveData.observe(this) {
+            it?.run {
+                adapter.submitList(it)
             }
         }
-        return view
     }
 
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.requestData(mCommunityType)
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
-    }
 
     companion object {
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
+        private const val COMMUNITY_TYPE = "community_type"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(columnCount: Int) =
+        fun newInstance(communityType: Int) =
                 CommunityListFragment().apply {
                     arguments = Bundle().apply {
-                        putInt(ARG_COLUMN_COUNT, columnCount)
+                        putInt(COMMUNITY_TYPE, communityType)
                     }
                 }
     }

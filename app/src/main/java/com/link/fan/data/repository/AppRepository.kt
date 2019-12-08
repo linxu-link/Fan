@@ -1,12 +1,13 @@
 package com.link.fan.data.repository
 
 import cn.bmob.v3.BmobUser
-import cn.bmob.v3.listener.LogInListener
+import cn.bmob.v3.listener.FindListener
 import cn.bmob.v3.listener.QueryListener
 import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
+import com.link.fan.app.main.community.Community
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.MenuResult
 import com.link.fan.data.repository.source.local.ILocalService
@@ -39,20 +40,20 @@ class AppRepository constructor(
                 }
     }
 
-    override fun homeBanner(): Observable<BaseEntity<MenuResult>> {
-        return netService.homeBanner()
+    override fun getHomeBanner(): Observable<BaseEntity<MenuResult>> {
+        return netService.getHomeBanner()
     }
 
-    override fun today(): Observable<BaseEntity<MenuResult>> {
-        return netService.today()
+    override fun getTodayRecommend(): Observable<BaseEntity<MenuResult>> {
+        return netService.getTodayRecommend()
     }
 
-    override fun lastMenu(): Observable<BaseEntity<MenuResult>> {
-        return netService.lastMenu()
+    override fun getLastMenu(): Observable<BaseEntity<MenuResult>> {
+        return netService.getLastMenu()
     }
 
-    override fun home(): Observable<BaseEntity<MenuResult>> {
-        return netService.home()
+    override fun getHomeDataList(): Observable<BaseEntity<MenuResult>> {
+        return netService.getHomeDataList()
     }
 
     override fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>) {
@@ -69,6 +70,10 @@ class AppRepository constructor(
 
     override fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>> {
         return netService.getSeconds()
+    }
+
+    override fun requestCommunityList(type: Int, listener: FindListener<Community>) {
+        return netService.requestCommunityList(type,listener)
     }
 
 

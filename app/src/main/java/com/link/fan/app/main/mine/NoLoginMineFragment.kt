@@ -42,11 +42,11 @@ class NoLoginMineFragment : Fragment() {
                 gifId = R.mipmap.icon_jverfy_guide
             }
             mobileClickListener = View.OnClickListener {
-                it.findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+//                it.findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
             }
 
             wxClickListener = View.OnClickListener {
-                findNavController(requireActivity(), it.id).navigate(R.id.action_mainFragment_to_loginFragment)
+//                findNavController(requireActivity(), it.id).navigate(R.id.action_mainFragment_to_loginFragment)
             }
         }
         return binding.root

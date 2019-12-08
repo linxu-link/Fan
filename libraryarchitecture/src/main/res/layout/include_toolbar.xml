@@ -41,7 +41,7 @@
         android:padding="@dimen/dp_6"
         android:visibility="invisible"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_login_out"
+        tools:src="@drawable/ic_login_out"
         app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/title" />

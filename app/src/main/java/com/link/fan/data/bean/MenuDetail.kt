@@ -1,5 +1,10 @@
 package com.link.fan.data.bean
 
+import android.annotation.SuppressLint
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class MenuDetail(
         val id: String,
         val title: String,
@@ -8,4 +13,4 @@ data class MenuDetail(
         val ingredients: String,
         val burden: String,
         val albums: List<String>,
-        val steps: List<StepsBean>)
+        val steps: List<StepsBean>) : Parcelable
