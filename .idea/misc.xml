@@ -36,6 +36,13 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="libraryannotation" />
+      </set>
+    </option>
+  </component>
   <component name="SuppressionsComponent">
     <option name="suppComments" value="[]" />
   </component>

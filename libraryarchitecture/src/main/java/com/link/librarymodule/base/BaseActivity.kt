@@ -15,14 +15,13 @@ import androidx.appcompat.app.AppCompatActivity
 /**
  * @author WJ
  * @date 2019-05-29
- * 
+ *
  * 描述：基类
  */
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setAndroidNativeLightStatusBar(this, true)
     }
 
 
@@ -197,13 +196,12 @@ abstract class BaseActivity : AppCompatActivity() {
      * 设置APP的字体不跟随系统的字体设置
      */
     override fun getResources(): Resources {
-        val res=super.getResources()
+        val res = super.getResources()
         val config = Configuration()
         config.setToDefaults()
-        res.updateConfiguration(config,res.getDisplayMetrics())
+        res.updateConfiguration(config, res.getDisplayMetrics())
         return res
     }
-
 
 
 }

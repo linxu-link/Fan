@@ -31,8 +31,6 @@ class CommunityViewModel constructor(private val repository: AppRepository) : Vi
             }
 
         })
-
-
     }
 
 

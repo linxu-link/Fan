@@ -40,21 +40,23 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when (v!!.id) {
-            R.id.btn_login -> {
-                viewModel.login()
-            }
-            R.id.btn_wb -> {
-                viewModel.clickWb()
-            }
-            R.id.btn_wx -> {
-                viewModel.clickWx()
-            }
-            R.id.btn_qq -> {
-                viewModel.clickQQ()
-            }
-            R.id.btn_send_code -> {
-                viewModel.clickSmsCode()
+        v?.let {
+            when (id) {
+                R.id.btn_login -> {
+                    viewModel.login()
+                }
+                R.id.btn_wb -> {
+                    viewModel.clickWb()
+                }
+                R.id.btn_wx -> {
+                    viewModel.clickWx()
+                }
+                R.id.btn_qq -> {
+                    viewModel.clickQQ()
+                }
+                R.id.btn_send_code -> {
+                    viewModel.clickSmsCode()
+                }
             }
         }
     }

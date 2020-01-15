@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+
     compileSdkVersion build_versions.compile_sdk
 
     defaultConfig libDefaultConfig
@@ -36,8 +37,8 @@ dependencies {
     api deps.fan.viewCommon
     api deps.fan.statelayout
     api deps.fan.network
-    api deps.fan.daemon
-    api deps.fan.filpView
+//    api deps.fan.daemon
+//    api deps.fan.filpView
     api deps.fan.picture
     api deps.alibaba.alipay
 
@@ -76,9 +77,6 @@ dependencies {
         exclude group: 'androidx.core'
         exclude group: 'io.reactivex.rxjava2'
     }
-    //热修复
-    api(deps.tinker.lib) { changing = true }
-
     //云数据库bmob
     api deps.bmob
 
@@ -87,7 +85,6 @@ dependencies {
     api deps.matisse
     //基础的recyclerview封装
     api deps.baseRecyclerView
-
     //内存泄漏检测
     debugApi 'com.squareup.leakcanary:leakcanary-android:2.0-beta-2'
 

@@ -15,6 +15,7 @@ import com.link.librarymodule.utils.CommonUtil
  *  email:wujia0916@thundersoft.com
  *  description:
  */
+//@FragmentDestination(pageUrl = mineUrl, needLogin = true, asStarter = false)
 class MineFragment(override var layoutId: Int = R.layout.fragment_mine) : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

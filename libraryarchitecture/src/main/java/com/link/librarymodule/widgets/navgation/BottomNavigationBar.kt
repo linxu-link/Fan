@@ -18,7 +18,6 @@ class BottomNavigationBar @JvmOverloads constructor(context: Context, attrs: Att
 
     private val array = arrayOf(R.id.home, R.id.community, R.id.mall, R.id.mine)
 
-
     init {
         val rootView = LayoutInflater.from(context).inflate(R.layout.layout_bottom_navigation_bar, null)
         val radioGroup: RadioGroup = rootView.findViewById(R.id.radio_group)

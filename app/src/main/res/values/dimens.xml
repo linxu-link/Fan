@@ -7,5 +7,6 @@
     <dimen name="btnHeight">44sp</dimen>
     <dimen name="marginSize">16sp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

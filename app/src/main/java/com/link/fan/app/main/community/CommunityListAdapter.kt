@@ -1,19 +1,15 @@
 package com.link.fan.app.main.community
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
-import androidx.navigation.NavDirections
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.link.fan.R
-import com.link.fan.data.bean.MenuDetail
+import com.link.fan.app.community.CommunityDetailActivity
 import com.link.fan.databinding.ItemListCommunityBinding
-import com.link.fan.databinding.ListItemHomeHeadBinding
+import com.link.librarymodule.utils.Utils
 
 /**
  * copyright:TS
@@ -32,9 +28,9 @@ class CommunityListAdapter : ListAdapter<Community, CommunityListAdapter.Communi
         val community = getItem(position)
         holder.bind(community)
     }
-
-
+    
     class CommunityListHolder constructor(private val binding: ItemListCommunityBinding) : RecyclerView.ViewHolder(binding.root) {
+
         init {
             binding.setClickListener {
                 binding.communityEnity?.objectId?.let { objectId ->
@@ -44,8 +40,9 @@ class CommunityListAdapter : ListAdapter<Community, CommunityListAdapter.Communi
         }
 
         private fun navigateToMenu(objectId: String, view: View) {
-            val direction = CommunityListFragmentDirections.actionCommunityListFragmentToCommunityDetailFragment(objectId)
-            view.findNavController().navigate(direction)
+            val intent = Intent(Utils.getContext(), CommunityDetailActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            Utils.getContext().startActivity(intent)
         }
 
         fun bind(item: Community) {
@@ -61,6 +58,7 @@ class CommunityListAdapter : ListAdapter<Community, CommunityListAdapter.Communi
 }
 
 private class HomeDiffCallback : DiffUtil.ItemCallback<Community>() {
+
     override fun areItemsTheSame(oldItem: Community, newItem: Community): Boolean {
         return oldItem.objectId == newItem.objectId
     }

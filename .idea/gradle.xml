@@ -9,8 +9,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/libraryannotation" />
             <option value="$PROJECT_DIR$/libraryarchitecture" />
             <option value="$PROJECT_DIR$/librarybase" />
+            <option value="$PROJECT_DIR$/librarynavigation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -4,6 +4,10 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.link.fan.databinding.ActivityMainBinding
+import com.link.fan.navigation.NavGraphBuilder
+import com.link.fan.navigation.NavigationConfig
+import com.link.fan.utils.StatusBar
+import com.link.libraryannotation.ActivityDestination
 import com.link.librarymodule.base.BaseActivity
 
 /**
@@ -16,10 +20,11 @@ import com.link.librarymodule.base.BaseActivity
 class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //开启全屏占用
-        fullScreen(this)
+        StatusBar.fitSystemBar(this)
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        NavigationConfig.setActivityNav(findNavController(R.id.nav_host))
+
 //        //task延迟初始化调度器
 //        val dispatcher = DelayInitDispatcher()
 //        //延迟初始化 热修复检查、更新检查

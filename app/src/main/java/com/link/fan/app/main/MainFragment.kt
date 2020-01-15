@@ -1,18 +1,19 @@
 package com.link.fan.app.main
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import cn.bmob.v3.BmobUser
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.link.fan.R
-import com.link.fan.app.main.community.CommunityFragment
-import com.link.fan.app.main.home.HomeFragment
-import com.link.fan.app.main.mall.MallFragment
-import com.link.fan.app.main.mine.MineFragment
-import com.link.fan.app.main.mine.NoLoginMineFragment
-import com.link.librarymodule.base.BaseFragment
-import com.link.librarymodule.utils.ToastUtils
-import com.link.librarymodule.widgets.navgation.BottomNavigationBar
+import com.link.fan.databinding.FragmentMainBinding
+import com.link.fan.navigation.NavGraphBuilder
+import com.link.fan.navigation.NavigationConfig
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
@@ -22,66 +23,32 @@ import kotlinx.android.synthetic.main.fragment_main.*
  *  email:wujia0916@thundersoft.com
  *  description:
  */
-class MainFragment(override var layoutId: Int = R.layout.fragment_main) : BaseFragment(), BottomNavigationBar.OnClickListener {
+class MainFragment : Fragment(), BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private var mFragmentList = arrayListOf<Fragment>()
+    private lateinit var mNavController: NavController
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        bottom_navigation_bar.setOnItemClickListener(this)
-        mFragmentList.add(HomeFragment.newInstance())
-        mFragmentList.add(CommunityFragment.newInstance())
-        mFragmentList.add(MallFragment.newInstance())
-        if (BmobUser.isLogin()) {
-            mFragmentList.add(MineFragment.newInstance())
-        } else {
-            mFragmentList.add(NoLoginMineFragment.newInstance())
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val binding = DataBindingUtil.inflate<FragmentMainBinding>(inflater, R.layout.fragment_main, container, false).apply {
+            lifecycleOwner = this@MainFragment.viewLifecycleOwner
+            childFragmentManager.findFragmentById(R.id.main_nav_host)?.apply {
+                mNavController = NavHostFragment.findNavController(this)
+                NavGraphBuilder.build(this, mNavController, this.id)
+                mainNavView.setOnNavigationItemSelectedListener(this@MainFragment)
+            }
         }
-        val transaction = childFragmentManager.beginTransaction()
-        mCurrent = mFragmentList[0]
-
-        transaction.replace(R.id.content, mCurrent!!)
-        transaction.commit()
-
+        return binding.root
     }
 
-    private var mCurrent: Fragment? = null
+    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
 
-    override fun onBottomItemClickListener(checkedId: Int) {
-        val transaction = childFragmentManager.beginTransaction()
-        if (checkedId == R.id.home) {
-            if (mCurrent != null) {
-                transaction.hide(mCurrent!!)
-            }
-            mCurrent = mFragmentList[0]
-
-        } else if (checkedId == R.id.community) {
-            if (mCurrent != null) {
-                transaction.hide(mCurrent!!)
-            }
-            mCurrent = mFragmentList[1]
-        } else if (checkedId == R.id.mall) {
-            if (mCurrent != null) {
-                transaction.hide(mCurrent!!)
-            }
-            mCurrent = mFragmentList[2]
-        } else if (checkedId == R.id.mine) {
-            if (mCurrent != null) {
-                transaction.hide(mCurrent!!)
-            }
-            mCurrent = mFragmentList[3]
-        } else if (checkedId == R.id.add_menu) {
-            ToastUtils.showLong("add")
+        val destinationConfig = NavigationConfig.getDestinationConfig()
+        destinationConfig?.apply {
+            //遍历 target destination 是否需要登录拦截
+//            for ((_, dest) in destinationConfig.entries) {
+//                main_nav_view.selectedItemId = menuItem.itemId
+//            }
         }
-
-        if (mCurrent!!.isAdded) {
-            transaction.show(mCurrent!!)
-        } else {
-            transaction.add(R.id.content, mCurrent!!)
-        }
-        transaction.commit()
+        mNavController.navigate(menuItem.itemId)
+        return menuItem.title.isNotEmpty()
     }
-
-
 }

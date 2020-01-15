@@ -85,11 +85,11 @@ glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
 glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
 deps.glide = glide
 
-def tinker = [:]
-tinker.anno = "com.tencent.tinker:tinker-android-anno:$versions.tinker"
-tinker.lib = "com.tencent.tinker:tinker-android-lib:$versions.tinker"
-tinker.gradle_plugin = "com.tencent.tinker:tinker-patch-gradle-plugin:$versions.tinker"
-deps.tinker = tinker
+//def tinker = [:]
+//tinker.anno = "com.tencent.tinker:tinker-android-anno:$versions.tinker"
+//tinker.lib = "com.tencent.tinker:tinker-android-lib:$versions.tinker"
+//tinker.gradle_plugin = "com.tencent.tinker:tinker-patch-gradle-plugin:$versions.tinker"
+//deps.tinker = tinker
 
 def alibaba = [:]
 alibaba.router = "com.alibaba:arouter-api:1.4.1"
@@ -120,7 +120,7 @@ bugly.nativecrashreport = 'com.tencent.bugly:nativecrashreport:3.3.1'
 deps.bugly = bugly
 
 deps.junit = "junit:junit:$versions.junit"
-deps.android_gradle_plugin = "com.android.tools.build:gradle:3.4.1"
+deps.android_gradle_plugin = "com.android.tools.build:gradle:3.5.3"
 deps.bmob = 'cn.bmob.android:bmob-sdk:3.7.3-rc1'
 deps.matisse = 'com.zhihu.android:matisse:0.5.2-beta5'
 deps.baseRecyclerView = 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
@@ -143,7 +143,7 @@ deps.fan = fan
 
 
 def build_versions = [:]
-build_versions.min_sdk = 19
+build_versions.min_sdk = 21
 build_versions.target_sdk = 28
 build_versions.compile_sdk = 28
 build_versions.versionCode = 20190819

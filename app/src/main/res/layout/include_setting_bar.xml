@@ -8,11 +8,12 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="match_parent"
-        android:padding="@dimen/dp_10"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:padding="@dimen/dp_8"
+        android:layout_gravity="center_vertical"
         android:adjustViewBounds="true"
-        app:srcCompat="@drawable/ic_settings_black" />
+        app:srcCompat="@mipmap/icon_menu_setting" />
 
     <FrameLayout
         android:id="@+id/notice"
@@ -21,13 +22,12 @@
         android:layout_gravity="end">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
             android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:padding="@dimen/dp_6"
+            android:padding="@dimen/dp_8"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_msg" />
+            app:srcCompat="@mipmap/icon_menu_message" />
 
         <TextView
             android:id="@+id/tv_send_count"

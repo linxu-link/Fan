@@ -4,18 +4,22 @@
 
 
     <item
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home_press"
         android:title="首页" />
 
     <item
+        android:id="@+id/communityFragment"
         android:icon="@drawable/ic_classification_press"
         android:title="社区" />
 
     <item
+        android:id="@+id/mallFragment"
         android:icon="@drawable/ic_find_press"
         android:title="商城" />
 
     <item
+        android:id="@+id/noLoginMineFragment"
         android:icon="@drawable/ic_mine_press"
         android:title="我的" />
 

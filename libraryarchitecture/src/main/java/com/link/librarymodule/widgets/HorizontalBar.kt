@@ -60,9 +60,6 @@ class HorizontalBar @JvmOverloads constructor(context: Context, attrs: Attribute
             canvas.drawLine(20f, 30f, mCurrentLineWidth, 30f, mPaint)
         }
 
-
-
-        Log.e("TAG", "xxxxx")
     }
 
     private var mLineAnimator: ObjectAnimator? = null

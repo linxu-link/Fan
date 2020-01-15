@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.link.fan.R
 import com.link.fan.databinding.FragmentCommunityBinding
+import com.link.fan.navigation.communityUrl
+import com.link.libraryannotation.FragmentDestination
 import com.link.librarymodule.base.adapter.FixPagerAdapter
 import java.util.*
 
@@ -19,6 +21,7 @@ import java.util.*
  *  email:wujia0916@thundersoft.com
  *  description:
  */
+@FragmentDestination(pageUrl = communityUrl, needLogin = false, asStarter = false)
 class CommunityFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

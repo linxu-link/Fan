@@ -1,8 +1,0 @@
-<resources>
-
-    <style name="Main_TabLayoutTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
-        <item name="android:textSize">@dimen/text_big_size</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
-</resources>

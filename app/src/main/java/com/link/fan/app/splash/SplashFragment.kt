@@ -36,7 +36,7 @@ class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : Ba
                     if (it) {
                         RxCountDown.countdown(1).subscribe(Consumer {
                             if (it == 0) {
-                                Navigation.findNavController(activity!!, R.id.root_view).navigate(R.id.action_splashFragment_to_mainFragment)
+                                Navigation.findNavController(requireActivity(), R.id.root_view).navigate(R.id.action_splashFragment_to_mainFragment)
                             }
                         })
                     } else {

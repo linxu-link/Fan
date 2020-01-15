@@ -13,13 +13,17 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:name,android:theme,android:label,android:icon">
-
+        <activity android:name=".app.community.reply.ReplyActivity"></activity>
+        <activity android:name=".app.community.CommunityDetailActivity" />
+        <activity android:name=".app.login.LoginActivity" />
+        <activity
+            android:name=".app.publish.PublishActivity"
+            android:label="@string/title_activity_publish" />
         <activity
             android:name=".app.update.UpdateActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/update_dialog" />
-
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -31,17 +35,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".utils.alipay.AliPayResultActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".utils.wxapi.WXPayEntryActivity"
+        <activity
+            android:name=".utils.alipay.AliPayResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".utils.wxapi.WXPayEntryActivity"
             android:screenOrientation="portrait" />
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.link.fan.BmobContentProvider" />
-
     </application>
 
 </manifest>

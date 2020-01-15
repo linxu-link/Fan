@@ -13,7 +13,9 @@ import com.link.fan.R
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentMallBinding
 import com.link.fan.utils.JavaScriptInterface
+import com.link.fan.navigation.mallUrl
 import com.link.fan.widgets.webview.X5WebView
+import com.link.libraryannotation.FragmentDestination
 import com.link.librarymodule.constant.SHOPPING_WEB_URL
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse
@@ -26,6 +28,7 @@ import kotlinx.android.synthetic.main.fragment_mall.*
  *  email:wujia0916@thundersoft.com
  *  description:
  */
+@FragmentDestination(pageUrl = mallUrl, needLogin = false, asStarter = false)
 class MallFragment : Fragment() {
 
     private var mX5WebView: X5WebView? = null
