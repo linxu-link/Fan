@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="community"
+            type="com.link.fan.data.bean.CommunityEntity" />
+
+        <variable
+            name="lifeCycleOwner"
+            type="androidx.lifecycle.LifecycleOwner" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_10">
+
+        <include
+            layout="@layout/include_community_author"
+            app:user="@{community.author}" />
+
+        <include
+            layout="@layout/include_community_tag"
+            app:tagText="@{community.activityText}" />
+
+        <include
+            layout="@layout/include_community_text"
+            app:content="@{community.feeds_text}"
+            app:lines="@{3}" />
+
+        <com.link.fan.widgets.PPImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10" />
+
+
+    </LinearLayout>
+</layout>

@@ -12,9 +12,10 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:padding="6dp"
-        android:src="@drawable/ic_search" />
+        android:src="@drawable/icon_search" />
 
-    <TextView
+    <EditText
+        android:id="@+id/et_search_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="3dp"
@@ -23,6 +24,6 @@
         android:gravity="start|center_vertical"
         android:textColor="@color/transparent_grey"
         android:textSize="@dimen/text_middle_size"
-        android:text="请输入关键词" />
+        android:hint="请输入关键词" />
 
 </LinearLayout>

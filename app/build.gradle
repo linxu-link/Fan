@@ -103,7 +103,7 @@ walle {
     //configFile与channelFile两者必须存在一个，否则无法生成渠道包。两者都存在时优先执行configFile
     channelFile = new File("${project.getProjectDir()}/channel")
 //    channelFile只支持渠道写入，如果想插入除渠道以外的其他信息，请在walle配置中使用configFile
-    //configFile = new File("${project.getProjectDir()}/config.json")
+    //configFile = new File("${project.getProjectDir()}/mConfig.json")
 }
 
 

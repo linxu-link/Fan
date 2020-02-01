@@ -7,7 +7,7 @@
 
         <variable
             name="communityEnity"
-            type="com.link.fan.app.main.community.Community" />
+            type="com.link.fan.data.bean.CommunityEntity" />
 
         <variable
             name="itemClickListener"
@@ -38,7 +38,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{communityEnity.author.displayName}"
             android:textColor="@color/text_light_dark"
             android:textSize="@dimen/text_big_size"
             android:textStyle="bold"
@@ -50,7 +49,6 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{communityEnity.createdAt.toString()}"
             android:textColor="@color/text_light"
             android:textSize="@dimen/text_middle_size"
             app:layout_constraintBottom_toBottomOf="@+id/avatar"
@@ -73,7 +71,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{communityEnity.title}"
             android:textColor="@color/text_light_dark"
             android:textSize="@dimen/text_big_size"
             android:textStyle="bold"
@@ -87,7 +84,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="@{communityEnity.content}"
             android:textColor="@color/text_light"
             android:textSize="@dimen/text_middle_size"
             app:layout_constraintEnd_toEndOf="@+id/title"

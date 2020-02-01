@@ -1,9 +1,10 @@
 package com.link.fan.data
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.link.fan.app.community.list.CommunityListViewModel
 import com.link.fan.app.login.LoginViewModel
-import com.link.fan.app.main.community.CommunityViewModel
 import com.link.fan.app.main.home.HomeViewModel
 import com.link.fan.app.main.mall.MallViewModel
 import com.link.fan.data.repository.AppRepository
@@ -24,8 +25,8 @@ class ViewModelFactory constructor(private val repository: AppRepository) : View
             return LoginViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(repository) as T
-        } else if (modelClass.isAssignableFrom(CommunityViewModel::class.java)) {
-            return CommunityViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(CommunityListViewModel::class.java)) {
+            return CommunityListViewModel(repository) as T
         }else if (modelClass.isAssignableFrom(MallViewModel::class.java)){
             return MallViewModel(repository) as T
         }

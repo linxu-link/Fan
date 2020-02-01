@@ -80,7 +80,7 @@ public class RetrofitClient {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .cache(cache)
                 //禁止代理，可以防止charles抓包
-                .proxy(Proxy.NO_PROXY)
+//                .proxy(Proxy.NO_PROXY)
                 .addInterceptor(new BaseInterceptor(headers))
                 .addInterceptor(new CacheInterceptor(mContext))
                 .addInterceptor(new UrlInterceptor())

@@ -2,49 +2,55 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/toolbar"
+    android:id="@+id/toolbar_searcher"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
     android:background="@android:color/white"
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/toolbar_left_icon"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:src="@drawable/ic_arrow_back_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:textColor="@color/font_color"
-        android:textSize="@dimen/text_big_size"
-        app:layout_constraintBottom_toBottomOf="@+id/back"
+        android:textSize="@dimen/text_large_size"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/back"
-        tools:text="@string/app_name" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/application_name" />
 
     <ImageView
-        android:id="@+id/right_icon"
+        android:id="@+id/toolbar_right_icon"
         android:layout_width="@dimen/dp_30"
         android:layout_height="@dimen/dp_30"
+        android:layout_marginEnd="8dp"
         android:padding="@dimen/dp_6"
         android:visibility="invisible"
-        android:layout_marginEnd="8dp"
-        tools:src="@drawable/ic_login_out"
-        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_login_out"
+        tools:visibility="visible" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

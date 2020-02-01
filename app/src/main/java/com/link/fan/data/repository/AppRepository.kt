@@ -7,8 +7,9 @@ import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
-import com.link.fan.app.main.community.Community
+import com.link.fan.data.bean.CommunityEntity
 import com.link.fan.data.bean.BaseEntity
+import com.link.fan.data.bean.BaseResult
 import com.link.fan.data.bean.MenuResult
 import com.link.fan.data.repository.source.local.ILocalService
 import com.link.fan.data.repository.source.net.INetService
@@ -72,8 +73,9 @@ class AppRepository constructor(
         return netService.getSeconds()
     }
 
-    override fun requestCommunityList(type: Int, listener: FindListener<Community>) {
-        return netService.requestCommunityList(type,listener)
+    override fun getCommunityList(pageCount: Int, feedId: Int, feedType: String, userId: Int):
+            Observable<BaseEntity<BaseResult<List<CommunityEntity>>>> {
+        return netService.getCommunityList(pageCount, feedId, feedType, userId)
     }
 
 

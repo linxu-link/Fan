@@ -1,5 +1,5 @@
 //include ':view_flip', ':general_statelayout', ':general_daemon','view_common',':general_network',':general_picture'
 //include ':general_adapter'
-include ':librarybase', ':libraryannotation', ':librarynavigation'
+include ':librarybase', ':libraryannotation', ':librarynavigation', ':librarynetwork'
 include ':libraryarchitecture'
 include ':app'

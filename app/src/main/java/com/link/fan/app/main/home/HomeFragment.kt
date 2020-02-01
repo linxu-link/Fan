@@ -6,7 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.link.fan.R
 import com.link.fan.adapters.CardPagerAdapter
+import com.link.fan.app.menu.catalog.CatalogActivity
+import com.link.fan.app.search.SearchActivity
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.FragmentHomeBinding
 import com.link.fan.databinding.LayoutHomeHeaderBinding
@@ -37,6 +41,7 @@ import kotlinx.android.synthetic.main.layout_home_header.*
 class HomeFragment : Fragment() {
 
     companion object {
+
         @JvmStatic
         fun newInstance() =
                 HomeFragment().apply {
@@ -52,7 +57,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private val viewModel: HomeViewModel by viewModels {
         InjectorUtils.homeViewModelFactory()
     }
@@ -64,6 +68,16 @@ class HomeFragment : Fragment() {
 
             refresh.setOnRefreshListener {
                 this@HomeFragment.viewModel.requestData()
+            }
+        }
+
+        binding.toolbarSearcher.findViewById<ImageView>(R.id.toolbar_left_icon).setOnClickListener {
+            CatalogActivity.startActivity(requireContext())
+        }
+
+        binding.toolbarSearcher.findViewById<EditText>(R.id.et_search_bar).setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                SearchActivity.startActivity(requireContext())
             }
         }
 

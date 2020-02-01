@@ -4,12 +4,14 @@ import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
 import com.link.fan.data.bean.BaseEntity
+import com.link.fan.data.bean.BaseResult
+import com.link.fan.data.bean.CommunityEntity
 import com.link.fan.data.bean.MenuResult
+import com.link.librarymodule.constant.DEFAULT_URL
 import com.link.librarymodule.constant.MOCK
 import com.link.librarymodule.constant.URL_TYPE
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Headers
+import retrofit2.http.*
 
 /**
  * copyright:TS
@@ -62,5 +64,15 @@ interface RetrofitHttpService {
     @Headers("${URL_TYPE}:${MOCK}")
     @GET("mock/5dd13d3a11f6e545761facb1/fan/mall/newSeconds")
     fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>>
+
+    /**
+     * 获取社区发帖列表
+     */
+    @Headers("${URL_TYPE}:${DEFAULT_URL}")
+    @GET("serverdemo/feeds/queryHotFeedsList")
+    fun getCommunityList(@Query("pageCount") pageCount: Int,
+                         @Query("feedId") feedId: Int,
+                         @Query("feedType") feedType: String,
+                         @Query("userId") userId: Int): Observable<BaseEntity<BaseResult<List<CommunityEntity>>>>
 
 }

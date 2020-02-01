@@ -1,12 +1,9 @@
 package com.link.librarymodule.http;
 
-import android.text.TextUtils;
-
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.HttpUrl;
@@ -14,6 +11,8 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static com.link.librarymodule.constant.ConstantKt.DEFAULT_DATA_URL;
+import static com.link.librarymodule.constant.ConstantKt.DEFAULT_URL;
 import static com.link.librarymodule.constant.ConstantKt.JUHE;
 import static com.link.librarymodule.constant.ConstantKt.JUHE_DATA_URL;
 import static com.link.librarymodule.constant.ConstantKt.MOCK;
@@ -60,7 +59,9 @@ public class UrlInterceptor implements Interceptor {
                 baseURL = HttpUrl.parse(MOCK_DATA_URL);
             } else if (JUHE.equals(urlName)) {
                 baseURL = HttpUrl.parse(JUHE_DATA_URL);
-            }  else {
+            } else if (DEFAULT_URL.equals(urlName)) {
+                baseURL = HttpUrl.parse(DEFAULT_DATA_URL);
+            } else {
                 baseURL = HttpUrl.parse(JUHE_DATA_URL);
             }
             //重建新的HttpUrl，需要重新设置的url部分

@@ -49,6 +49,10 @@ dependencies {
     api deps.androidx.core_ktx
     api deps.androidx.fragment_ktx
     api deps.androidx.legacy
+
+    //material组件
+    api 'com.google.android.material:material:1.2.0-alpha03'
+
     //MVVM核心库
     api deps.lifecycle.viewmodel_ktx
     api deps.lifecycle.extensions
@@ -57,10 +61,12 @@ dependencies {
     api deps.navigation.fragment_ktx
     api deps.navigation.ui_ktx
 
+    // room
     api(deps.room.runtime) {
         exclude group: 'androidx.arch.core'
     }
-    api deps.room.rxjava2
+    // paging
+    api 'androidx.paging:paging-runtime:2.1.0'
 
     //kotlin
     api deps.kotlin.stdlib
@@ -80,7 +86,16 @@ dependencies {
     //云数据库bmob
     api deps.bmob
 
+    //视频播放组件
+    api 'com.google.android.exoplayer:exoplayer-core:2.10.4'
+    api 'com.google.android.exoplayer:exoplayer-dash:2.10.4'
+    api 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
+
+    //图片加载
     api deps.glide.runtime
+    api 'jp.wasabeef:glide-transformations:4.0.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+
     //图片选择框架
     api deps.matisse
     //基础的recyclerview封装
@@ -105,6 +120,8 @@ dependencies {
 
     //美团多渠道打包
     api 'com.meituan.android.walle:library:1.1.6'
+
+    api 'com.youth.banner:banner:1.4.10'
 
 
 }

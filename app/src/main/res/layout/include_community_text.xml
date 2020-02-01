@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="content"
+            type="java.lang.String" />
+
+        <variable
+            name="lines"
+            type="java.lang.Integer" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:ellipsize="end"
+        android:lines="@{lines}"
+        android:orientation="vertical"
+        android:text="@{content}"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_big_size"
+        tools:text="神秘的皮皮虾神秘的皮皮虾">
+
+    </TextView>
+</layout>

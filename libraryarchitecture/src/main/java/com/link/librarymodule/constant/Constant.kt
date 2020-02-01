@@ -18,6 +18,11 @@ const val MOCK_DATA_URL = "http://118.24.197.176:7300/"
 //easy mock url 标识
 const val MOCK = "mock"
 
+// 默认数据源
+const val DEFAULT_DATA_URL = "http://106.54.78.62:8081/"
+// 默认数据标示
+const val DEFAULT_URL = "default"
+
 //自定义商城的访问地址
 const val SHOPPING_WEB_URL = "http://118.24.197.176"
 

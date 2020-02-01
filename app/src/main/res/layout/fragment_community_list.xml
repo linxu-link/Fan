@@ -15,6 +15,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".app.main.community.CommunityListFragment"
-        tools:listitem="@layout/item_list_community" />
+        tools:context=".app.community.list.CommunityListFragment"
+        tools:listitem="@layout/item_list_community_type_image" />
 </layout>

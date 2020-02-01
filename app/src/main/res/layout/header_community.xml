@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,20 +12,20 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager2"
-            android:layout_width="match_parent"
-            android:layout_height="185dp"
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <include
-            android:id="@+id/layout_search_bar"
+            android:id="@+id/toolbar_searcher"
             layout="@layout/include_toolbar_search"
             android:layout_width="0dp"
             android:layout_height="?android:attr/actionBarSize"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="23.5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,18 +44,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cardView2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager2">
+            app:layout_constraintTop_toBottomOf="@+id/banner">
 
             <ImageView
-                android:background="@mipmap/background_1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:background="@mipmap/background_1" />
 
             <TextView
-                android:textSize="@dimen/text_big_size"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textSize="@dimen/text_big_size"
+                android:textStyle="bold"
+                android:text="#上班族的早餐#\n社区热门话题" />
 
         </androidx.cardview.widget.CardView>
 
@@ -64,24 +68,27 @@
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="24dp"
-            app:cardUseCompatPadding="true"
             app:cardCornerRadius="@dimen/dp_6"
             app:cardElevation="@dimen/dp_2"
+            app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="@+id/cardView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="@+id/cardView">
 
             <ImageView
-                android:background="@mipmap/background_2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:background="@mipmap/background_2" />
 
             <TextView
-                android:textSize="@dimen/text_big_size"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textSize="@dimen/text_big_size"
+                android:textStyle="bold"
+                android:text="#每日健康饮食#\n社区热门话题" />
 
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,20 +1,17 @@
 package com.link.fan.data.repository.source.net
 
-import android.util.Log
-import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.BmobSMS
 import cn.bmob.v3.BmobUser
-import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
-import cn.bmob.v3.listener.LogInListener
 import cn.bmob.v3.listener.QueryListener
 import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
 import com.link.fan.R
-import com.link.fan.app.main.community.Community
 import com.link.fan.data.bean.BaseEntity
+import com.link.fan.data.bean.BaseResult
+import com.link.fan.data.bean.CommunityEntity
 import com.link.fan.data.bean.MenuResult
 import com.link.librarymodule.utils.Utils
 import io.reactivex.Observable
@@ -31,6 +28,11 @@ class NetServiceImpl constructor(private val service: RetrofitHttpService) : INe
 
     override fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>> {
         return service.getSeconds()
+    }
+
+    override fun getCommunityList(pageCount: Int, feedId: Int, feedType: String, userId: Int):
+            Observable<BaseEntity<BaseResult<List<CommunityEntity>>>> {
+        return service.getCommunityList(pageCount, feedId, feedType, userId)
     }
 
     override fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>> {
@@ -69,12 +71,6 @@ class NetServiceImpl constructor(private val service: RetrofitHttpService) : INe
      */
     override fun getSmsCode(phone: String, listener: QueryListener<Int>) {
         BmobSMS.requestSMSCode(phone, Utils.getContext().resources.getString(R.string.sms_template), listener)
-    }
-
-    override fun requestCommunityList(type: Int, listener: FindListener<Community>) {
-        val bmobQuery: BmobQuery<Community> = BmobQuery()
-        bmobQuery.addWhereEqualTo("type", type)
-        bmobQuery.findObjects(listener)
     }
 
     companion object {

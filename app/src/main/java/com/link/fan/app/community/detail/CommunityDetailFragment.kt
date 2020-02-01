@@ -1,4 +1,4 @@
-package com.link.fan.app.community
+package com.link.fan.app.community.detail
 
 
 import android.os.Bundle
@@ -35,7 +35,7 @@ class CommunityDetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_community_detail, container, false)
+        return inflater.inflate(R.layout.activity_community_detail, container, false)
     }
 
 

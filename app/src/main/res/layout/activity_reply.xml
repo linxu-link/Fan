@@ -6,6 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".app.community.reply.ReplyActivity">
 
-    <include layout="@layout/include_upload_layout" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/include_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="2dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_stroke_corner_4dp_white"
+        android:elevation="1dp"
+        android:gravity="top"
+        android:hint="分享新鲜事……"
+        android:maxEms="300"
+        android:padding="@dimen/dp_10"
+        android:textSize="@dimen/text_middle_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="确定"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_middle_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

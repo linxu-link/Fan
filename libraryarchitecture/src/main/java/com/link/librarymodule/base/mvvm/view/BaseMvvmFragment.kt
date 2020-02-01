@@ -12,7 +12,7 @@ import com.link.general_statelayout.StateLayoutManager
 import com.link.general_statelayout.listener.OnNetworkListener
 import com.link.general_statelayout.listener.OnRetryListener
 import com.link.librarymodule.base.BaseStateFragment
-import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
+import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModels
 import com.link.librarymodule.receiver.NetworkConnectChangedReceiver
 import java.lang.reflect.ParameterizedType
 import android.provider.Settings.ACTION_WIFI_SETTINGS
@@ -25,7 +25,7 @@ import android.content.Intent
  *
  * 描述：Mvvm架构下Fragment基类
  */
-abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(), IBaseView, NetworkConnectChangedReceiver.NetworkChangeListener {
+abstract class BaseMvvmFragment<VM : BaseViewModels<*>> : BaseStateFragment(), IBaseView, NetworkConnectChangedReceiver.NetworkChangeListener {
 
     protected lateinit var mViewModel: VM
 
@@ -77,8 +77,8 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(), IB
             if (type is ParameterizedType) {
                 modelClass = type.actualTypeArguments[1] as Class<VM>
             } else {
-                //如果没有指定泛型参数，则默认使用BaseViewModel
-                modelClass = BaseViewModel::class.java as Class<VM>
+                //如果没有指定泛型参数，则默认使用BaseViewModels
+                modelClass = BaseViewModels::class.java as Class<VM>
             }
             mViewModel = createViewModel(this, modelClass)
         }
@@ -96,14 +96,14 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(), IB
     protected fun registorUIChangeLiveDataCallBack() {
         //跳入新页面
         mViewModel.uc.startActivityEvent.observe(this, Observer { params ->
-            val clazz = params!![BaseViewModel.ParameterField.CLASS] as Class<*>
-            val bundle = params[BaseViewModel.ParameterField.BUNDLE] as Bundle
+            val clazz = params!![BaseViewModels.ParameterField.CLASS] as Class<*>
+            val bundle = params[BaseViewModels.ParameterField.BUNDLE] as Bundle
             startActivity(clazz, bundle)
         })
         //跳入ContainerActivity
         mViewModel.uc.startContainerActivityEvent.observe(this, Observer { params ->
-            val canonicalName = params!![BaseViewModel.ParameterField.CANONICAL_NAME] as String
-            val bundle = params[BaseViewModel.ParameterField.BUNDLE] as Bundle?
+            val canonicalName = params!![BaseViewModels.ParameterField.CANONICAL_NAME] as String
+            val bundle = params[BaseViewModels.ParameterField.BUNDLE] as Bundle?
             startContainerActivity(canonicalName, bundle)
         })
         //关闭界面
@@ -124,7 +124,7 @@ abstract class BaseMvvmFragment<VM : BaseViewModel<*>> : BaseStateFragment(), IB
     /**
      * 初始化ViewModel
      *
-     * @return 继承BaseViewModel的ViewModel
+     * @return 继承BaseViewModels的ViewModel
      */
     abstract fun returnViewModel(): VM
 

@@ -23,13 +23,13 @@ import io.reactivex.functions.Consumer;
  * <p>
  * 描述：
  */
-public class BaseViewModel<M extends BaseRepository> extends ViewModel implements IBaseViewModel, Consumer<Disposable> {
+public class BaseViewModels<M extends BaseRepository> extends ViewModel implements IBaseViewModel, Consumer<Disposable> {
     protected M model;
     private UIChangeLiveData uc;
     //管理RxJava，主要针对RxJava异步操作造成的内存泄漏
     private CompositeDisposable mCompositeDisposable;
 
-    public BaseViewModel(M model) {
+    public BaseViewModels(M model) {
         this.model = model;
         mCompositeDisposable = new CompositeDisposable();
     }

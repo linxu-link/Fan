@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/toolbar"
+    android:id="@+id/toolbar_searcher"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
     android:background="@color/transparent"
@@ -18,12 +18,13 @@
         app:layout_constraintTop_toTopOf="@+id/search_bar">
 
         <ImageView
+            android:id="@+id/toolbar_right_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
             android:padding="@dimen/dp_8"
+            android:scaleType="fitCenter"
             android:src="@mipmap/icon_menu_message" />
 
         <TextView
@@ -37,10 +38,11 @@
             android:gravity="center"
             android:maxLines="1"
             android:padding="1dp"
-            android:text="11"
             android:textColor="@android:color/white"
             android:textSize="7sp"
-            tools:text="11" />
+            android:visibility="gone"
+            tools:text="11"
+            tools:visibility="visible" />
     </FrameLayout>
 
     <include
@@ -58,11 +60,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/toolbar_left_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:scaleType="fitCenter"
         android:padding="@dimen/dp_8"
+        android:scaleType="fitCenter"
         android:src="@mipmap/icon_menu_food_kinds"
         app:layout_constraintBottom_toBottomOf="@+id/search_bar"
         app:layout_constraintEnd_toStartOf="@+id/search_bar"

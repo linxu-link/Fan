@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="tagText"
+            type="java.lang.String" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:stateListAnimator="@null"
+        android:text="@{tagText}"
+        android:textColor="@color/font_color"
+        android:textSize="10sp"
+        app:backgroundTint="@color/grey_light"
+        app:cornerRadius="8dp"
+        app:icon="@mipmap/icon_tag"
+        app:iconGravity="textStart"
+        app:iconPadding="4dp"
+        app:iconSize="12dp"
+        app:iconTintMode="multiply"
+        tools:text="神秘皮皮虾" />
+</layout>

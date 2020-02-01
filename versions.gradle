@@ -144,10 +144,10 @@ deps.fan = fan
 
 def build_versions = [:]
 build_versions.min_sdk = 21
-build_versions.target_sdk = 28
-build_versions.compile_sdk = 28
+build_versions.target_sdk = 29
+build_versions.compile_sdk = 29
 build_versions.versionCode = 20190819
-build_versions.versionName = "1.0.4"
+build_versions.versionName = "1.0.0"
 ext.build_versions = build_versions
 
 

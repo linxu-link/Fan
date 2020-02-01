@@ -2,14 +2,14 @@ package com.link.fan.data.repository.source.net
 
 import cn.bmob.v3.BmobUser
 import cn.bmob.v3.listener.FindListener
-import cn.bmob.v3.listener.LogInListener
 import cn.bmob.v3.listener.QueryListener
 import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
-import com.link.fan.app.main.community.Community
+import com.link.fan.data.bean.CommunityEntity
 import com.link.fan.data.bean.BaseEntity
+import com.link.fan.data.bean.BaseResult
 import com.link.fan.data.bean.MenuResult
 import io.reactivex.Observable
 
@@ -65,5 +65,5 @@ interface INetService {
     /**
      * 查询社区发帖数据
      */
-    fun requestCommunityList(type: Int, listener: FindListener<Community>)
+    fun getCommunityList(pageCount: Int, feedId: Int, feedType: String, userId: Int):Observable<BaseEntity<BaseResult<List<CommunityEntity>>>>
 }

@@ -18,7 +18,7 @@
         tools:context=".app.main.home.HomeFragment">
 
         <include
-            android:id="@+id/layout_search_bar"
+            android:id="@+id/toolbar_searcher"
             layout="@layout/include_toolbar_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -24,26 +24,26 @@ class MallViewModel constructor(private val repository: AppRepository) : ViewMod
      */
     fun getRemoteData() {
 
-        Observable.merge(repository.getGoods(), repository.getSeconds())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(Consumer {
-                    if (it.resultcode == "200") {
-
-                        it.result.data?.let {
-                            if (it[0] is GoodsEntity) {
-                                goodsData.value = JsonUtil.toJson(it)
-
-
-                            } else if (it[0] is SecondsEntity) {
-                                secondData.value = JsonUtil.toJson(it)
-                            }
-                        }
-
-                    }
-                }, Consumer {
-                    ToastUtils.showShort(it?.message)
-                })
+//        Observable.merge(repository.getGoods(), repository.getSeconds())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(Consumer {
+//                    if (it.resultcode == "200") {
+//
+//                        it.result.data?.let {
+//                            if (it[0] is GoodsEntity) {
+//                                goodsData.value = JsonUtil.toJson(it)
+//
+//
+//                            } else if (it[0] is SecondsEntity) {
+//                                secondData.value = JsonUtil.toJson(it)
+//                            }
+//                        }
+//
+//                    }
+//                }, Consumer {
+//                    ToastUtils.showShort(it?.message)
+//                })
 
     }
 

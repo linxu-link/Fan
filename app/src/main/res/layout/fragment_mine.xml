@@ -19,7 +19,6 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.displayName}"
             android:textColor="@color/text_light_dark"
             android:textSize="@dimen/text_largex_size"
             android:textStyle="bold"
@@ -33,7 +32,6 @@
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.introduction}"
             android:textColor="@color/text_light"
             android:textSize="@dimen/text_middle_size"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -42,9 +40,10 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:text="自己动手，丰衣足食" />
 
+<!--        imageUrl="@{user.avatar}"-->
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
-            imageUrl="@{user.avatar}"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginTop="24dp"

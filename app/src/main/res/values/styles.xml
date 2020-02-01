@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="App_StartAppTheme" parent="AppTheme">
+    <style name="App_StartAppTheme" parent="BaseAppTheme">
         <item name="android:windowBackground">@mipmap/splash</item>
     </style>
 
@@ -30,7 +30,7 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="BaseAppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -38,5 +38,16 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <declare-styleable name="viewOutLineStrategy">
+        <attr name="clip_radius" format="dimension" />
+        <attr name="clip_side" format="enum">
+            <enum name="all" value="0" />
+            <enum name="left" value="1" />
+            <enum name="top" value="2" />
+            <enum name="right" value="3" />
+            <enum name="bottom" value="4" />
+        </attr>
+    </declare-styleable>
 
 </resources>

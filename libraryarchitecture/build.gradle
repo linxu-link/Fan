@@ -8,6 +8,10 @@ android {
 
     defaultConfig libDefaultConfig
 
+    dataBinding {
+        enabled = true
+    }
+
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8

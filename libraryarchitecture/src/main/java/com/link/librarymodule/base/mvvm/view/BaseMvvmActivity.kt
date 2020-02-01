@@ -11,9 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.link.general_statelayout.StateLayoutManager
 import com.link.general_statelayout.listener.OnNetworkListener
 import com.link.general_statelayout.listener.OnRetryListener
-import com.link.librarymodule.base.BaseActivity
 import com.link.librarymodule.base.BaseStateActivity
-import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModel
+import com.link.librarymodule.base.mvvm.viewmodel.BaseViewModels
 import com.link.librarymodule.receiver.NetworkConnectChangedReceiver
 import java.lang.reflect.ParameterizedType
 
@@ -23,7 +22,7 @@ import java.lang.reflect.ParameterizedType
  *
  * 描述：Mvvm架构下Activity基类
  */
-abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IBaseView,NetworkConnectChangedReceiver.NetworkChangeListener {
+abstract class BaseMvvmActivity<VM : BaseViewModels<*>> : BaseStateActivity(), IBaseView,NetworkConnectChangedReceiver.NetworkChangeListener {
 
     protected var mViewModel: VM? = null
     abstract var mLayoutId: Int
@@ -74,7 +73,7 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IB
             if (type is ParameterizedType) {
                 modelClass = type.actualTypeArguments[1] as Class<VM>
             } else {
-                modelClass = BaseViewModel::class.java as Class<VM>
+                modelClass = BaseViewModels::class.java as Class<VM>
             }
             mViewModel = createViewModel(this, modelClass)
         }
@@ -88,14 +87,14 @@ abstract class BaseMvvmActivity<VM : BaseViewModel<*>> : BaseStateActivity(), IB
     fun registorUIChangeLiveDataCallBack() {
         //跳入新页面
         mViewModel!!.uc.startActivityEvent.observe(this, Observer { params ->
-            val clazz = params!![BaseViewModel.ParameterField.CLASS] as Class<*>
-            val bundle = params[BaseViewModel.ParameterField.BUNDLE] as Bundle
+            val clazz = params!![BaseViewModels.ParameterField.CLASS] as Class<*>
+            val bundle = params[BaseViewModels.ParameterField.BUNDLE] as Bundle
             startActivity(clazz, bundle)
         })
         //跳入ContainerActivity
         mViewModel!!.uc.startContainerActivityEvent.observe(this, Observer { params ->
-            val canonicalName = params!![BaseViewModel.ParameterField.CANONICAL_NAME] as String
-            val bundle = params[BaseViewModel.ParameterField.BUNDLE] as Bundle?
+            val canonicalName = params!![BaseViewModels.ParameterField.CANONICAL_NAME] as String
+            val bundle = params[BaseViewModels.ParameterField.BUNDLE] as Bundle?
             startContainerActivity(canonicalName, bundle)
         })
         //关闭界面
