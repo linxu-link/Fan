@@ -37,8 +37,8 @@ class SearchDetailActivity : AppCompatActivity() {
         toolbar_left_icon.setOnClickListener {
             onBackPressed()
         }
-        toolbar_right_icon.visibility = View.VISIBLE
-        toolbar_right_icon.setImageResource(R.drawable.icon_search_black)
+        iv_right_icon.visibility = View.VISIBLE
+        iv_right_icon.setImageResource(R.drawable.icon_search_black)
     }
 
     companion object {

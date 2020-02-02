@@ -1,6 +1,6 @@
 ext.deps = [:]
 def versions = [:]
-versions.room = "2.1.0"
+versions.room = "2.2.3"
 versions.lifecycle = "2.2.0-alpha01"
 versions.junit = "4.12"
 versions.retrofit = "2.3.0"
@@ -19,6 +19,7 @@ def room = [:]
 room.runtime = "androidx.room:room-ktx:$versions.room"
 room.rxjava2 = "androidx.room:room-rxjava2:$versions.room"
 room.compiler = "androidx.room:room-compiler:$versions.room"
+room.ktx = "androidx.room:room-ktx:$versions.room"
 deps.room = room
 
 def lifecycle = [:]

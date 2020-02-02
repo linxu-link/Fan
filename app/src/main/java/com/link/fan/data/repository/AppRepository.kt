@@ -7,12 +7,14 @@ import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
+import com.link.fan.app.search.HistoryEntity
 import com.link.fan.data.bean.CommunityEntity
 import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.BaseResult
 import com.link.fan.data.bean.MenuResult
 import com.link.fan.data.repository.source.local.ILocalService
 import com.link.fan.data.repository.source.net.INetService
+import io.reactivex.Flowable
 import io.reactivex.Observable
 
 /**
@@ -76,6 +78,26 @@ class AppRepository constructor(
     override fun getCommunityList(pageCount: Int, feedId: Int, feedType: String, userId: Int):
             Observable<BaseEntity<BaseResult<List<CommunityEntity>>>> {
         return netService.getCommunityList(pageCount, feedId, feedType, userId)
+    }
+
+    override fun searchByKeyword(menu: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
+        return netService.searchByKeyword(menu, pn, rn)
+    }
+
+    override fun searchByIndex(cid: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
+        return netService.searchByIndex(cid, pn, rn)
+    }
+
+    override fun getSearchHistory(): Flowable<List<HistoryEntity>> {
+        return localService.getSearchHistory()
+    }
+
+    override fun insertSearchData(searchWord: HistoryEntity) {
+        return localService.insertSearchData(searchWord)
+    }
+
+    override fun clearSearchHistory(list: List<HistoryEntity>) {
+        return localService.clearSearchHistory(list)
     }
 
 

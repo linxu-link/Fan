@@ -8,6 +8,7 @@ import com.link.fan.app.login.LoginViewModel
 import com.link.fan.app.main.home.HomeViewModel
 import com.link.fan.app.main.mall.MallViewModel
 import com.link.fan.app.menu.catalog.CatalogViewModel
+import com.link.fan.app.search.SearchViewModel
 import com.link.fan.data.repository.AppRepository
 import java.lang.RuntimeException
 
@@ -32,6 +33,8 @@ class ViewModelFactory constructor(private val repository: AppRepository) : View
             return MallViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(CatalogViewModel::class.java)) {
             return CatalogViewModel() as T
+        } else if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
+            return SearchViewModel(repository) as T
         }
         throw RuntimeException("viewModel is null")
     }

@@ -1,5 +1,6 @@
 package com.link.fan.data
 
+import android.view.View
 import com.link.fan.data.repository.AppRepository
 import com.link.fan.data.repository.source.local.LocalServiceImpl
 import com.link.fan.data.repository.source.net.NetServiceImpl
@@ -34,7 +35,12 @@ object InjectorUtils {
     fun homeViewModelFactory(): ViewModelFactory {
         return ViewModelFactory(provideRepository())
     }
+
     fun communityViewModelFactory(): ViewModelFactory {
+        return ViewModelFactory(provideRepository())
+    }
+
+    fun searchViewModelFactory(): ViewModelFactory {
         return ViewModelFactory(provideRepository())
     }
 

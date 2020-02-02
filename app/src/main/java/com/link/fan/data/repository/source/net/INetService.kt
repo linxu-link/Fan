@@ -65,5 +65,15 @@ interface INetService {
     /**
      * 查询社区发帖数据
      */
-    fun getCommunityList(pageCount: Int, feedId: Int, feedType: String, userId: Int):Observable<BaseEntity<BaseResult<List<CommunityEntity>>>>
+    fun getCommunityList(pageCount: Int, feedId: Int, feedType: String, userId: Int): Observable<BaseEntity<BaseResult<List<CommunityEntity>>>>
+
+    /**
+     * 根据关键词检索菜谱列表
+     */
+    fun searchByKeyword(menu: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>>
+
+    /**
+     * 按标签检索菜谱
+     */
+    fun searchByIndex(cid: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>>
 }

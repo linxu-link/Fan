@@ -3,11 +3,9 @@ package com.link.fan.data.repository.source.net
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
-import com.link.fan.data.bean.BaseEntity
-import com.link.fan.data.bean.BaseResult
-import com.link.fan.data.bean.CommunityEntity
-import com.link.fan.data.bean.MenuResult
+import com.link.fan.data.bean.*
 import com.link.librarymodule.constant.DEFAULT_URL
+import com.link.librarymodule.constant.JUHE
 import com.link.librarymodule.constant.MOCK
 import com.link.librarymodule.constant.URL_TYPE
 import io.reactivex.Observable
@@ -74,5 +72,65 @@ interface RetrofitHttpService {
                          @Query("feedId") feedId: Int,
                          @Query("feedType") feedType: String,
                          @Query("userId") userId: Int): Observable<BaseEntity<BaseResult<List<CommunityEntity>>>>
+
+
+    /**
+     * 分类标签列表
+     * parentid：分类ID，默认全部
+     */
+    @FormUrlEncoded
+    @Headers("${URL_TYPE}:${JUHE}")
+    @POST("cook/category")
+    fun category(
+            @Field("key") key: String,
+            @Field("parentid") parentid: String
+    ): Observable<BaseEntity<CategoryResult>>
+
+
+    /**
+     * 菜谱大全
+     * menu:菜谱的关键词
+     */
+    @FormUrlEncoded
+    @Headers("${URL_TYPE}:${JUHE}")
+    @POST("cook/query.php")
+    fun query(
+            @Field("key") key: String,
+            @Field("menu") menu: String,
+            @Field("pn") pn: Int,
+            @Field("rn") rn: Int
+    ): Observable<BaseEntity<MenuResult>>
+
+
+    /**
+     * 按标签检索菜谱
+     * cid:category接口返回的id
+     * pn:起始下标
+     * rn:最大数量
+     * format:steps字段屏蔽，默认显示，format=1时屏蔽
+     */
+    @FormUrlEncoded
+    @Headers("${URL_TYPE}:${JUHE}")
+    @POST("cook/index")
+    fun index(
+            @Field("key") key: String,
+            @Field("cid") cid: String,
+            @Field("pn") pn: Int,
+            @Field("rn") rn: Int,
+            @Field("format") format: Int
+    ): Observable<BaseEntity<MenuResult>>
+
+
+    /**
+     * 按标签检索菜谱
+     * id:菜谱的详细ID
+     */
+    @FormUrlEncoded
+    @Headers("${URL_TYPE}:${JUHE}")
+    @POST("cook/queryid")
+    fun queryid(
+            @Field("key") key: String,
+            @Field("id") id: String
+    ): Observable<BaseEntity<MenuResult>>
 
 }

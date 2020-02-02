@@ -9,7 +9,7 @@
     android:orientation="horizontal">
 
     <FrameLayout
-        android:id="@+id/notice"
+        android:id="@+id/toolbar_btn_right"
         android:layout_width="40dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/search_bar"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="@+id/search_bar">
 
         <ImageView
-            android:id="@+id/toolbar_right_icon"
+            android:id="@+id/iv_right_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"

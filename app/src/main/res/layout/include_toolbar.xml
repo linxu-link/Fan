@@ -33,7 +33,7 @@
         tools:text="@string/application_name" />
 
     <ImageView
-        android:id="@+id/toolbar_right_icon"
+        android:id="@+id/iv_right_icon"
         android:layout_width="@dimen/dp_30"
         android:layout_height="@dimen/dp_30"
         android:layout_marginEnd="8dp"

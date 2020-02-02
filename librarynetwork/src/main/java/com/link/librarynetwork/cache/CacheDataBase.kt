@@ -10,10 +10,12 @@ const val cacheName = "link_cache"
 @Database(entities = [Cache::class], version = 1, exportSchema = true)
 abstract class CacheDataBase : RoomDatabase() {
 
+    abstract fun getDao(): CacheDao
+
     companion object {
 
-        var mCacheDataBase: CacheDataBase = Room.databaseBuilder(ApplicationUtil.getApplication(),
-                CacheDataBase::class.java, cacheName)
+        private var mCacheDataBase: CacheDataBase = Room
+                .databaseBuilder(ApplicationUtil.getApplication(), CacheDataBase::class.java, cacheName)
                 .allowMainThreadQueries()
                 .build()
 
@@ -21,8 +23,6 @@ abstract class CacheDataBase : RoomDatabase() {
             return mCacheDataBase
         }
     }
-
-    abstract fun getDao(): CacheDao
 
 
 }

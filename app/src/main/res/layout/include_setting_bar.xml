@@ -16,7 +16,7 @@
         app:srcCompat="@mipmap/icon_menu_setting" />
 
     <FrameLayout
-        android:id="@+id/notice"
+        android:id="@+id/toolbar_btn_right"
         android:layout_width="@dimen/dp_50"
         android:layout_height="match_parent"
         android:layout_gravity="end">

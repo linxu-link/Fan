@@ -65,6 +65,11 @@ dependencies {
     api(deps.room.runtime) {
         exclude group: 'androidx.arch.core'
     }
+    // optional - Kotlin Extensions and Coroutines support for Room
+    api deps.room.ktx
+    // optional - RxJava support for Room
+    api deps.room.rxjava2
+
     // paging
     api 'androidx.paging:paging-runtime:2.1.0'
 

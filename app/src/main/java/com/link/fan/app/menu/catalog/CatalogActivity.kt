@@ -8,12 +8,10 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.link.fan.R
-import com.link.fan.app.main.home.HomeViewModel
 import com.link.fan.app.search.SearchActivity
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.ActivityCatalogBinding
@@ -60,9 +58,9 @@ class CatalogActivity : AppCompatActivity() {
         toolbar_left_icon.setOnClickListener {
             onBackPressed()
         }
-        toolbar_right_icon.visibility = View.VISIBLE
-        toolbar_right_icon.setImageResource(R.drawable.icon_search_black)
-        toolbar_right_icon.setOnClickListener {
+        iv_right_icon.visibility = View.VISIBLE
+        iv_right_icon.setImageResource(R.drawable.icon_search_black)
+        iv_right_icon.setOnClickListener {
             SearchActivity.startActivity(this)
         }
     }

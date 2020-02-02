@@ -13,6 +13,7 @@ import com.link.fan.data.bean.BaseEntity
 import com.link.fan.data.bean.BaseResult
 import com.link.fan.data.bean.CommunityEntity
 import com.link.fan.data.bean.MenuResult
+import com.link.librarymodule.constant.JUHE_KEY
 import com.link.librarymodule.utils.Utils
 import io.reactivex.Observable
 
@@ -33,6 +34,14 @@ class NetServiceImpl constructor(private val service: RetrofitHttpService) : INe
     override fun getCommunityList(pageCount: Int, feedId: Int, feedType: String, userId: Int):
             Observable<BaseEntity<BaseResult<List<CommunityEntity>>>> {
         return service.getCommunityList(pageCount, feedId, feedType, userId)
+    }
+
+    override fun searchByKeyword(menu: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
+        return service.query(JUHE_KEY, menu, pn, rn)
+    }
+
+    override fun searchByIndex(cid: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
+        return service.index(JUHE_KEY, cid, pn, rn, 0)
     }
 
     override fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>> {
