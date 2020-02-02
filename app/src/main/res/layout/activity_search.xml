@@ -19,83 +19,88 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include2">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
-                android:paddingStart="@dimen/dp_10"
-                android:paddingEnd="@dimen/dp_10"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:text="历史搜索"
-                    android:textColor="@color/text_light_dark"
-                    android:textSize="@dimen/text_large_size"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:text="历史搜索"
+                        android:textColor="@color/text_light_dark"
+                        android:textSize="@dimen/text_large_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:text="清空"
+                        android:textColor="@color/text_light_dark"
+                        android:textSize="@dimen/text_large_size" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|end"
-                    android:text="清空"
-                    android:textColor="@color/text_light_dark"
-                    android:textSize="@dimen/text_large_size" />
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:text="热门搜索"
+                        android:textColor="@color/text_light_dark"
+                        android:textSize="@dimen/text_large_size"
+                        android:textStyle="bold" />
 
 
-            </FrameLayout>
+                </FrameLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
-                android:paddingStart="@dimen/dp_10"
-                android:paddingEnd="@dimen/dp_10">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:text="热门搜索"
-                    android:textColor="@color/text_light_dark"
-                    android:textSize="@dimen/text_large_size"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingEnd="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:text="推荐"
+                        android:textColor="@color/text_light_dark"
+                        android:textSize="@dimen/text_large_size"
+                        android:textStyle="bold" />
 
 
-            </FrameLayout>
+                </FrameLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20"
-                android:paddingStart="@dimen/dp_10"
-                android:paddingEnd="@dimen/dp_10">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:text="推荐"
-                    android:textColor="@color/text_light_dark"
-                    android:textSize="@dimen/text_large_size"
-                    android:textStyle="bold" />
-
-
-            </FrameLayout>
-
-        </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -78,6 +78,7 @@ class HomeFragment : Fragment() {
         binding.toolbarSearcher.findViewById<EditText>(R.id.et_search_bar).setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 SearchActivity.startActivity(requireContext())
+                binding.toolbarSearcher.findViewById<EditText>(R.id.et_search_bar).clearFocus()
             }
         }
 
