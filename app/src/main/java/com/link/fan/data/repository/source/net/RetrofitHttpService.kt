@@ -26,35 +26,35 @@ interface RetrofitHttpService {
      * 获取首页的轮播图.
      */
     @Headers("${URL_TYPE}:${MOCK}")
-    @GET("mock/5dd13d3a11f6e545761facb1/fan/home/banner")
+    @GET("mock/5e3648f7b9de7529052c4d3b/shandao/home/banner")
     fun homeBanner(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的今日推荐.
      */
     @Headers("${URL_TYPE}:${MOCK}")
-    @GET("mock/5dd13d3a11f6e545761facb1/fan/home/today")
+    @GET("mock/5e3648f7b9de7529052c4d3b/shandao/home/today")
     fun today(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的最新菜谱.
      */
     @Headers("${URL_TYPE}:${MOCK}")
-    @GET("mock/5dd13d3a11f6e545761facb1/fan/home/last_menu")
+    @GET("mock/5e3648f7b9de7529052c4d3b/shandao/home/last_menu")
     fun lastMenu(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的菜谱列表.
      */
     @Headers("${URL_TYPE}:${MOCK}")
-    @GET("mock/5dd13d3a11f6e545761facb1/fan/home")
+    @GET("mock/5e3648f7b9de7529052c4d3b/shandao/home")
     fun home(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取商城的活动的数据
      */
     @Headers("${URL_TYPE}:${MOCK}")
-    @GET("mock/5dd13d3a11f6e545761facb1/fan/mall/newGoods")
+    @GET("mock/5e3648f7b9de7529052c4d3b/shandao/mall/newGoods")
     fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>>
 
 
@@ -62,7 +62,7 @@ interface RetrofitHttpService {
      * 获取商城的秒杀的数据
      */
     @Headers("${URL_TYPE}:${MOCK}")
-    @GET("mock/5dd13d3a11f6e545761facb1/fan/mall/newSeconds")
+    @GET("mock/5e3648f7b9de7529052c4d3b/shandao/mall/newSeconds")
     fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>>
 
     /**

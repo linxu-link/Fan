@@ -34,6 +34,10 @@ class CatalogActivity : AppCompatActivity() {
                         root.layoutParams = layout
                     }
                 }
+        initToolbar()
+    }
+
+    private fun initToolbar() {
         toolbar_title.text = "分类"
         toolbar_left_icon.setOnClickListener {
             onBackPressed()

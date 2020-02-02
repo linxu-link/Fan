@@ -2,8 +2,15 @@ package com.link.fan.app.splash
 
 
 import android.Manifest
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.link.fan.R
+import com.link.fan.databinding.FragmentSplashBinding
 import com.link.librarymodule.utils.AppManager
 import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.base.BaseFragment
@@ -21,9 +28,19 @@ import io.reactivex.functions.Consumer
  *  description:  闪屏
  * <pre>
  */
-class SplashFragment(override var layoutId: Int = R.layout.fragment_splash) : BaseFragment() {
+class SplashFragment : Fragment() {
 
     private var mDisposable: Disposable? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val binding = DataBindingUtil
+                .inflate<FragmentSplashBinding>(inflater, R.layout.fragment_splash, container, false)
+                .apply {
+
+                }
+
+        return binding.root
+    }
 
     override fun onStart() {
         super.onStart()

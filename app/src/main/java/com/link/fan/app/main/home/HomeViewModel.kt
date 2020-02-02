@@ -29,74 +29,74 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
 
     fun requestData() {
 
-//        repository.getHomeDataList().observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.newThread())
-//                .subscribe(Consumer {
-//                    it?.run {
-//                        if (resultcode == "200") {
-//                            masterLiveData.value = result
-//                        } else {
-//                            ToastUtils.showShort(reason)
-//                        }
-//                    }
-//                }, Consumer {
-//                    it?.run {
-//                        ToastUtils.showShort(message)
-//                    }
-//
-//                })
-//
-//
-//        repository.getTodayRecommend().observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.newThread())
-//                .subscribe(Consumer {
-//                    it?.run {
-//                        if (resultcode == "200") {
-//                            recommendLiveData.value = result
-//                        } else {
-//                            ToastUtils.showShort(reason)
-//                        }
-//                    }
-//                }, Consumer {
-//                    it?.run {
-//                        ToastUtils.showShort(message)
-//                    }
-//
-//                })
-//
-//        repository.getLastMenu().observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.newThread())
-//                .subscribe(Consumer {
-//                    it?.run {
-//                        if (resultcode == "200") {
-//                            lastMenuLiveData.value = result
-//                        } else {
-//                            ToastUtils.showShort(reason)
-//                        }
-//                    }
-//                }, Consumer {
-//                    it?.run {
-//                        ToastUtils.showShort(message)
-//                    }
-//
-//                })
-//
-//        repository.getHomeBanner().observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.newThread())
-//                .subscribe(Consumer {
-//                    it?.run {
-//                        if (resultcode == "200") {
-//                            bannerLiveData.value = result
-//                        } else {
-//                            ToastUtils.showShort(reason)
-//                        }
-//                    }
-//                }, Consumer {
-//                    it?.run {
-//                        ToastUtils.showShort(message)
-//                    }
-//
-//                })
+        repository.getHomeDataList().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(Consumer {
+                    it?.run {
+                        if (status == 200) {
+                            masterLiveData.value = data
+                        } else {
+                            ToastUtils.showShort(message)
+                        }
+                    }
+                }, Consumer {
+                    it?.run {
+                        ToastUtils.showShort(message)
+                    }
+
+                })
+
+
+        repository.getTodayRecommend().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(Consumer {
+                    it?.run {
+                        if (status == 200) {
+                            recommendLiveData.value = data
+                        } else {
+                            ToastUtils.showShort(message)
+                        }
+                    }
+                }, Consumer {
+                    it?.run {
+                        ToastUtils.showShort(message)
+                    }
+
+                })
+
+        repository.getLastMenu().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(Consumer {
+                    it?.run {
+                        if (status == 200) {
+                            lastMenuLiveData.value = data
+                        } else {
+                            ToastUtils.showShort(message)
+                        }
+                    }
+                }, Consumer {
+                    it?.run {
+                        ToastUtils.showShort(message)
+                    }
+
+                })
+
+        repository.getHomeBanner().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(Consumer {
+                    it?.run {
+                        if (status == 200) {
+                            bannerLiveData.value = data
+                        } else {
+                            ToastUtils.showShort(message)
+                        }
+                    }
+                }, Consumer {
+                    it?.run {
+                        ToastUtils.showShort(message)
+                    }
+
+                })
 
 
     }

@@ -14,7 +14,7 @@ const val JUHE_DATA_URL = "https://apis.juhe.cn/"
 const val JUHE = "juhe"
 
 //easy mock 数据url
-const val MOCK_DATA_URL = "http://118.24.197.176:7300/"
+const val MOCK_DATA_URL = "http://106.54.78.62:7400/"
 //easy mock url 标识
 const val MOCK = "mock"
 
