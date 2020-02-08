@@ -3,10 +3,10 @@ package com.link.fan.app.login
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
-import cn.bmob.v3.BmobUser
-import cn.bmob.v3.exception.BmobException
-import cn.bmob.v3.listener.QueryListener
-import cn.bmob.v3.listener.SaveListener
+//import cn.bmob.v3.BmobUser
+//import cn.bmob.v3.exception.BmobException
+//import cn.bmob.v3.listener.QueryListener
+//import cn.bmob.v3.listener.SaveListener
 import com.link.fan.data.repository.AppRepository
 import com.link.librarymodule.utils.RxCountDown
 import com.link.librarymodule.utils.ToastUtils
@@ -41,15 +41,15 @@ class LoginViewModel constructor(private var repository: AppRepository) : ViewMo
             return
         }
 
-        repository.login(phoneNumber.value!!, phoneCode.value!!, object : SaveListener<BmobUser>() {
-            override fun done(p0: BmobUser?, p1: BmobException?) {
-                if (p1 != null) {
-                    ToastUtils.showShort(p1.message)
-                } else {
-                    ToastUtils.showShort("登录注册成功")
-                }
-            }
-        })
+//        repository.login(phoneNumber.value!!, phoneCode.value!!, object : SaveListener<BmobUser>() {
+//            override fun done(p0: BmobUser?, p1: BmobException?) {
+//                if (p1 != null) {
+//                    ToastUtils.showShort(p1.message)
+//                } else {
+//                    ToastUtils.showShort("登录注册成功")
+//                }
+//            }
+//        })
 
     }
 
@@ -65,24 +65,24 @@ class LoginViewModel constructor(private var repository: AppRepository) : ViewMo
 
             sendBtnEnable.value = false
 
-            repository.getSmsCode(phoneNumber.value!!, object : QueryListener<Int>() {
-                override fun done(p0: Int?, p1: BmobException?) {
-                    if (p1 != null) {
-                        ToastUtils.showShort(p1.message)
-                    } else {
-                        mDisposable = RxCountDown.countdown(60)
-                                .subscribe(Consumer {
-                                    if (it == 0) {
-                                        codeBtnText.value = "获取验证码"
-                                        sendBtnEnable.value = true
-                                    } else {
-                                        codeBtnText.value = "已发送剩余${it}秒"
-                                    }
-                                })
-                    }
-                }
-
-            })
+//            repository.getSmsCode(phoneNumber.value!!, object : QueryListener<Int>() {
+//                override fun done(p0: Int?, p1: BmobException?) {
+//                    if (p1 != null) {
+//                        ToastUtils.showShort(p1.message)
+//                    } else {
+//                        mDisposable = RxCountDown.countdown(60)
+//                                .subscribe(Consumer {
+//                                    if (it == 0) {
+//                                        codeBtnText.value = "获取验证码"
+//                                        sendBtnEnable.value = true
+//                                    } else {
+//                                        codeBtnText.value = "已发送剩余${it}秒"
+//                                    }
+//                                })
+//                    }
+//                }
+//
+//            })
 
         }
     }

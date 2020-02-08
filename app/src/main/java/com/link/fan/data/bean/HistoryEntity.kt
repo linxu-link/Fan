@@ -1,4 +1,4 @@
-package com.link.fan.app.search
+package com.link.fan.data.bean
 
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo

@@ -7,7 +7,7 @@ public class BottomBar {
     /**
      * activeColor : #333333
      * inActiveColor : #666666
-     * tabs : [{"size":24,"enable":true,"index":0,"pageUrl":"main/tabs/home","title":"首页"},{"size":24,"enable":true,"index":1,"pageUrl":"main/tabs/sofa","title":"沙发"},{"size":40,"enable":true,"index":2,"tintColor":"#ff678f","pageUrl":"main/tabs/publish","title":""},{"size":24,"enable":true,"index":3,"pageUrl":"main/tabs/find","title":"发现"},{"size":24,"enable":true,"index":4,"pageUrl":"main/tabs/my","title":"我的"}]
+     * tabs : [{"size":24,"enable":true,"searchByCategory":0,"pageUrl":"main/tabs/getHomeDataList","title":"首页"},{"size":24,"enable":true,"searchByCategory":1,"pageUrl":"main/tabs/sofa","title":"沙发"},{"size":40,"enable":true,"searchByCategory":2,"tintColor":"#ff678f","pageUrl":"main/tabs/publish","title":""},{"size":24,"enable":true,"searchByCategory":3,"pageUrl":"main/tabs/find","title":"发现"},{"size":24,"enable":true,"searchByCategory":4,"pageUrl":"main/tabs/my","title":"我的"}]
      */
 
     public String activeColor;
@@ -51,8 +51,8 @@ public class BottomBar {
         /**
          * size : 24
          * enable : true
-         * index : 0
-         * pageUrl : main/tabs/home
+         * searchByCategory : 0
+         * pageUrl : main/tabs/getHomeDataList
          * title : 首页
          * tintColor : #ff678f
          */

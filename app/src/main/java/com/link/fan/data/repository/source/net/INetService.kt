@@ -1,17 +1,15 @@
 package com.link.fan.data.repository.source.net
 
-import cn.bmob.v3.BmobUser
-import cn.bmob.v3.listener.FindListener
-import cn.bmob.v3.listener.QueryListener
-import cn.bmob.v3.listener.SaveListener
+//import cn.bmob.v3.BmobUser
+//import cn.bmob.v3.listener.FindListener
+//import cn.bmob.v3.listener.QueryListener
+//import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
-import com.link.fan.data.bean.CommunityEntity
-import com.link.fan.data.bean.BaseEntity
-import com.link.fan.data.bean.BaseResult
-import com.link.fan.data.bean.MenuResult
+import com.link.fan.data.bean.*
 import io.reactivex.Observable
+import retrofit2.http.Field
 
 /**
  * copyright:TS
@@ -45,12 +43,12 @@ interface INetService {
     /**
      * 登录
      */
-    fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>)
+//    fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>)
 
     /**
      * 获取验证码
      */
-    fun getSmsCode(phone: String, listener: QueryListener<Int>)
+//    fun getSmsCode(phone: String, listener: QueryListener<Int>)
 
     /**
      * 获取商品数据
@@ -70,10 +68,18 @@ interface INetService {
     /**
      * 根据关键词检索菜谱列表
      */
-    fun searchByKeyword(menu: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>>
+    fun searchByKeyword(keyword: String, num: Int, start: Int, appkey: String): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>>
+
+    /**
+     * 获取菜谱分类
+     */
+    fun category(appkey: String): Observable<BaseEntity<CategoryResult>>
 
     /**
      * 按标签检索菜谱
      */
-    fun searchByIndex(cid: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>>
+    fun searchByCategory(appkey: String, classId: Int, start: Int, num: Int): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>>
+
+
+    fun searchById(appkey: String, id: Int): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>>
 }

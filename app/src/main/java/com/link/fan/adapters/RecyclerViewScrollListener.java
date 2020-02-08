@@ -9,7 +9,7 @@ public class RecyclerViewScrollListener extends RecyclerView.OnScrollListener {
 
     /*each offset of item*/
     private int mOffset;
-    /*get this by trigonometric function 3 / 5, and opposite is list item height*/
+    /*get this searchByCategory trigonometric function 3 / 5, and opposite is list item height*/
     private int mHeight;
 
     private float mItemHeight;

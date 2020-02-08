@@ -34,15 +34,13 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     it?.run {
                         if (status == 200) {
-                            masterLiveData.value = data
+                            masterLiveData.value = it.result
                         } else {
-                            ToastUtils.showShort(message)
+                            ToastUtils.showShort(msg)
                         }
                     }
                 }, Consumer {
-                    it?.run {
-                        ToastUtils.showShort(message)
-                    }
+                    ToastUtils.showShort(it.message)
 
                 })
 
@@ -52,15 +50,13 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     it?.run {
                         if (status == 200) {
-                            recommendLiveData.value = data
+                            recommendLiveData.value = it.result
                         } else {
-                            ToastUtils.showShort(message)
+                            ToastUtils.showShort(msg)
                         }
                     }
                 }, Consumer {
-                    it?.run {
-                        ToastUtils.showShort(message)
-                    }
+                    ToastUtils.showShort(it.message)
 
                 })
 
@@ -69,15 +65,13 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     it?.run {
                         if (status == 200) {
-                            lastMenuLiveData.value = data
+                            lastMenuLiveData.value = it.result
                         } else {
-                            ToastUtils.showShort(message)
+                            ToastUtils.showShort(msg)
                         }
                     }
                 }, Consumer {
-                    it?.run {
-                        ToastUtils.showShort(message)
-                    }
+                    ToastUtils.showShort(it.message)
 
                 })
 
@@ -86,16 +80,13 @@ class HomeViewModel constructor(private val repository: AppRepository) : ViewMod
                 .subscribe(Consumer {
                     it?.run {
                         if (status == 200) {
-                            bannerLiveData.value = data
+                            bannerLiveData.value = it.result
                         } else {
-                            ToastUtils.showShort(message)
+                            ToastUtils.showShort(msg)
                         }
                     }
                 }, Consumer {
-                    it?.run {
-                        ToastUtils.showShort(message)
-                    }
-
+                    ToastUtils.showShort(it.message)
                 })
 
 

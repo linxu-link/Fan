@@ -1,19 +1,16 @@
 package com.link.fan.data.repository
 
-import cn.bmob.v3.BmobUser
-import cn.bmob.v3.listener.FindListener
-import cn.bmob.v3.listener.QueryListener
-import cn.bmob.v3.listener.SaveListener
+//import cn.bmob.v3.BmobUser
+//import cn.bmob.v3.listener.FindListener
+//import cn.bmob.v3.listener.QueryListener
+//import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
-import com.link.fan.app.search.HistoryEntity
-import com.link.fan.data.bean.CommunityEntity
-import com.link.fan.data.bean.BaseEntity
-import com.link.fan.data.bean.BaseResult
-import com.link.fan.data.bean.MenuResult
+import com.link.fan.data.bean.*
 import com.link.fan.data.repository.source.local.ILocalService
 import com.link.fan.data.repository.source.net.INetService
+import com.link.librarymodule.constant.JUHE_KEY
 import io.reactivex.Flowable
 import io.reactivex.Observable
 
@@ -30,6 +27,23 @@ import io.reactivex.Observable
 class AppRepository constructor(
         private val netService: INetService,
         private val localService: ILocalService) : INetService, ILocalService {
+
+    override fun searchByKeyword(keyword: String, num: Int, start: Int, appkey: String): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>> {
+        return netService.searchByKeyword(keyword, num, start, JUHE_KEY)
+    }
+
+    override fun category(appkey: String): Observable<BaseEntity<CategoryResult>> {
+        return netService.category(JUHE_KEY)
+    }
+
+    override fun searchByCategory(appkey: String, classId: Int, start: Int, num: Int): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>> {
+        return netService.searchByCategory(JUHE_KEY, classId, start, num)
+    }
+
+    override fun searchById(appkey: String, id: Int): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>> {
+        return netService.searchById(JUHE_KEY, id)
+    }
+
 
     companion object {
         @Volatile
@@ -59,13 +73,13 @@ class AppRepository constructor(
         return netService.getHomeDataList()
     }
 
-    override fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>) {
-        return netService.login(phone, smsCode, listener)
-    }
-
-    override fun getSmsCode(phone: String, listener: QueryListener<Int>) {
-        return netService.getSmsCode(phone, listener)
-    }
+//    override fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>) {
+//        return netService.login(phone, smsCode, listener)
+//    }
+//
+//    override fun getSmsCode(phone: String, listener: QueryListener<Int>) {
+//        return netService.getSmsCode(phone, listener)
+//    }
 
     override fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>> {
         return netService.getGoods()
@@ -78,14 +92,6 @@ class AppRepository constructor(
     override fun getCommunityList(pageCount: Int, feedId: Int, feedType: String, userId: Int):
             Observable<BaseEntity<BaseResult<List<CommunityEntity>>>> {
         return netService.getCommunityList(pageCount, feedId, feedType, userId)
-    }
-
-    override fun searchByKeyword(menu: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
-        return netService.searchByKeyword(menu, pn, rn)
-    }
-
-    override fun searchByIndex(cid: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
-        return netService.searchByIndex(cid, pn, rn)
     }
 
     override fun getSearchHistory(): Flowable<List<HistoryEntity>> {

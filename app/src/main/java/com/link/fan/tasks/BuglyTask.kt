@@ -3,7 +3,7 @@ package com.link.fan.tasks
 import com.link.librarymodule.BuildConfig
 import com.link.librarymodule.constant.BUGLY_ID
 import com.link.librarymodule.launchstarter.task.Task
-import com.tencent.bugly.crashreport.CrashReport
+//import com.tencent.bugly.crashreport.CrashReport
 /**
  * @author WJ
  * @date 2019-08-15
@@ -12,6 +12,6 @@ import com.tencent.bugly.crashreport.CrashReport
  */
 class BuglyTask: Task() {
     override fun run() {
-        CrashReport.initCrashReport(mContext, BUGLY_ID, BuildConfig.DEBUG);
+//        CrashReport.initCrashReport(mContext, BUGLY_ID, BuildConfig.DEBUG);
     }
 }

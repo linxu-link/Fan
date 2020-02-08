@@ -1,4 +1,4 @@
-package com.link.fan.app.community.list
+package com.link.fan.app.community
 
 import android.util.Log
 import androidx.arch.core.executor.ArchTaskExecutor
@@ -17,9 +17,9 @@ import io.reactivex.schedulers.Schedulers
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
-const val TAG = "CommunityListViewModel"
+class CommunityViewModel(val repository: AppRepository) : PagingViewModel<CommunityEntity>() {
 
-class CommunityListViewModel(val repository: AppRepository) : PagingViewModel<CommunityEntity>() {
+    val TAG = "CommunityViewModel"
 
     val mCommunityLiveData = MutableLiveData<PagedList<CommunityEntity>>()
 
@@ -67,19 +67,17 @@ class CommunityListViewModel(val repository: AppRepository) : PagingViewModel<Co
                         if (status == 200) {
 
                             val dataSource = MutablePageKeyedDataSource<CommunityEntity>()
-                            dataSource.data.addAll(data.data)
+                            dataSource.data.addAll(it.data.data)
 
                             val pagedList = dataSource.buildNewPagedList(mConfig)
                             mCommunityLiveData.value = pagedList
 
                         } else {
-                            ToastUtils.showShort(message)
+                            ToastUtils.showShort(msg)
                         }
                     }
                 }, Consumer {
-                    it?.run {
-                        ToastUtils.showShort(message)
-                    }
+                    ToastUtils.showShort(it?.message)
 
                 })
 

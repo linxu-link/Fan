@@ -3,17 +3,16 @@ package com.link.fan.app.community.list
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.link.fan.app.community.CommunityViewModel
 import com.link.fan.data.InjectorUtils
 import com.link.fan.data.bean.CommunityEntity
 import com.link.fan.data.bean.TYPE_VIDEO_TEXT
 import com.link.fan.widgets.exoplayer.PageListPlayDetector
 import com.link.fan.widgets.exoplayer.PageListPlayManager
 import com.link.librarymodule.base.BasePageListFragment
-import kotlinx.android.synthetic.main.fragment_community_list.*
 
 /**
  * copyright:TS
@@ -22,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_community_list.*
  * email:wujia0916@thundersoft.com
  * description: 社区列表
  */
-class CommunityListFragment : BasePageListFragment<CommunityEntity, CommunityListViewModel>() {
+class CommunityListFragment : BasePageListFragment<CommunityEntity, CommunityViewModel>() {
 
     private var mCommunityType = 1
 
@@ -52,8 +51,8 @@ class CommunityListFragment : BasePageListFragment<CommunityEntity, CommunityLis
     }
 
 
-    override fun createViewModel(): CommunityListViewModel {
-        return InjectorUtils.communityViewModelFactory().create(CommunityListViewModel::class.java)
+    override fun createViewModel(): CommunityViewModel {
+        return InjectorUtils.communityViewModelFactory().create(CommunityViewModel::class.java)
     }
 
     override fun createPagedListAdapter(): PagedListAdapter<CommunityEntity, out RecyclerView.ViewHolder> {

@@ -160,7 +160,7 @@ public final class Base64 {
         int len = removeWhiteSpace(base64Data);
 
         if (len % FOURBYTE != 0) {
-            return null;// should be divisible by four
+            return null;// should be divisible searchByCategory four
         }
 
         int numberQuadruple = (len / FOURBYTE);

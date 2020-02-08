@@ -11,10 +11,10 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.link.fan.R
+import com.link.fan.app.search.detail.SearchDetailActivity
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.ActivitySearchBinding
 import com.link.fan.utils.StatusBar
@@ -64,8 +64,11 @@ class SearchActivity : AppCompatActivity() {
         }
         iv_right_icon.visibility = View.VISIBLE
         iv_right_icon.setImageResource(R.drawable.icon_search_black)
-        iv_right_icon.setOnClickListener {
-            SearchDetailActivity.startActivity(this)
+        toolbar_btn_right.setOnClickListener {
+            val word: String = et_search_bar.text.toString()
+            if (word.isNotEmpty()) {
+                goDetail(word)
+            }
         }
     }
 
@@ -75,39 +78,33 @@ class SearchActivity : AppCompatActivity() {
         rvList.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         rvList.adapter = mAdapter
 
-
-        toolbar_btn_right.setOnClickListener {
-            val menu: String = et_search_bar.text.toString()
-            if (menu.isNotEmpty()) {
-                mViewModel.searchWord.value = menu
-            }
-        }
-
         mAdapter.setOnItemClickListener { _, _, position ->
-            mViewModel.searchWord.value = mAdapter.getItem(position)!!.content
+            goDetail(mAdapter.getItem(position)?.content!!)
         }
+
 
     }
 
     private fun initHeaderView() {
         val header = LayoutInflater.from(this).inflate(R.layout.item_search_head_view, null)
         header.findViewById<FrameLayout>(R.id.search_recommend_1).setOnClickListener {
-            mViewModel.searchWord.value = "宫保鸡丁"
+            goDetail("宫保鸡丁")
+
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_2).setOnClickListener {
-            mViewModel.searchWord.value = "糖醋排骨"
+            goDetail("糖醋排骨")
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_3).setOnClickListener {
-            mViewModel.searchWord.value = "红烧肉"
+            goDetail("红烧肉")
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_4).setOnClickListener {
-            mViewModel.searchWord.value = "水煮肉片"
+            goDetail("水煮肉片")
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_5).setOnClickListener {
-            mViewModel.searchWord.value = "麻婆豆腐"
+            goDetail("麻婆豆腐")
         }
         header.findViewById<FrameLayout>(R.id.search_recommend_6).setOnClickListener {
-            mViewModel.searchWord.value = "可乐鸡翅"
+            goDetail("可乐鸡翅")
         }
         header.findViewById<TextView>(R.id.btn_clear).setOnClickListener {
             mViewModel.clearSearchHistory()
@@ -129,6 +126,11 @@ class SearchActivity : AppCompatActivity() {
             mViewModel.insertSearchWord(it)
         })
 
+    }
+
+    private fun goDetail(word: String) {
+        mViewModel.setSearchWord(word)
+        SearchDetailActivity.startActivity(this, word, null)
     }
 
     companion object {

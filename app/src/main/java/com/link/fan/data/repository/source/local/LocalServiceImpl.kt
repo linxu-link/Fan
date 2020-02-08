@@ -1,6 +1,6 @@
 package com.link.fan.data.repository.source.local
 
-import com.link.fan.app.search.HistoryEntity
+import com.link.fan.data.bean.HistoryEntity
 import io.reactivex.Flowable
 
 class LocalServiceImpl constructor(val searchDataBase: SearchDataBase = SearchDataBase.get()) : ILocalService {

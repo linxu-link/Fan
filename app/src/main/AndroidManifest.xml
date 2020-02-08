@@ -13,7 +13,8 @@
         android:theme="@style/BaseAppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:name,android:theme,android:label,android:icon">
-        <activity android:name=".app.search.SearchDetailActivity"></activity>
+        <activity android:name=".app.capture.CaptureActivity"></activity>
+        <activity android:name=".app.search.detail.SearchDetailActivity" />
         <activity android:name=".app.search.SearchActivity" />
         <activity android:name=".app.menu.catalog.CatalogActivity" />
         <activity android:name=".app.community.reply.ReplyActivity" />
@@ -44,10 +45,6 @@
         <activity
             android:name=".utils.wxapi.WXPayEntryActivity"
             android:screenOrientation="portrait" />
-
-        <provider
-            android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.link.fan.BmobContentProvider" />
     </application>
 
 </manifest>

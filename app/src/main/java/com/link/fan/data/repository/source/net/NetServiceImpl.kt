@@ -1,20 +1,14 @@
 package com.link.fan.data.repository.source.net
 
-import cn.bmob.v3.BmobSMS
-import cn.bmob.v3.BmobUser
-import cn.bmob.v3.listener.FindListener
-import cn.bmob.v3.listener.QueryListener
-import cn.bmob.v3.listener.SaveListener
+//import cn.bmob.v3.BmobSMS
+//import cn.bmob.v3.BmobUser
+//import cn.bmob.v3.listener.FindListener
+//import cn.bmob.v3.listener.QueryListener
+//import cn.bmob.v3.listener.SaveListener
 import com.link.component_shopping.data.entity.EntityResult
 import com.link.component_shopping.data.entity.GoodsEntity
 import com.link.component_shopping.data.entity.SecondsEntity
-import com.link.fan.R
-import com.link.fan.data.bean.BaseEntity
-import com.link.fan.data.bean.BaseResult
-import com.link.fan.data.bean.CommunityEntity
-import com.link.fan.data.bean.MenuResult
-import com.link.librarymodule.constant.JUHE_KEY
-import com.link.librarymodule.utils.Utils
+import com.link.fan.data.bean.*
 import io.reactivex.Observable
 
 /**
@@ -27,6 +21,23 @@ import io.reactivex.Observable
  */
 class NetServiceImpl constructor(private val service: RetrofitHttpService) : INetService {
 
+    override fun searchByKeyword(keyword: String, num: Int, start: Int, appkey: String): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>> {
+        return service.searchByKeyword(keyword, num, start, appkey)
+    }
+
+    override fun category(appkey: String): Observable<BaseEntity<CategoryResult>> {
+        return service.category(appkey)
+    }
+
+    override fun searchByCategory(appkey: String, classId: Int, start: Int, num: Int): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>> {
+        return service.searchByCategory(appkey, classId, start, num)
+    }
+
+    override fun searchById(appkey: String, id: Int): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>> {
+        return service.searchById(appkey, id)
+    }
+
+
     override fun getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsEntity>>>> {
         return service.getSeconds()
     }
@@ -36,51 +47,43 @@ class NetServiceImpl constructor(private val service: RetrofitHttpService) : INe
         return service.getCommunityList(pageCount, feedId, feedType, userId)
     }
 
-    override fun searchByKeyword(menu: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
-        return service.query(JUHE_KEY, menu, pn, rn)
-    }
-
-    override fun searchByIndex(cid: String, pn: Int, rn: Int): Observable<BaseEntity<MenuResult>> {
-        return service.index(JUHE_KEY, cid, pn, rn, 0)
-    }
-
     override fun getGoods(): Observable<BaseEntity<EntityResult<List<GoodsEntity>>>> {
         return service.getGoods()
     }
 
     override fun getHomeBanner(): Observable<BaseEntity<MenuResult>> {
-        return service.homeBanner()
+        return service.getHomeBanner()
     }
 
     override fun getTodayRecommend(): Observable<BaseEntity<MenuResult>> {
-        return service.today()
+        return service.getTodayRecommend()
     }
 
     override fun getLastMenu(): Observable<BaseEntity<MenuResult>> {
-        return service.lastMenu()
+        return service.getLastMenu()
     }
 
     override fun getHomeDataList(): Observable<BaseEntity<MenuResult>> {
-        return service.home()
+        return service.getHomeDataList()
     }
 
     /**
      * 登录，第三方SDK提供
      */
-    override fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>) {
-        val user = BmobUser()
-        user.mobilePhoneNumber = phone
-        user.username = phone
-        user.setPassword(phone)
-        user.signOrLogin(smsCode, listener)
-    }
+//    override fun login(phone: String, smsCode: String, listener: SaveListener<BmobUser>) {
+//        val user = BmobUser()
+//        user.mobilePhoneNumber = phone
+//        user.username = phone
+//        user.setPassword(phone)
+//        user.signOrLogin(smsCode, listener)
+//    }
 
     /**
      * 获取短信验证码，第三方SDK提供
      */
-    override fun getSmsCode(phone: String, listener: QueryListener<Int>) {
-        BmobSMS.requestSMSCode(phone, Utils.getContext().resources.getString(R.string.sms_template), listener)
-    }
+//    override fun getSmsCode(phone: String, listener: QueryListener<Int>) {
+//        BmobSMS.requestSMSCode(phone, Utils.getContext().resources.getString(R.string.sms_template), listener)
+//    }
 
     companion object {
         @Volatile

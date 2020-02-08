@@ -30,7 +30,7 @@ class MallViewModel constructor(private val repository: AppRepository) : ViewMod
 //                .subscribe(Consumer {
 //                    if (it.resultcode == "200") {
 //
-//                        it.result.data?.let {
+//                        it.newslist.data?.let {
 //                            if (it[0] is GoodsEntity) {
 //                                goodsData.value = JsonUtil.toJson(it)
 //

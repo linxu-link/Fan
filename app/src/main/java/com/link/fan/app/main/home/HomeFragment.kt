@@ -2,7 +2,6 @@ package com.link.fan.app.main.home
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -88,7 +87,7 @@ class HomeFragment : Fragment() {
             binding.root.layoutParams = layout
         }
 
-        val adapter = HomeAdapter(R.layout.list_item_home, null)
+        val adapter = HomeAdapter(R.layout.item_list_home, null)
         addHeaderView(adapter, binding)
         binding.menuList.adapter = adapter
         subscribeUi(adapter)
@@ -133,7 +132,7 @@ class HomeFragment : Fragment() {
     private fun subscribeUi(adapter: HomeAdapter) {
         viewModel.masterLiveData.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
-                adapter.setNewData(data)
+                adapter.setNewData(list)
             }
             refresh.isRefreshing = false
         }
@@ -144,37 +143,30 @@ class HomeFragment : Fragment() {
                             pageAdapter: CardPagerAdapter) {
         viewModel.lastMenuLiveData.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
-                lastAdapter.submitList(data)
+                lastAdapter.submitList(list)
             }
             refresh.isRefreshing = false
         }
 
         viewModel.recommendLiveData.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
-                recommendAdapter.submitList(data)
+                recommendAdapter.submitList(list)
             }
             refresh.isRefreshing = false
         }
 
         viewModel.bannerLiveData.observe(viewLifecycleOwner) { menuResult ->
             menuResult?.run {
-                for (menu in data) {
-                    pageAdapter.setDataList(data)
+                for (menu in list) {
+                    pageAdapter.setDataList(list)
                     viewPager.currentItem = 1
-                    viewPager.offscreenPageLimit = data.size
+                    viewPager.offscreenPageLimit = list.size
                     transformer?.enableScale(true)
                 }
 
             }
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.e("home", "onDestroyView")
-    }
-
-
 }
 
 

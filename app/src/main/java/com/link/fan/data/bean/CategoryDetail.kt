@@ -1,6 +1,6 @@
 package com.link.fan.data.bean
 
 data class CategoryDetail(
-        val id: String,
+        val classid: String,
         val name: String,
-        val parentId: String)
+        val parentid: String)

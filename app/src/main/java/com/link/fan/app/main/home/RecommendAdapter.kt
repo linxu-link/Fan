@@ -4,13 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.link.fan.data.bean.MenuDetail
-import com.link.fan.databinding.ListItemHomeBinding
-import com.link.fan.databinding.ListItemHomeHeadBinding
+import com.link.fan.databinding.ItemListHomeHeadBinding
 
 /**
  * copyright:TS
@@ -22,7 +20,7 @@ import com.link.fan.databinding.ListItemHomeHeadBinding
 class RecommendAdapter : ListAdapter<MenuDetail, RecommendAdapter.RecommendHolder>(HomeDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendHolder {
-        return RecommendHolder(ListItemHomeHeadBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return RecommendHolder(ItemListHomeHeadBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: RecommendHolder, position: Int) {
@@ -31,7 +29,7 @@ class RecommendAdapter : ListAdapter<MenuDetail, RecommendAdapter.RecommendHolde
     }
 
 
-    class RecommendHolder constructor(private val binding: ListItemHomeHeadBinding) : RecyclerView.ViewHolder(binding.root) {
+    class RecommendHolder constructor(private val binding: ItemListHomeHeadBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
                 binding.menuDetail?.let { menuDetail ->

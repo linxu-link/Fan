@@ -1,7 +1,7 @@
 package com.link.fan.data.repository.source.local
 
 import androidx.room.*
-import com.link.fan.app.search.HistoryEntity
+import com.link.fan.data.bean.HistoryEntity
 import io.reactivex.Flowable
 
 @Dao

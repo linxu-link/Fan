@@ -3,7 +3,7 @@ package com.link.fan.data.repository.source.local
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.link.fan.app.search.HistoryEntity
+import com.link.fan.data.bean.HistoryEntity
 import com.link.librarymodule.utils.ApplicationUtil
 
 const val DATABASE_NAME = "searchBase"

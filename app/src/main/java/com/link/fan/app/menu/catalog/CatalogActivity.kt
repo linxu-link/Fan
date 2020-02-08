@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.link.fan.R
 import com.link.fan.app.search.SearchActivity
+import com.link.fan.app.search.detail.SearchDetailActivity
 import com.link.fan.data.InjectorUtils
 import com.link.fan.databinding.ActivityCatalogBinding
 import com.link.fan.utils.StatusBar
@@ -76,24 +77,27 @@ class CatalogActivity : AppCompatActivity() {
         list_catalog.addItemDecoration(ItemDecoration(3, 3, 3, 3))
 
         mLeftAdapter.setOnItemClickListener { _, _, position ->
-            mRightAdapter.setNewData(viewModel.mCatalog.value!![position].list)
+            mRightAdapter.setNewData(viewModel.mCategoryLiveData.value!![position].list)
             for (result in mLeftAdapter.data) {
                 result.click = false
             }
             mLeftAdapter.data[position].click = true
             mLeftAdapter.notifyDataSetChanged()
         }
-        mRightAdapter.setOnItemClickListener { adapter, view, position -> }
+        mRightAdapter.setOnItemClickListener { adapter, view, position ->
 
-        viewModel.mCatalog.observe(this, Observer {
+            SearchDetailActivity.startActivity(this, null, mRightAdapter.getItem(position)?.classid)
+
+        }
+
+        viewModel.mCategoryLiveData.observe(this, Observer {
             mLeftAdapter.setNewData(it)
-            mRightAdapter.setNewData(viewModel.mCatalog.value!![0].list)
+            mRightAdapter.setNewData(viewModel.mCategoryLiveData.value!![0].list)
         })
 
     }
 
     private fun initData() {
-        viewModel.getCatalog()
         viewModel.getIngredients()
     }
 

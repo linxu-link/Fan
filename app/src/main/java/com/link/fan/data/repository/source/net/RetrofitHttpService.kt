@@ -25,28 +25,28 @@ interface RetrofitHttpService {
      */
     @Headers("${URL_TYPE}:${MOCK}")
     @GET("mock/5e3648f7b9de7529052c4d3b/shandao/home/banner")
-    fun homeBanner(): Observable<BaseEntity<MenuResult>>
+    fun getHomeBanner(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的今日推荐.
      */
     @Headers("${URL_TYPE}:${MOCK}")
     @GET("mock/5e3648f7b9de7529052c4d3b/shandao/home/today")
-    fun today(): Observable<BaseEntity<MenuResult>>
+    fun getTodayRecommend(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的最新菜谱.
      */
     @Headers("${URL_TYPE}:${MOCK}")
     @GET("mock/5e3648f7b9de7529052c4d3b/shandao/home/last_menu")
-    fun lastMenu(): Observable<BaseEntity<MenuResult>>
+    fun getLastMenu(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取首页的菜谱列表.
      */
     @Headers("${URL_TYPE}:${MOCK}")
     @GET("mock/5e3648f7b9de7529052c4d3b/shandao/home")
-    fun home(): Observable<BaseEntity<MenuResult>>
+    fun getHomeDataList(): Observable<BaseEntity<MenuResult>>
 
     /**
      * 获取商城的活动的数据
@@ -68,24 +68,12 @@ interface RetrofitHttpService {
      */
     @Headers("${URL_TYPE}:${DEFAULT_URL}")
     @GET("serverdemo/feeds/queryHotFeedsList")
-    fun getCommunityList(@Query("pageCount") pageCount: Int,
-                         @Query("feedId") feedId: Int,
-                         @Query("feedType") feedType: String,
-                         @Query("userId") userId: Int): Observable<BaseEntity<BaseResult<List<CommunityEntity>>>>
-
-
-    /**
-     * 分类标签列表
-     * parentid：分类ID，默认全部
-     */
-    @FormUrlEncoded
-    @Headers("${URL_TYPE}:${JUHE}")
-    @POST("cook/category")
-    fun category(
-            @Field("key") key: String,
-            @Field("parentid") parentid: String
-    ): Observable<BaseEntity<CategoryResult>>
-
+    fun getCommunityList(
+            @Query("pageCount") pageCount: Int,
+            @Query("feedId") feedId: Int,
+            @Query("feedType") feedType: String,
+            @Query("userId") userId: Int
+    ): Observable<BaseEntity<BaseResult<List<CommunityEntity>>>>
 
     /**
      * 菜谱大全
@@ -93,14 +81,24 @@ interface RetrofitHttpService {
      */
     @FormUrlEncoded
     @Headers("${URL_TYPE}:${JUHE}")
-    @POST("cook/query.php")
-    fun query(
-            @Field("key") key: String,
-            @Field("menu") menu: String,
-            @Field("pn") pn: Int,
-            @Field("rn") rn: Int
-    ): Observable<BaseEntity<MenuResult>>
+    @POST("recipe/search")
+    fun searchByKeyword(
+            @Field("keyword") keyword: String,
+            @Field("num") num: Int,
+            @Field("start") start: Int,
+            @Field("appkey") appkey: String
+    ): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>>
 
+    /**
+     * 分类标签列表
+     * parentid：分类ID，默认全部
+     */
+    @FormUrlEncoded
+    @Headers("${URL_TYPE}:${JUHE}")
+    @POST("recipe/class")
+    fun category(
+            @Field("appkey") appkey: String
+    ): Observable<BaseEntity<CategoryResult>>
 
     /**
      * 按标签检索菜谱
@@ -111,15 +109,13 @@ interface RetrofitHttpService {
      */
     @FormUrlEncoded
     @Headers("${URL_TYPE}:${JUHE}")
-    @POST("cook/index")
-    fun index(
-            @Field("key") key: String,
-            @Field("cid") cid: String,
-            @Field("pn") pn: Int,
-            @Field("rn") rn: Int,
-            @Field("format") format: Int
-    ): Observable<BaseEntity<MenuResult>>
-
+    @POST("recipe/byclass")
+    fun searchByCategory(
+            @Field("appkey") appkey: String,
+            @Field("classid") classId: Int,
+            @Field("start") start: Int,
+            @Field("num") num: Int
+    ): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>>
 
     /**
      * 按标签检索菜谱
@@ -127,10 +123,10 @@ interface RetrofitHttpService {
      */
     @FormUrlEncoded
     @Headers("${URL_TYPE}:${JUHE}")
-    @POST("cook/queryid")
-    fun queryid(
-            @Field("key") key: String,
-            @Field("id") id: String
-    ): Observable<BaseEntity<MenuResult>>
+    @POST("recipe/detail")
+    fun searchById(
+            @Field("appkey") appkey: String,
+            @Field("id") id: Int
+    ): Observable<BaseEntity<BaseResult<List<JuHeMenuResult>>>>
 
 }

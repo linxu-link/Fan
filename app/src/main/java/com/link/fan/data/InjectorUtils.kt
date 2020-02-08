@@ -44,4 +44,8 @@ object InjectorUtils {
         return ViewModelFactory(provideRepository())
     }
 
+    fun createViewModel(): ViewModelFactory {
+        return ViewModelFactory(provideRepository())
+    }
+
 }

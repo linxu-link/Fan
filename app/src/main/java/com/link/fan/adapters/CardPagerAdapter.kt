@@ -8,11 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.PagerAdapter
 import com.link.fan.R
 import com.link.fan.data.bean.MenuDetail
-import com.link.fan.databinding.ListItemCardViewBinding
-import com.link.librarymodule.utils.CommonUtil
+import com.link.fan.databinding.ItemListCardViewBinding
 import com.link.librarymodule.utils.ToastUtils
 import com.link.librarymodule.utils.Utils
-import kotlin.collections.ArrayList
 
 /**
  * <pre>
@@ -56,9 +54,9 @@ class CardPagerAdapter : PagerAdapter(), ICardAdapter {
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val bind = DataBindingUtil.inflate<ListItemCardViewBinding>(
+        val bind = DataBindingUtil.inflate<ItemListCardViewBinding>(
                 LayoutInflater.from(container.context),
-                R.layout.list_item_card_view,
+                R.layout.item_list_card_view,
                 container, false)
         container.addView(bind.root)
         bind.menuDetail = mDataList[position]

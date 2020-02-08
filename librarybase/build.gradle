@@ -88,8 +88,6 @@ dependencies {
         exclude group: 'androidx.core'
         exclude group: 'io.reactivex.rxjava2'
     }
-    //云数据库bmob
-    api deps.bmob
 
     //视频播放组件
     api 'com.google.android.exoplayer:exoplayer-core:2.10.4'
@@ -110,22 +108,24 @@ dependencies {
 
     //sp
     api deps.mmkv
-    //bugly
-    api deps.bugly
     //腾讯x5webview
     api deps.x5webview
-    //webview加速
-    api 'com.tencent.sonic:sdk:3.1.0'
 
+    //bugly
+//    api deps.bugly
+    //webview加速
+//    api 'com.tencent.sonic:sdk:3.1.0'
     //微信开放平台
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.4.3'
-
     //epic框架
-    api "me.weishu:epic:0.3.6"
+//    api "me.weishu:epic:0.3.6"
+    //云数据库bmob
+//    api deps.bmob
 
     //美团多渠道打包
     api 'com.meituan.android.walle:library:1.1.6'
 
+    //banner
     api 'com.youth.banner:banner:1.4.10'
 
 
